@@ -1,0 +1,2 @@
+Hier komen alle achterliggende bestanden en inhoud voor de admin pagina of het CMS, dus de nieuwe index/layout.
+En classes indien nodig voor de backend.
