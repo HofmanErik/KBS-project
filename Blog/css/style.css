@@ -12,12 +12,12 @@ p {}
   padding:0px;
 }
 
-<<<<<<< HEAD
+
 .navbar{
   margin-bottom: 0;
 }
 
-=======
+
 .navbar-header{
 
 }
@@ -29,8 +29,6 @@ p {}
     opacity: 0.5;
 }
 
-
->>>>>>> c5327ab24d6e270cf13b2eee87d52ecf87e07742
 .blogposts {
   background-color: #FFFFFF;
 }
