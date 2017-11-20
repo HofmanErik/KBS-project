@@ -1,5 +1,4 @@
 body {
-    background-image: url(img/header.jpg);
     background-color: #8ec63f;
 }
 
@@ -8,22 +7,14 @@ h2 {}
 h3 {}
 h4 {}
 p {}
-  
+
 
 .header{
-    border-style:solid black;
-    background-color: black;
+
 }
 
 .navbar-header{
-	background-color: transparent;
-	margin: 0px;
-	position: fixed;
-    background: rgba(255, 255, 255, 0.7);
-    top: 0;
-    left: 0;
-    right:0;
-    padding: 16px;
+	
 }
 
 .Header_img{
