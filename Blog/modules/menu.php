@@ -23,7 +23,7 @@
   </head>
   <body>
 
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default header nav">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">
@@ -34,9 +34,12 @@
   </div>
 </nav>
 
+<div class="background-img">&nbsp;</div>
+<div class="nav">Navigation</div>
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 headerimg">
       <img src="img/header.jpg" class="img-responsive">
     </div>
   </div>
