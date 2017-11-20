@@ -1,6 +1,24 @@
+
 .header{
     border-style:solid black;
     background-color: black;
+
+body {
+    background-image: url(img/header.jpg);
+}
+
+.blogposts {
+  background-color: #FFFFFF;
+}
+
+.blogimg {
+  width: 175px;
+  height: 175px;
+  padding: 15px;
+}
+
+.navbar-header{
+	background-color: transparent;
 	margin: 0px;
 	position: fixed;
     background: rgba(255, 255, 255, 0.7);
@@ -10,15 +28,18 @@
     padding: 16px;
 }
 
-.headerimg{
-    padding: 0;
-    opacity: 0.8;
+.Header_img{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px;
+    opacity: 0.5;
 }
 
-.container-fluid{
-    padding-right: 0px;
-    padding-left: 0px;
-    margin-right: auto;
-    margin-left: auto;
-}
+
+body {}
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+p {}
 
