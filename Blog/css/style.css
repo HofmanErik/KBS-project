@@ -1,5 +1,6 @@
-.navbar-header{
-	background-color: transparent;
+.header{
+    border-style:solid black;
+    background-color: black;
 	margin: 0px;
 	position: fixed;
     background: rgba(255, 255, 255, 0.7);
@@ -10,29 +11,14 @@
 }
 
 .headerimg{
-	padding:0px;
-	margin:0px;
-	opacity: 0.8;
-    margin: 0;
     padding: 0;
-    position: fixed;
-    top: 0;
-    left:0;
-    right:0;
-    bottom:0;
-    background-size:cover;
+    opacity: 0.8;
 }
 
-.header {
-	margin: 0px;
+.container-fluid{
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-
-}
-
-body {}
-h1 {}
-h2 {}
-h3 {}
-h4 {}
-p {}
