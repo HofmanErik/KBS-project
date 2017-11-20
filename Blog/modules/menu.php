@@ -43,7 +43,7 @@
         <li><a href="#">Inloggen</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+  </div><!-- /.container -->
 </nav>
 <div class="container-fluid">
   <div class="row">
