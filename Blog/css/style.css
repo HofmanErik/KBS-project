@@ -1,20 +1,16 @@
-
-.header{
-    border-style:solid black;
-    background-color: black;
-
 body {
     background-image: url(img/header.jpg);
 }
 
-.blogposts {
-  background-color: #FFFFFF;
-}
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+p {}
 
-.blogimg {
-  width: 175px;
-  height: 175px;
-  padding: 15px;
+.header{
+    border-style:solid black;
+    background-color: black;
 }
 
 .navbar-header{
@@ -36,10 +32,12 @@ body {
 }
 
 
-body {}
-h1 {}
-h2 {}
-h3 {}
-h4 {}
-p {}
+.blogposts {
+  background-color: #FFFFFF;
+}
 
+.blogimg {
+  width: 175px;
+  height: 175px;
+  padding: 15px;
+}
