@@ -1,3 +1,22 @@
+
+.header{
+    border-style:solid black;
+    background-color: black;
+
+body {
+    background-image: url(img/header.jpg);
+}
+
+.blogposts {
+  background-color: #FFFFFF;
+}
+
+.blogimg {
+  width: 175px;
+  height: 175px;
+  padding: 15px;
+}
+
 .navbar-header{
 	background-color: transparent;
 	margin: 0px;
@@ -9,26 +28,12 @@
     padding: 16px;
 }
 
-.headerimg{
-	padding:0px;
-	margin:0px;
-	opacity: 0.8;
-    margin: 0;
-    padding: 0;
-    position: fixed;
-    top: 0;
-    left:0;
-    right:0;
-    bottom:0;
-    background-size:cover;
+.Header_img{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px;
+    opacity: 0.5;
 }
-
-.header {
-	margin: 0px;
-}
-
-
-
 
 body {}
 h1 {}
@@ -43,3 +48,4 @@ p {}
     text-align: center;
     font-size: 20px;     
 }
+
