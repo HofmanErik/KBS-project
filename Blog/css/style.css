@@ -1,6 +1,5 @@
-
 body {
-    background-color: #8ec63f;
+    background-color: #282d30;
 }
 
 h1 {}
@@ -9,28 +8,13 @@ h3 {}
 h4 {}
 p {}
 
-
-.header{
-
+.col-md-12-np{
+  padding:0px;
 }
 
-.navbar-header{
-	
+.navbar{
+  margin-bottom: 0;
 }
-
-.Header_img{
-    padding-left: 0px;
-    padding-right: 0px;
-    margin: 0px;
-    opacity: 0.5;
-}
-
-body {}
-h1 {}
-h2 {}
-h3 {}
-h4 {}
-p {}
 
 .blogposts {
   background-color: #FFFFFF;
