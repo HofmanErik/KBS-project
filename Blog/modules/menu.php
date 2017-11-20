@@ -52,3 +52,14 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="Header_img" style="background: url(img/header.jpg)">
+      </div>
+    </div>
+  </div>
+</div>
+</body>

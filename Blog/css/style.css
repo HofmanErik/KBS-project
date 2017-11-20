@@ -2,6 +2,7 @@
 .header{
     border-style:solid black;
     background-color: black;
+}
 
 body {
     background-image: url(img/header.jpg);
