@@ -14,7 +14,7 @@ p {}
 }
 
 .navbar-header{
-	
+
 }
 
 .Header_img{
@@ -24,12 +24,6 @@ p {}
     opacity: 0.5;
 }
 
-body {}
-h1 {}
-h2 {}
-h3 {}
-h4 {}
-p {}
 
 .blogposts {
   background-color: #FFFFFF;
@@ -47,4 +41,3 @@ p {}
     text-align: center;
     font-size: 20px;
 }
-
