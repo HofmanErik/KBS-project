@@ -22,7 +22,7 @@
 
   </head>
   <body>
-<header class="masthead" style="background-image:url('img/header.jpg')">"
+<header class="masthead" style="background-image:url('img/mac2.jpg')">"
 <div class="overlay"></div>
 <nav class="navbar navbar-default">
   <div class="container">
@@ -34,16 +34,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <a class="navbar-brand" href="https://www.vindbaar-in.nl">Vindbaar-in</a>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" class="nav-text">Home</a></li>
-        <li><a href="#" class="nav-text">Blog</a></li>
-        <li><a href="#" class="nav-text">Inloggen</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Inloggen</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
@@ -58,9 +57,11 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="col-md-12">
       <div class="head-text">
         <h1></h1>
+        <span class="subheading">Blog</span><br>
+        <span class="subheading">Blog</span><br>
         <span class="subheading">Blog</span>
       </div>
     </div>

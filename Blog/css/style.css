@@ -14,17 +14,17 @@ p {}
 
 .masthead{
   margin-bottom:50px;
+  background-repeat: no-repeat;
+
 }
 
 .navbar{
   margin-bottom: 0;
   margin-top: 0;
   opacity: 0.5;
+  padding-top:0;
 }
 
-.nav-text{
-  color:white;
-}
 
 .head-text{
   font-weight: 800;
