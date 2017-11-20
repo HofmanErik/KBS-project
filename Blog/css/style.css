@@ -1,3 +1,35 @@
+.navbar-header{
+	background-color: transparent;
+	margin: 0px;
+	position: fixed;
+    background: rgba(255, 255, 255, 0.7);
+    top: 0;
+    left: 0;
+    right:0;
+    padding: 16px;
+}
+
+.headerimg{
+	padding:0px;
+	margin:0px;
+	opacity: 0.8;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-size:cover;
+}
+
+.header {
+	margin: 0px;
+}
+
+
+}
+
 body {}
 h1 {}
 h2 {}
