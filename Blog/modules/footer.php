@@ -1,8 +1,15 @@
-<div class="col-md-1">
-      <p>
-      <h1>dit is een footer</h1>
-      </p>
-    </div> 
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 footer">
+            <p class="footer">Powered By The floor is Java.</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

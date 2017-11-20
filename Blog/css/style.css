@@ -28,7 +28,7 @@
 }
 
 
-}
+
 
 body {}
 h1 {}
@@ -36,3 +36,10 @@ h2 {}
 h3 {}
 h4 {}
 p {}
+
+.footer{
+    background-color: #282d30;
+    color: white;
+    text-align: center;
+    font-size: 20px;     
+}
