@@ -1,5 +1,5 @@
 body {
-    background-color: #282d30;
+    background-color: white;
 }
 
 h1 {}
@@ -12,21 +12,37 @@ p {}
   padding:0px;
 }
 
+.masthead{
+  margin-bottom:50px;
+}
 
 .navbar{
   margin-bottom: 0;
+  margin-top: 0;
+  opacity: 0.5;
 }
 
-
-.navbar-header{
-
+.nav-text{
+  color:white;
 }
 
-.Header_img{
+.head-text{
+  font-weight: 800;
+  font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 80px;
+  color:white;
+  text-align: center;
+}
+
+.subheading{
+  text-align:center;
+}
+
+.header-img{
     padding-left: 0px;
     padding-right: 0px;
     margin: 0px;
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 .blogposts {

@@ -22,6 +22,8 @@
 
   </head>
   <body>
+<header class="masthead" style="background-image:url('img/header.jpg')">"
+<div class="overlay"></div>
 <nav class="navbar navbar-default">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,9 +41,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <a class="navbar-brand" href="https://www.vindbaar-in.nl">Vindbaar-in</a>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Inloggen</a></li>
+        <li><a href="#" class="nav-text">Home</a></li>
+        <li><a href="#" class="nav-text">Blog</a></li>
+        <li><a href="#" class="nav-text">Inloggen</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
@@ -49,10 +51,21 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12-np">
-      <img src="img/header2.jpg" class="img-responsive">
+      <!-- <img src="img/mac.png" class="img-responsive header-img"> -->
       </div>
     </div>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div class="head-text">
+        <h1></h1>
+        <span class="subheading">Blog</span>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
 
 </body>
