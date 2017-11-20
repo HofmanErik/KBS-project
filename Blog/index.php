@@ -1,5 +1,6 @@
 <?php include 'modules/menu.php'; ?>
 
+<br></br>
   <!-- Blog Posts -->
   <div class="container">
   <div class="row blogposts">
