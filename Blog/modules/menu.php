@@ -22,8 +22,7 @@
 
   </head>
   <body>
-<header class="masthead" style="background-image:url('img/mac2.jpg')">"
-<div class="overlay"></div>
+<header class="master-head" style="background-image: url(img/mac2.jpg);">
 <nav class="navbar navbar-default">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -60,9 +59,7 @@
     <div class="col-md-12">
       <div class="head-text">
         <h1></h1>
-        <span class="subheading">Blog</span><br>
-        <span class="subheading">Blog</span><br>
-        <span class="subheading">Blog</span>
+        <br><span>Blog</span><br><br>
       </div>
     </div>
   </div>
