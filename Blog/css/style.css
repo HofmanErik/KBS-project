@@ -21,9 +21,17 @@ p {}
 .navbar{
   margin-bottom: 0;
   margin-top: 0;
-  opacity: 1,0;
+  opacity: 0.5;
   padding-top:0;
   background-color:#282d30;
+
+}
+
+.navbar-default .navbar-brand{
+  color: #FFF;
+}
+.navbar-default .navbar-nav>li>a{
+  color: #FFF;
 }
 
 .head-text{
