@@ -48,13 +48,19 @@ p {}
 
 
 .blogposts {
-  background-color: #FFFFFF;
+  background-color: #FFF;
 }
+
+
 
 .blogimg {
   width: 175px;
   height: 175px;
   padding: 15px;
+}
+
+.postimg{
+  float: right;
 }
 
 
@@ -65,5 +71,7 @@ p {}
     text-align: center;
     font-size: 17px;
     margin-top: 75px;
-    font-family: Lora,'Times New Roman',serif
+    font-family: Lora,'Times New Roman',serif;
+
+
 }
