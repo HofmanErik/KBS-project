@@ -42,7 +42,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Home</a></li>
         <li><a href="#">Blog</a></li>
-        <li><a href="#">Inloggen</a></li>
+        <li><a href="../blog/dashboard/login.php">Inloggen</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->

@@ -6,7 +6,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.html">Dashboard</a>
+          <a href="index.php">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">Overzicht</li>
       </ol>
@@ -20,8 +20,8 @@
      <div class="card mb-3">
         <div class="card-header">
           <a href="overzicht.php"> Alles</a> |
-          <a href="#"> Gepubliceerd</a> | 
-          <a href="#"> Concepten</a> | 
+          <a href="#"> Gepubliceerd</a> |
+          <a href="#"> Concepten</a> |
           <a href="#"> Verwijderd</a> |
           <a href="toevoegen.php"> Toevoegen</a>
           <form class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
@@ -60,13 +60,13 @@
                   <td>02-02-2017</td>
                 </tr>
                   <tr>
-                  <td><input type="checkbox"></td> 
+                  <td><input type="checkbox"></td>
                   <td><a href="#">De opkomst van de badeend</a></td>
                   <td>Vindbaar-in</td>
                   <td>31-01-2017</td>
                 </tr>
                   <tr>
-                  <td><input type="checkbox"></td>  
+                  <td><input type="checkbox"></td>
                   <td><a href="#">Bitcoins voor dummies</a></td>
                   <td>Vindbaar-in</td>
                   <td>28-01-2017</td>
