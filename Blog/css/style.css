@@ -1,5 +1,6 @@
 body {
     background-color: white;
+
 }
 
 h1 {}
@@ -48,14 +49,32 @@ p {}
 
 
 .blogposts {
-  background-color: #FFFFFF;
+  background-color: #FFF;
 }
+
+
 
 .blogimg {
   width: 175px;
   height: 175px;
   padding: 15px;
+
 }
+
+.post-img {
+  float: right;
+  height: auto;
+  width: auto;
+  padding-top: 50px;
+  padding-right: 50px;
+
+}
+
+.post-title {
+  text-align: center;
+  padding-top: 110px;
+}
+
 
 
 .footer{
@@ -65,5 +84,7 @@ p {}
     text-align: center;
     font-size: 17px;
     margin-top: 75px;
-    font-family: Lora,'Times New Roman',serif
+    font-family: Lora,'Times New Roman',serif;
+
+
 }

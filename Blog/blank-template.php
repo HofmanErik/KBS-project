@@ -22,7 +22,7 @@
 
   </head>
   <body>
-<header class="master-head" style="background-image: url(img/mac2.jpg);">
+<header class="head">
 <nav class="navbar navbar-default">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -55,16 +55,7 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="head-text">
-        <h1></h1>
-        <br><span>Blog</span><br><br>
-      </div>
-    </div>
-  </div>
-</div>
+
 </header>
 
 </body>
