@@ -1,6 +1,6 @@
 body {
     background-color: white;
- 
+
 }
 
 h1 {}
@@ -63,8 +63,16 @@ p {}
 
 .post-img {
   float: right;
-  
+  height: auto;
+  width: auto;
+  padding-top: 50px;
+  padding-right: 50px;
 
+}
+
+.post-title {
+  text-align: center;
+  padding-top: 110px;
 }
 
 

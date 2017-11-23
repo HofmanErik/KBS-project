@@ -10,21 +10,17 @@
               on September 24, 2017</p>
       </div>
     </div>
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="row post-img">
-    <div class="col-md-12">
+    <div class="col-md-4">
 
       <img src="download.png" alt="vierkantje"
             class="img-responsive post-img">
     </div>
+
   </div>
 </div>
 
-<br></br>
+
+
 
 <div class="container">
   <div class="row text">
