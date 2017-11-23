@@ -11,11 +11,106 @@
         <li class="breadcrumb-item active">Dashboard</li>
       </ol>
       <div class="row">
-        <div class="col-12">
-          <h1>Leeg</h1>
-          <p>Voorbeeltekst</p>
+        <div class="col-xl-4 col-sm-6 mb-3">
+          <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-list"></i>
+              </div>
+              <div class="mr-5">Artikel overzicht</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="overzicht.php">
+              <span class="float-left">Klik hier</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
         </div>
-      </div>
+        <div class="col-xl-4 col-sm-6 mb-3">
+          <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-pencil"></i>
+              </div>
+              <div class="mr-5">Artikel toevoegen</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="toevoegen.php">
+              <span class="float-left">Klik hier</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-4 col-sm-6 mb-3">
+          <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-commenting"></i>
+              </div>
+              <div class="mr-5">Reacties</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="berichten.php">
+              <span class="float-left">Klik hier</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-4 col-sm-6 mb-3">
+          <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa fa-cogs"></i>
+              </div>
+              <div class="mr-5">Accountinstellingen</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="account.php">
+              <span class="float-left">Klik hier</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-4 col-sm-6 mb-3">
+          <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-cog"></i>
+              </div>
+              <div class="mr-5">Emailinstellingen</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="email.php">
+              <span class="float-left">Klik hier</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-4 col-sm-6 mb-3">
+          <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa fa-globe "></i>
+              </div>
+              <div class="mr-5">Blog</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="../index.php">
+              <span class="float-left">Klik hier</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+  
+</div>
     </div>
+  </div>
+
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
