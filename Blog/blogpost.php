@@ -1,26 +1,35 @@
 <?php include 'blank-template.php'?>
 
 <div class="container">
-<div class="row title">
-  <div class="col-md-12">
-    <div class="post-title">
+  <div class="row title">
+    <div class="col-md-8">
+      <div class="post-title">
         <h2>  Winst maken in een onderneming </h2>
-      </a>
-      <p class="post-meta">Posted by
-        <a href="#">Vindbaar In</a>
-        on September 24, 2017</p>
-    </div>
-    <div class="col-md-12">
-      <img src="download.png" alt="vierkantje"
-        class="img postimg">
+          <p class="post-meta">Posted by
+            <a href="#">Vindbaar In</a>
+              on September 24, 2017</p>
       </div>
+    </div>
   </div>
 </div>
 
+
+<div class="container">
+  <div class="row post-img">
+    <div class="col-md-12">
+
+      <img src="download.png" alt="vierkantje"
+            class="img-responsive post-img">
+    </div>
+  </div>
+</div>
+
+<br></br>
+
 <div class="container">
   <div class="row text">
-    <div class="col-md-12">
-      <div class="text">
+    <div class="col-md-8">
+      <div class="post-text">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
           elementum nunc nisl, vel malesuada sem malesuada eget. Pellentesque
           dictum vehicula nisi. Integer ac lorem felis. Integer pharetra congue
@@ -33,6 +42,14 @@
           et nisl vitae, volutpat aliquam ante. Suspendisse non enim quis est
           blandit dignissim.</p>
 
+        </div>
+      </div>
+    </div>
+  </div>
+          <div class="container">
+            <div class="row text">
+              <div class="col-md-12">
+                <div class="post-text">
         <p>Integer rhoncus et dolor et ornare. Maecenas id arcu sit amet ligula
            convallis iaculis at ac felis. Pellentesque habitant morbi tristique
            senectus et netus et malesuada fames ac turpis egestas. Donec ornare
