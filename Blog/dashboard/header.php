@@ -85,7 +85,7 @@
             <span class="d-lg-none">Meldingen
               <span class="badge badge-pill badge-primary">12 Nieuw</span>
             </span>
-            <span class="indicator text-warning d-none d-lg-block">
+            <span class="indicator text-primary d-none d-lg-block">
               <i class="fa fa-fw fa-circle"></i>
             </span>
           </a>

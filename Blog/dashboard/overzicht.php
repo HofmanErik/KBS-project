@@ -28,7 +28,7 @@
             <div class="input-group">
               <input class="form-control" type="text" placeholder="Zoeken...">
               <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-secondary" type="button">
                   <i class="fa fa-search"></i>
                 </button>
               </span>
