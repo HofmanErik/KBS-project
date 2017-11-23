@@ -29,11 +29,11 @@
           <div class="form-group">
             <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email address">
           </div>
-          <a class="btn btn-primary btn-block" href="login.html">Wachtwoord resetten</a>
+          <a class="btn btn-primary btn-block" href="login.php">Wachtwoord resetten</a>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="register.html">Account aanmaken</a>
-          <a class="d-block small" href="login.html">Inloggen</a>
+          <a class="d-block small mt-3" href="register.php">Account aanmaken</a>
+          <a class="d-block small" href="login.php">Inloggen</a>
         </div>
       </div>
     </div>

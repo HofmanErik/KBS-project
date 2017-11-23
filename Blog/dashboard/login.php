@@ -36,11 +36,11 @@
                 <input class="form-check-input" type="checkbox">Wachtwoord onthouden</label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="dashboard.html">inloggen</a>
+          <a class="btn btn-primary btn-block" href="dashboard.php">inloggen</a>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="register.html">Account aanmaken</a>
-          <a class="d-block small" href="forgot-password.html">Wachtwoord vergeten?</a>
+          <a class="d-block small mt-3" href="register.php">Account aanmaken</a>
+          <a class="d-block small" href="forgot-password.php">Wachtwoord vergeten?</a>
         </div>
       </div>
     </div>

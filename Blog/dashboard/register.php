@@ -50,11 +50,11 @@
               </div>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="login.html">Account aanmaken</a>
+          <a class="btn btn-primary btn-block" href="login.php">Account aanmaken</a>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="login.html">Inloggen</a>
-          <a class="d-block small" href="forgot-password.html">Wachtwoord vergeten?</a>
+          <a class="d-block small mt-3" href="login.php">Inloggen</a>
+          <a class="d-block small" href="forgot-password.php">Wachtwoord vergeten?</a>
         </div>
       </div>
     </div>
