@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row title">
     <div class="col-md-8">
-      <div class="post-title">
+      <div class="title-post">
         <h2>  Winst maken in een onderneming </h2>
           <p class="post-meta">Posted by
             <a href="#">Vindbaar In</a>
