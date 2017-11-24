@@ -4,7 +4,7 @@
   <div class="row title">
     <div class="col-md-8">
       <div class="title-post">
-        <h2>  Winst maken in een onderneming </h2>
+        <h1>  Winst maken in een onderneming </h1>
           <p class="post-meta">Posted by
             <a href="#">Vindbaar In</a>
               on September 24, 2017</p>
@@ -74,7 +74,7 @@
             ac quam ac risus molestie pharetra ut nec mauris. Donec et nisl ac
             lectus semper auctor in vitae magna. Vivamus eget ante justo.</p>
 
-            <p>Fusce augue mauris, aliquet eu ultrices at, aliquet a arcu.
+          <p>Fusce augue mauris, aliquet eu ultrices at, aliquet a arcu.
                Curabitur ullamcorper condimentum odio at mollis. Pellentesque
                pellentesque hendrerit auctor. In vehicula metus eu libero
                scelerisque eleifend. Cras odio neque, aliquam eget pellentesque
@@ -83,7 +83,7 @@
                dolor vel leo faucibus tincidunt. Sed auctor pulvinar augue, eu
                blandit augue ultrices sed. Etiam ac orci sapien. Donec sit amet
                rhoncus orci.</p>
-               <p>Phasellus vehicula ante id lectus lacinia, eget bibendum nisi
+          <p>Phasellus vehicula ante id lectus lacinia, eget bibendum nisi
                  convallis. Etiam ultrices nulla eget mi maximus rhoncus. Proin
                  eget turpis tempor, hendrerit erat ut, posuere justo. Sed bibendum
                  id nisi ac fermentum. Fusce iaculis volutpat egestas. Etiam
@@ -93,7 +93,7 @@
                  ac quam ac risus molestie pharetra ut nec mauris. Donec et nisl ac
                  lectus semper auctor in vitae magna. Vivamus eget ante justo.</p>
 
-                 <p>Fusce augue mauris, aliquet eu ultrices at, aliquet a arcu.
+          <p>Fusce augue mauris, aliquet eu ultrices at, aliquet a arcu.
                     Curabitur ullamcorper condimentum odio at mollis. Pellentesque
                     pellentesque hendrerit auctor. In vehicula metus eu libero
                     scelerisque eleifend. Cras odio neque, aliquam eget pellentesque
