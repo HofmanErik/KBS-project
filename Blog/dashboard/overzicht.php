@@ -59,8 +59,8 @@
                     print("<td><a href=\"#\">" . $row["PLANTENNAAM"] . "</a></td>");
                     print("<td>".$row["SOORT"] . "</td>");
                     print("<td>".$row["KLEUR"] . "</td>");
-                    print("<td><label class=\"switch\"><input type=\"checkbox\"><span class=\"slider round\"></span></label></td>");
-                    print("<td><a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\" data-target=\"#verwijder-popup\"></a> <a href=\"#\" class=\"fa fa-pencil\"></a></td>");
+                    print("<td><label class=\"switch\" data-toggle=\"tooltip\" title=\"Publiceren\"><input type=\"checkbox\"><span class=\"slider round\"></span></label></td>");
+                    print("<td><a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\" data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\" title=\"Verwijderen\"></a> <a href=\"#\" class=\"fa fa-pencil\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Bewerken\"></a></td>");
                     print("</tr>");
                   }
                 ?>

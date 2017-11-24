@@ -11,7 +11,6 @@ try {
     $stmt = $conn->prepare("SELECT * FROM plant");
     $stmt->execute();
 
-    // set the resulting array to associative
 
 }
 catch(PDOException $e)

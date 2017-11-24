@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,14 +21,14 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Inloggen</div>
       <div class="card-body">
-        <form>
+        <form method="post" action="verwerk.php">
           <div class="form-group">
             <label for="exampleInputEmail1">Emailadres</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Voer emailadres in">
+            <input class="form-control" id="exampleInputEmail1" name="email" type="text" aria-describedby="emailHelp" placeholder="Voer emailadres in">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Wachtwoord</label>
-            <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Wachtwoord">
+            <input class="form-control" id="exampleInputPassword1" name="wachtwoord" type="password" placeholder="Wachtwoord">
           </div>
           <div class="form-group">
             <div class="form-check">
@@ -37,7 +36,7 @@
                 <input class="form-check-input" type="checkbox">Wachtwoord onthouden</label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="dashboard.php">inloggen</a>
+          <a class="btn btn-primary btn-block" type="submit" value="inloggen">inloggen</a>
         </form>
         <div class="text-center">
           <a class="d-block small" href="forgot-password.php">Wachtwoord vergeten?</a>
@@ -46,6 +45,10 @@
       </div>
     </div>
   </div>
+<!--   Inloggen met php -->
+
+
+
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
