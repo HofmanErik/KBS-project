@@ -24,7 +24,7 @@
 
 <div class="container">
   <div class="row text">
-    <div class="col-md-8">
+    <div class="col-md-6 col-md-offset-1">
       <div class="post-text">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
           elementum nunc nisl, vel malesuada sem malesuada eget. Pellentesque
@@ -42,9 +42,10 @@
       </div>
     </div>
   </div>
+
           <div class="container">
             <div class="row text">
-              <div class="col-md-12">
+              <div class="col-md-10 col-md-offset-1">
                 <div class="post-text">
         <p>Integer rhoncus et dolor et ornare. Maecenas id arcu sit amet ligula
            convallis iaculis at ac felis. Pellentesque habitant morbi tristique
