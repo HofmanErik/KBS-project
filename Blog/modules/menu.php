@@ -40,7 +40,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <a class="navbar-brand" href="https://www.vindbaar-in.nl">Vindbaar-in</a>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Home</a></li>
+        <li><a href="https://www.vindbaar-in.nl">Home</a></li>
         <li><a href="../blog/index.php">Blog</a></li>
         <li><a href="../blog/dashboard/login.php">Inloggen</a></li>
       </ul>

@@ -30,12 +30,13 @@
             <i class="fa fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
+        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Artikelen">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapse-artikelen" data-parent="#exampleAccordion">
             <i class="fa fa-pencil"></i>
             <span class="nav-link-text">Artikelen</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
+          <ul class="sidenav-second-level collapse" id="collapse-artikelen">
             <li>
               <a href="overzicht.php">Overzicht</a>
             </li>
@@ -51,11 +52,11 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Instellingen">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSettings" data-parent="#exampleAccordion">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapse-instellingen" data-parent="#exampleAccordion">
             <i class="fa fa-cog fa-fw"></i>
             <span class="nav-link-text">Instellingen</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseSettings">
+          <ul class="sidenav-second-level collapse" id="collapse-instellingen">
             <li>
               <a href="account.php">Accountinstellingen</a>
             </li>
@@ -67,7 +68,7 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Voorbeeld">
           <a class="nav-link" href="../index.php" target="_blank">
             <i class="fa fa-external-link"></i>
-            <span class="nav-link-text">Voorbeeld</span>
+            <span class="nav-link-text">Blog</span>
           </a>
         </li>
       </ul>

@@ -1,5 +1,7 @@
 <?php include 'header.php'; ?>
 <?php include 'footer.php'; ?>
+<?php include 'databaseconnectie.php';?>
+<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 
   <div class="content-wrapper">
@@ -7,7 +9,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.php">Dashboard</a>
+          <a href="dashboard.php">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">Overzicht</li>
       </ol>
@@ -41,52 +43,50 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th><input type="checkbox"></th>
+                  <th>ID</th>
                   <th>Titel</th>
                   <th>Geschreven door</th>
-                  <th>Datum</th>
+                  <th>Publiceerdatum</th>
+                  <th>Gepubliceerd</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><input type="checkbox"></td>
-                  <td><a href="#">Winst maken in een onderneming</a></td>
-                  <td>Vindbaar-in</td>
-                  <td>04-02-2017</td>
-                </tr>
-                  <tr>
-                  <td><input type="checkbox"></td>
-                  <td><a href="#">5 tips voor beginnende beleggers</a></td>
-                  <td>Vindbaar-in</td>
-                  <td>02-02-2017</td>
-                </tr>
-                  <tr>
-                  <td><input type="checkbox"></td>
-                  <td><a href="#">De opkomst van de badeend</a></td>
-                  <td>Vindbaar-in</td>
-                  <td>31-01-2017</td>
-                </tr>
-                  <tr>
-                  <td><input type="checkbox"></td>
-                  <td><a href="#">Bitcoins voor dummies</a></td>
-                  <td>Vindbaar-in</td>
-                  <td>28-01-2017</td>
-                </tr>
-                                <tr>
-                  <td><input type="checkbox"></td>
-                  <td><a href="#">Winst maken in een onderneming</a></td>
-                  <td>Vindbaar-in</td>
-                  <td>04-01-2017</td>
-                </tr>
-                  <tr>
-                  <td><input type="checkbox"></td>
-                  <td><a href="#">5 tips voor beginnende beleggers</a></td>
-                  <td>Vindbaar-in</td>
-                  <td>02-01-2017</td>
+                <?php
+                  while ($row = $stmt -> fetch()){
+                   print("<tr>");
+                    print("<td>". $row["ARTCODE"] . "</td>");
+                    print("<td><a href=\"#\">" . $row["PLANTENNAAM"] . "</a></td>");
+                    print("<td>".$row["SOORT"] . "</td>");
+                    print("<td>".$row["KLEUR"] . "</td>");
+                    print("<td><label class=\"switch\"><input type=\"checkbox\"><span class=\"slider round\"></span></label></td>");
+                    print("<td><a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\" data-target=\"#verwijder-popup\"></a> <a href=\"#\" class=\"fa fa-pencil\"></a></td>");
+                    print("</tr>");
+                  }
+                ?>
               </tbody>
             </table>
+
           </div>
         </div>
         <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
       </div>
 </div>
+<!-- Verwijder popup -->
+    <div class="modal fade" id="verwijder-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Weet je het zeker?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Klik op verwijderen om dit artikel te verwijderen</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
+            <a class="btn btn-primary" href="overzicht.php">Verwijderen</a>
+          </div>
+        </div>
+      </div>
+    </div>
