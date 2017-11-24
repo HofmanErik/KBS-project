@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'sessie.php'; ?>
+
 
 <head>
   <meta charset="utf-8">
@@ -37,7 +37,7 @@
                 <input class="form-check-input" type="checkbox">Wachtwoord onthouden</label>
             </div>
           </div>
-          <a class="btn btn-secondary btn-block text-light" href="dashboard.php">inloggen</a>
+          <a class="btn btn-primary btn-block" href="dashboard.php">inloggen</a>
         </form>
         <div class="text-center">
           <a class="d-block small" href="forgot-password.php">Wachtwoord vergeten?</a>

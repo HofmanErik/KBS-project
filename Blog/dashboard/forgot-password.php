@@ -32,7 +32,7 @@
           <a class="btn btn-primary btn-block" href="login.php">Wachtwoord resetten</a>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="register.php">Account aanmaken</a>
+          <a class="d-block small mt-3" href="">Terug naar het blog</a>
           <a class="d-block small" href="login.php">Inloggen</a>
         </div>
       </div>

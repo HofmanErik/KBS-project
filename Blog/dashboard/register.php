@@ -50,7 +50,7 @@
               </div>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="login.php">Account aanmaken</a>
+          <a class="btn btn-primary btn-block" href="">Terug naar het blog</a>
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="login.php">Inloggen</a>

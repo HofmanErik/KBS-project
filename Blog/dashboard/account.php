@@ -27,16 +27,6 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="card-block">
-        <h4 class="card-title">Emailadres wijzigen</h4>
-        <p>Emailadres: <input type=text></p>
-        <p class="card-text"></p>
-        <a href="#" class="btn btn-primary">Opslaan</a>
-      </div>
-    </div>
-  </div>
     <div class="col-sm-4">
     <div class="card">
       <div class="card-block">
@@ -51,6 +41,5 @@
   </div>
   </div>
 </div>
-    </div>
-
+</div>
 </div>
