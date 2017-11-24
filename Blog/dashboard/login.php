@@ -41,6 +41,7 @@
         </form>
         <div class="text-center">
           <a class="d-block small" href="forgot-password.php">Wachtwoord vergeten?</a>
+          <a class="d-block small" href="../index.php">Terug naar het blog</a>
         </div>
       </div>
     </div>
