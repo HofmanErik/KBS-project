@@ -73,7 +73,7 @@ p {}
   height: auto;
   width: auto;
   padding-top: 50px;
-  padding-right: 50px;
+  padding-right: 100px;
 
 }
 
@@ -91,11 +91,14 @@ p {}
 .footer{
     background-color: #282d30;
     opacity:0.7;
-    color: white;
-    text-align: center;
     font-size: 17px;
-    margin-top: 75px;
-    font-family: Lora,'Times New Roman',serif;
+    margin-top: 25px;
 
+}
 
+.footer-text{
+  padding-bottom: 16px;
+  color: white;
+  font-family: "Times New Roman", Georgia, Serif;
+  text-align: center;
 }

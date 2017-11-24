@@ -1,7 +1,7 @@
-<div class="container">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row footer">
         <div class="col-md-12 footer">
-            <p class="footer">Copyright © The floor is Java.</p>
+            <p class="footer-text">Copyright © The floor is Java.</p>
         </div>
     </div>
 </div>
