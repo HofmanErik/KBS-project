@@ -37,7 +37,7 @@
                 <input class="form-check-input" type="checkbox">Wachtwoord onthouden</label>
             </div>
           </div>
-          <a class="btn btn-secondary btn-block text-dark" href="dashboard.php">inloggen</a>
+          <a class="btn btn-secondary btn-block text-light" href="dashboard.php">inloggen</a>
         </form>
         <div class="text-center">
           <a class="d-block small" href="forgot-password.php">Wachtwoord vergeten?</a>
