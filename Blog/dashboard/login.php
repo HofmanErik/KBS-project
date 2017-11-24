@@ -18,7 +18,7 @@
 </head>
 
 <body class="bg-dark">
-  <div class="container">
+  <div class="container-fluid">
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Inloggen</div>
       <div class="card-body">
@@ -37,7 +37,7 @@
                 <input class="form-check-input" type="checkbox">Wachtwoord onthouden</label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="dashboard.php">inloggen</a>
+          <a class="btn btn-warning btn-block" href="dashboard.php">inloggen</a>
         </form>
         <div class="text-center">
           <a class="d-block small" href="forgot-password.php">Wachtwoord vergeten?</a>
