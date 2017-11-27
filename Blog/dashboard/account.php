@@ -1,5 +1,4 @@
 <?php include 'header.php'; ?>
-<?php include 'footer.php'; ?>
 
   <div class="content-wrapper">
     <div class="container-fluid">
@@ -43,3 +42,5 @@
 </div>
 </div>
 </div>
+
+<?php include 'footer.php'; ?>

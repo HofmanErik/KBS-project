@@ -2,7 +2,6 @@
 session_start();
 ?>
 <?php include 'header.php'; ?>
-<?php include 'footer.php'; ?>
 
   <div class="content-wrapper">
     <div class="container-fluid">
@@ -110,10 +109,12 @@ session_start();
             </a>
           </div>
         </div>
-  
+
 </div>
     </div>
   </div>
 
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
+
+<?php include 'footer.php'; ?>
