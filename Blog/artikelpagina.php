@@ -1,6 +1,10 @@
 <?php
 
-include 'modules/menu.php'; include 'modules/footer.php'; 
+include 'modules/menu.php'; 
+
+echo "BLABLABLA";
+
+include 'modules/footer.php'; 
 
 
 
