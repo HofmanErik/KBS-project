@@ -42,7 +42,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="https://www.vindbaar-in.nl">Home</a></li>
         <li><a href="../blog/index.php">Blog</a></li>
-        <li><a href="../blog/dashboard/login.php">Inloggen</a></li>
+        <li><a href="../blog/admin/login.php">Inloggen</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->

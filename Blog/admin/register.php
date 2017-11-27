@@ -9,11 +9,11 @@
   <meta name="author" content="">
   <title>Registreren</title>
   <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="../scss/sb-admin.scss" rel="stylesheet">
 </head>
 
 <body class="bg-dark">
@@ -26,17 +26,20 @@
             <div class="form-row">
               <div class="col-md-6">
                 <label for="exampleInputName">Voornaam</label>
-                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Voer voornaam in">
+                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp"
+                       placeholder="Voer voornaam in">
               </div>
               <div class="col-md-6">
                 <label for="exampleInputLastName">Achternaam</label>
-                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Voer achternaam in">
+                <input class="form-control" id="exampleInputLastName" type="text"
+                       aria-describedby="nameHelp" placeholder="Voer achternaam in">
               </div>
             </div>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Emailadres</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Voer emailadres in">
+            <input class="form-control" id="exampleInputEmail1" type="email"
+                   aria-describedby="emailHelp" placeholder="Voer emailadres in">
           </div>
           <div class="form-group">
             <div class="form-row">
@@ -50,11 +53,11 @@
               </div>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="">Terug naar het blog</a>
+          <a class="btn btn-primary btn-block" href="../index.php">Terug naar het blog</a>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="login.php">Inloggen</a>
-          <a class="d-block small" href="forgot-password.php">Wachtwoord vergeten?</a>
+          <a class="d-block small mt-3" href="../admin/login.php">Inloggen</a>
+          <a class="d-block small" href="../admin/forgot-password.php">Wachtwoord vergeten?</a>
         </div>
       </div>
     </div>

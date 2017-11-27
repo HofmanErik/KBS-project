@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <?php include 'header.php'; ?>
 
   <div class="content-wrapper">
@@ -8,7 +5,7 @@ session_start();
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="dashboard.php">Dashboard</a>
+          <a href="../admin/dashboard.php">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">Dashboard</li>
       </ol>
@@ -21,7 +18,7 @@ session_start();
               </div>
               <div class="mr-5">Artikel overzicht</div>
             </div>
-            <a class="card-footer text-black clearfix small z-1" href="overzicht.php">
+            <a class="card-footer text-black clearfix small z-1" href="../admin/overzicht.php">
               <span class="float-left">Klik hier</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -37,7 +34,7 @@ session_start();
               </div>
               <div class="mr-5">Artikel toevoegen</div>
             </div>
-            <a class="card-footer text-black clearfix small z-1" href="toevoegen.php">
+            <a class="card-footer text-black clearfix small z-1" href="../admin/toevoegen.php">
               <span class="float-left">Klik hier</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -53,7 +50,7 @@ session_start();
               </div>
               <div class="mr-5">Reacties</div>
             </div>
-            <a class="card-footer text-black clearfix small z-1" href="berichten.php">
+            <a class="card-footer text-black clearfix small z-1" href="../admin/reacties.php">
               <span class="float-left">Klik hier</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -69,7 +66,7 @@ session_start();
               </div>
               <div class="mr-5">Accountinstellingen</div>
             </div>
-            <a class="card-footer text-black clearfix small z-1" href="account.php">
+            <a class="card-footer text-black clearfix small z-1" href="../admin/account.php">
               <span class="float-left">Klik hier</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -85,7 +82,7 @@ session_start();
               </div>
               <div class="mr-5">Emailinstellingen</div>
             </div>
-            <a class="card-footer text-black clearfix small z-1" href="email.php">
+            <a class="card-footer text-black clearfix small z-1" href="../admin/email.php">
               <span class="float-left">Klik hier</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
