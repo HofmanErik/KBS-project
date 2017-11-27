@@ -1,9 +1,17 @@
 body {
     background-color: white;
+
 }
 
-h1 {}
-h2 {}
+h1 {
+  font-weight: bold;
+font-family: "Times New Roman", Georgia, Serif;
+}
+
+h2 {
+  font-weight: bold;
+  font-family: "Times New Roman", Georgia, Serif;
+}
 h3 {}
 h4 {}
 p {}
@@ -48,22 +56,49 @@ p {}
 
 
 .blogposts {
-  background-color: #FFFFFF;
+  background-color: #FFF;
 }
+
+
 
 .blogimg {
   width: 175px;
   height: 175px;
   padding: 15px;
+
 }
+
+.post-img {
+  float: right;
+  height: auto;
+  width: auto;
+  padding-top: 50px;
+  padding-right: 100px;
+
+}
+
+.title-post {
+  text-align: center;
+  padding-top: 110px;
+
+
+}
+
+
+
 
 
 .footer{
     background-color: #282d30;
     opacity:0.7;
-    color: white;
-    text-align: center;
     font-size: 17px;
-    margin-top: 75px;
-    font-family: Lora,'Times New Roman',serif
+    margin-top: 25px;
+
+}
+
+.footer-text{
+  padding-bottom: 16px;
+  color: white;
+  font-family: "Times New Roman", Georgia, Serif;
+  text-align: center;
 }

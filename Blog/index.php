@@ -1,5 +1,6 @@
 <?php include 'modules/menu.php'; ?>
 
+
 <br></br>
   <!-- Blog Posts -->
   <div class="container">
@@ -192,9 +193,6 @@
   </div>
 </div>
 </div>
-
-
-
 
 
 <?php include 'modules/footer.php'; ?>
