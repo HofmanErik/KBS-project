@@ -24,11 +24,13 @@
         <form method="post" action="verwerk.php">
           <div class="form-group">
             <label for="exampleInputEmail1">Emailadres</label>
-            <input class="form-control" id="exampleInputEmail1" name="email" type="text" aria-describedby="emailHelp" placeholder="Voer emailadres in">
+            <input class="form-control" id="exampleInputEmail1" name="email" type="text"
+                    aria-describedby="emailHelp" placeholder="Voer emailadres in">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Wachtwoord</label>
-            <input class="form-control" id="exampleInputPassword1" name="wachtwoord" type="password" placeholder="Wachtwoord">
+            <input class="form-control" id="exampleInputPassword1"
+                   name="wachtwoord" type="password" placeholder="Wachtwoord">
           </div>
           <div class="form-group">
             <div class="form-check">
