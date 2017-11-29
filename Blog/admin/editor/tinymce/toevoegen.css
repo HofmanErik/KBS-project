@@ -1,0 +1,78 @@
+
+
+/* Dit is css voor tinymce, moet nog even uitzoeken of het nodig is en zo ja wat
+
+tinymce.init({
+selector: 'textarea',  // change this value according to your HTML
+plugin: 'a_tinymce_plugin',
+a_plugin_option: true,
+a_configuration_option: 400
+});
+
+tinymce.init({
+  selector: 'textarea#editable'
+});
+
+tinymce.init({
+  selector: 'div#editable',
+  inline: true
+});
+
+tinymce.init({
+  selector: 'textarea',  // change this value according to your HTML
+  plugins : 'advlist autolink link image lists charmap print preview'
+});
+
+newdocument, bold, italic, underline, strikethrough, alignleft,
+aligncenter, alignright, alignjustify, styleselect, formatselect,
+fontselect, fontsizeselect, cut, copy, paste, bullist, numlist, outdent,
+indent, blockquote, undo, redo, removeformat, subscript, superscript
+
+tinymce.init({
+  selector: 'textarea',  // change this value according to your HTML
+  toolbar: 'undo redo | styleselect | bold italic | link image',
+});
+
+tinymce.init({
+  selector: 'textarea',  // change this value according to your HTML
+  toolbar: false
+});
+
+tinymce.init({
+  selector: 'textarea',  // change this value according to your HTML
+  toolbar: [
+    'undo redo | styleselect | bold italic | link image',
+    'alignleft aligncenter alignright'
+  ]
+});
+
+newdocument, undo, redo, visualaid, cut, copy, paste, selectall, bold, italic,
+underline, strikethrough, subscript, superscript, removeformat, formats
+
+tinymce.init({
+  selector: 'textarea',  // change this value according to your HTML
+  menubar: 'file edit view'
+});
+
+tinymce.init({
+  selector: 'textarea',  // change this value according to your HTML
+  menu: {
+    view: {title: 'Edit', items: 'cut, copy, paste'}
+  }
+});
+
+tinymce.init({
+  selector: 'textarea',  // change this value according to your HTML
+  menu: {
+    view: {title: 'Happy', items: 'code'}
+  },
+  plugins: 'code'  // required by the code menu item
+});
+
+tinymce.init({
+  selector: 'textarea',  // change this value according to your HTML
+  menubar: false,  // removes the menubar
+  toolbar: false  // removes the toolbar
+});
+
+*/

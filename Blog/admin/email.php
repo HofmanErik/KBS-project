@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include '../admin/header.php'; ?>
 
   <div class="content-wrapper">
     <div class="container-fluid">
@@ -47,4 +47,4 @@
   </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include '../admin/footer.php'; ?>
