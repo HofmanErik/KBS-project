@@ -1,7 +1,6 @@
 <?php include 'header.php'; ?>
-<?php include 'footer.php'; ?>
-<?php include 'databaseconnectie.php';?>
-<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+<link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 
   <div class="content-wrapper">
@@ -9,7 +8,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="dashboard.php">Dashboard</a>
+          <a href="../admin/dashboard.php">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">Overzicht</li>
       </ol>
@@ -22,11 +21,11 @@
     </div>
      <div class="card mb-3">
         <div class="card-header">
-          <a href="overzicht.php"> Alles</a> |
+          <a href="../admin/overzicht.php"> Alles</a> |
           <a href="#"> Gepubliceerd</a> |
           <a href="#"> Concepten</a> |
           <a href="#"> Verwijderd</a> |
-          <a href="toevoegen.php"> Toevoegen</a>
+          <a href="../admin/toevoegen.php"> Toevoegen</a>
           <form class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
             <div class="input-group">
               <input class="form-control" type="text" placeholder="Zoeken...">
@@ -55,12 +54,26 @@
                 <?php
                   while ($row = $stmt -> fetch()){
                    print("<tr>");
-                    print("<td>". $row["ARTCODE"] . "</td>");
-                    print("<td><a href=\"#\">" . $row["PLANTENNAAM"] . "</a></td>");
-                    print("<td>".$row["SOORT"] . "</td>");
-                    print("<td>".$row["KLEUR"] . "</td>");
-                    print("<td><label class=\"switch\" data-toggle=\"tooltip\" title=\"Publiceren\"><input type=\"checkbox\"><span class=\"slider round\"></span></label></td>");
-                    print("<td><a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\" data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\" title=\"Verwijderen\"></a> <a href=\"#\" class=\"fa fa-pencil\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Bewerken\"></a></td>");
+                    print("<td>". $row[""] . "</td>");
+                    print("<td><a href=\"#\">" . $row[""] . "</a></td>");
+                    print("<td>".$row[""] . "</td>");
+                    print("<td>".$row[""] . "</td>");
+                    print("<td>
+                           <label class=\"switch\" data-toggle=\"tooltip\" title=\"Publiceren\">
+
+                           <input type=\"checkbox\"><span class=\"slider round\"></span></label>
+                           </td>");
+
+                    print("<td>
+                           <a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\"
+                            data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\"
+                            title=\"Verwijderen\">
+                            </a>
+
+                            <a href=\"#\" class=\"fa fa-pencil\" data-toggle=\"tooltip\"
+                            data-placement=\"right\" title=\"Bewerken\">
+                            </a>
+                            </td>");
                     print("</tr>");
                   }
                 ?>
@@ -73,7 +86,8 @@
       </div>
 </div>
 <!-- Verwijder popup -->
-    <div class="modal fade" id="verwijder-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="verwijder-popup" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -85,8 +99,10 @@
           <div class="modal-body">Klik op verwijderen om dit artikel te verwijderen</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
-            <a class="btn btn-primary" href="overzicht.php">Verwijderen</a>
+            <a class="btn btn-primary" href="..admin/overzicht.php">Verwijderen</a>
           </div>
         </div>
       </div>
     </div>
+
+<?php include 'footer.php'; ?>

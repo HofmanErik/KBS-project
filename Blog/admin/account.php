@@ -1,12 +1,11 @@
-<?php include 'header.php'; ?>
-<?php include 'footer.php'; ?>
+<?php include '../admin/header.php'; ?>
 
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="dashboard.php">Dashboard</a>
+          <a href="../admin/dashboard.php">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">Accountinstellingen</li>
       </ol>
@@ -43,3 +42,5 @@
 </div>
 </div>
 </div>
+
+<?php include '../admin/footer.php'; ?>

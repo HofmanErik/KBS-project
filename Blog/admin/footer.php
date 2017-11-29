@@ -22,7 +22,7 @@
           <div class="modal-body">Klik op uitloggen om deze sessie te beëindigen.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
-            <a class="btn btn-primary" href="login.php">Uitloggen</a>
+            <a class="btn btn-primary" href="../admin/login.php">Uitloggen</a>
           </div>
         </div>
       </div>

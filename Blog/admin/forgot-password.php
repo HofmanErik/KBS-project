@@ -9,11 +9,11 @@
   <meta name="author" content="">
   <title>Wachtwoord vergeten</title>
   <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="../admin/css/sb-admin.css" rel="stylesheet">
 </head>
 
 <body class="bg-dark">
@@ -32,7 +32,7 @@
           <a class="btn btn-primary btn-block" href="login.php">Wachtwoord resetten</a>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="">Terug naar het blog</a>
+          <a class="d-block small mt-3" href="../index.php">Terug naar het blog</a>
           <a class="d-block small" href="login.php">Inloggen</a>
         </div>
       </div>
