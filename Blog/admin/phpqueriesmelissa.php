@@ -5,6 +5,10 @@ $username = "beheerder";
 $password = "geheim";
 $dbname = "db_vindbaarin";
 
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -14,20 +18,25 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 
-// Update querie
 
-// if (isset($_POST["publiceer"])) {
-//     try {
-//         $stmt = $conn->prepare("UPDATE artikel SET concept=1 where artikelnr = $row[artikelnr]");
-//         $stmt->execute();
-//     } catch (PDOException $e) {
-//         echo "Connection failed: " . $e->getMessage();
-//     }
-// }
+// Update querie
+if (isset($_POST["publiceer"])) {
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $conn->prepare("UPDATE artikel SET concept=1 where artikelnr = $row[artikelnr]");
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+}
+
 
 // Delete querie
 if (isset($_POST["gepubliceerd"]) && isset($_POST["opslaan"])) {
     try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $conn->prepare("UPDATE artikel SET concept=2 where artikelnr = $row[artikelnr]");
         $stmt->execute();
     } catch (PDOException $e) {
