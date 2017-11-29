@@ -9,11 +9,11 @@
   <meta name="author" content="">
   <title>Inloggen</title>
   <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="../admin/css/sb-admin.css" rel="stylesheet">
 </head>
 
 <body class="bg-dark">
@@ -21,14 +21,16 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Inloggen</div>
       <div class="card-body">
-        <form method="post" action="verwerk.php">
+        <form method="post" action="dashboard.php">
           <div class="form-group">
             <label for="exampleInputEmail1">Emailadres</label>
-            <input class="form-control" id="exampleInputEmail1" name="email" type="text" aria-describedby="emailHelp" placeholder="Voer emailadres in">
+            <input class="form-control" id="exampleInputEmail1" name="email" type="text"
+                    aria-describedby="emailHelp" placeholder="Voer emailadres in">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Wachtwoord</label>
-            <input class="form-control" id="exampleInputPassword1" name="wachtwoord" type="password" placeholder="Wachtwoord">
+            <input class="form-control" id="exampleInputPassword1"
+                   name="wachtwoord" type="password" placeholder="Wachtwoord">
           </div>
           <div class="form-group">
             <div class="form-check">
@@ -36,10 +38,10 @@
                 <input class="form-check-input" type="checkbox">Wachtwoord onthouden</label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" type="submit" value="inloggen">inloggen</a>
+          <input class="btn btn-primary btn-block" type="submit" value="inloggen">
         </form>
         <div class="text-center">
-          <a class="d-block small" href="forgot-password.php">Wachtwoord vergeten?</a>
+          <a class="d-block small" href="../admin/forgot-password.php">Wachtwoord vergeten?</a>
           <a class="d-block small" href="../index.php">Terug naar het blog</a>
         </div>
       </div>
@@ -49,7 +51,8 @@
 
 
 
-  <!-- Bootstrap core JavaScript-->
+
+ <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Core plugin JavaScript-->
