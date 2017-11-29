@@ -6,19 +6,18 @@ $servername = "localhost";
 $username = "beheerder";
 $password = "geheim";
 $dbname = "db_vindbaarin";
+$sql = "SELECT * FROM artikel a join medewerker m on m.mnr=a.auteur where concept=1 order by datum desc";
 
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT * FROM artikel a join medewerker m on m.mnr=a.auteur order by datum desc");
+    $stmt = $conn->prepare($sql);
     $stmt->execute();
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
 ?> 
-
-
 
 
 <div class="content-wrapper">
@@ -33,7 +32,7 @@ try {
         <div class="row">
             <div class="col-12">
                 <h1><i class="fa fa-pencil"></i>
-                    <span class="">Overzicht</span><h1>
+                    <span class="">Gepubliceerd</span><h1>
                         </div>
                         </div>
                         </div>
@@ -75,27 +74,21 @@ while ($row = $stmt->fetch()) {
     print("<td>" . $row["voornaam"] . "</td>");
     print("<td>" . $row["datum"] . "</td>");
     print("<td>
-            <form method=\"post\" action=overzicht.php>
-              <input type=\"checkbox\" name=\"gepubliceerd\" value=\"1\" >
-              <input type=\"submit\" name=\"opslaan\" value=\"opslaan\">
-            </form>
-          </td>");
-    // SQLquery voor publiceren
-    if(isset($_POST["gepubliceerd"])){
-      try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("UPDATE artikel SET concept=1 where artikelnr = $row[artikelnr]");
-    $stmt->execute();
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
-    }
-    // -----------
+                           <label class=\"switch\" data-toggle=\"tooltip\" title=\"Publiceren\">
+
+                           <input type=\"checkbox\"><span class=\"slider round\"></span></label>
+                           </td>");
+
     print("<td>
-            <a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\"data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\"title=\"Verwijderen\"></a>
-            <a href=\"#\" class=\"fa fa-pencil\" data-toggle=\"tooltip\"data-placement=\"right\" title=\"Bewerken\"></a>
-           </td>");
+                           <a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\"
+                            data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\"
+                            title=\"Verwijderen\">
+                            </a>
+
+                            <a href=\"#\" class=\"fa fa-pencil\" data-toggle=\"tooltip\"
+                            data-placement=\"right\" title=\"Bewerken\">
+                            </a>
+                            </td>");
     print("</tr>");
 }
 ?>
@@ -104,9 +97,8 @@ while ($row = $stmt->fetch()) {
 
                                 </div>
                             </div>
-                            <div class="card-footer small text-muted">Laatst bijgewerkt <?php print($row["datum"]) ?></div>
-                            </div>
-                          </div>
+                            <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
+                        </div>
                         </div>
                         <!-- Verwijder popup -->
                         <div class="modal fade" id="verwijder-popup" tabindex="-1" role="dialog"

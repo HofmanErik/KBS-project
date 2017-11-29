@@ -111,7 +111,7 @@
     </div>
   </div>
 
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
+    <!-- /.databaseconnectie-->
+
 
 <?php include 'footer.php'; ?>

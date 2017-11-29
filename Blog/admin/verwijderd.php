@@ -6,12 +6,12 @@ $servername = "localhost";
 $username = "beheerder";
 $password = "geheim";
 $dbname = "db_vindbaarin";
-
+$sql = "SELECT * FROM artikel a join medewerker m on m.mnr=a.auteur where concept=2 order by datum desc";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT * FROM artikel a join medewerker m on m.mnr=a.auteur order by datum desc");
+    $stmt = $conn->prepare($sql);
     $stmt->execute();
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
@@ -33,7 +33,7 @@ try {
         <div class="row">
             <div class="col-12">
                 <h1><i class="fa fa-pencil"></i>
-                    <span class="">Overzicht</span><h1>
+                    <span class="">Verwijderd</span><h1>
                         </div>
                         </div>
                         </div>
@@ -63,7 +63,7 @@ try {
                                                 <th>Titel</th>
                                                 <th>Geschreven door</th>
                                                 <th>Publiceerdatum</th>
-                                                <th>Gepubliceerd</th>
+                                                <th>#</th>
                                                 <th>#</th>
                                             </tr>
                                         </thead>
@@ -74,28 +74,11 @@ while ($row = $stmt->fetch()) {
     print("<td><a href=\"#\">" . $row["Titel"] . "</a></td>");
     print("<td>" . $row["voornaam"] . "</td>");
     print("<td>" . $row["datum"] . "</td>");
+    print("<td><a href=\"#\" data-toggle=\"modal\" data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#terugzetten-popup\" title=\"Terugzetten\">Terugzetten</a></td>");
     print("<td>
-            <form method=\"post\" action=overzicht.php>
-              <input type=\"checkbox\" name=\"gepubliceerd\" value=\"1\" >
-              <input type=\"submit\" name=\"opslaan\" value=\"opslaan\">
-            </form>
-          </td>");
-    // SQLquery voor publiceren
-    if(isset($_POST["gepubliceerd"])){
-      try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("UPDATE artikel SET concept=1 where artikelnr = $row[artikelnr]");
-    $stmt->execute();
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
-    }
-    // -----------
-    print("<td>
-            <a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\"data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\"title=\"Verwijderen\"></a>
-            <a href=\"#\" class=\"fa fa-pencil\" data-toggle=\"tooltip\"data-placement=\"right\" title=\"Bewerken\"></a>
-           </td>");
+                           <a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\"data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#defverwijder-popup\"
+                            title=\"Definitief verwijderen\">
+                            </a></td>");
     print("</tr>");
 }
 ?>
@@ -104,12 +87,11 @@ while ($row = $stmt->fetch()) {
 
                                 </div>
                             </div>
-                            <div class="card-footer small text-muted">Laatst bijgewerkt <?php print($row["datum"]) ?></div>
-                            </div>
-                          </div>
+                            <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
+                        </div>
                         </div>
                         <!-- Verwijder popup -->
-                        <div class="modal fade" id="verwijder-popup" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="defverwijder-popup" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -119,10 +101,29 @@ while ($row = $stmt->fetch()) {
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">Klik op verwijderen om dit artikel te verwijderen</div>
+                                    <div class="modal-body">Klik op verwijderen om dit artikel definitief te verwijderen</div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
-                                        <a class="btn btn-primary" href="../admin/overzicht.php">Verwijderen</a>
+                                        <a class="btn btn-primary" href="../admin/verwijderd.php">Verwijderen</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Terug zetten popup -->
+                        <div class="modal fade" id="terugzetten-popup" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Weet je het zeker?</h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">Klik op opslaan om dit artikel te verplaatsen naar concepten</div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
+                                        <a class="btn btn-primary" href="../admin/verwijderd.php">Opslaan</a>
                                     </div>
                                 </div>
                             </div>
