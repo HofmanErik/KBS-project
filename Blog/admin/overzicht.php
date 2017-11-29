@@ -1,25 +1,8 @@
-<?php include 'header.php'; ?>
+<?php 
+include 'header.php'; 
+include 'phpqueriesmelissa.php' 
+?>
 <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-<!-- Databaseconnectie -->
-<?php
-$servername = "localhost";
-$username = "beheerder";
-$password = "geheim";
-$dbname = "db_vindbaarin";
-
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT * FROM artikel a join medewerker m on m.mnr=a.auteur order by datum desc");
-    $stmt->execute();
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
-?> 
-
-
-
 
 <div class="content-wrapper">
     <div class="container-fluid">
@@ -64,38 +47,36 @@ try {
                                                 <th>Geschreven door</th>
                                                 <th>Publiceerdatum</th>
                                                 <th>Gepubliceerd</th>
+                                                <th>Status</th>
                                                 <th>#</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 <?php
+
 while ($row = $stmt->fetch()) {
     print("<tr>");
     print("<td><a href=\"#\">" . $row["Titel"] . "</a></td>");
     print("<td>" . $row["voornaam"] . "</td>");
     print("<td>" . $row["datum"] . "</td>");
     print("<td>
-            <form method=\"post\" action=overzicht.php>
-              <input type=\"checkbox\" name=\"gepubliceerd\" value=\"1\" >
-              <input type=\"submit\" name=\"opslaan\" value=\"opslaan\">
+            <form method=\"post\" action=\"overzicht.php\">
+              <input type=\"submit\" name=\"publiceer\" value=\"publiceer\">
             </form>
           </td>");
-    // SQLquery voor publiceren
-    if(isset($_POST["gepubliceerd"])){
-      try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("UPDATE artikel SET concept=1 where artikelnr = $row[artikelnr]");
-    $stmt->execute();
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+    if (isset($_POST["publiceer"])) {
+        try {
+            $stmt = $conn->prepare("UPDATE artikel SET concept=1 where artikelnr = $row[artikelnr]");
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
     }
-    // -----------
     print("<td>
             <a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\"data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\"title=\"Verwijderen\"></a>
             <a href=\"#\" class=\"fa fa-pencil\" data-toggle=\"tooltip\"data-placement=\"right\" title=\"Bewerken\"></a>
            </td>");
+    print("<td>" . $row["concept"] . "</td>");
     print("</tr>");
 }
 ?>
@@ -122,7 +103,7 @@ while ($row = $stmt->fetch()) {
                                     <div class="modal-body">Klik op verwijderen om dit artikel te verwijderen</div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
-                                        <a class="btn btn-primary" href="../admin/overzicht.php">Verwijderen</a>
+                                        <a name = "verwijder" class="btn btn-primary" href="../admin/overzicht.php">Verwijderen</a>
                                     </div>
                                 </div>
                             </div>
