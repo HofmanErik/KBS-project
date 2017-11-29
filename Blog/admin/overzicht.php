@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include '../admin/header.php'; ?>
 
 <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -52,37 +52,37 @@
               </thead>
               <tbody>
                 <?php
-                  while ($row = $stmt -> fetch()){
-                   print("<tr>");
-                    print("<td>". $row[""] . "</td>");
-                    print("<td><a href=\"#\">" . $row[""] . "</a></td>");
-                    print("<td>".$row[""] . "</td>");
-                    print("<td>".$row[""] . "</td>");
-                    print("<td>
-                           <label class=\"switch\" data-toggle=\"tooltip\" title=\"Publiceren\">
+                  //while ($row = $stmt -> fetch()){
+                   //print("<tr>");
+                    //print("<td>". $row[""] . "</td>");
+                    //print("<td><a href=\"#\">" . $row[""] . "</a></td>");
+                    //print("<td>".$row[""] . "</td>");
+                  //  print("<td>".$row[""] . "</td>");
+                    //print("<td>
+                           //<label class=\"switch\" data-toggle=\"tooltip\" title=\"Publiceren\">
 
-                           <input type=\"checkbox\"><span class=\"slider round\"></span></label>
-                           </td>");
+                          // <input type=\"checkbox\"><span class=\"slider round\"></span></label>
+                          // </td>");
 
-                    print("<td>
-                           <a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\"
-                            data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\"
-                            title=\"Verwijderen\">
-                            </a>
+                  //  print("<td>
+                           //<a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\"
+                          //  data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\"
+                          //  title=\"Verwijderen\">
+                          //  </a>
 
-                            <a href=\"#\" class=\"fa fa-pencil\" data-toggle=\"tooltip\"
-                            data-placement=\"right\" title=\"Bewerken\">
-                            </a>
-                            </td>");
-                    print("</tr>");
-                  }
+                          //  <a href=\"#\" class=\"fa fa-pencil\" data-toggle=\"tooltip\"
+                          //  data-placement=\"right\" title=\"Bewerken\">
+                          //  </a>
+                          //  </td>");
+                    //print("</tr>");
+                //  }
                 ?>
               </tbody>
             </table>
 
           </div>
         </div>
-        <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
+        <div class="card-footer small text-muted">Laatst bijgewerkt "Time"</div>
       </div>
 </div>
 <!-- Verwijder popup -->
@@ -105,4 +105,4 @@
       </div>
     </div>
 
-<?php include 'footer.php'; ?>
+<?php include '../admin/footer.php'; ?>
