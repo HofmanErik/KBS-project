@@ -1,26 +1,25 @@
-<?php include 'header.php'; ?>
+<?php include 'phpqueriesmelissa.php' ?>
 <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-<!-- Databaseconnectie -->
+<?php include '../admin/header.php'; ?>
+
 <?php
-$servername = "localhost";
-$username = "beheerder";
-$password = "geheim";
-$dbname = "db_vindbaarin";
-$sql = "SELECT * FROM artikel a join medewerker m on m.mnr=a.auteur where concept=0 order by datum desc";
-
-
+// Tabel oproepen
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "SELECT * 
+            FROM artikel a 
+            join medewerker m on m.mnr=a.auteur 
+            WHERE concept = :concept;
+            order by datum desc";
+            
     $stmt = $conn->prepare($sql);
+    $stmt -> bindvalue( ":concept",0,PDO::PARAM_STR );
     $stmt->execute();
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
-?> 
-
-
-
+?>
 
 <div class="content-wrapper">
     <div class="container-fluid">
@@ -61,32 +60,30 @@ try {
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
+                                                <th>Artikelnr</th>
                                                 <th>Titel</th>
                                                 <th>Geschreven door</th>
                                                 <th>Publiceerdatum</th>
                                                 <th>#</th>
                                                 <th>#</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 <?php
+// Tabel weergeven
 while ($row = $stmt->fetch()) {
-    print("<tr>");
-    print("<td><a href=\"#\">" . $row["Titel"] . "</a></td>");
-    print("<td>" . $row["voornaam"] . "</td>");
-    print("<td>" . $row["datum"] . "</td>");
-    print("<td><a href =\"#\">Publiceren</a></td>");
-    print("<td>
-                           <a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\"
-                            data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\"
-                            title=\"Verwijderen\">
-                            </a>
-
-                            <a href=\"#\" class=\"fa fa-pencil\" data-toggle=\"tooltip\"
-                            data-placement=\"right\" title=\"Bewerken\">
-                            </a>
-                            </td>");
-    print("</tr>");
+    print("<form method=\"post\" action=\"phpqueriesmelissa.php\"><tr>");
+    print("<td>" . $row['artikelnr'] . "</td>");
+    print("<td><a href=\"#\">" . $row['Titel'] . "</a></td>");
+    print("<td>" . $row['voornaam'] . "</td>");
+    print("<td>" . $row['datum'] . "</td>");
+    print("<td><input type=\"submit\" name=\"publiceer_concept\" value=\"Publiceer\"></td>");
+    print("<input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">");
+    print("<td><input type=\"submit\" name=\"verwijder_concept\" value=\"Verwijder\" title=\"Verwijderen\">
+                <input type=\"submit\" name=\"bewerk\" value=\"Bewerken\" title=\"Bewerken\">");
+    print("<td>" . $row["concept"] . "</td>");
+    print("</tr></form>");
 }
 ?>
                                         </tbody>

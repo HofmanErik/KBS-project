@@ -1,17 +1,20 @@
-<?php include 'header.php'; ?>
+<?php include 'phpqueriesmelissa.php' ?>
 <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-<!-- Databaseconnectie -->
-<?php
-$servername = "localhost";
-$username = "beheerder";
-$password = "geheim";
-$dbname = "db_vindbaarin";
-$sql = "SELECT * FROM artikel a join medewerker m on m.mnr=a.auteur where concept=2 order by datum desc";
+<?php include '../admin/header.php'; ?>
 
+<?php
+// Tabel oproepen
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "SELECT * 
+            FROM artikel a 
+            join medewerker m on m.mnr=a.auteur 
+            WHERE concept = :concept;
+            order by datum desc";
+            
     $stmt = $conn->prepare($sql);
+    $stmt -> bindvalue( ":concept",2,PDO::PARAM_STR );
     $stmt->execute();
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
@@ -60,6 +63,7 @@ try {
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
+                                                <th>Artikelnr</th>
                                                 <th>Titel</th>
                                                 <th>Geschreven door</th>
                                                 <th>Publiceerdatum</th>
@@ -70,16 +74,15 @@ try {
                                         <tbody>
 <?php
 while ($row = $stmt->fetch()) {
-    print("<tr>");
-    print("<td><a href=\"#\">" . $row["Titel"] . "</a></td>");
-    print("<td>" . $row["voornaam"] . "</td>");
-    print("<td>" . $row["datum"] . "</td>");
-    print("<td><a href=\"#\" data-toggle=\"modal\" data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#terugzetten-popup\" title=\"Terugzetten\">Terugzetten</a></td>");
-    print("<td>
-                           <a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\"data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#defverwijder-popup\"
-                            title=\"Definitief verwijderen\">
-                            </a></td>");
-    print("</tr>");
+    print("<form method=\"post\" action=\"phpqueriesmelissa.php\"><tr>");
+    print("<td>" . $row['artikelnr'] . "</td>");
+    print("<td><a href=\"#\">" . $row['Titel'] . "</a></td>");
+    print("<td>" . $row['voornaam'] . "</td>");
+    print("<td>" . $row['datum'] . "</td>");
+    print("<input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">");
+    print("<td><input type=\"submit\" name=\"terugzetten\" value=\"Terugzetten\" title=\"Verplaatsen naar concepten\">");
+    print("<td>" . $row["concept"] . "</td>");
+    print("</tr></form>");
 }
 ?>
                                         </tbody>

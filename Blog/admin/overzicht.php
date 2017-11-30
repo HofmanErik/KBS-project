@@ -2,6 +2,25 @@
 <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <?php include '../admin/header.php'; ?>
 
+<?php
+// Tabel oproepen
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "SELECT * 
+            FROM artikel a 
+            join medewerker m on m.mnr=a.auteur 
+            WHERE concept=0
+            OR concept=1
+            order by datum desc";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+?>
+
 <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <div class="content-wrapper">
     <div class="container-fluid">
@@ -42,38 +61,34 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
+                                                <th>Artikelnr</th>
                                                 <th>Titel</th>
                                                 <th>Geschreven door</th>
                                                 <th>Publiceerdatum</th>
-                                                <th>Gepubliceerd</th>
+                                                <th>#</th>
                                                 <th>#</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 <?php
-
 while ($row = $stmt->fetch()) {
-    print("<tr>");
-    print("<td><a href=\"#\">" . $row["Titel"] . "</a></td>");
-    print("<td>" . $row["voornaam"] . "</td>");
-    print("<td>" . $row["datum"] . "</td>");
-    print("<td>
-            <form method=\"post\" action=\"overzicht.php\">
-              <input type=\"submit\" name=\"publiceer\" value=\"publiceer\">
-            </form>
-          </td>");
-    print("<td>
-            <a href=\"#\" class=\"fa fa-trash\" data-toggle=\"modal\"data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\"title=\"Verwijderen\"></a>
-            <a href=\"#\" class=\"fa fa-pencil\" data-toggle=\"tooltip\"data-placement=\"right\" title=\"Bewerken\"></a>
-           </td>");
+    print("<form method=\"post\" action=\"phpqueriesmelissa.php\"><tr>");
+    print("<td>" . $row['artikelnr'] . "</td>");
+    print("<td><a href=\"#\">" . $row['Titel'] . "</a></td>");
+    print("<td>" . $row['voornaam'] . "</td>");
+    print("<td>" . $row['datum'] . "</td>");
+    print("<td><input type=\"submit\" name=\"publiceer\" value=\"Publiceer\"></td>");
+    print("<td><input type=\"submit\" name=\"verwijder\" value=\"Verwijder\" title=\"Verwijderen\">
+                <input type=\"submit\" name=\"bewerk\" value=\"Bewerken\" title=\"Bewerken\">");
     print("<td>" . $row["concept"] . "</td>");
-    print("</tr>");
+    print("<input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">");
+    print("</tr></form>");
 }
+
 ?>
                                         </tbody>
                                     </table>
-
                                 </div>
                             </div>
                             <div class="card-footer small text-muted">Laatst bijgewerkt <?php print($row["datum"]) ?></div>
@@ -81,6 +96,7 @@ while ($row = $stmt->fetch()) {
                           </div>
                         </div>
                         <!-- Verwijder popup -->
+                       <!--  data-toggle=\"modal\"data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\" -->
                         <div class="modal fade" id="verwijder-popup" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
