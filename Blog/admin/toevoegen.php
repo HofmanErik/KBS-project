@@ -15,6 +15,7 @@
     <form action="../admin/toevoegen.php" method="$_GET">
       Titel: <input type="text" name="Titel" value="">
       <input type="submit" name="Voeg toe" value="Voeg toe">
+
       <br/>
       <br/>
       Thumbnail: <input type="file" name="Thumbnail" accept="image/*" onchange="loadFile(event)">
