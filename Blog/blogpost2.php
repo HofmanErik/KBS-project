@@ -1,16 +1,19 @@
 <?php include 'blank-template.php'?>
 
+<!--Databaseconnectie-->
+<?php
+$servername = "localhost";
+$username = "beheerder";
+$password = "geheim";
+$dbname = "db_vindbaarin";
+
+?>
 <div class="container">
   <div class="row title">
     <div class="col-md-8">
       <div class="title-post">
-        <h1>  <?php
-        $servername = "localhost";
-        $username = "beheerder";
-        $password = "geheim";
-        $dbname = "db_vindbaarin";
-        $sql = "SELECT Titel FROM artikel WHERE artikelnr = 2";
-
+        <?php
+        $sql = "SELECT Titel FROM artikel WHERE artikelnr = 3";
 
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -22,21 +25,35 @@
         }
 
         while ($row = $stmt->fetch()) {
-            print("<tr>");
-            print("<td><h1>" . $row["Titel"] . "</h1></td>");
-            print("</tr>");
+
+            print("<h1>" . $row["Titel"] . "</h1>");
+
         }
 
-        ?></h1>
-          <p class="post-meta">Posted by
-            <a href="#">Vindbaar In</a>
-            <?php
-            $servername = "localhost";
-            $username = "beheerder";
-            $password = "geheim";
-            $dbname = "db_vindbaarin";
-            $sql = "SELECT datum FROM artikel WHERE artikelnr = 2";
+        ?>
+          <p class="post-meta"><?php
 
+              $sql = "SELECT voornaam FROM medewerker m JOIN artikel a ON m.mnr = a.auteur WHERE artikelnr = 3";
+
+              try {
+                  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                  $stmt = $conn->prepare($sql);
+                  $stmt->execute();
+              } catch (PDOException $e) {
+                  echo "Connection failed: " . $e->getMessage();
+              }
+
+              while ($row = $stmt->fetch()) {
+
+                  print("Posted by " . "<a href= https://vindbaar-in.nl/>" . $row["voornaam"] . "</a>" );
+
+              }
+
+              ?>
+            <?php
+
+            $sql = "SELECT datum FROM artikel WHERE artikelnr = 3";
 
             try {
                 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -48,9 +65,9 @@
             }
 
             while ($row = $stmt->fetch()) {
-                print("<tr>");
-                print("<td>" . "on " . $row["datum"] . "</td>");
-                print("</tr>");
+
+                print("on " . $row["datum"] );
+
             }
 
             ?></p>
@@ -65,19 +82,12 @@
   </div>
 </div>
 
-
-
           <div class="container">
             <div class="row text">
               <div class="col-md-10 col-md-offset-1">
                 <div class="post-text">
-        <p><?php
-        $servername = "localhost";
-        $username = "beheerder";
-        $password = "geheim";
-        $dbname = "db_vindbaarin";
-        $sql = "SELECT tekst FROM artikel WHERE artikelnr = 2";
-
+        <?php
+        $sql = "SELECT tekst FROM artikel WHERE artikelnr = 3";
 
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -89,12 +99,10 @@
         }
 
         while ($row = $stmt->fetch()) {
-            print("<tr>");
-            print("<td>" .  $row["tekst"] . "</td>");
-            print("</tr>");
+            print("<p>" .  $row["tekst"] . "</p>");
         }
 
-        ?></p>
+        ?>
       </div>
     </div>
   </div>

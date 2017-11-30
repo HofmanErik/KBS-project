@@ -40,4 +40,10 @@
 </div>
 </div>
 
+<?php
+if(isset($_GET ["Publiceren"]))
+
+?>
+
+
 <?php include "../admin/footer.php" ?>
