@@ -40,9 +40,9 @@ try {
                         <div class="card mb-3">
                             <div class="card-header">
                                 <a href="../admin/overzicht.php"> Alles</a> |
-                                <a href="gepubliceerd.php"> Gepubliceerd</a> |
-                                <a href="concepten.php"> Concepten</a> |
-                                <a href="verwijderd.php"> Verwijderd</a> |
+                                <a href="../admin/gepubliceerd.php"> Gepubliceerd</a> |
+                                <a href="../admin/concepten.php"> Concepten</a> |
+                                <a href="../admin/verwijderd.php"> Verwijderd</a> |
                                 <a href="../admin/toevoegen.php"> Toevoegen</a>
                                 <form class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
                                     <div class="input-group">

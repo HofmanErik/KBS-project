@@ -20,8 +20,6 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 ?>
-
-<link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->
