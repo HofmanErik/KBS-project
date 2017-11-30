@@ -27,6 +27,27 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 }
+// Offline halen vanuit overzicht
+if(isset($_POST["depubliceer"])){
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "UPDATE artikel
+            SET concept=0
+            WHERE artikelnr = :artikelnr";
+
+    $stmt = $conn->prepare($sql);
+
+    $stmt -> bindvalue( ":artikelnr",$_POST["nummer"],PDO::PARAM_STR );
+
+    $stmt->execute();
+
+    header("location: overzicht.php");
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+}
+
 // concept publiceren
 if(isset($_POST["publiceer_concept"])){
 try {
@@ -132,13 +153,33 @@ try {
 }
 }
 
-// Terugzetten
+// Terugzetten vanuit verwijderd
 if(isset($_POST["terugzetten"])){
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "UPDATE artikel
             SET concept=0
+            WHERE artikelnr = :artikelnr";
+
+    $stmt = $conn->prepare($sql);
+
+    $stmt -> bindvalue( ":artikelnr",$_POST["nummer"],PDO::PARAM_STR );
+
+    $stmt->execute();
+
+    header("location: verwijderd.php");
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+}
+
+// Definitief verwijderen
+if(isset($_POST["def_verwijder"])){
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "DELETE from artikel
             WHERE artikelnr = :artikelnr";
 
     $stmt = $conn->prepare($sql);

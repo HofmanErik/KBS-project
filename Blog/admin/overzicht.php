@@ -74,7 +74,8 @@ while ($row = $stmt->fetch()) {
     print("<td><a href=\"#\">" . $row['Titel'] . "</a></td>");
     print("<td>" . $row['voornaam'] . "</td>");
     print("<td>" . $row['datum'] . "</td>");
-    print("<td><input type=\"submit\" name=\"publiceer\" value=\"Publiceer\"></td>");
+    print("<td><input type=\"submit\" name=\"publiceer\" value=\"Publiceer\"> ");
+    print("<input type=\"submit\" name=\"depubliceer\" value=\"Concept\"></td>");
     print("<td><input type=\"submit\" name=\"verwijder\" value=\"Verwijder\" title=\"Verwijderen\">
                 <input type=\"submit\" name=\"bewerk\" value=\"Bewerken\" title=\"Bewerken\">");
     print("<td>" . $row["concept"] . "</td>");

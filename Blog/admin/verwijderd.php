@@ -68,7 +68,7 @@ try {
                                                 <th>Geschreven door</th>
                                                 <th>Publiceerdatum</th>
                                                 <th>#</th>
-                                                <th>#</th>
+                                                <th>status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -80,7 +80,8 @@ while ($row = $stmt->fetch()) {
     print("<td>" . $row['voornaam'] . "</td>");
     print("<td>" . $row['datum'] . "</td>");
     print("<input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">");
-    print("<td><input type=\"submit\" name=\"terugzetten\" value=\"Terugzetten\" title=\"Verplaatsen naar concepten\">");
+    print("<td><input type=\"submit\" name=\"terugzetten\" value=\"Terugzetten\" title=\"Verplaatsen naar concepten\"> ");
+    print("<input type=\"submit\" name=\"def_verwijder\" value=\"Verwijder\" title=\"Definitief verwijderen\"></td>");
     print("<td>" . $row["concept"] . "</td>");
     print("</tr></form>");
 }
