@@ -1,4 +1,26 @@
-<?php include '../admin/header.php'; ?>
+<?php include '../admin/header.php';
+
+        $servername = "localhost";
+        $username = "erik";
+        $password = "Welkom01";
+
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=kbsdatabase", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "conected succesfull <br><br>"; 
+            }
+        catch(PDOException $e)
+            {
+            echo "" . $e->getMessage();
+            }
+        
+        $sql = 'SELECT achternaam, voornaam FROM medewerker';
+            foreach ($conn->query($sql) as $row) {
+                $achternaam = $row['achternaam'];
+                $voornaam = $row['voornaam'];
+            }
+?>
 
   <div class="content-wrapper">
     <div class="container-fluid">
@@ -19,8 +41,8 @@
     <div class="card">
       <div class="card-block">
         <h4 class="card-title">Naam wijzigen</h4>
-        <p>Voornaam: <input type=text></p>
-        <p>Achternaam: <input type=text></p>
+        <p>Voornaam: <input type=text value="<?php echo $voornaam; ?>"></p>
+        <p>Achternaam: <input type=text value="<?php echo $achternaam ?>"></p>
         <p class="card-text"></p>
         <a href="#" class="btn btn-primary">Opslaan</a>
       </div>
