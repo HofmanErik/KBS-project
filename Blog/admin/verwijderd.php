@@ -72,16 +72,25 @@ try {
                                         <tbody>
 <?php
 while ($row = $stmt->fetch()) {
-    print("<form method=\"post\" action=\"phpqueriesmelissa.php\"><tr>");
-    print("<td>" . $row['artikelnr'] . "</td>");
-    print("<td><a href=\"#\">" . $row['Titel'] . "</a></td>");
-    print("<td>" . $row['voornaam'] . "</td>");
-    print("<td>" . $row['datum'] . "</td>");
-    print("<input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">");
-    print("<td><button type=\"submit\" class=\"btn btn-light\" name=\"terugzetten\" value=\"Terugzetten\" title=\"Verplaatsen naar concepten\"><i class=\"fa fa-undo\"></i></button> 
-        <button type=\"submit\" class=\"btn btn-light\" name=\"def_verwijder\" value=\"Verwijder\" title=\"Definitief verwijderen\"><i class=\"fa fa-trash\"></i></button></td>");
-    print("<td>" . $row["concept"] . "</td>");
-    print("</tr></form>");
+    print(" <tr>
+                <form method=\"post\" action=\"phpqueriesmelissa.php\"><tr>
+                    <td>" . $row['artikelnr'] . "</td>
+                    <td><a href=\"#\">" . $row['Titel'] . "</a></td>
+                    <td>" . $row['voornaam'] . "</td>
+                    <td>" . $row['datum'] . "
+                        <input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">
+                    </td>
+                    <td>
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"terugzetten\" value=\"Terugzetten\" title=\"Verplaatsen naar concepten\">
+                            <i class=\"fa fa-undo\"></i>
+                        </button> 
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"def_verwijder\" value=\"Verwijder\" title=\"Definitief verwijderen\">
+                            <i class=\"fa fa-trash\"></i>
+                        </button>
+                    </td>
+                    <td>" . $row["concept"] . "</td>
+                </form>
+            </tr>");
 }
 ?>
                                         </tbody>

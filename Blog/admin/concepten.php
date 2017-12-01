@@ -68,19 +68,29 @@ try {
                                             </tr>
                                         </thead>
                                         <tbody>
+<!-- Tabel weergeven -->
 <?php
-// Tabel weergeven
 while ($row = $stmt->fetch()) {
-    print("<form method=\"post\" action=\"phpqueriesmelissa.php\"><tr>");
-    print("<td>" . $row['artikelnr'] . "</td>");
-    print("<td><a href=\"#\">" . $row['Titel'] . "</a></td>");
-    print("<td>" . $row['voornaam'] . "</td>");
-    print("<td>" . $row['datum'] . "</td>");
-    print("<td><input type=\"submit\" name=\"publiceer_concept\" value=\"Publiceer\"></td>");
-    print("<input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">");
-    print("<td><button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"bewerken\" title=\"Bewerken\"><i class=\"fa fa-pencil\"></i></button> <button type=\"submit\" class=\"btn btn-light\" name=\"verwijder_concept\" value=\"Verwijder\" title=\"Verwijderen\"><i class=\"fa fa-trash\"></i></button></td>");
-    print("<td>" . $row["concept"] . "</td>");
-    print("</tr></form>");
+    print(" <tr>
+                <form method=\"post\" action=\"phpqueriesmelissa.php\">
+                    <td>" . $row['artikelnr'] . "</td>
+                    <td><a href=\"#\">" . $row['Titel'] . "</a></td>
+                    <td>" . $row['voornaam'] . "</td>
+                    <td>" . $row['datum'] . "</td>
+                    <td>
+                        <input type=\"submit\" name=\"publiceer_concept\" value=\"Publiceer\"></td>
+                        <input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">
+                    <td>
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"bewerken\" title=\"Bewerken\">
+                            <i class=\"fa fa-pencil\"></i>
+                        </button> 
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"verwijder_concept\" value=\"Verwijder\" title=\"Verwijderen\">
+                            <i class=\"fa fa-trash\"></i>
+                        </button>
+                    </td>
+                    <td>" . $row["concept"] . "</td>
+                </form>
+            </tr>");
 }
 ?>
                                         </tbody>
