@@ -12,6 +12,7 @@
   </div>
   <div class="card-body">
     <div class="col-md-12">
+      
     <form action="../admin/toevoegen.php" method="$_GET">
       Titel: <input type="text" name="Titel" value="">
       <input type="submit" name="Voeg toe" value="Voeg toe">
