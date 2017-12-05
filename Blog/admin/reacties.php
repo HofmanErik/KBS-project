@@ -1,8 +1,13 @@
-<link href="../../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <?php
 // Include bestanden
-include '../../admin/header.php';
-require '../classes/database.php';
+include '../admin/header.php';
+require 'classes/database.php';
+
+$database = new Database;
+
+$database->query('SELECT * FROM rating');
+$rows = $database->resultset();
 ?>
 
 <!-- Content website -->
@@ -13,22 +18,19 @@ require '../classes/database.php';
             <li class="breadcrumb-item">
                 <a href="../admin/dashboard.php">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Overzicht</li>
+            <li class="breadcrumb-item active">Reacties</li>
         </ol>
         <div class="row">
             <div class="col-12">
                 <h1><i class="fa fa-pencil"></i>
-                    <span class="">Overzicht</span><h1>
+                    <span class="">Reacties</span><h1>
                         </div>
                         </div>
                         </div>
                         <div class="card mb-3">
                             <div class="card-header">
-                                <a href="../admin/overzicht.php"> Alles</a> |
-                                <a href="gepubliceerd.php"> Gepubliceerd</a> |
-                                <a href="concepten.php"> Concepten</a> |
-                                <a href="verwijderd.php"> Verwijderd</a> |
-                                <a href="../admin/toevoegen.php"> Toevoegen</a>
+                                <a href="../admin/reacties.php"> Alles</a> |
+                                <a href="#"> Goedgekeurd</a> |
                                 <form class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
                                     <div class="input-group">
                                         <input class="form-control" type="text" placeholder="Zoeken...">
@@ -45,8 +47,8 @@ require '../classes/database.php';
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Artikelnr</th>
-                                                <th>Titel</th>
+                                                <th>Reactienr</th>
+                                                <th>Rating</th>
                                                 <th>Geschreven door</th>
                                                 <th>Publiceerdatum</th>
                                                 <th>#</th>
@@ -56,7 +58,26 @@ require '../classes/database.php';
                                         </thead>
                                         <tbody>
 <!-- Tabel -->
-
+                                        <?php foreach($rows as $row) : ?>
+                                            <tr>
+                                                <td><?php echo $row['reactienr']; ?></td>
+                                                <td><?php echo $row['rating']; ?></td>
+                                                <td><?php echo $row['rating']; ?></td>
+                                                <td><?php echo $row['rating']; ?></td>
+                                                <td><?php echo '<button type="button" class="btn btn-success"><i class="fa fa-upload" aria-hidden="true"></i></button>' ?></td>
+                                                <td><?php echo '<button type="button" class="btn btn-danger">http://fontawesome.io/icon/window-close/</button>' ?></td>
+                                                <td><?php echo "Gepubliceerd" ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                            <tr>
+                                                <td><?php echo 'Test' ?></td>
+                                                <td><?php echo 'Test' ?></td>
+                                                <td><?php echo 'Test' ?></td>
+                                                <td><?php echo 'Test' ?></td>
+                                                <td><?php echo '<button type="button" class="btn btn-success"><i class="fa fa-upload" aria-hidden="true"></i></button>' ?></td>
+                                                <td><?php echo '<button type="button" class="btn btn-danger"><i class="fa fa-window-close" aria-hidden="true"></i></button>' ?></td>
+                                                <td><?php echo "Gepubliceerd" ?></td>
+                                            </tr>
 <!-- Footer -->
                                         </tbody>
                                     </table>
@@ -67,4 +88,4 @@ require '../classes/database.php';
                           </div>
                         </div>
 
-<?php include '../footer.php'; ?>
+<?php include 'footer.php'; ?>
