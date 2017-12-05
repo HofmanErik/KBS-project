@@ -1,5 +1,12 @@
 <?php include '../admin/header.php';
 
+  if (isset($_POST['opslaan'])){
+
+      print ($_POST['achternaam']);
+}
+
+
+
         $servername = "localhost";
         $username = "beheerder";
         $password = "geheim";
@@ -23,7 +30,9 @@
             if (isset($_POST["opslaan"])){
                 $postvoornaam = $_POST['voornaam'];
                 $postachternaam = $_POST["achternaam"];
-                $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = 1";
+                $mnr = 1;
+
+                $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = '$mnr'";
                 
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
@@ -56,10 +65,21 @@
       <div class="card-block">
         <h4 class="card-title">Naam wijzigen</h4>
         <form action="account.php" method ="POST">
-        <p>Voornaam: <input type=text name="voornaam" value="<?php echo $voornaam; ?>"></p>
-        <p>Achternaam: <input type=text name="achternaam" value="<?php echo $achternaam ?>"></p>
         <p class="card-text"></p>
-        <input type="submit" name="Opslaan" value="Opslaan" class="btn btn-primary">
+        <p>Voornaam: <input type=text name="voornaam" value="<?php 
+        if (isset($_POST['voornaam'])){
+          echo $_POST['voornaam'];
+        }else{
+          echo $voornaam;
+        } ?>"></p>
+        <p>Achternaam: <input type=text name="achternaam" value="<?php 
+        if (isset($_POST['achternaam'])){
+          echo $_POST['achternaam'];
+        }else{
+          echo $achternaam;
+        } ?>"></p>
+        <p class="card-text"></p>
+        <input type="submit" name="opslaan" value="Opslaan" class="btn btn-primary">
         </form>
       </div>
     </div>
