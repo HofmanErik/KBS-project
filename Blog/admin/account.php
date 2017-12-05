@@ -1,20 +1,20 @@
 <?php include '../admin/header.php';
 
         $servername = "localhost";
-        $username = "erik";
-        $password = "Welkom01";
+        $username = "beheerder";
+        $password = "geheim";
 
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=kbsdatabase", $username, $password);
+            $conn = new PDO("mysql:host=$servername;dbname=db_vindbaarin", $username, $password);
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "conected succesfull <br><br>"; 
+            echo "conected succesfull <br><br>";
             }
         catch(PDOException $e)
             {
             echo "" . $e->getMessage();
             }
-        
+
         $sql = 'SELECT achternaam, voornaam FROM medewerker';
             foreach ($conn->query($sql) as $row) {
                 $achternaam = $row['achternaam'];

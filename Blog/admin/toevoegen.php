@@ -1,5 +1,6 @@
 <?php include "../admin/header.php" ?>
 
+
 <div class="content-wrapper">
   <div class="container-fluid">
     <!-- Breadcrumbs-->
@@ -12,21 +13,22 @@
   </div>
   <div class="card-body">
     <div class="col-md-12">
-    <form action="../admin/toevoegen.php" method="$_GET">
-      Titel: <input type="text" name="Titel" value="">
-      <input type="submit" name="Voeg toe" value="Voeg toe">
+      <form action="verwerktoevoegen.php" method="POST">
+    Titel:
+    <input type="text" name="titel" value=""><br>
+    Tekst:
+    <textarea  name="tekst" value=""></textarea><br>
+    <input type="submit" name="toevoegen" value="toevoegen"><br>
+  </form>
 
-      <br/>
-      <br/>
-      Thumbnail: <input type="file" name="Thumbnail" accept="image/*" onchange="loadFile(event)">
-      <img id="output"/>
-    </div>
+    <</div>
     <div class="tinymce">
       <br/>
-          <?php
-          include "../admin/editor/tinymce/index.php"
-          ?>
-</div>
+         <?php
+         include "../admin/editor/tinymce/index.php"
+         ?>
+ </div>
+ <!---
 <br/>
 <div class="row-buttons">
   <div class="col-md-4">
@@ -39,10 +41,11 @@
 </div>
 </form>
 </div>
-</div>
+</div>-->
 
 <?php
-if(isset($_GET ["Publiceren"]))
+
+
 
 ?>
 
