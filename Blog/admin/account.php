@@ -20,6 +20,20 @@
                 $achternaam = $row['achternaam'];
                 $voornaam = $row['voornaam'];
             }
+            if (isset($_POST["opslaan"])){
+                $postvoornaam = $_POST['voornaam'];
+                $postachternaam = $_POST["achternaam"];
+                $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = 1";
+                
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+                
+                $sql = 'SELECT achternaam, voornaam FROM medewerker';
+            foreach ($conn->query($sql) as $row) {
+                $achternaam = $row['achternaam'];
+                $voornaam = $row['voornaam'];
+            }
+            }
 ?>
 
   <div class="content-wrapper">
@@ -41,10 +55,12 @@
     <div class="card">
       <div class="card-block">
         <h4 class="card-title">Naam wijzigen</h4>
-        <p>Voornaam: <input type=text value="<?php echo $voornaam; ?>"></p>
-        <p>Achternaam: <input type=text value="<?php echo $achternaam ?>"></p>
+        <form action="account.php" method ="POST">
+        <p>Voornaam: <input type=text name="voornaam" value="<?php echo $voornaam; ?>"></p>
+        <p>Achternaam: <input type=text name="achternaam" value="<?php echo $achternaam ?>"></p>
         <p class="card-text"></p>
-        <a href="#" class="btn btn-primary">Opslaan</a>
+        <input type="submit" name="Opslaan" value="Opslaan" class="btn btn-primary">
+        </form>
       </div>
     </div>
   </div>
