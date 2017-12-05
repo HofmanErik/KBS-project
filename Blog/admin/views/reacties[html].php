@@ -1,11 +1,9 @@
+<link href="../../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <?php
 // Include bestanden
 include '../../admin/header.php';
-include '../header.php';
 require '../classes/database.php';
 ?>
-
-<link href="'../../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 <div class="content-wrapper">
 <div class="container-fluid">
