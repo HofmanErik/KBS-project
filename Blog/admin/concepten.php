@@ -5,8 +5,6 @@
 <?php
 // Tabel oproepen
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "SELECT * 
             FROM artikel a 
             join medewerker m on m.mnr=a.auteur 
@@ -80,8 +78,7 @@ while ($row = $stmt->fetch()) {
     print("<td>" . $row['datum'] . "</td>");
     print("<td><input type=\"submit\" name=\"publiceer_concept\" value=\"Publiceer\"></td>");
     print("<input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">");
-    print("<td><input type=\"submit\" name=\"verwijder_concept\" value=\"Verwijder\" title=\"Verwijderen\">
-                <input type=\"submit\" name=\"bewerk\" value=\"Bewerken\" title=\"Bewerken\">");
+    print("<td><button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"bewerken\" title=\"Bewerken\"><i class=\"fa fa-pencil\"></i></button> <button type=\"submit\" class=\"btn btn-light\" name=\"verwijder_concept\" value=\"Verwijder\" title=\"Verwijderen\"><i class=\"fa fa-trash\"></i></button></td>");
     print("<td>" . $row["concept"] . "</td>");
     print("</tr></form>");
 }

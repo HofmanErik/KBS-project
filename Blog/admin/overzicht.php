@@ -1,23 +1,26 @@
 <?php include 'phpqueriesmelissa.php' ?>
 <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-<?php include '../admin/header.php'; ?>
+<?php include '../admin/header.php';?>
+
 <?php
 // Tabel oproepen
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "SELECT *
             FROM artikel a
             join medewerker m on m.mnr=a.auteur
-            WHERE concept=0
-            OR concept=1
+            WHERE concept=:concept1
+            OR concept=:concept2
             order by datum desc";
     $stmt = $conn->prepare($sql);
+    $stmt -> bindvalue( ":concept1",0,PDO::PARAM_STR );
+    $stmt -> bindvalue( ":concept2",1,PDO::PARAM_STR );
     $stmt->execute();
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
 ?>
+
+<!-- Content website -->
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->
@@ -67,31 +70,59 @@ try {
                                             </tr>
                                         </thead>
                                         <tbody>
+<!-- Tabel -->
 <?php
-while ($row = $stmt->fetch()) {
-    print("<form method=\"post\" action=\"phpqueriesmelissa.php\"><tr>");
+    while ($row = $stmt->fetch()) {
+    print("<tr><form method=\"post\" action=\"phpqueriesmelissa.php\">");
     print("<td>" . $row['artikelnr'] . "</td>");
     print("<td><a href=\"#\">" . $row['Titel'] . "</a></td>");
     print("<td>" . $row['voornaam'] . "</td>");
     print("<td>" . $row['datum'] . "</td>");
-    print("<td><input type=\"submit\" name=\"publiceer\" value=\"Publiceer\"> ");
-    print("<input type=\"submit\" name=\"depubliceer\" value=\"Concept\"></td>");
-    print("<td><input type=\"submit\" name=\"verwijder\" value=\"Verwijder\" title=\"Verwijderen\">
-                <input type=\"submit\" name=\"bewerk\" value=\"Bewerken\" title=\"Bewerken\">");
+    if($row['concept']==0){
+    print("<td>
+            <label class=\"switch\">
+                <input type=\"submit\" name=\"publiceer\" value=\"Publiceer\">
+                    <span class=\"slider round\">
+                    </span>
+                </input>
+            </label></td>");
+    } elseif ($row['concept']==1) {
+    print("<td>
+            <label class=\"switch\">
+                <input type=\"submit\" name=\"depubliceer\" value=\"Concept\">
+                    <span class=\"slider round\">
+                    </span>
+                </input>
+            </label>
+        </td>");
+    };
+    print("<td>
+            <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"Bewerken\" title=\"Bewerken\">
+                <i class=\"fa fa-pencil\">
+                </i>
+            </button>
+            <button type=\"submit\" class=\"btn btn-light\" name=\"verwijder\" value=\"Verwijder\" title=\"Verwijderen\">
+                <i class=\"fa fa-trash\">
+                </i>
+            </button>
+        </td>"
+        );
     print("<td>" . $row["concept"] . "</td>");
     print("<input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">");
     print("</tr></form>");
 }
 ?>
+<!-- Footer -->
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            <div class="card-footer small text-muted">Laatst bijgewerkt <?php print($row["datum"]) ?></div>
+                            <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
                             </div>
                           </div>
                         </div>
-                        <!-- Verwijder popup -->
+
+<!-- Verwijder popup -->
                        <!--  data-toggle=\"modal\"data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\" -->
                         <div class="modal fade" id="verwijder-popup" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
