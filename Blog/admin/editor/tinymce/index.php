@@ -18,7 +18,7 @@
   });
   </script>
 
-  <textarea id="myTextarea"></textarea>
+  <textarea id="myTextarea" value="tinymce"></textarea>
 
     </div>
   </div>
