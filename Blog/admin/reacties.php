@@ -91,8 +91,8 @@ $rows = $database->resultset();
                         <td><?php echo $row['voornaam']; ?></td>
                         <td><?php echo $row['achternaam']; ?></td>
                         <td><?php echo $row['email']; ?></td>
-                        <td><?php echo '<button type="button" class="btn btn-success"><i class="fa fa-upload" aria-hidden="true"></i></button>' ?></td>
-                        <td><?php echo '<button type="button" class="btn btn-danger"><i class="fa fa-window-close" aria-hidden="true"></i></button>' ?></td>
+                        <td><?php echo '<button type="button" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i></button>' ?></td>
+                        <td><?php echo '<button type="button" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>' ?></td>
                         <td><?php echo "Gepubliceerd" ?></td>
                     </tr>
                     <?php endforeach; ?>
