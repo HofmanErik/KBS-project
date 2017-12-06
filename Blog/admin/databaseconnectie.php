@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "beheerder";
 $password = "geheim";
-$dbname = "vb_vindbaarin";
+$dbname = "db_vindbaarin";
 
 
 try {
