@@ -32,21 +32,28 @@ if(isset($_POST['Publiceren'])){
   }
   $tekst= htmlentities(trim($_POST['tinymce'], ENT_QUOTES));
   //checken of tekst is ingevuld
-  //if(empty($tekst)){
-  //  echo "<p class = 'eror'>Vul altublieft tekst in</p>";
-  //  $valid = false;
-  }
+  if(empty($tekst)){
+   echo "<p class = 'eror'>Vul altublieft tekst in</p>";
+   $valid = false;
+}
+
+$thumbnail = htmlentities(trim($_POST['thumbnail'], ENT_QUOTES));
+//checken of thumbnail is ingevuld
+if(empty($thumbnail)){
+  echo "<p class = 'eror'>Vul altublieft een thumbnail in</p>";
+  $valid = false;
+}
 
 
   if($valid ==true){
 
-    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, Titel, tekst, thumbnail, auteur,datum, afbeelding, concept) VALUES ('?', '$titel','$tekst','963', '123', '2017-12-05', 'hfhfh', 1 )");
+    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur,datum, afbeelding, status) VALUES ('?', '$titel','$tekst','$thumbnail', '123', NOW(), '?', 1 )");
     $stmt->execute();
-    echo "Artikel is gepubliceerd!";
-  }
-
-
+    print("Artikel is gepubliceerd!");
+ }
 
 
 $conn->close();
+
 ?>
+<?php include "../admin/footer.php" ?>

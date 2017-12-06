@@ -16,9 +16,6 @@
       <form action="verwerktoevoegen.php" method="POST">
     <strong>Titel:</strong> <br>
     <input type="text" name="titel" value="" size="138px"><br><br>
-<!--thumbnail-->
-    <input type="file" name="thumbnail">
-
 </div>
 
     <!--Hier staat de tekst editor tinyMCE-->
@@ -50,9 +47,7 @@
     <br>
 
   <div class="col-md-12">
-    <input type="submit" name="Publiceren" value="Publiceren">
-    <!-- DOET HET NOG NIET!-->
-    <input type="submit" name="Opslaan" value="Opslaan"><br><br>
+    <input type="submit" name="Publiceren" value="Publiceren"><br>
   </div>
   </form>
 </div>
