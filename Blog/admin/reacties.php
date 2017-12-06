@@ -53,7 +53,7 @@ $rows = $database->resultset();
         //     $database->bind(':body', $body);
         //     $database->execute();
         //     if($database->lastInsertId()){
-        //         echo '<p>Post Added!</p>';
+        //         echo '<p>Post Toegevoegd</p>';
         //     }
         // }
 
@@ -61,14 +61,14 @@ $rows = $database->resultset();
         // $rows = $database->resultset();
         ?>
 
-<h1>Testreactie toevoegen</h1>
-<form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
-    <label>Rating</label><br />
-    <input type="text" name="rating" placeholder="Voeg rating toe" /><br /><br />
-    <label>Naam</label><br />
-    <input type="text" name="title" placeholder="Vul een voornaam in" /><br /><br />
-    <input type="submit" name="submit" value="Submit" />
-</form>
+        <h1>Testreactie toevoegen</h1>
+        <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+            <label>Rating</label><br />
+            <input type="text" name="rating" placeholder="Voeg rating toe" /><br /><br />
+            <label>Naam</label><br />
+            <input type="text" name="title" placeholder="Vul een voornaam in" /><br /><br />
+            <input type="submit" name="submit" value="Submit" />
+        </form>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

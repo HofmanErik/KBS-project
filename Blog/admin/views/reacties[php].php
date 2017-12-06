@@ -1,5 +1,5 @@
 <?php 
-require 'classes/Database.php';
+require 'classes/functions.php';
 
 $database = new Database;
 
