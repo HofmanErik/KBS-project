@@ -4,19 +4,40 @@
 
 <?php
 // Tabel oproepen
-try {
-    $sql = "SELECT *
+if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
+    $zoektext = $_POST["zoektext"];
+    try {        
+        $sql = "SELECT *
             FROM artikel a
             join medewerker m on m.mnr=a.auteur
-            WHERE concept=:concept1
-            OR concept=:concept2
+            WHERE (status=:concept1
+            OR status=:concept2)
+            AND titel LIKE ('%".$zoektext."%')
             order by datum desc";
+
+    $stmt = $conn->prepare($sql);
+    $stmt -> bindvalue( ":concept1",0,PDO::PARAM_STR );
+    $stmt -> bindvalue( ":concept2",1,PDO::PARAM_STR );
+    $stmt -> execute();
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+} else {
+  try {
+        $sql = "SELECT *
+            FROM artikel a
+            join medewerker m on m.mnr=a.auteur
+            WHERE status=:concept1
+            OR status=:concept2
+            order by datum desc";
+
     $stmt = $conn->prepare($sql);
     $stmt -> bindvalue( ":concept1",0,PDO::PARAM_STR );
     $stmt -> bindvalue( ":concept2",1,PDO::PARAM_STR );
     $stmt->execute();
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
 }
 ?>
 
@@ -33,10 +54,10 @@ try {
         <div class="row">
             <div class="col-12">
                 <h1><i class="fa fa-pencil"></i>
-                    <span class="">Overzicht</span><h1>
+                    <span class="">Overzicht</span></h1>
                         </div>
                         </div>
-                        </div>
+                        
                         <div class="card mb-3">
                             <div class="card-header">
                                 <a href="../admin/overzicht.php"> Alles</a> |
@@ -44,11 +65,11 @@ try {
                                 <a href="concepten.php"> Concepten</a> |
                                 <a href="verwijderd.php"> Verwijderd</a> |
                                 <a href="../admin/toevoegen.php"> Toevoegen</a>
-                                <form class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
+                                <form method="POST" action="overzicht.php" class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
                                     <div class="input-group">
-                                        <input class="form-control" type="text" placeholder="Zoeken...">
+                                        <input class="form-control" type="text" name="zoektext" placeholder="Zoeken...">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-secondary" type="submit" name="zoeken">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </span>
@@ -73,43 +94,39 @@ try {
 <!-- Tabel -->
 <?php
     while ($row = $stmt->fetch()) {
-    print("<tr><form method=\"post\" action=\"phpqueriesmelissa.php\">");
-    print("<td>" . $row['artikelnr'] . "</td>");
-    print("<td><a href=\"#\">" . $row['Titel'] . "</a></td>");
-    print("<td>" . $row['voornaam'] . "</td>");
-    print("<td>" . $row['datum'] . "</td>");
-    if($row['concept']==0){
-    print("<td>
-            <label class=\"switch\">
-                <input type=\"submit\" name=\"publiceer\" value=\"Publiceer\">
-                    <span class=\"slider round\">
-                    </span>
-                </input>
-            </label></td>");
-    } elseif ($row['concept']==1) {
-    print("<td>
-            <label class=\"switch\">
-                <input type=\"submit\" name=\"depubliceer\" value=\"Concept\">
-                    <span class=\"slider round\">
-                    </span>
-                </input>
-            </label>
-        </td>");
+    print(" <tr>
+                <form method=\"post\" action=\"phpqueriesmelissa.php\">
+                    <td>" . $row['artikelnr'] . "</td>
+                    <td><a href=\"#\">" . $row['titel'] . "</a></td>
+                    <td>" . $row['voornaam'] . "</td>
+                    <td>" . $row['datum'] . "</td>");
+    if($row['status']==0){
+    print("         <td>
+                        <label>
+                            <button type=\"submit\" class=\"btn btn-light\" name=\"publiceer\" value=\"Publiceer\"> Publiceer
+                            </button>
+                        </label>
+                    </td>");
+    } elseif ($row['status']==1) {
+    print("         <td>
+                        <label>
+                            <button type=\"submit\" class=\"btn btn-light\" name=\"depubliceer\" value=\"Concept\"> Concept
+                            </button>
+                        </label>
+                    </td>");
     };
-    print("<td>
-            <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"Bewerken\" title=\"Bewerken\">
-                <i class=\"fa fa-pencil\">
-                </i>
-            </button>
-            <button type=\"submit\" class=\"btn btn-light\" name=\"verwijder\" value=\"Verwijder\" title=\"Verwijderen\">
-                <i class=\"fa fa-trash\">
-                </i>
-            </button>
-        </td>"
-        );
-    print("<td>" . $row["concept"] . "</td>");
-    print("<input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">");
-    print("</tr></form>");
+    print("         <td>
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"Bewerken\" title=\"Bewerken\">
+                            <i class=\"fa fa-pencil\"></i>
+                        </button>
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"verwijder\" value=\"Verwijder\" title=\"Verwijderen\">
+                            <i class=\"fa fa-trash\"></i>
+                        </button>
+                    </td>
+                    <td>" . $row["status"] . "</td>
+                        <input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">
+                </form>
+            </tr>");
 }
 ?>
 <!-- Footer -->
@@ -121,6 +138,7 @@ try {
                             </div>
                           </div>
                         </div>
+
 
 <!-- Verwijder popup -->
                        <!--  data-toggle=\"modal\"data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\" -->
@@ -142,4 +160,5 @@ try {
                                 </div>
                             </div>
                         </div>
+
 <?php include '../admin/footer.php'; ?>

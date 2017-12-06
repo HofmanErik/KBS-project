@@ -4,11 +4,28 @@
 
 <?php
 // Tabel oproepen
+if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
+    $zoektext = $_POST["zoektext"];
+    try {        
+        $sql = "SELECT *
+            FROM artikel a
+            join medewerker m on m.mnr=a.auteur
+            WHERE (status=:concept2)
+            AND titel LIKE ('%".$zoektext."%')
+            order by datum desc";
+
+    $stmt = $conn->prepare($sql);
+    $stmt -> bindvalue( ":concept2",2,PDO::PARAM_STR );
+    $stmt -> execute();
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+} else {
 try {
     $sql = "SELECT * 
             FROM artikel a 
             join medewerker m on m.mnr=a.auteur 
-            WHERE concept = :concept;
+            WHERE status = :concept;
             order by datum desc";
             
     $stmt = $conn->prepare($sql);
@@ -16,6 +33,7 @@ try {
     $stmt->execute();
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
+}
 }
 ?> 
 
@@ -45,11 +63,11 @@ try {
                                 <a href="concepten.php"> Concepten</a> |
                                 <a href="verwijderd.php"> Verwijderd</a> |
                                 <a href="../admin/toevoegen.php"> Toevoegen</a>
-                                <form class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
+                                <form method="POST" action="verwijderd.php" class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
                                     <div class="input-group">
-                                        <input class="form-control" type="text" placeholder="Zoeken...">
+                                        <input class="form-control" type="text" name="zoektext" placeholder="Zoeken...">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-secondary" type="submit" name="zoeken">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </span>
@@ -72,16 +90,25 @@ try {
                                         <tbody>
 <?php
 while ($row = $stmt->fetch()) {
-    print("<form method=\"post\" action=\"phpqueriesmelissa.php\"><tr>");
-    print("<td>" . $row['artikelnr'] . "</td>");
-    print("<td><a href=\"#\">" . $row['Titel'] . "</a></td>");
-    print("<td>" . $row['voornaam'] . "</td>");
-    print("<td>" . $row['datum'] . "</td>");
-    print("<input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">");
-    print("<td><button type=\"submit\" class=\"btn btn-light\" name=\"terugzetten\" value=\"Terugzetten\" title=\"Verplaatsen naar concepten\"><i class=\"fa fa-undo\"></i></button> 
-        <button type=\"submit\" class=\"btn btn-light\" name=\"def_verwijder\" value=\"Verwijder\" title=\"Definitief verwijderen\"><i class=\"fa fa-trash\"></i></button></td>");
-    print("<td>" . $row["concept"] . "</td>");
-    print("</tr></form>");
+    print(" <tr>
+                <form method=\"post\" action=\"phpqueriesmelissa.php\"><tr>
+                    <td>" . $row['artikelnr'] . "</td>
+                    <td><a href=\"#\">" . $row['titel'] . "</a></td>
+                    <td>" . $row['voornaam'] . "</td>
+                    <td>" . $row['datum'] . "
+                        <input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">
+                    </td>
+                    <td>
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"terugzetten\" value=\"Terugzetten\" title=\"Verplaatsen naar concepten\">
+                            <i class=\"fa fa-undo\"></i>
+                        </button> 
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"def_verwijder\" value=\"Verwijder\" title=\"Definitief verwijderen\">
+                            <i class=\"fa fa-trash\"></i>
+                        </button>
+                    </td>
+                    <td>" . $row["status"] . "</td>
+                </form>
+            </tr>");
 }
 ?>
                                         </tbody>
