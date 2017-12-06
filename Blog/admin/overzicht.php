@@ -10,9 +10,9 @@ if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
         $sql = "SELECT *
             FROM artikel a
             join medewerker m on m.mnr=a.auteur
-            WHERE (concept=:concept1
-            OR concept=:concept2)
-            AND Titel LIKE ('%".$zoektext."%')
+            WHERE (status=:concept1
+            OR status=:concept2)
+            AND titel LIKE ('%".$zoektext."%')
             order by datum desc";
 
     $stmt = $conn->prepare($sql);
@@ -22,13 +22,13 @@ if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
-} 
+} else {
   try {
         $sql = "SELECT *
             FROM artikel a
             join medewerker m on m.mnr=a.auteur
-            WHERE concept=:concept1
-            OR concept=:concept2
+            WHERE status=:concept1
+            OR status=:concept2
             order by datum desc";
 
     $stmt = $conn->prepare($sql);
@@ -38,7 +38,7 @@ if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
-
+}
 ?>
 
 <!-- Content website -->
@@ -54,10 +54,10 @@ if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
         <div class="row">
             <div class="col-12">
                 <h1><i class="fa fa-pencil"></i>
-                    <span class="">Overzicht</span><h1>
+                    <span class="">Overzicht</span></h1>
                         </div>
                         </div>
-                        </div>
+                        
                         <div class="card mb-3">
                             <div class="card-header">
                                 <a href="../admin/overzicht.php"> Alles</a> |
@@ -97,23 +97,21 @@ if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
     print(" <tr>
                 <form method=\"post\" action=\"phpqueriesmelissa.php\">
                     <td>" . $row['artikelnr'] . "</td>
-                    <td><a href=\"#\">" . $row['Titel'] . "</a></td>
+                    <td><a href=\"#\">" . $row['titel'] . "</a></td>
                     <td>" . $row['voornaam'] . "</td>
                     <td>" . $row['datum'] . "</td>");
-    if($row['concept']==0){
+    if($row['status']==0){
     print("         <td>
-                        <label class=\"switch\">
-                            <input type=\"submit\" name=\"publiceer\" value=\"Publiceer\">
-                                <span class=\"slider round\"></span>
-                            </input>
+                        <label>
+                            <button type=\"submit\" class=\"btn btn-light\" name=\"publiceer\" value=\"Publiceer\"> Publiceer
+                            </button>
                         </label>
                     </td>");
-    } elseif ($row['concept']==1) {
+    } elseif ($row['status']==1) {
     print("         <td>
-                        <label class=\"switch\">
-                            <input type=\"submit\" name=\"depubliceer\" value=\"Concept\">
-                                <span class=\"slider round\"></span>
-                            </input>
+                        <label>
+                            <button type=\"submit\" class=\"btn btn-light\" name=\"depubliceer\" value=\"Concept\"> Concept
+                            </button>
                         </label>
                     </td>");
     };
@@ -125,7 +123,7 @@ if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
                             <i class=\"fa fa-trash\"></i>
                         </button>
                     </td>
-                    <td>" . $row["concept"] . "</td>
+                    <td>" . $row["status"] . "</td>
                         <input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">
                 </form>
             </tr>");
@@ -140,6 +138,7 @@ if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
                             </div>
                           </div>
                         </div>
+
 
 <!-- Verwijder popup -->
                        <!--  data-toggle=\"modal\"data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\" -->
@@ -161,4 +160,5 @@ if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
                                 </div>
                             </div>
                         </div>
+
 <?php include '../admin/footer.php'; ?>

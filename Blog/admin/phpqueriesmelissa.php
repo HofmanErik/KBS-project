@@ -16,7 +16,7 @@ try {
 if (isset($_POST["publiceer"])) {
     try {
         $sql = "UPDATE artikel
-            SET concept=1
+            SET status=1
             WHERE artikelnr = :artikelnr";
 
         $stmt = $conn->prepare($sql);
@@ -33,7 +33,7 @@ if (isset($_POST["publiceer"])) {
 if (isset($_POST["depubliceer"])) {
     try {
         $sql = "UPDATE artikel
-            SET concept=0
+            SET status=0
             WHERE artikelnr = :artikelnr";
 
         $stmt = $conn->prepare($sql);
@@ -50,7 +50,7 @@ if (isset($_POST["depubliceer"])) {
 if (isset($_POST["publiceer_concept"])) {
     try {
         $sql = "UPDATE artikel
-            SET concept=1
+            SET status=1
             WHERE artikelnr = :artikelnr";
 
         $stmt = $conn->prepare($sql);
@@ -67,7 +67,7 @@ if (isset($_POST["publiceer_concept"])) {
 if (isset($_POST["concept"])) {
     try {
         $sql = "UPDATE artikel
-            SET concept=0
+            SET status=0
             WHERE artikelnr = :artikelnr";
 
         $stmt = $conn->prepare($sql);
@@ -84,7 +84,7 @@ if (isset($_POST["concept"])) {
 if (isset($_POST["verwijder"])) {
     try {
         $sql = "UPDATE artikel
-            SET concept=2
+            SET status=2
             WHERE artikelnr = :artikelnr";
 
         $stmt = $conn->prepare($sql);
@@ -101,7 +101,7 @@ if (isset($_POST["verwijder"])) {
 if (isset($_POST["verwijder_concept"])) {
     try {
         $sql = "UPDATE artikel
-            SET concept=2
+            SET status=2
             WHERE artikelnr = :artikelnr";
 
         $stmt = $conn->prepare($sql);
@@ -118,7 +118,7 @@ if (isset($_POST["verwijder_concept"])) {
 if (isset($_POST["verwijder_gepubliceerd"])) {
     try {
         $sql = "UPDATE artikel
-                SET concept=2
+                SET status=2
                 WHERE artikelnr = :artikelnr";
 
         $stmt = $conn->prepare($sql);
@@ -135,7 +135,7 @@ if (isset($_POST["verwijder_gepubliceerd"])) {
 if (isset($_POST["terugzetten"])) {
     try {
         $sql = "UPDATE artikel
-            SET concept=0
+            SET status=0
             WHERE artikelnr = :artikelnr";
 
         $stmt = $conn->prepare($sql);
