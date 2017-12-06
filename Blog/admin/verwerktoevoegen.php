@@ -38,7 +38,7 @@ if(isset($_POST['Publiceren'])){
 }
 
   if($valid ==true){
-    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur, datum, afbeelding, status) VALUES ('?', '$titel','$tekst','', '123', NOW(), '?', 1 )");
+    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur, datum, afbeelding, status) VALUES ('?', '$titel','$tekst','', 1, NOW(), '?', 1 )");
     $stmt->execute();
     echo "Artikel is gepubliceerd!";
  }
