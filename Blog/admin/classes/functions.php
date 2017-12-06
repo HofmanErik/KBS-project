@@ -5,7 +5,7 @@ class database {
 	private $pass	= 'geheim';
 	private $dbname	= 'db_vindbaarin';
 
-	private $dbh;
+	private $conn;
 	private $error;
 	private $stmt;
 
@@ -18,14 +18,14 @@ class database {
 		);
 		// Create new PDO and error handling
 		try {
-			$this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
+			$this->conn = new PDO($dsn, $this->user, $this->pass, $options);
 		} catch(PDOEception $e){
 			$this->error = $e->getMessage();
 		}
 	}
 
 	public function query($query){
-		$this->stmt = $this->dbh->prepare($query);
+		$this->stmt = $this->conn->prepare($query);
 	}
 
 	public function execute(){
@@ -33,7 +33,7 @@ class database {
 	}
 
 	public function lastInsertId(){
-		$this->dbh->lastInsertId();
+		$this->conn->lastInsertId();
 	}
 
 	public function resultset(){
