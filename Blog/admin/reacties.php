@@ -2,7 +2,7 @@
 <?php
 // Include bestanden
 include '../admin/header.php';
-require 'classes/database.php';
+require 'classes/functions.php';
 
 $database = new Database;
 
