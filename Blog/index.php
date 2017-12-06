@@ -1,34 +1,5 @@
 <?php include 'modules/menu.php'; ?>
 
-
-<!-- <br></br>
-   Blog Posts
-  <div class="container">
-  <div class="row blogposts">
-    <div class="col-md-3">
-      <div class="container">
- <div class="row blogposts">
-   <div class="col-md-3">
-
-   </div>
-   <div class="col-md-9">
-     <div class="post-preview">
-         <h2 class="post-title">
-         <tr><td><h2>something something darkside</h2></td></tr>          </h2>
-       </a>
-       <p class="post-meta">Posted by
-         <a href="#">Vindbaar In</a>
-       <tr><td>on 2017-12-05</td></tr></p>
-
-        <a href="blogpost.php"> meer lezen  </a>
-     </div>
-   </div>
- </div>
-</div>
-    </div>
-    <div class="col-md-9">
-      <div class="post-preview">
-          <h2 class="post-title"> -->
           <?php
           $servername = "localhost";
           $username = "beheerder";
@@ -78,18 +49,5 @@ echo '
           }
 
           ?>
-          <!-- </h2>
-        </a>
-        <p class="post-meta">Posted by
-          <a href="#">Vindbaar In</a>
-        </p>
-
-          <a href="blogpost2.php?id="> meer lezen  </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<hr> -->
 
 <?php include 'modules/footer.php'; ?>

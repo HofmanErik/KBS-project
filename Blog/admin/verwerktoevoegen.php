@@ -1,4 +1,4 @@
-<?php include "../admin/header.php" ?>
+<?php include "../admin/header.php"; ?>
 <div class="content-wrapper">
   <div class="container-fluid">
     <!-- Breadcrumbs-->
@@ -37,23 +37,14 @@ if(isset($_POST['Publiceren'])){
    $valid = false;
 }
 
-$thumbnail = htmlentities(trim($_POST['thumbnail'], ENT_QUOTES));
-//checken of thumbnail is ingevuld
-if(empty($thumbnail)){
-  echo "<p class = 'eror'>Vul altublieft een thumbnail in</p>";
-  $valid = false;
-}
-
-
   if($valid ==true){
-
-    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur,datum, afbeelding, status) VALUES ('?', '$titel','$tekst','$thumbnail', '123', NOW(), '?', 1 )");
+    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur, datum, afbeelding, status) VALUES ('?', '$titel','$tekst','', '123', NOW(), '?', 1 )");
     $stmt->execute();
-    print("Artikel is gepubliceerd!");
+    echo "Artikel is gepubliceerd!";
  }
-
+}
 
 $conn->close();
 
 ?>
-<?php include "../admin/footer.php" ?>
+<?php include "../admin/footer.php"; ?>

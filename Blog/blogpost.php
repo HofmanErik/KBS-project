@@ -9,7 +9,7 @@
         $username = "beheerder";
         $password = "geheim";
         $dbname = "db_vindbaarin";
-        $sql = "SELECT Titel FROM artikel WHERE artikelnr = 2";
+        $sql = "SELECT artikelnr, titel, tekst, datum, voornaam FROM artikel a JOIN medewerker m ON WHERE artikelnr = 66";
 
 
         try {
@@ -35,7 +35,7 @@
             $username = "beheerder";
             $password = "geheim";
             $dbname = "db_vindbaarin";
-            $sql = "SELECT datum FROM artikel WHERE artikelnr = 2";
+            $sql = "SELECT datum FROM artikel WHERE artikelnr = 66";
 
 
             try {
@@ -76,7 +76,7 @@
         $username = "beheerder";
         $password = "geheim";
         $dbname = "db_vindbaarin";
-        $sql = "SELECT tekst FROM artikel WHERE artikelnr = 2";
+        $sql = "SELECT tekst FROM artikel WHERE artikelnr = 66";
 
 
         try {
