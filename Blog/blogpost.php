@@ -65,7 +65,7 @@ if(!isset($_GET["artikelnr"])){
           <div class="row text">
             <div class="col-md-8 col-md-offset-1">
               <div class="post-text">
-                <?= $tekst; ?>
+                <?= htmlspecialchars_decode(stripslashes($tekst)) ; ?>
 
                 </div>
               </div>
