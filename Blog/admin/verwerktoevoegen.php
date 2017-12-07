@@ -69,9 +69,14 @@ if(isset($_POST['Publiceren'])){
    $valid = false;
 }
 
+<<<<<<< HEAD
 
   if($valid == true && $filevalid ==true){
     $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur, datum, afbeelding, status) VALUES ('?', '$titel','$tekst','$fileNameNew', '123', NOW(), '?', 1 )");
+=======
+  if($valid ==true){
+    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur, datum, afbeelding, status) VALUES ('?', '$titel','$tekst','', 1, NOW(), '?', 1 )");
+>>>>>>> eb686fb65e0aff2e87791001f85e6fc552f9ea38
     $stmt->execute();
 
     $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
