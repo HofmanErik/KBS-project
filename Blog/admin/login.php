@@ -21,24 +21,19 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Inloggen</div>
       <div class="card-body">
-        <form method="post" action="dashboard.php">
+        <form method="POST" action="login.inc.php">
           <div class="form-group">
-            <label for="exampleInputEmail1">Emailadres</label>
-            <input class="form-control" id="exampleInputEmail1" name="email" type="text"
-                    aria-describedby="emailHelp" placeholder="Voer emailadres in">
+            <label for="exampleInputEmail1">Emailadres/Naam</label>
+            <input class="form-control" id="exampleInputEmail1" name="voornaam" type="text"
+                    aria-describedby="emailHelp" placeholder="Voer emailadres/naam in">
           </div>
+
           <div class="form-group">
             <label for="exampleInputPassword1">Wachtwoord</label>
             <input class="form-control" id="exampleInputPassword1"
-                   name="wachtwoord" type="password" placeholder="Wachtwoord">
+                   name="wwhash" type="password" placeholder="Wachtwoord">
           </div>
-          <div class="form-group">
-            <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox">Wachtwoord onthouden</label>
-            </div>
-          </div>
-          <input class="btn btn-primary btn-block" type="submit" value="inloggen">
+        <input class="btn btn-primary btn-block" type="submit" name="submit" value="inloggen">
         </form>
         <div class="text-center">
           <a class="d-block small" href="../admin/forgot-password.php">Wachtwoord vergeten?</a>

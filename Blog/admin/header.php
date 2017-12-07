@@ -76,13 +76,13 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav sidenav-toggler">
+<!--       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
           <a class="nav-link text-center" id="sidenavToggler">
             <i class="fa fa-fw fa-angle-left"></i>
           </a>
         </li>
-      </ul>
+      </ul> -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown"

@@ -7,6 +7,12 @@ require 'classes/functions.php';
 $database = new Database;
 
 $database->query('SELECT * FROM bezoeker');
+// Aanroepen van de databaseclass als een variabele
+$database = new Database;
+
+// query toevoegen aan de query functie zodat deze gereturned kan worden
+$database->query('SELECT * FROM rating r JOIN bezoeker b ON r.reviewnr = b.reviewnr');
+// To do - aanpassen van query om niet medewerkers maar ratings te tonen. 'SELECT * FROM rating r JOIN bezoeker b ON r.reviewnr = b.reviewnr'
 $rows = $database->resultset();
 ?>
 
@@ -43,32 +49,6 @@ $rows = $database->resultset();
             </div>
         </div>
 
-        <?php
-        // if($post['submit']){
-        //     $title = $post['title'];
-        //     $body = $post['body'];
-
-        //     $database->query('INSERT INTO posts (title, body) VALUES(:title, :body)');
-        //     $database->bind(':title', $title);
-        //     $database->bind(':body', $body);
-        //     $database->execute();
-        //     if($database->lastInsertId()){
-        //         echo '<p>Post Toegevoegd</p>';
-        //     }
-        // }
-
-        // $database->query('SELECT * FROM posts');
-        // $rows = $database->resultset();
-        ?>
-
-        <h1>Testreactie toevoegen</h1>
-        <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
-            <label>Rating</label><br />
-            <input type="text" name="rating" placeholder="Voeg rating toe" /><br /><br />
-            <label>Naam</label><br />
-            <input type="text" name="title" placeholder="Vul een voornaam in" /><br /><br />
-            <input type="submit" name="submit" value="Submit" />
-        </form>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -86,14 +66,15 @@ $rows = $database->resultset();
                     <tbody>
                     <!-- Geef waardes mee in de tabel -->
                     <?php foreach($rows as $row) : ?>
+                    <!-- echo elke rij in de tabel met de juiste gegevens in een html table per row -->
                     <tr>
                         <td><?php echo $row['reviewnr']; ?></td>
-                        <td><?php echo $row['voornaam']; ?></td>
-                        <td><?php echo $row['achternaam']; ?></td>
+                        <td><?php echo $row['voornaam'], $row['achternaam']; ?></td>
+                        <td><?php echo '07-12-2017' ; ?></td>
                         <td><?php echo $row['email']; ?></td>
-                        <td><?php echo '<button type="button" class="btn btn-success"><i class="fa fa-upload" aria-hidden="true"></i></button>' ?></td>
-                        <td><?php echo '<button type="button" class="btn btn-danger"><i class="fa fa-window-close" aria-hidden="true"></i></button>' ?></td>
-                        <td><?php echo "Gepubliceerd" ?></td>
+                        <td><?php echo '<button type="button" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i></button>' ?></td>
+                        <td><?php echo '<button type="button" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>' ?></td>
+                        <td><?php echo 'Gepubliceerd' ?></td>
                     </tr>
                     <?php endforeach; ?>
                     <!-- Footer -->
@@ -104,6 +85,5 @@ $rows = $database->resultset();
         <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
     </div>
 </div>
-                    
 
 <?php include 'footer.php'; ?>

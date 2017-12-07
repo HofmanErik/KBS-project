@@ -1,6 +1,6 @@
-<?php include "../admin/header.php" ?>
-
-
+<?php include "../admin/header.php";
+      include "../admin/artikelbewerkconn.php"; 
+?>
 <div class="content-wrapper">
   <div class="container-fluid">
     <!-- Breadcrumbs-->
@@ -15,7 +15,7 @@
     <div class="col-md-12">
       <form action="verwerktoevoegen.php" method="POST">
     <strong>Titel:</strong> <br>
-    <input type="text" name="titel" value="" size="138px"><br><br>
+    <input type="text" name="titel" value="<?php echo $titel; ?>" size="138px"><br><br>
 </div>
     <!--Hier staat de tekst editor tinyMCE-->
     <div class="container">

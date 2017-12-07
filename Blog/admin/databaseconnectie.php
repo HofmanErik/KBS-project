@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "hoi";
-$password = "hoi";
-$dbname = "plantlust";
+$username = "beheerder";
+$password = "geheim";
+$dbname = "db_vindbaarin";
 
 
 try {
@@ -16,7 +16,7 @@ try {
 catch(PDOException $e)
     {
     echo "Connection failed: " . $e->getMessage();
-    } 
+    }
 
 
-?> 
+?>
