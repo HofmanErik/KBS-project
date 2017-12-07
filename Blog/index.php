@@ -1,11 +1,15 @@
 <?php include 'modules/menu.php'; ?>
 
+
+
           <?php
+
+
           $servername = "localhost";
           $username = "beheerder";
           $password = "geheim";
           $dbname = "db_vindbaarin";
-          $sql = "SELECT artikelnr, titel, thumbnail, datum, voornaam FROM artikel a JOIN medewerker m ON a.auteur = m.mnr ORDER BY datum DESC";
+          $sql = "SELECT artikelnr, titel, thumbnail, datum, voornaam FROM artikel a JOIN medewerker m ON a.auteur = m.mnr WHERE status =1 ORDER BY datum DESC";
 
 
           try {
@@ -18,21 +22,21 @@
           }
 
           while ($row = $stmt->fetch()) {
-            $basicThumbnail = $row["thumbnail"];
+            $thumbnail = $row["thumbnail"];
               if($row["thumbnail"] == ""){
-                $basicThumbnail = "download.png";
+                $thumbnail = "download.png";
               }
 echo '
             <div class="container">
  <div class="row blogposts">
    <div class="col-md-3">
-     <img src="'.$basicThumbnail.'"
+     <img src="'.$thumbnail.'" alt="'.$thumbnail.'"
      class="img-responsive blogimg">
    </div>
    <div class="col-md-9">
      <div class="post-preview">
          <h2 class="post-title">
-         <tr><td><h2>'.$row["titel"].'</h2></td></tr>
+         <tr><td><h2>'.$row["titel"].'</h2></td></tr>          </h2>
        </a>
        <p class="post-meta">Posted by
          <a href="#">'.$row["voornaam"].'</a>
@@ -47,6 +51,7 @@ echo '
 
 ';
           }
+
 
           ?>
 

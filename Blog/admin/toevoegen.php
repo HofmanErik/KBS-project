@@ -13,10 +13,14 @@
   </div>
   <div class="card-body">
     <div class="col-md-12">
-      <form action="verwerktoevoegen.php" method="POST">
+      <form action="verwerktoevoegen.php" method="POST" enctype="multipart/form-data">
     <strong>Titel:</strong> <br>
     <input type="text" name="titel" value="" size="138px"><br><br>
+<!--thumbnail-->
+    <input type="file" name="thumbnail">
+
 </div>
+
     <!--Hier staat de tekst editor tinyMCE-->
     <div class="container">
       <div class="row editor">
@@ -44,10 +48,14 @@
       </div>
     </div>
     <br>
-    <div class="col-md-12">
-    <input type="submit" name="Publiceren" value="Publiceren"><br>
+
+  <div class="col-md-12">
+    <input type="submit" name="Publiceren" value="Publiceren">
+    <!-- DOET HET NOG NIET!-->
+    <!--<input type="submit" name="Opslaan" value="Opslaan"><br><br>-->
   </div>
   </form>
+</div>
 
     <!--</div>
     <div class="tinymce">
