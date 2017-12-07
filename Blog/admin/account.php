@@ -30,7 +30,7 @@
             if (isset($_POST["opslaan"])){
                 $postvoornaam = $_POST['voornaam'];
                 $postachternaam = $_POST["achternaam"];
-                $mnr = 1;
+                $mnr = 3;
 
                 $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = '$mnr'";
                 
