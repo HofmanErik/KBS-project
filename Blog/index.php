@@ -23,14 +23,14 @@
 
           while ($row = $stmt->fetch()) {
             $thumbnail = $row["thumbnail"];
-              if($row["thumbnail"] == ""){
+              if($row["thumbnail"] != ""){
                 $thumbnail = "download.png";
               }
 echo '
             <div class="container">
  <div class="row blogposts">
    <div class="col-md-3">
-     <img src="'.$thumbnail.'" alt="'.$thumbnail.'"
+     <img src="'.$thumbnail.'" alt=""
      class="img-responsive blogimg">
    </div>
    <div class="col-md-9">
