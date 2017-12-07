@@ -1,5 +1,50 @@
 <?php include "../admin/header.php";
-      include "../admin/artikelbewerkconn.php"; 
+
+
+  if(isset($_POST['bewerk'])){
+
+      $servername = "localhost";
+      $username = "beheerder";  
+      $password = "geheim";
+
+      $artikelnr = $_POST['artikelnr'];
+
+      try {
+      //Creating connection for mysql
+      $conn = new PDO("mysql:host=$servername;dbname=db_vindbaarin", $username, $password);
+      // set the PDO error mode to exception
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      echo "Connected successfully";
+      }
+      catch(PDOException $e)
+      {
+      echo "Connection failed: " . $e->getMessage();
+      }
+      //sql query naam opslaan in database
+      $sql = ("SELECT * FROM artikel WHERE artikelnr = 1");
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(); 
+
+        $row = $stmt->fetch();
+
+          $titel23    = $row['titel'];
+          $tekst    = $row['tekst'];
+          $thumbnail  = $row['thumbnail'];
+          $auteur   = $row['auteur'];
+          $datum    = $row['datum'];
+          $afbeelding = $row['afbeelding'];
+          $status   = $row['status'];
+           
+
+
+        
+    //    header("location: artikelbewerk.php");
+
+
+}
+
+
+
 ?>
 <div class="content-wrapper">
   <div class="container-fluid">
@@ -13,9 +58,9 @@
   </div>
   <div class="card-body">
     <div class="col-md-12">
-      <form action="verwerktoevoegen.php" method="POST">
+      <form action="artikelbewerkopslaan.php" method="POST">
     <strong>Titel:</strong> <br>
-    <input type="text" name="titel" value="<?php echo $titel; ?>" size="138px"><br><br>
+    <input type="text" name="titel" value="<?php echo $titel23; ?>" size="138px"><br><br>
 </div>
     <!--Hier staat de tekst editor tinyMCE-->
     <div class="container">
@@ -37,15 +82,14 @@
         toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | print preview media fullpage | forecolor backcolor emoticons'
       });
       </script>
-
-      <textarea id="myTextarea" name="tinymce"></textarea>
+      <textarea id="myTextarea" name="tinymce"><?php echo $tekst; ?></textarea>
 
         </div>
       </div>
     </div>
     <br>
     <div class="col-md-12">
-    <input type="submit" name="Publiceren" value="Publiceren"><br>
+    <input type="submit" name="opslaan" value="opslaan"><br>
   </div>
   </form>
 
