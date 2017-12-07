@@ -47,31 +47,31 @@ if(isset($_POST['Publiceren'])){
         $fileNameNew = uniqid('', true) . "." . $fileActualExt;
         $filevalid = true;
       }else{
-        header("location: imageupload.php?size");
+        header("location: toevoegen.php?size");
       }
     }else{
-      header("location: imageupload.php?upload");
+      header("location: toevoegen.php?upload");
     }
   }else {
-    header("location: imageupload.php?filetype");
+    header("location: toevoegen.php?filetype");
   }
 
   $titel = htmlentities(trim($_POST['titel'], ENT_QUOTES));
   //checken of titel is ingevuld
   if(empty($titel)){
-    echo "<p class = 'eror'>Vul altublieft een titel in</p>";
+    echo "<p class = 'error'>Vul altublieft een titel in</p>";
     $valid = false;
   }
   $tekst= htmlentities(trim($_POST['tinymce'], ENT_QUOTES));
   //checken of tekst is ingevuld
   if(empty($tekst)){
-   echo "<p class = 'eror'>Vul altublieft tekst in</p>";
+   echo "<p class = 'error'>Vul altublieft tekst in</p>";
    $valid = false;
 }
 
 
   if($valid == true && $filevalid ==true){
-    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur, datum, afbeelding, status) VALUES ('?', '$titel','$tekst','$fileNameNew', '123', NOW(), '?', 1 )");
+    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur, datum, afbeelding, status) VALUES ('?', '$titel','$tekst','$fileNameNew', '1', NOW(), '?', 1 )");
     $stmt->execute();
 
     $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
