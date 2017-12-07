@@ -24,6 +24,38 @@ if ($conn->connect_error) {
 
 if(isset($_POST['Publiceren'])){
   $valid = true;
+  $filevalid = false;
+
+  $file = $_FILES['thumbnail'];
+
+  $fileName = $_FILES['thumbnail']['name'];
+  $fileTmp = $_FILES['thumbnail']['tmp_name'];
+  $fileSize = $_FILES['thumbnail']['size'];
+  $fileError = $_FILES['thumbnail']['error'];
+
+  $fileExt = explode('.', $fileName);
+  $fileActualExt = strtolower(end($fileExt));
+
+  $allow = array('jpg','jpeg','png');
+
+  if(in_array($fileActualExt, $allow)){
+    //kijken of het filetype klopt
+    if($fileError === 0){
+      //kijken of er een error is tijdens uploaden
+      if($fileSize < 500000){
+        //kijken of het bestand niet te groot is
+        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+        $filevalid = true;
+      }else{
+        header("location: imageupload.php?size");
+      }
+    }else{
+      header("location: imageupload.php?upload");
+    }
+  }else {
+    header("location: imageupload.php?filetype");
+  }
+
   $titel = htmlentities(trim($_POST['titel'], ENT_QUOTES));
   //checken of titel is ingevuld
   if(empty($titel)){
@@ -37,12 +69,18 @@ if(isset($_POST['Publiceren'])){
    $valid = false;
 }
 
-  if($valid ==true){
-    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur, datum, afbeelding, status) VALUES ('?', '$titel','$tekst','', '123', NOW(), '?', 1 )");
+
+  if($valid == true && $filevalid ==true){
+    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur, datum, afbeelding, status) VALUES ('?', '$titel','$tekst','$fileNameNew', '123', NOW(), '?', 1 )");
     $stmt->execute();
+
+    $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
+    move_uploaded_file($fileTmp, $fileDestination);
+
     echo "Artikel is gepubliceerd!";
  }
 }
+
 
 $conn->close();
 

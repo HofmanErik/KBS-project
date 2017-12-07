@@ -4,17 +4,19 @@
 <script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
   <script type="text/javascript">
   tinymce.init({
-    selector: '#myTextarea',
+    selector: 'myTextarea',
     theme: 'modern',
     width: 1000,
     height: 400,
     plugins: [
       'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
       'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-      'save table contextmenu directionality emoticons template paste textcolor image'
+      'save table contextmenu directionality emoticons template paste textcolor'
+      'image imagetools'
     ],
     content_css: 'css/content.css',
-    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | print preview media fullpage | forecolor backcolor emoticons'
+    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | print preview media fullpage | forecolor backcolor emoticons |image'
+    imagetools_toolbar: "rotateleft rotateright | flipv fliph | editimage imageoptions"
   });
   </script>
 
