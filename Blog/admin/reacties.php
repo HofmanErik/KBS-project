@@ -4,9 +4,6 @@
 include '../admin/header.php';
 require 'classes/functions.php';
 
-$database = new Database;
-
-$database->query('SELECT * FROM bezoeker');
 // Aanroepen van de databaseclass als een variabele
 $database = new Database;
 

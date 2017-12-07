@@ -1,4 +1,13 @@
 <?php include 'modules/menu.php'; ?>
+<?php include 'admin/classes/functions.php'; ?>
+
+<?php $database = new Database; 
+
+// query toevoegen aan de query functie zodat deze gereturned kan worden
+$database->query('SELECT * FROM rating r JOIN bezoeker b ON r.reviewnr = b.reviewnr');
+// To do - aanpassen van query om niet medewerkers maar ratings te tonen. 'SELECT * FROM rating r JOIN bezoeker b ON r.reviewnr = b.reviewnr'
+$rows = $database->resultset();
+?>
 
 <div class="container">
 	<div class="row">
@@ -10,31 +19,31 @@
 					<div class="radio">
 						<label>
 						<input type="radio" name="rating" id="1ster" value="option1">
-						1
+						1 ster
 						</label>
 					</div>
 					<div class="radio">
 						<label>
 						<input type="radio" name="rating" id="2ster" value="option2">
-						2
+						2 sterren
 						</label>
 					</div>
 					<div class="radio">
 						<label>
 						<input type="radio" name="rating" id="3ster" value="option3">
-						3
+						3 sterren
 						</label>
 					</div>
 					<div class="radio">
 						<label>
 						<input type="radio" name="rating" id="4ster" value="option5">
-						4
+						4 sterren
 						</label>
 					</div>
 					<div class="radio">
 						<label>
 						<input type="radio" name="rating" id="4ster" value="option5">
-						5
+						5 sterren
 						</label>
 					</div>
 				</div>
