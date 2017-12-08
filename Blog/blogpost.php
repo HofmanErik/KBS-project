@@ -134,8 +134,6 @@ if(!isset($_GET["artikelnr"])){
               <span class="required">*</span>
             </p>
             <p>
-              <br>
-              <br>
               <textarea id="comment" name="comment" cols="58" rows="8" maxlength="65525" aria-required="true" required="required"></textarea>
             </p>
             <p>
