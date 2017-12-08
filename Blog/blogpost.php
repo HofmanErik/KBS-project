@@ -11,7 +11,8 @@ if(!isset($_GET["artikelnr"])){
   $username = "beheerder";
   $password = "geheim";
   $dbname = "db_vindbaarin";
-  $sql = "SELECT artikelnr, titel, tekst, thumbnail, datum, voornaam FROM artikel a JOIN medewerker m ON a.auteur = m.mnr WHERE artikelnr = :artikel1";
+  $sql = "SELECT artikelnr, titel, tekst, thumbnail, datum, voornaam FROM artikel a
+          JOIN medewerker m ON a.auteur = m.mnr WHERE artikelnr = :artikel1";
 
 
   try {
@@ -39,18 +40,18 @@ if(!isset($_GET["artikelnr"])){
 }
 
 
-        ?>
+?>
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('laptop-hero.jpeg')">
       <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          
+        <div class="container">
+          <div class="row">
+
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
               <h1><?= $titel; ?></h1>
               <h2 class="subheading"></h2>
-              <span class="meta">Posted by
+                <span class="meta">Posted by
                 <a href="#"><?= $voornaam; ?></a>
                 on <?= $datum; ?></span>
             </div>
@@ -68,9 +69,9 @@ if(!isset($_GET["artikelnr"])){
           </div>
           <div class="col-lg-10 col-md-12 mx-auto">
             <?= htmlspecialchars_decode(stripslashes($tekst)) ; ?>
+          </div>
         </div>
       </div>
-    </div>
     </article>
 
     <hr>

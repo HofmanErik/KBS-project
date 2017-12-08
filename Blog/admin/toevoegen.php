@@ -13,57 +13,50 @@
   </div>
   <div class="card-body">
     <div class="col-md-12">
+      <!-- Formulier voor het schrijven en toevoegen van een artikel -->
       <form action="verwerktoevoegen.php" method="POST" enctype="multipart/form-data">
-    <strong>Titel:</strong> <br>
-    <input type="text" name="titel" value="" size="138px"><br><br>
-<!--thumbnail-->
-    <input type="file" name="thumbnail">
-
-</div>
+        <!-- Titel -->
+        <strong>Titel:</strong> <br>
+        <input type="text" name="titel" value="" size="138px"><br><br>
+        <!--Thumbnail-->
+        <input type="file" name="thumbnail">
+    </div>
 
     <!--Hier staat de tekst editor tinyMCE-->
     <div class="container">
       <div class="row editor">
         <div class="col-md-8">
-    <script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
-      <script type="text/javascript">
-      tinymce.init({
-        selector: '#myTextarea',
-        theme: 'modern',
-        width: 1000,
-        height: 400,
-        plugins: [
-          'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
-          'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-          'save table contextmenu directionality emoticons template paste textcolor'
-        ],
-        content_css: 'css/content.css',
-        toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | print preview media fullpage | forecolor backcolor emoticons'
-      });
-      </script>
-
-      <textarea id="myTextarea" name="tinymce"></textarea>
-
+          <script type="text/javascript" src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+            <script type="text/javascript">
+              tinymce.init({
+                selector: '#myTextarea',
+                theme: 'modern',
+                width: 1000,
+                height: 400,
+                plugins: [
+                  'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+                  'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                  'save table contextmenu directionality emoticons template paste textcolor'
+                  ],
+                  content_css: 'css/content.css',
+                  toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | print preview media fullpage | forecolor backcolor emoticons'
+                  });
+            </script>
+          <textarea id="myTextarea" name="tinymce"></textarea>
         </div>
       </div>
     </div>
     <br>
 
-  <div class="col-md-12">
-    <input type="submit" name="Publiceren" value="Publiceren">
-    <!-- DOET HET NOG NIET!-->
-    <!--<input type="submit" name="Opslaan" value="Opslaan"><br><br>-->
+      <div class="col-md-12">
+        <input type="submit" name="Publiceren" value="Publiceren">
+        <!-- DOET HET NOG NIET!-->
+        <!--<input type="submit" name="Opslaan" value="Opslaan"><br><br>-->
+      </div>
+    </form>
   </div>
-  </form>
 </div>
 
-    <!--</div>
-    <div class="tinymce">
-      <br/>
-         <?php
-         //include "../admin/editor/tinymce/index.php"
-         ?>
- </div>-->
  <!---
 <br/>
 <div class="row-buttons">
