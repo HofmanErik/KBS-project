@@ -8,7 +8,7 @@ require 'classes/functions.php';
 $database = new Database;
 
 // query toevoegen aan de query functie zodat deze gereturned kan worden
-$database->query('SELECT * FROM rating r JOIN bezoeker b ON r.reviewnr = b.reviewnr');
+$database->query('SELECT * FROM rating');
 // To do - aanpassen van query om niet medewerkers maar ratings te tonen. 'SELECT * FROM rating r JOIN bezoeker b ON r.reviewnr = b.reviewnr'
 $rows = $database->resultset();
 ?>
@@ -54,6 +54,7 @@ $rows = $database->resultset();
                             <th>Reactienr</th>
                             <th>Rating</th>
                             <th>Geschreven door</th>
+                            <th>Email</th>
                             <th>Publiceerdatum</th>
                             <th>#</th>
                             <th>#</th>
@@ -66,12 +67,13 @@ $rows = $database->resultset();
                     <!-- echo elke rij in de tabel met de juiste gegevens in een html table per row -->
                     <tr>
                         <td><?php echo $row['reviewnr']; ?></td>
-                        <td><?php echo $row['voornaam'], $row['achternaam']; ?></td>
-                        <td><?php echo '07-12-2017' ; ?></td>
+                        <td><?php echo $row['rating']; ?></td>
+                        <td><?php echo $row['voornaam']." ".$row['tussenvoegsel']." ".$row['achternaam']; ?></td>
                         <td><?php echo $row['email']; ?></td>
+                        <td><?php echo $row['datum'] ; ?></td>
                         <td><?php echo '<button type="button" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i></button>' ?></td>
                         <td><?php echo '<button type="button" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>' ?></td>
-                        <td><?php echo 'Gepubliceerd' ?></td>
+                        <td><?php echo $row['status'] ?></td>
                     </tr>
                     <?php endforeach; ?>
                     <!-- Footer -->

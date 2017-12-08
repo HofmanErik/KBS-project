@@ -48,6 +48,10 @@ $rows = $database->resultset();
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="tekst">Bericht</label>
+					<textarea class="form-control" rows="3" id="tekst" placeholder="Uw Bericht"></textarea>
+				</div>
+				<div class="form-group">
 					<label for="voornaam">Voornaam</label>
 					<input type="text" class="form-control" id="voornaam" placeholder="Henk">
 				<!-- </div>
