@@ -36,3 +36,5 @@
 header("location: artikelbewerk.php");
 }
 ?>
+<?php echo $tekst; ?>
+<?php echo $titel; ?>
