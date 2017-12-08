@@ -59,13 +59,20 @@ if(isset($_POST['Publiceren'])){
   $titel = htmlentities(trim($_POST['titel'], ENT_QUOTES));
   //checken of titel is ingevuld
   if(empty($titel)){
-    echo "<p class = 'error'>Vul altublieft een titel in</p>";
+    echo '
+   <div class="container-fluid">
+  <p class = \'error\'>Vul alsjeblieft een titel in</p>
+  </div>';
     $valid = false;
   }
   $tekst= htmlentities(trim($_POST['tinymce'], ENT_QUOTES));
   //checken of tekst is ingevuld
   if(empty($tekst)){
-   echo "<p class = 'error'>Vul altublieft tekst in</p>";
+   echo '
+   <div class="container-fluid">
+  <p class = \'error\'>Vul alsjeblieft een tekst in</p>
+  </div>';
+
    $valid = false;
 }
 
@@ -77,7 +84,10 @@ if(isset($_POST['Publiceren'])){
     $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
     move_uploaded_file($fileTmp, $fileDestination);
 
-    echo "Artikel is gepubliceerd!";
+    echo '
+  <div class="container-fluid">
+  Artikel is gepubliceerd!
+  </div>';
  }
 }
 

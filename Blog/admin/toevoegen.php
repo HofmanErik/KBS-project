@@ -11,8 +11,16 @@
       <li class="breadcrumb-item active">Toevoegen</li>
     </ol>
   </div>
+
   <div class="card-body">
-    <div class="col-md-12">
+    <div class="row">
+      <div class="col-12">
+        <h1><i class="fa fa-pencil"></i>
+          <span class="">Artikel toevoegen</span><h1>      
+        </div>
+        </div>
+    <div class="card text-black bg-secundairy o-hidden h-100">
+        <div class="col-md-12">
       <form action="verwerktoevoegen.php" method="POST" enctype="multipart/form-data">
     <strong>Titel:</strong> <br>
     <input type="text" name="titel" value="" size="138px"><br><br>
@@ -55,6 +63,7 @@
     <!--<input type="submit" name="Opslaan" value="Opslaan"><br><br>-->
   </div>
   </form>
+</div>
 </div>
 
     <!--</div>
