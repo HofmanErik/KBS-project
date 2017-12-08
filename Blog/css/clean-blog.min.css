@@ -12,8 +12,13 @@
 }
 
 .blogimg {
+  width: 400px;
+  padding: 15px;
+
+}
+
+.blogimg2 {
   width: 175px;
-  height: 175px;
   padding: 15px;
 
 }
