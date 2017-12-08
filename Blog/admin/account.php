@@ -1,11 +1,9 @@
-<?php include '../admin/header.php';
+<?php session_start(); include '../admin/header.php'; 
 
   if (isset($_POST['opslaan'])){
 
       print ($_POST['achternaam']);
 }
-
-
 
         $servername = "localhost";
         $username = "beheerder";
@@ -27,7 +25,7 @@
                 $achternaam = $row['achternaam'];
                 $voornaam = $row['voornaam'];
             }
-            if (isset($_POST["opslaan"])){
+            if (isset($_POST["opslaan1"])){
                 $postvoornaam = $_POST['voornaam'];
                 $postachternaam = $_POST["achternaam"];
                 $mnr = $_SESSION['mnr'];
@@ -43,19 +41,27 @@
                 $voornaam = $row['voornaam'];
             }
             }
-            if (isset($_POST["opslaan"])){
-                $postvoornaam = $_POST['voornaam'];
-                $postachternaam = $_POST["achternaam"];
+            if (isset($_POST["opslaan2"])){
+                $oudWachtwoord = $_POST["oudWachtwoord"];
+                $nieuwWachtwoord1 = $_POST["nieuwWachtwoord1"];
+                $nieuwWachtwoord2 = $_POST["nieuwWachtwoord2"];
                 $mnr = $mnr = $_SESSION['mnr'];
+                $wwhashOld = $_SESSION['wwhash'];
                 
-                if($_POST["nieuwWachtwoord1"]){
-                    
-                }
-
-                $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = '$mnr'";
+                $options = ['cost' => 12];
+                $hashedpwd = password_hash($nieuwWachtwoord2, PASSWORD_BCRYPT, $options);
+                $passwrdVerify = password_verify($oudWachtwoord, $wwhashOld);
+                
+                if($passwrdVerify && ($nieuwWachtwoord1 == $nieuwWachtwoord2)){   
+                   $sql = "UPDATE medewerker SET wwhash = '$hashedpwd' WHERE mnr = '$mnr'";
 
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
+                }else{
+                    print("werkt niet joh");
+                }
+
+                
               }
 ?>
 
