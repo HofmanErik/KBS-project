@@ -72,15 +72,14 @@
             if (isset($_POST["opslaan"])){
                 $postvoornaam = $_POST['voornaam'];
                 $postachternaam = $_POST["achternaam"];
-<<<<<<< HEAD
+
                 $mnr = $mnr = $_SESSION['mnr'];
                 
                 if($_POST["nieuwWachtwoord1"]){
                     
                 }
-=======
+
                 $mnr = $_SESSION['mnr'];
->>>>>>> Melissa
 
                 $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = '$mnr'";
 
