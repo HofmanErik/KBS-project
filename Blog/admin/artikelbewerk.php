@@ -22,13 +22,13 @@
       echo "Connection failed: " . $e->getMessage();
       }
       //sql query naam opslaan in database
-      $sql = ("SELECT * FROM artikel WHERE artikelnr = 1");
+      $sql = ("SELECT * FROM artikel WHERE artikelnr = '$artikelnr'");
         $stmt = $conn->prepare($sql);
         $stmt->execute(); 
 
         $row = $stmt->fetch();
 
-          $titel23    = $row['titel'];
+          $titel    = $row['titel'];
           $tekst    = $row['tekst'];
           $thumbnail  = $row['thumbnail'];
           $auteur   = $row['auteur'];
@@ -59,10 +59,15 @@
   </div>
   <div class="card-body">
     <div class="col-md-12">
-      <form action="artikelbewerkopslaan.php" method="POST">
+      <form action="artikelbewerkopslaan.php" method="POST" enctype="multipart/form-data">
     <strong>Titel:</strong> <br>
-    <input type="text" name="titel" value="<?php echo $titel23; ?>" size="138px"><br><br>
+    <input type="text" name="titel" value="<?php echo $titel; ?>" size="138px"><br><br>
+<!--thumbnail-->
+    <input type="file" name="thumbnail" >
+
+    <input type="hidden" name="artikelnr" value="<?php echo $artikelnr; ?>">
 </div>
+
     <!--Hier staat de tekst editor tinyMCE-->
     <div class="container">
       <div class="row editor">
@@ -83,40 +88,20 @@
         toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | print preview media fullpage | forecolor backcolor emoticons'
       });
       </script>
+
       <textarea id="myTextarea" name="tinymce"><?php echo $tekst; ?></textarea>
 
         </div>
       </div>
     </div>
     <br>
-    <div class="col-md-12">
-    <input type="submit" name="opslaan" value="opslaan"><br>
+
+  <div class="col-md-12">
+    <input type="submit" name="publiceren" value="Posten">
+    <input type="submit" name="concept" value="Draft">
+    <!-- DOET HET NOG NIET!-->
+    <!--<input type="submit" name="Opslaan" value="Opslaan"><br><br>-->
   </div>
   </form>
-
-    <!--</div>
-    <div class="tinymce">
-      <br/>
-         <?php
-         //include "../admin/editor/tinymce/index.php"
-         ?>
- </div>-->
- <!---
-<br/>
-<div class="row-buttons">
-  <div class="col-md-4">
-    <form method="$_GET" action="overzicht.php">
-      <input type="submit" name="Annuleren" value="Annuleren">
-      <input type="submit" name="Opslaan" value="Opslaan">
-      <input type="submit" name="Publiceren" value="Publiceren">
-    </form>
-  </div>
 </div>
-</form>
-</div>
-</div>-->
-
-
-
-
 <?php include "../admin/footer.php" ?>
