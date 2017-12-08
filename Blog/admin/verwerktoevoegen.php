@@ -26,23 +26,25 @@
     die("Connection failed: " . $conn->connect_error);
   }
 
-  //Zodra op Publiceren wordt gedrukt bij toevoegen.php dan:
-  if(isset($_POST['Publiceren'])){
-    $valid = true;
-    $filevalid = false;
+  $titel = htmlentities(trim($_POST['titel'], ENT_QUOTES));
+  //checken of titel is ingevuld
+  if(empty($titel)){
+    echo '
+   <div class="container-fluid">
+  <p class = \'error\'>Vul alsjeblieft een titel in</p>
+  </div>';
+    $valid = false;
+  }
+  $tekst= htmlentities(trim($_POST['tinymce'], ENT_QUOTES));
+  //checken of tekst is ingevuld
+  if(empty($tekst)){
+   echo '
+   <div class="container-fluid">
+  <p class = \'error\'>Vul alsjeblieft een tekst in</p>
+  </div>';
 
-    //thumbnail toevoegen
-    $file = $_FILES['thumbnail'];
-
-    $fileName = $_FILES['thumbnail']['name'];
-    $fileTmp = $_FILES['thumbnail']['tmp_name'];
-    $fileSize = $_FILES['thumbnail']['size'];
-    $fileError = $_FILES['thumbnail']['error'];
-
-    $fileExt = explode('.', $fileName);
-    $fileActualExt = strtolower(end($fileExt));
-
-    $allow = array('jpg','jpeg','png');
+   $valid = false;
+}
 
       if(in_array($fileActualExt, $allow)){
         //kijken of het filetype klopt
@@ -78,10 +80,12 @@
               $valid = false;
             }
 
-            //Als alles ingevuld is dan:
-            if($valid == true && $filevalid ==true){
-              $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur, datum, afbeelding, status) VALUES ('?', '$titel','$tekst','$fileNameNew', '1', NOW(), '?', 1 )");
-              $stmt->execute();
+    echo '
+  <div class="container-fluid">
+  Artikel is gepubliceerd!
+  </div>';
+ }
+}
 
               //Hier worden de thumbnails opgeslagen
               $fileDestination = 'afbeeldingopslag/' . $fileNameNew;

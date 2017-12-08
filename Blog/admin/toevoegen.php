@@ -11,9 +11,16 @@
       <li class="breadcrumb-item active">Toevoegen</li>
     </ol>
   </div>
+
   <div class="card-body">
-    <div class="col-md-12">
-      <!-- Formulier voor het schrijven en toevoegen van een artikel -->
+    <div class="row">
+      <div class="col-12">
+        <h1><i class="fa fa-pencil"></i>
+          <span class="">Artikel toevoegen</span><h1>
+        </div>
+        </div>
+    <div class="card text-black bg-secundairy o-hidden h-100">
+        <div class="col-md-12">
       <form action="verwerktoevoegen.php" method="POST" enctype="multipart/form-data">
         <!-- Titel -->
         <strong>Titel:</strong> <br>
@@ -56,6 +63,7 @@
     </form>
   </div>
 </div>
+</div>
 
  <!---
 <br/>
@@ -71,8 +79,5 @@
 </form>
 </div>
 </div>-->
-
-
-
 
 <?php include "../admin/footer.php" ?>
