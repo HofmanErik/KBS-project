@@ -53,9 +53,9 @@
                 <h2 class="post-title">
                 '.$row["titel"].'
                 </h2>
-                <h5 class="post-subtitle">
+                <h4 class="post-subtitle">
                 Hier komt een preview van de tekst alleen zijn we er nog niet helemaal over uit hoe
-                </h5>
+                </h4>
               </a>
               <p class="post-meta">Posted by
               <a href="#">'.$row["voornaam"].'</a>
