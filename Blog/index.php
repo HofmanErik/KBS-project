@@ -1,10 +1,24 @@
-<?php include 'modules/menu.php'; ?>
+<?php include 'header.php';?>
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('laptop-hero.jpeg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Blog</h1>
+              <span class="subheading">Een blog door Vindbaar in</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-
-
-          <?php
-
-
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+<?php
           $servername = "localhost";
           $username = "beheerder";
           $password = "geheim";
@@ -23,38 +37,45 @@
 
           while ($row = $stmt->fetch()) {
             $thumbnail = $row["thumbnail"];
-
               if($row["thumbnail"] == ""){
                 $thumbnail = "download.png";
-              }
-              $thumbsource = "admin/afbeeldingopslag/" . $thumbnail;
-echo '
-            <div class="container">
- <div class="row blogposts">
-   <div class="col-md-3">
-     <img src="'.$thumbsource.'" alt="'.$thumbsource.'"
-     class="img-responsive blogimg">
-   </div>
-   <div class="col-md-9">
-     <div class="post-preview">
-         <h2 class="post-title">
-         <tr><td><h2>'.$row["titel"].'</h2></td></tr>          </h2>
-       </a>
-       <p class="post-meta">Posted by
-         <a href="#">'.$row["voornaam"].'</a>
-       <tr><td>on '.$row["datum"].'</td></tr></p>
+                }
+                $thumbsource = "admin/afbeeldingopslag/" . $thumbnail;
 
-        <a href="blogpost.php?artikelnr='.$row["artikelnr"].'"> meer lezen --> </a>
-     </div>
-   </div>
- </div>
-</div>
-<hr>
-
-';
-          }
-
-
+        print('
+          <div class="post-preview">
+           <div class="row">
+             <div class="col-md-3">
+              <img src="'.$thumbsource.'" alt="'.$thumbsource.'"class="img-responsive blogimg img-circle">
+            </div>
+            <div class="col-md-9">
+              <a href="blogpost.php?artikelnr='.$row["artikelnr"].'">
+                <h2 class="post-title">
+                '.$row["titel"].'
+                </h2>
+                <h5 class="post-subtitle">
+                Hier komt een preview van de tekst alleen zijn we er nog niet helemaal over uit hoe
+                </h5>
+              </a>
+              <p class="post-meta">Posted by
+              <a href="#">'.$row["voornaam"].'</a>
+              '.$row["datum"].'</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-10 mx-auto">
+          </div>
+          <hr>
+          <hr>');
+        }
           ?>
+          <!-- Pager -->
+          <!--<div class="clearfix">
+                <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+              </div> -->
+        </div>
+      </div>
+    </div>
 
-<?php include 'modules/footer.php'; ?>
+    <hr>
+<?php include 'footer.php';?>

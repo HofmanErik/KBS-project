@@ -2,11 +2,11 @@
 <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <?php include '../admin/header.php';?>
 
+
 <?php
 // Tabel oproepen
 if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
-    $zoektext = $_POST["zoektext"];
-    try {        
+    $zoektext = $_POST["zoektext"];   
         $sql = "SELECT *
             FROM artikel a
             join medewerker m on m.mnr=a.auteur
@@ -19,11 +19,7 @@ if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
     $stmt -> bindvalue( ":concept1",0,PDO::PARAM_STR );
     $stmt -> bindvalue( ":concept2",1,PDO::PARAM_STR );
     $stmt -> execute();
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
 } else {
-  try {
         $sql = "SELECT *
             FROM artikel a
             join medewerker m on m.mnr=a.auteur
@@ -35,9 +31,6 @@ if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
     $stmt -> bindvalue( ":concept1",0,PDO::PARAM_STR );
     $stmt -> bindvalue( ":concept2",1,PDO::PARAM_STR );
     $stmt->execute();
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
 }
 ?>
 

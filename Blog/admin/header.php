@@ -20,11 +20,13 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="#">Vindbaar in</a>
+<!--     Hamburgermenu -->
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive"
             aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+<!--     Hier begint de linker navbar -->
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
@@ -55,19 +57,16 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Instellingen">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
-             href="#collapse-instellingen" data-parent="#exampleAccordion">
-            <i class="fa fa-cog fa-fw"></i>
+          <a class="nav-link" href="../admin/account.php">
+            <i class="fa fa-cog"></i>
             <span class="nav-link-text">Instellingen</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapse-instellingen">
-            <li>
-              <a href="../admin/account.php">Accountinstellingen</a>
-            </li>
-            <li>
-              <a href="../admin/email.php">Emailinstellingen</a>
-            </li>
-          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gebruiker toevoegen">
+          <a class="nav-link" href="../admin/register.php">
+            <i class="fa fa-user-plus"></i>
+            <span class="nav-link-text">Gebruiker toevoegen</span>
+          </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Voorbeeld">
           <a class="nav-link" href="../index.php" target="_blank">

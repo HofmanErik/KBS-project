@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Registreren</title>
-  <!-- Bootstrap core CSS-->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template-->
-  <link href="../scss/sb-admin.scss" rel="stylesheet">
-</head>
-
+  <?php include '../admin/header.php'; ?>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="../admin/dashboard.php">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
 <body class="bg-dark">
   <div class="container">
     <div class="card card-register mx-auto mt-5">
@@ -53,12 +45,8 @@
               </div>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="../index.php">Terug naar het blog</a>
+          <a class="btn btn-primary btn-block" href="register.php">Opslaan</a>
         </form>
-        <div class="text-center">
-          <a class="d-block small mt-3" href="../admin/login.php">Inloggen</a>
-          <a class="d-block small" href="../admin/forgot-password.php">Wachtwoord vergeten?</a>
-        </div>
       </div>
     </div>
   </div>
@@ -68,5 +56,8 @@
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 </body>
+</div>
+</div>
+<?php include '../admin/footer.php'; ?>
 
 </html>
