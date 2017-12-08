@@ -49,13 +49,13 @@
    						move_uploaded_file($fileTmp, $fileDestination);
 
 			      }else{
-			        header("location: artikelbewerkforms.php?size");
+			        header("location: overzicht.php?size");
 			      }
 			    }else{
-			      header("location: artikelbewerkforms.php?upload");
+			      header("location: overzicht.php?upload");
 			    }
 			  }else {
-			    header("location: artikelbewerkforms.php?filetype");
+			    header("location: overzicht.php?filetype");
 			  }					
 				
 
@@ -67,7 +67,7 @@
 						//sql query naam opslaan in database
     		$prep = $conn->prepare($sql); 	
     		$prep->execute();
-    		header("location: artikelbewerkforms.php?Postsucces");	
+    		header("location: overzicht.php?Postsucces");	
 	    }
 
 //concept			
@@ -118,13 +118,13 @@
    						move_uploaded_file($fileTmp, $fileDestination);
 
 			      }else{
-			        header("location: artikelbewerkforms.php?size");
+			        header("location: overzicht.php?size");
 			      }
 			    }else{
-			      header("location: artikelbewerkforms.php?upload");
+			      header("location: overzicht.php?upload");
 			    }
 			  }else {
-			    header("location: artikelbewerkforms.php?filetype");
+			    header("location: overzicht.php?filetype");
 			  }					
 				
 
@@ -137,7 +137,7 @@
 			//sql query naam opslaan in database
     		$prep = $conn->prepare($sql); 	
     		$prep->execute();	
-    		header("location: artikelbewerkforms.php?Draftsucces");
+    		header("location: overzicht.php?Draftsucces");
 
 	}
 ?>

@@ -109,7 +109,7 @@ if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
                     </td>");
     };
     print("         <td>
-                        <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"Bewerken\" title=\"Bewerken\">
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"Bewerken\" formaction=\"artikelbewerk.php\" title=\"Bewerken\">
                             <i class=\"fa fa-pencil\"></i>
                         </button>
                         <button type=\"submit\" class=\"btn btn-light\" name=\"verwijder\" value=\"Verwijder\" title=\"Verwijderen\">

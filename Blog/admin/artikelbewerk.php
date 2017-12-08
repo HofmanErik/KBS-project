@@ -8,7 +8,7 @@
       $password = "geheim";
       $dbname = "db_vindbaarin";
 
-      $artikelnr = $_POST['artikelnr'];
+      $artikelnr = $_POST['nummer'];
 
       try {
       //Creating connection for mysql
