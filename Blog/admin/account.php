@@ -1,37 +1,9 @@
-<?php include '../admin/header.php';
-// Emailupdate
-  if(isset($_POST['emailsubmit'])){
-    $newmail = $_POST['mail'];
+<?php session_start(); include '../admin/header.php'; 
 
-      $servername = "localhost";
-      $username = "beheerder";  
-      $password = "geheim";
-
-      try {
-      //Creating connection for mysql
-      $conn = new PDO("mysql:host=$servername;dbname=db_vindbaarin", $username, $password);
-      // set the PDO error mode to exception
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      echo "Connected successfully";
-      }
-      catch(PDOException $e)
-      {
-      echo "Connection failed: " . $e->getMessage();
-      }
-      $mnr = 1; 
-      //sql query naam opslaan in database
-        $prep = $conn->prepare("update medewerker SET email = '$newmail' WHERE mnr = '$mnr'");  
-        $prep->execute(); 
-
-
-  }
-  // naam veranderen
   if (isset($_POST['opslaan'])){
 
       print ($_POST['achternaam']);
 }
-
-
 
         $servername = "localhost";
         $username = "beheerder";
@@ -53,7 +25,7 @@
                 $achternaam = $row['achternaam'];
                 $voornaam = $row['voornaam'];
             }
-            if (isset($_POST["opslaan"])){
+            if (isset($_POST["opslaan1"])){
                 $postvoornaam = $_POST['voornaam'];
                 $postachternaam = $_POST["achternaam"];
                 $mnr = $_SESSION['mnr'];
@@ -69,22 +41,27 @@
                 $voornaam = $row['voornaam'];
             }
             }
-            if (isset($_POST["opslaan"])){
-                $postvoornaam = $_POST['voornaam'];
-                $postachternaam = $_POST["achternaam"];
-
+            if (isset($_POST["opslaan2"])){
+                $oudWachtwoord = $_POST["oudWachtwoord"];
+                $nieuwWachtwoord1 = $_POST["nieuwWachtwoord1"];
+                $nieuwWachtwoord2 = $_POST["nieuwWachtwoord2"];
                 $mnr = $mnr = $_SESSION['mnr'];
+                $wwhashOld = $_SESSION['wwhash'];
                 
-                if($_POST["nieuwWachtwoord1"]){
-                    
-                }
-
-                $mnr = $_SESSION['mnr'];
-
-                $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = '$mnr'";
+                $options = ['cost' => 12];
+                $hashedpwd = password_hash($nieuwWachtwoord2, PASSWORD_BCRYPT, $options);
+                $passwrdVerify = password_verify($oudWachtwoord, $wwhashOld);
+                
+                if($passwrdVerify && ($nieuwWachtwoord1 == $nieuwWachtwoord2)){   
+                   $sql = "UPDATE medewerker SET wwhash = '$hashedpwd' WHERE mnr = '$mnr'";
 
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
+                }else{
+                    print("werkt niet joh");
+                }
+
+                
               }
 ?>
 
@@ -95,16 +72,15 @@
         <li class="breadcrumb-item">
           <a href="../admin/dashboard.php">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Instellingen</li>
+        <li class="breadcrumb-item active">Accountinstellingen</li>
       </ol>
-        <div class="row">
-            <div class="col-12">
-                <h1><i class="fa fa-cog"></i>
-                <span class="">Instellingen</span><h1>      
-            </div>
-        </div>
       <div class="row">
-  <div class="col-sm-6">
+        <div class="col-12">
+          <h1>Account instellingen</h1>
+        </div>
+      </div>
+      <div class="row">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-block">
         <h4 class="card-title">Naam wijzigen</h4>
@@ -128,19 +104,7 @@
       </div>
     </div>
   </div>
-        <div class="col-sm-6">
-    <div class="card">
-      <div class="card-block">
-        <h4 class="card-title">Emailadres wijzigen</h4>
-          <form action="account.php" method="POST">
-            <p>Emailadres: <input type="email" name="mail"></p>
-            
-            <input class="btn btn-primary" type="submit" name="emailsubmit" value="Opslaan">
-          </form>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <form action="account.php" method ="POST">
     <div class="card">
       <div class="card-block">
@@ -153,29 +117,11 @@
         </form>
       </div>
     </div>
-  </form>
-</div>
-        <div class="col-sm-6">
-    <div class="card">
-      <div class="card-block">
-        <h4 class="card-title">Voorkeuren wijzigen</h4>
-        <p>Wil je een email melding ontvangen bij een nieuwe reactie?</p>
-         <select>
-          <option value="">Ja</option>
-          <option value="">Nee</option>
-        </select>
-        <p class="card-text"></p>
-        <a href="#" class="btn btn-primary">Opslaan</a>
-      </div>
-    </div>
   </div>
-</form>
+  </div>
 </div>
 </div>
-</div>
-
-
-
 
 
 <?php include '../admin/footer.php'; ?>
+16:02
