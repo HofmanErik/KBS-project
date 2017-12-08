@@ -78,7 +78,7 @@ if(!isset($_GET["artikelnr"])){
     <div class="container">
       <div class="row">
         <div class="col-lg-10 col-md-12 mx-auto">
-          <span>4 Comments</span>
+          <span>3 Comments</span>
           <p><b>Shanna van Grevengoed </b><br>
           <i>24 oktober, 2017 at 23:01</i>
           <img src="img/5-star-rating.png" class="img-responsive starimg"><br>
@@ -103,7 +103,47 @@ if(!isset($_GET["artikelnr"])){
           <span>Leave a comment</span>
           <p>Het e-mailadres wordt niet gepubliceerd. Vereiste velden zijn gemarkeerd met *</p>
           <form>
-            <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea>
+                        <p>
+              <label for="author">Name
+                <span class="required">*</span>
+            </label> 
+              <input id="author" name="author" placeholder="" value="" size="30" aria-required="true" type="text">
+            </p>
+            <p>
+              <label for="author">Email 
+                <span class="required">*</span>
+              </label> 
+              <input id="author" name="author" placeholder="" value="" size="30" aria-required="true" type="text">
+            </p>
+            <p>
+              <fieldset class="rating">
+                <input type="radio" id="star5" name="rating" value="5" />
+                <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                <input type="radio" id="star4half" name="rating" value="4.5" />
+                <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                <input type="radio" id="star4" name="rating" value="4" />
+                <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                <input type="radio" id="star3half" name="rating" value="3.5" />
+                <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                <input type="radio" id="star2half" name="rating" value="2.5" />
+                <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                <input type="radio" id="star2" name="rating" value="2" />
+                <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                <input type="radio" id="star1half" name="rating" value="1.5" />
+                <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                <input type="radio" id="star1" name="rating" value="1" />
+                <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                <input type="radio" id="starhalf" name="rating" value="0.5" />
+                <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+              </fieldset>
+            </p>
+            <p><br><br>
+              <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea>
+            </p>
+            <p>
+              <input type="submit" class="btn btn-secondary" value="Reactie plaatsen">
+            </p>
           </form>
         </div>
       </div>
