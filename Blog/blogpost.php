@@ -1,5 +1,4 @@
-<?php include 'blank-template.php'?>
-
+<?php include 'header.php';?>
  <?php
 
 if(!isset($_GET["artikelnr"])){
@@ -31,50 +30,49 @@ if(!isset($_GET["artikelnr"])){
       $thumbnail = $row['thumbnail'];
       $datum = $row['datum'];
       $voornaam = $row['voornaam'];
-
+      $thumbnail = $row["thumbnail"];
+      if($row["thumbnail"] == ""){
+      $thumbnail = "download.png";
+              }
+      $thumbsource = "admin/afbeeldingopslag/" . $thumbnail;
   }
 }
 
 
         ?>
-
-
-        <div class="container">
-          <div class="row title">
-            <div class="col-md-8">
-              <div class="title-post">
-                <h1><?= $titel; ?> </h1>
-                  <p class="post-meta">Posted by
-                    <a href="#"><?= $voornaam; ?></a>
-                      <?= $datum; ?></p>
-              </div>
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('laptop-hero.jpeg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1><?= $titel; ?></h1>
+              <h2 class="subheading"></h2>
+              <span class="meta">Posted by
+                <a href="#"><?= $voornaam; ?></a>
+                on <?= $datum; ?></span>
             </div>
-            <div class="col-md-4">
-
-              <img src= <?= $thumbnail; ?>
-                    class="img-responsive post-img">
-            </div>
-
           </div>
         </div>
+      </div>
+    </header>
 
-
-
-
-        <div class="container">
-          <div class="row text">
-            <div class="col-md-8 col-md-offset-2">
-              <div class="post-text">
-                <?= htmlspecialchars_decode(stripslashes($tekst)) ; ?>
-
-                </div>
-              </div>
-            </div>
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2 col-md-6 mx-auto">
+            <?= '<img src="'.$thumbsource.'" alt="'.$thumbsource.'"class="img-responsive blogimg">' ?>
           </div>
+          <div class="col-lg-10 col-md-12 mx-auto">
+            <?= htmlspecialchars_decode(stripslashes($tekst)) ; ?>
+        </div>
+      </div>
+    </div>
+    </article>
 
-
-
-
-
-
-<?php include 'modules/footer.php'; ?>
+    <hr>
+<?php include 'footer.php';?>
+</html>

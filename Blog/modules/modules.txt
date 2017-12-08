@@ -1,2 +1,0 @@
-Hier komen de modules voor de website, herhalende velden op je pagina om 
-redundatie te voorkomen en de code beter leesbaar te maken.
