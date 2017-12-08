@@ -1,5 +1,31 @@
 <?php include '../admin/header.php';
+// Emailupdate
+  if(isset($_POST['emailsubmit'])){
+    $newmail = $_POST['mail'];
 
+      $servername = "localhost";
+      $username = "beheerder";  
+      $password = "geheim";
+
+      try {
+      //Creating connection for mysql
+      $conn = new PDO("mysql:host=$servername;dbname=db_vindbaarin", $username, $password);
+      // set the PDO error mode to exception
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      echo "Connected successfully";
+      }
+      catch(PDOException $e)
+      {
+      echo "Connection failed: " . $e->getMessage();
+      }
+      $mnr = 1; 
+      //sql query naam opslaan in database
+        $prep = $conn->prepare("update medewerker SET email = '$newmail' WHERE mnr = '$mnr'");  
+        $prep->execute(); 
+
+
+  }
+  // naam veranderen
   if (isset($_POST['opslaan'])){
 
       print ($_POST['achternaam']);
@@ -46,7 +72,7 @@
             if (isset($_POST["opslaan"])){
                 $postvoornaam = $_POST['voornaam'];
                 $postachternaam = $_POST["achternaam"];
-                $mnr = $mnr = $_SESSION['mnr'];
+                $mnr = $_SESSION['mnr'];
 
                 $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = '$mnr'";
 
@@ -62,15 +88,16 @@
         <li class="breadcrumb-item">
           <a href="../admin/dashboard.php">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Accountinstellingen</li>
+        <li class="breadcrumb-item active">Instellingen</li>
       </ol>
-      <div class="row">
-        <div class="col-12">
-          <h1>Account instellingen</h1>
+        <div class="row">
+            <div class="col-12">
+                <h1><i class="fa fa-cog"></i>
+                <span class="">Instellingen</span><h1>      
+            </div>
         </div>
-      </div>
       <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-6">
     <div class="card">
       <div class="card-block">
         <h4 class="card-title">Naam wijzigen</h4>
@@ -94,7 +121,19 @@
       </div>
     </div>
   </div>
-    <div class="col-sm-4">
+        <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h4 class="card-title">Emailadres wijzigen</h4>
+          <form action="account.php" method="POST">
+            <p>Emailadres: <input type="email" name="mail"></p>
+            
+            <input class="btn btn-primary" type="submit" name="emailsubmit" value="Opslaan">
+          </form>
+      </div>
+    </div>
+  </div>
+    <div class="col-sm-6">
         <form action="account.php" method ="POST">
     <div class="card">
       <div class="card-block">
@@ -107,10 +146,29 @@
         </form>
       </div>
     </div>
+  </form>
+</div>
+        <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h4 class="card-title">Voorkeuren wijzigen</h4>
+        <p>Wil je een email melding ontvangen bij een nieuwe reactie?</p>
+         <select>
+          <option value="">Ja</option>
+          <option value="">Nee</option>
+        </select>
+        <p class="card-text"></p>
+        <a href="#" class="btn btn-primary">Opslaan</a>
+      </div>
+    </div>
   </div>
-  </div>
+</form>
 </div>
 </div>
+</div>
+
+
+
 
 
 <?php include '../admin/footer.php'; ?>
