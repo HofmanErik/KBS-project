@@ -47,6 +47,10 @@
                 $postvoornaam = $_POST['voornaam'];
                 $postachternaam = $_POST["achternaam"];
                 $mnr = $mnr = $_SESSION['mnr'];
+                
+                if($_POST["nieuwWachtwoord1"]){
+                    
+                }
 
                 $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = '$mnr'";
                 
