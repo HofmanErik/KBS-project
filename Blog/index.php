@@ -46,7 +46,7 @@
           <div class="post-preview">
            <div class="row">
              <div class="col-md-3">
-              <img src="'.$thumbsource.'" alt="'.$thumbsource.'"class="img-responsive blogimg img-circle">
+              <img src="'.$thumbsource.'" alt="'.$thumbsource.'"class="img-responsive blogimg2">
             </div>
             <div class="col-md-9">
               <a href="blogpost.php?artikelnr='.$row["artikelnr"].'">
