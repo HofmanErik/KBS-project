@@ -42,7 +42,7 @@ if(!isset($_GET["artikelnr"])){
 
 ?>
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('laptop-hero.jpeg')">
+    <header class="masthead" style="background-image: url('nieuw.jpg')">
       <div class="overlay"></div>
         <div class="container">
           <div class="row">
@@ -58,7 +58,7 @@ if(!isset($_GET["artikelnr"])){
           </div>
         </div>
     </header>
-
+<hr>
     <!-- Post Content -->
     <article>
       <div class="container">
@@ -66,17 +66,14 @@ if(!isset($_GET["artikelnr"])){
           <div class="col-lg-8 col-md-12 mx-auto">
             <?= htmlspecialchars_decode(stripslashes($tekst)) ; ?>
           </div>
-            <div class="col-lg-2 col-md-6 mx-auto">
-            <?= '<img src="'.$thumbsource.'" alt="'.$thumbsource.'"class="img-responsive blogimg">' ?>
-          </div>
         </div>
       </div>
     </article>
 
-    <hr>
+    <hr><hr>
     <div class="container">
       <div class="row">
-        <div class="col-lg-11 col-md-12 mx-auto">
+        <div class="col-lg-8 col-md-12 mx-auto">
           <span>3 Comments</span>
           <p><b>Shanna van Grevengoed </b><br>
           <i>24 oktober, 2017 at 23:01</i>
@@ -95,10 +92,8 @@ if(!isset($_GET["artikelnr"])){
           </p><hr>
         </div>
       </div>
-    </div> 
-    <div class="container">
       <div class="row">
-        <div class="col-lg-11 col-md-12 mx-auto">
+        <div class="col-lg-8 col-md-12 mx-auto">
           <span>Leave a comment</span>
           <p>Het e-mailadres wordt niet gepubliceerd. Vereiste velden zijn gemarkeerd met *</p>
           <form>
@@ -106,13 +101,13 @@ if(!isset($_GET["artikelnr"])){
               <label for="author">Naam
                 <span class="required">*</span>
               </label> 
-                <input id="author" name="author" placeholder="" value="" size="30" aria-required="true" type="text">
+                <input id="author" name="author" placeholder="" value="" size="30" aria-required="true" required="required" type="text">
             </p>
             <p>
               <label for="author">Email 
                 <span class="required">*</span>
               </label> 
-              <input id="author" name="author" placeholder="" value="" size="30" aria-required="true" type="text">
+              <input id="author" name="author" placeholder="" value="" size="30" aria-required="true" required="required" type="text">
             </p>
             <p>
               <fieldset class="rating">
@@ -141,7 +136,7 @@ if(!isset($_GET["artikelnr"])){
             <p>
               <br>
               <br>
-              <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea>
+              <textarea id="comment" name="comment" cols="58" rows="8" maxlength="65525" aria-required="true" required="required"></textarea>
             </p>
             <p>
               <input type="submit" class="btn btn-secondary" value="Reactie plaatsen" href="#">
@@ -150,5 +145,6 @@ if(!isset($_GET["artikelnr"])){
         </div>
       </div>
     </div> 
+    <hr>
 <?php include 'footer.php';?>
 
