@@ -30,7 +30,7 @@
             if (isset($_POST["opslaan"])){
                 $postvoornaam = $_POST['voornaam'];
                 $postachternaam = $_POST["achternaam"];
-                $mnr = 3;
+                $mnr = $_SESSION['mnr'];
 
                 $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = '$mnr'";
                 
@@ -43,6 +43,15 @@
                 $voornaam = $row['voornaam'];
             }
             }
+            if (isset($_POST["opslaan"])){
+                $postvoornaam = $_POST['voornaam'];
+                $postachternaam = $_POST["achternaam"];
+                $mnr = $mnr = $_SESSION['mnr'];
+
+                $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = '$mnr'";
+                
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
 ?>
 
   <div class="content-wrapper">
@@ -79,20 +88,22 @@
           echo $achternaam;
         } ?>"></p>
         <p class="card-text"></p>
-        <input type="submit" name="opslaan" value="Opslaan" class="btn btn-primary">
+        <input type="submit" name="opslaan1" value="Opslaan" class="btn btn-primary">
         </form>
       </div>
     </div>
   </div>
     <div class="col-sm-4">
+        <form action="account.php" method ="POST">
     <div class="card">
       <div class="card-block">
         <h4 class="card-title">Wachtwoord wijzigen</h4>
-        <p>Oud wachtwoord: <input type=text></p>
-        <p>Nieuw wachtwoord: <input type=text></p>
-        <p>Herhaal wachtwoord: <input type=text></p>
+        <p>Oud wachtwoord: <input type=text name="oudWachtwoord"></p>
+        <p>Nieuw wachtwoord: <input type=text name="nieuwWachtwoord1"></p>
+        <p>Herhaal wachtwoord: <input type=text name="nieuwWachtwoord2"></p>
         <p class="card-text"></p>
-        <a href="#" class="btn btn-primary">Opslaan</a>
+        <input type="submit" name="opslaan2" value="Opslaan" class="btn btn-primary">
+        </form>
       </div>
     </div>
   </div>
