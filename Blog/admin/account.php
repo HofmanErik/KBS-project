@@ -115,6 +115,20 @@
         <p class="card-text"></p>
         <input type="submit" name="opslaan2" value="Opslaan" class="btn btn-primary">
         </form>
+        <div class = "col-sm-6">
+<div class = "card">
+<div class = "card-block">
+<h4 class = "card-title">Voorkeuren wijzigen</h4>
+<p>Wil je een email melding ontvangen bij een nieuwe reactie?</p>
+<select>
+<option value = "">Ja</option>
+<option value = "">Nee</option>
+</select>
+<p class = "card-text"></p>
+<a href = "#" class = "btn btn-primary">Opslaan</a>
+</div>
+</div>
+</div>
       </div>
     </div>
   </div>
