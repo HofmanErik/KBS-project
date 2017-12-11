@@ -76,4 +76,3 @@ if(!isset($_GET["artikelnr"])){
 
     <hr>
 <?php include 'footer.php';?>
-</html>

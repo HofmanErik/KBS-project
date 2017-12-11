@@ -4,7 +4,7 @@
     $newmail = $_POST['mail'];
 
       $servername = "localhost";
-      $username = "beheerder";  
+      $username = "beheerder";
       $password = "geheim";
 
       try {
@@ -18,10 +18,10 @@
       {
       echo "Connection failed: " . $e->getMessage();
       }
-      $mnr = 1; 
+      $mnr = 1;
       //sql query naam opslaan in database
-        $prep = $conn->prepare("update medewerker SET email = '$newmail' WHERE mnr = '$mnr'");  
-        $prep->execute(); 
+        $prep = $conn->prepare("update medewerker SET email = '$newmail' WHERE mnr = '$mnr'");
+        $prep->execute();
 
 
   }
@@ -74,9 +74,9 @@
                 $postachternaam = $_POST["achternaam"];
 
                 $mnr = $mnr = $_SESSION['mnr'];
-                
+
                 if($_POST["nieuwWachtwoord1"]){
-                    
+
                 }
 
                 $mnr = $_SESSION['mnr'];
@@ -100,7 +100,7 @@
         <div class="row">
             <div class="col-12">
                 <h1><i class="fa fa-cog"></i>
-                <span class="">Instellingen</span><h1>      
+                <span class="">Instellingen</span><h1>
             </div>
         </div>
       <div class="row">
@@ -134,7 +134,7 @@
         <h4 class="card-title">Emailadres wijzigen</h4>
           <form action="account.php" method="POST">
             <p>Emailadres: <input type="email" name="mail"></p>
-            
+
             <input class="btn btn-primary" type="submit" name="emailsubmit" value="Opslaan">
           </form>
       </div>

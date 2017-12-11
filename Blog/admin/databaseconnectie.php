@@ -1,18 +1,18 @@
 <?php
-$servername = "localhost";
-$username = "beheerder";
-$password = "geheim";
-$dbname = "db_vindbaarin";
+
+  $servername = "localhost";
+  $username = "beheerder";
+  $password = "geheim";
+  $dbname = "db_vindbaarin";
 
 
-try {
+  try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch(PDOException $e)
-    {
+  }
+  catch(PDOException $e)
+  {
     echo "Connection failed: " . $e->getMessage();
-    }
-
+  }
 
 ?>
