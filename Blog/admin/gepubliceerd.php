@@ -82,6 +82,7 @@
 <?php
   while ($row = $stmt->fetch()) {
     print(" <tr>
+<<<<<<< HEAD
               <form method=\"post\" action=\"phpqueriesmelissa.php\">
                 <td>" . $row['artikelnr'] . "</td>
                 <td><a href=\"#\">" . $row['titel'] . "</a></td>
@@ -97,6 +98,25 @@
                     </button>
                 </td>
                 <td>" . $row["status"] . "</td>
+=======
+                <form method=\"post\" action=\"phpqueriesmelissa.php\">
+                    <td>" . $row['artikelnr'] . "</td>
+                    <td><a href=\"#\">" . $row['titel'] . "</a></td>
+                    <td>" . $row['voornaam'] . "</td>
+                    <td>" . $row['datum'] . "</td>
+                    <td>
+                        <input type=\"submit\" class=\"btn btn-light\" name=\"concept\" value=\"Concept\"></input></td>
+                        <input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\"<input>
+                    <td>
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"bewerken\" formaction=\"artikelbewerk.php\" title=\"Bewerken\">
+                            <i class=\"fa fa-pencil\"></i>
+                        </button> 
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"verwijder_gepubliceerd\" value=\"Verwijder\" title=\"Verwijderen\">
+                            <i class=\"fa fa-trash\"></i>
+                        </button>
+                    </td>
+                    <td>" . $row["status"] . "</td>
+>>>>>>> c784e9ed6f9bae066219fe4730399a0719820ff9
             </tr></form>");
           }
 ?>

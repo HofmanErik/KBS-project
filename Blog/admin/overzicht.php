@@ -104,10 +104,17 @@
                         <label>
                             <button type=\"submit\" class=\"btn btn-light\" name=\"depubliceer\" value=\"Concept\"> Concept </button>
                         </label>
+<<<<<<< HEAD
                           </td>");
                   };
                   print("<td>
                           <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"Bewerken\" title=\"Bewerken\">
+=======
+                    </td>");
+    };
+    print("         <td>
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"Bewerken\" formaction=\"artikelbewerk.php\" title=\"Bewerken\">
+>>>>>>> c784e9ed6f9bae066219fe4730399a0719820ff9
                             <i class=\"fa fa-pencil\"></i>
                           </button>
                           <button type=\"submit\" class=\"btn btn-light\" name=\"verwijder\" value=\"Verwijder\" title=\"Verwijderen\">
