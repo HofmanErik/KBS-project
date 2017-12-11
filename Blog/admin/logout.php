@@ -1,13 +1,13 @@
 <?php
-    session_start();
-    session_destroy();
-?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Uitgelogd</title>
-  </head>
-  <body>
-  	Je bent uitgelogd.
-  </body>
-</html>
+
+
+//var_dump($_SESSION);
+//if (isset($_POST['submit'])) {
+	session_start();
+	session_unset();
+	session_destroy();
+	//session_write_close();
+	header("Location: ../admin/login.php?logout=succes");
+	exit();
+
+  ?>

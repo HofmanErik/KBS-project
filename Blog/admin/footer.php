@@ -1,3 +1,4 @@
+
 <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
@@ -21,8 +22,10 @@
           </div>
           <div class="modal-body">Klik op uitloggen om deze sessie te beëindigen.</div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
-            <a class="btn btn-primary" href="../admin/login.php">Uitloggen</a>
+          <form action="logout.php" method="POST">
+            <!--<button class="btn btn-primary" type="submit" name="submit" data-dismiss="modal">Uitloggen</button>-->
+            <a href="logout.php">Uitloggen</a>
+          </form>
           </div>
         </div>
       </div>
@@ -34,7 +37,5 @@
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="../js/sb-admin.min.js"></script>
-  </div>
 </body>
-
 </html>

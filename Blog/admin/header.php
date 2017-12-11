@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION['voornaam'])){
+   header("Location:  ../admin/login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -120,8 +126,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Uitloggen</a>
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal" >
+            <i class="fa fa-fw fa-sign-out"></i>Uitloggen</a>        
         </li>
       </ul>
     </div>
