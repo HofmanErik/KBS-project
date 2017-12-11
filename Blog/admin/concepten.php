@@ -1,39 +1,31 @@
 <?php include 'phpqueriesmelissa.php' ?>
-<link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <?php include '../admin/header.php'; ?>
 
 <?php
-// Tabel oproepen
-if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
+  // Tabel oproepen
+  if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
     $zoektext = $_POST["zoektext"];
-    try {        
-        $sql = "SELECT *
+      $sql = "SELECT *
+              FROM artikel a
+              JOIN medewerker m on m.mnr=a.auteur
+              WHERE (status=:concept2)
+              AND titel LIKE ('%'.$zoektext.'%')
+              ORDER BY datum DESC";
+
+              $stmt = $conn->prepare($sql);
+              $stmt -> bindvalue( ":concept2",0,PDO::PARAM_STR );
+              $stmt -> execute();
+  }else{
+    $sql = "SELECT *
             FROM artikel a
             join medewerker m on m.mnr=a.auteur
-            WHERE (status=:concept2)
-            AND titel LIKE ('%".$zoektext."%')
+            WHERE status = :concept;
             order by datum desc";
 
     $stmt = $conn->prepare($sql);
-    $stmt -> bindvalue( ":concept2",0,PDO::PARAM_STR );
-    $stmt -> execute();
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
-} else {
-try {
-    $sql = "SELECT * 
-            FROM artikel a 
-            join medewerker m on m.mnr=a.auteur 
-            WHERE status = :concept;
-            order by datum desc";
-            
-    $stmt = $conn->prepare($sql);
     $stmt -> bindvalue( ":concept",0,PDO::PARAM_STR );
     $stmt->execute();
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
 }
 ?>
 
@@ -99,9 +91,9 @@ while ($row = $stmt->fetch()) {
                         <input type=\"submit\" class=\"btn btn-light\" name=\"publiceer_concept\" value=\"Publiceer\"></td>
                         <input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">
                     <td>
-                        <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"bewerken\" title=\"Bewerken\">
+                        <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"bewerken\" formaction=\"artikelbewerk.php\" title=\"Bewerken\">
                             <i class=\"fa fa-pencil\"></i>
-                        </button> 
+                        </button>
                         <button type=\"submit\" class=\"btn btn-light\" name=\"verwijder_concept\" value=\"Verwijder\" title=\"Verwijderen\">
                             <i class=\"fa fa-trash\"></i>
                         </button>

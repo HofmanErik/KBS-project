@@ -1,11 +1,29 @@
-<?php include 'modules/menu.php'; ?>
+<?php include 'header.php';?>
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('nieuw.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Blog</h1>
+              <span class="subheading">Een blog door Vindbaar in</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-          <?php
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+<?php
           $servername = "localhost";
           $username = "beheerder";
           $password = "geheim";
           $dbname = "db_vindbaarin";
-          $sql = "SELECT artikelnr, titel, thumbnail, datum, voornaam FROM artikel a JOIN medewerker m ON a.auteur = m.mnr ORDER BY datum DESC";
+          $sql = "SELECT * FROM artikel a JOIN medewerker m ON a.auteur = m.mnr WHERE status =1 ORDER BY datum DESC";
 
 
           try {
@@ -18,36 +36,54 @@
           }
 
           while ($row = $stmt->fetch()) {
-            $basicThumbnail = $row["thumbnail"];
+            $thumbnail = $row["thumbnail"];
               if($row["thumbnail"] == ""){
-                $basicThumbnail = "download.png";
-              }
-echo '
-            <div class="container">
- <div class="row blogposts">
-   <div class="col-md-3">
-     <img src="'.$basicThumbnail.'"
-     class="img-responsive blogimg">
-   </div>
-   <div class="col-md-9">
-     <div class="post-preview">
-         <h2 class="post-title">
-         <tr><td><h2>'.$row["titel"].'</h2></td></tr>
-       </a>
-       <p class="post-meta">Posted by
-         <a href="#">'.$row["voornaam"].'</a>
-       <tr><td>on '.$row["datum"].'</td></tr></p>
+                $thumbnail = "download.png";
+                }
+                $thumbsource = "admin/afbeeldingopslag/" . $thumbnail;
 
-        <a href="blogpost.php?artikelnr='.$row["artikelnr"].'"> meer lezen --> </a>
-     </div>
-   </div>
- </div>
-</div>
-<hr>
+                // preview 
+                list($a,$b,$c,$rest) = explode(".",$row["tekst"]);
+                $tekst = ($a.$b.$c);
+                $tekst = htmlspecialchars_decode(stripslashes($tekst));
 
-';
-          }
-
+        print('
+          <div class="post-preview">
+           <div class="row">
+             <div class="col-md-3">
+              <img src="'.$thumbsource.'" alt="'.$thumbsource.'"class="img-responsive blogimg2 bloground">
+            </div>
+            <div class="col-md-9">
+              <a href="blogpost.php?artikelnr='.$row["artikelnr"].'">
+                <h2 class="post-title">
+                '.$row["titel"].'
+                </h2>
+                <h5 class="post-subtitle">
+                '.$tekst.'
+                </h5>
+                <p><h6>
+                Meer lezen --->
+                </h6></p>
+              </a>
+              <p class="post-meta">Posted by
+              <a href="#">'.$row["voornaam"].'</a>
+              '.$row["datum"].'</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-10 mx-auto">
+          </div>
+          <hr>
+          <hr>');
+        }
           ?>
+          <!-- Pager -->
+          <!--<div class="clearfix">
+                <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+              </div> -->
+        </div>
+      </div>
+    </div>
 
-<?php include 'modules/footer.php'; ?>
+    <hr>
+<?php include 'footer.php';?>

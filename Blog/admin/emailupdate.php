@@ -1,6 +1,11 @@
 <?php
 	if(isset($_POST['emailsubmit'])){
-		$newmail = $_POST['mail'];
+
+		$mail1 = $_POST['mail1'];
+		$mail2 = $_POST['mail2'];
+
+		if($mail1 == $mail2){
+			$newmail = $_POST['mail1'];
 
 			$servername = "localhost";
 			$username = "beheerder";	
@@ -21,7 +26,10 @@
 			//sql query naam opslaan in database
     		$prep = $conn->prepare("update medewerker SET email = '$newmail' WHERE mnr = '$mnr'"); 	
     		$prep->execute();	
-
-
+    		header("Location: ../admin/email.php?mailsucces");
+    	}else{
+    		header("Location: ../admin/email.php?mailerror");
+    	}
+    	
 	}
 ?>

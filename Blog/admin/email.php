@@ -22,8 +22,8 @@
       <div class="card-block">
         <h4 class="card-title">Emailadres wijzigen</h4>
           <form action="emailupdate.php" method="POST">
-            <p>Emailadres: <input type="email" name="mail"></p>
-            
+            <p>Emailadres: <input type="email" name="mail1"></p>
+            <p>Emailadres: <input type="email" name="mail2"></p>
             <input class="btn btn-primary" type="submit" name="emailsubmit" value="Opslaan">
           </form>
       </div>
