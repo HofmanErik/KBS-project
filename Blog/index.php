@@ -23,7 +23,7 @@
           $username = "beheerder";
           $password = "geheim";
           $dbname = "db_vindbaarin";
-          $sql = "SELECT artikelnr, titel, thumbnail, datum, voornaam FROM artikel a JOIN medewerker m ON a.auteur = m.mnr WHERE status =1 ORDER BY datum DESC";
+          $sql = "SELECT * FROM artikel a JOIN medewerker m ON a.auteur = m.mnr WHERE status =1 ORDER BY datum DESC";
 
 
           try {
@@ -42,6 +42,11 @@
                 }
                 $thumbsource = "admin/afbeeldingopslag/" . $thumbnail;
 
+                // preview 
+                list($a,$b,$c,$rest) = explode(".",$row["tekst"]);
+                $tekst = ($a.$b.$c);
+                $tekst = htmlspecialchars_decode(stripslashes($tekst));
+
         print('
           <div class="post-preview">
            <div class="row">
@@ -53,9 +58,12 @@
                 <h2 class="post-title">
                 '.$row["titel"].'
                 </h2>
-                <h4 class="post-subtitle">
-                Hier komt een preview van de tekst alleen zijn we er nog niet helemaal over uit hoe
-                </h4>
+                <h5 class="post-subtitle">
+                '.$tekst.'
+                </h5>
+                <p><h6>
+                Meer lezen --->
+                </h6></p>
               </a>
               <p class="post-meta">Posted by
               <a href="#">'.$row["voornaam"].'</a>
