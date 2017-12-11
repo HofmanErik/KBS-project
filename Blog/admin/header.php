@@ -124,15 +124,5 @@ if(!isset($_SESSION['voornaam'])){
               </li>
             </ul>
           </div>
-<<<<<<< HEAD
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal" >
-            <i class="fa fa-fw fa-sign-out"></i>Uitloggen</a>        
-        </li>
-      </ul>
-    </div>
-  </nav>
-=======
+
       </nav>
->>>>>>> 7994a6ae3955b1e22c02930c35bc656d24d54cde
