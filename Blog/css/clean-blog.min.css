@@ -12,7 +12,7 @@
 }
 
 .blogimg {
-  width: 400px;
+  width: 160px;
   padding: 15px;
 
 }
@@ -31,13 +31,13 @@
 
 /****** Style Star Rating Widget *****/
 
-.rating { 
+.rating {
   border: none;
   float: left;
 }
 
-.rating > input { display: none; } 
-.rating > label:before { 
+.rating > input { display: none; }
+.rating > label:before {
   margin: 5px;
   font-size: 1.25em;
   font-family: FontAwesome;
@@ -45,14 +45,14 @@
   content: "\f005";
 }
 
-.rating > .half:before { 
+.rating > .half:before {
   content: "\f089";
   position: absolute;
 }
 
-.rating > label { 
-  color: #ddd; 
- float: right; 
+.rating > label {
+  color: #ddd;
+ float: right;
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
@@ -64,4 +64,4 @@
 .rating > input:checked + label:hover, /* hover current star when changing rating */
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }

@@ -103,14 +103,14 @@ if(!isset($_GET["artikelnr"])){
             <p>
               <label for="Naam">Naam
                 <span class="required">*</span>
-              </label> 
-                <input id="Naam" name="naam" placeholder="" value="" size="30" aria-required="true" required="required" type="text">
+              </label>
+                <input id="author" name="author" placeholder="" value="" size="30" aria-required="true" required="required" type="text">
             </p>
             <p>
-              <label for="Email">Email 
+              <label for="author">Email
                 <span class="required">*</span>
-              </label> 
-              <input id="Email" name="email" placeholder="" value="" size="30" aria-required="true" required="required" type="text">
+              </label>
+              <input id="author" name="author" placeholder="" value="" size="30" aria-required="true" required="required" type="text">
             </p>
             <p>
               <fieldset class="rating">
@@ -145,7 +145,6 @@ if(!isset($_GET["artikelnr"])){
           </form>
         </div>
       </div>
-    </div> 
+    </div>
     <hr>
 <?php include 'footer.php';?>
-

@@ -1,4 +1,4 @@
-<?php session_start(); include '../admin/header.php'; 
+<?php session_start(); include '../admin/header.php';
 
   if (isset($_POST['opslaan'])){
 
@@ -47,12 +47,12 @@
                 $nieuwWachtwoord2 = $_POST["nieuwWachtwoord2"];
                 $mnr = $mnr = $_SESSION['mnr'];
                 $wwhashOld = $_SESSION['wwhash'];
-                
+
                 $options = ['cost' => 12];
                 $hashedpwd = password_hash($nieuwWachtwoord2, PASSWORD_BCRYPT, $options);
                 $passwrdVerify = password_verify($oudWachtwoord, $wwhashOld);
-                
-                if($passwrdVerify && ($nieuwWachtwoord1 == $nieuwWachtwoord2)){   
+
+                if($passwrdVerify && ($nieuwWachtwoord1 == $nieuwWachtwoord2)){
                    $sql = "UPDATE medewerker SET wwhash = '$hashedpwd' WHERE mnr = '$mnr'";
 
                 $stmt = $conn->prepare($sql);
@@ -61,7 +61,7 @@
                     print("werkt niet joh");
                 }
 
-                
+
               }
 ?>
 
@@ -74,9 +74,11 @@
         </li>
         <li class="breadcrumb-item active">Accountinstellingen</li>
       </ol>
-      <div class="row">
-        <div class="col-12">
-          <h1>Account instellingen</h1>
+        <div class="row">
+            <div class="col-12">
+                <h1><i class="fa fa-cog"></i>
+                <span class="">Instellingen</span><h1>
+            </div>
         </div>
       </div>
       <div class="row">
@@ -115,6 +117,20 @@
         <p class="card-text"></p>
         <input type="submit" name="opslaan2" value="Opslaan" class="btn btn-primary">
         </form>
+        <div class = "col-sm-6">
+<div class = "card">
+<div class = "card-block">
+<h4 class = "card-title">Voorkeuren wijzigen</h4>
+<p>Wil je een email melding ontvangen bij een nieuwe reactie?</p>
+<select>
+<option value = "">Ja</option>
+<option value = "">Nee</option>
+</select>
+<p class = "card-text"></p>
+<a href = "#" class = "btn btn-primary">Opslaan</a>
+</div>
+</div>
+</div>
       </div>
     </div>
   </div>
@@ -124,4 +140,3 @@
 
 
 <?php include '../admin/footer.php'; ?>
-16:02
