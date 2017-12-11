@@ -126,4 +126,7 @@ if(!isset($_SESSION['voornaam'])){
           </div>
 
       </nav>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 595f1da62d3f50401245f2ca93447b3d12111868
