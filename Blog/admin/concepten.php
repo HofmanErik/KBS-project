@@ -10,7 +10,7 @@
               FROM artikel a
               JOIN medewerker m on m.mnr=a.auteur
               WHERE (status=:concept2)
-              AND titel LIKE ('%'.$zoektext.'%')
+              AND titel LIKE ('%".$zoektext."%')
               ORDER BY datum DESC";
 
               $stmt = $conn->prepare($sql);

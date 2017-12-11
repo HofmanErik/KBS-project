@@ -11,7 +11,7 @@
               JOIN medewerker m ON m.mnr=a.auteur
               WHERE (status=:concept2)
               AND titel LIKE ('%".$zoektext."%')
-                  order by datum desc";
+              ORDER BY datum DESC";
 
                   $stmt = $conn->prepare($sql);
                   $stmt -> bindvalue( ":concept2",2,PDO::PARAM_STR );
