@@ -13,7 +13,6 @@
         </div>
       </div>
     </header>
-
     <!-- Main Content -->
     <div class="container">
       <div class="row">
@@ -24,8 +23,6 @@
           $password = "geheim";
           $dbname = "db_vindbaarin";
           $sql = "SELECT * FROM artikel a JOIN medewerker m ON a.auteur = m.mnr WHERE status =1 ORDER BY datum DESC";
-
-
           try {
               $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
               $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -34,19 +31,16 @@
           } catch (PDOException $e) {
               echo "Connection failed: " . $e->getMessage();
           }
-
           while ($row = $stmt->fetch()) {
             $thumbnail = $row["thumbnail"];
               if($row["thumbnail"] == ""){
                 $thumbnail = "download.png";
                 }
                 $thumbsource = "admin/afbeeldingopslag/" . $thumbnail;
-
-                // preview 
+                // preview
                 list($a,$b,$c,$rest) = explode(".",$row["tekst"]);
                 $tekst = ($a.$b.$c);
                 $tekst = htmlspecialchars_decode(stripslashes($tekst));
-
         print('
           <div class="post-preview">
            <div class="row">
@@ -84,6 +78,5 @@
         </div>
       </div>
     </div>
-
     <hr>
 <?php include 'footer.php';?>
