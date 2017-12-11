@@ -39,11 +39,6 @@
 
     <!-- Core plugin JavaScript-->
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-<<<<<<< HEAD
-    <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin.min.js"></script>
-</body>
-=======
 
       <!-- Custom scripts for all pages-->
       <script src="../js/sb-admin.min.js"></script>
@@ -52,5 +47,4 @@
       </div>
     <!-- Einde body en html van header.php -->
   </body>
->>>>>>> 7994a6ae3955b1e22c02930c35bc656d24d54cde
 </html>
