@@ -24,9 +24,9 @@
           <form action="verwerktoevoegen.php" method="POST" enctype="multipart/form-data">
             <!-- Titel -->
             <strong>Titel:</strong> <br>
-            <input type="text" name="titel" value="" size="138px"><br><br>
+            <input type="text" name="titel" value="" size="138px" aria-required="true" required="required"><br><br>
             <!--Thumbnail-->
-            <input type="file" name="thumbnail">
+            <input type="file" name="thumbnail" aria-required="true" required="required">
         </div>
 
         <!--Hier staat de tekst editor tinyMCE-->
@@ -58,7 +58,7 @@
           <div class="col-md-12">
             <input type="submit" name="Publiceren" value="Publiceren">
             <!-- DOET HET NOG NIET!-->
-            <!--<input type="submit" name="Opslaan" value="Opslaan"><br><br>-->
+            <input type="submit" name="Opslaan" value="Opslaan"><br><br>
           </div>
           </form>
     </div>
