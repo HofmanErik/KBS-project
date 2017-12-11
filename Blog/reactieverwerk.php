@@ -13,7 +13,10 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
     $sql = "SELECT * FROM rating";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
 
+    $sql = "SELECT * FROM bezoeker";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 
@@ -24,8 +27,13 @@ if(isset($_POST["submit"])){
 	$reactie = $_POST["reactie"];
 	$rating = $_POST["rating"];
 
-$sql = "INSERT INTO rating(artikelnr,reviewnr,naam,email,tekst,rating,status)
-		VALUES ($artikelnr,'','melissa','mel@mel.nl','tekst',5,1)";
+$sql = "INSERT INTO bezoeker(voornaam,tussenvoegsel,achternaam,email)
+		VALUES ('$naam','$naam','$naam','$email')";
+	$stmt = $conn->prepare($sql);
+	$stmt->execute();
+
+$sql = "INSERT INTO rating(artikelnr,naam,email,tekst,rating,status)
+		VALUES ($artikelnr,'$naam','$email','$reactie',$rating,1)";
 
 	$stmt = $conn->prepare($sql);
 	$stmt->execute();

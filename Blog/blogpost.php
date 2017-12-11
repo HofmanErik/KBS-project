@@ -73,7 +73,7 @@ if(!isset($_GET["artikelnr"])){
     </article>
 
     <hr><hr>
-    <div class="container">
+    <div class="container text">
       <div class="row">
         <div class="col-lg-8 col-md-12 mx-auto">
           <span>3 Comments</span>
@@ -104,13 +104,13 @@ if(!isset($_GET["artikelnr"])){
               <label for="Naam">Naam
                 <span class="required">*</span>
               </label>
-                <input id="author" name="author" placeholder="" value="" size="30" aria-required="true" required="required" type="text">
+                <input id="author" name="naam" placeholder="" value="" size="30" aria-required="true" required="required" type="text">
             </p>
             <p>
               <label for="author">Email
                 <span class="required">*</span>
               </label>
-              <input id="author" name="author" placeholder="" value="" size="30" aria-required="true" required="required" type="text">
+              <input id="author" name="email" placeholder="" value="" size="30" aria-required="true" required="required" type="text">
             </p>
             <p>
               <fieldset class="rating">
