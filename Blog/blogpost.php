@@ -1,4 +1,5 @@
 <?php include 'header.php';?>
+
  <?php
 
 if(!isset($_GET["artikelnr"])){
@@ -32,6 +33,7 @@ if(!isset($_GET["artikelnr"])){
       $datum = $row['datum'];
       $voornaam = $row['voornaam'];
       $thumbnail = $row["thumbnail"];
+      $artikelnr = $row["artikelnr"];
       if($row["thumbnail"] == ""){
       $thumbnail = "download.png";
               }
@@ -95,10 +97,11 @@ if(!isset($_GET["artikelnr"])){
       <div class="row">
         <div class="col-lg-8 col-md-12 mx-auto">
           <span>Leave a comment</span>
-          <p>Het e-mailadres wordt niet gepubliceerd. Vereiste velden zijn gemarkeerd met *</p>
-          <form>
+          <p>Het emailadres wordt niet gepubliceerd. Vereiste velden zijn gemarkeerd met *</p>
+          <form method="POST" action="reactieverwerk.php">
+            <input type=hidden name="artikelnr" value=<?='"'.$artikelnr.'"'; ?>>
             <p>
-              <label for="author">Naam
+              <label for="Naam">Naam
                 <span class="required">*</span>
               </label>
                 <input id="author" name="author" placeholder="" value="" size="30" aria-required="true" required="required" type="text">
@@ -134,10 +137,10 @@ if(!isset($_GET["artikelnr"])){
               <span class="required">*</span>
             </p>
             <p>
-              <textarea id="comment" name="comment" cols="58" rows="8" maxlength="65525" aria-required="true" required="required"></textarea>
+              <textarea id="comment" name="reactie" cols="58" rows="8" maxlength="65525"></textarea>
             </p>
             <p>
-              <input type="submit" class="btn btn-secondary" value="Reactie plaatsen" href="#">
+              <input type="submit" class="btn btn-secondary" name="submit" value="Reactie plaatsen">
             </p>
           </form>
         </div>
