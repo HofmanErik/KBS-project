@@ -77,9 +77,8 @@
                   <th>Titel</th>
                   <th>Geschreven door</th>
                   <th>Publiceerdatum</th>
-                  <th>#</th>
-                  <th>#</th>
-                  <th>Status</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -118,8 +117,6 @@
                             <button type="submit" class="btn btn-light" name="verwijder" value="Verwijder" title="Verwijderen">
                               <i class="fa fa-trash"></i>
                             </button>
-                        </td>
-                        <td>'.$row["status"].'
                         </td>
                           <input type="hidden" name="nummer" value="'.$row['artikelnr'].'">
                         </form>

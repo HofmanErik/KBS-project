@@ -13,19 +13,19 @@
               AND titel LIKE ('%".$zoektext."%')
               ORDER BY datum DESC";
 
-                  $stmt = $conn->prepare($sql);
-                  $stmt -> bindvalue( ":concept2",2,PDO::PARAM_STR );
-                  $stmt -> execute();
+              $stmt = $conn->prepare($sql);
+              $stmt -> bindvalue( ":concept2",2,PDO::PARAM_STR );
+              $stmt -> execute();
   }else{
-    $sql = "SELECT *
-            FROM artikel a
-            JOIN medewerker m ON m.mnr=a.auteur
-            WHERE status = :concept;
-            ORDER BY datum DESC";
+      $sql = "SELECT *
+              FROM artikel a
+              JOIN medewerker m ON m.mnr=a.auteur
+              WHERE status = :concept;
+              ORDER BY datum DESC";
 
-            $stmt = $conn->prepare($sql);
-            $stmt -> bindvalue( ":concept",2,PDO::PARAM_STR );
-            $stmt->execute();
+              $stmt = $conn->prepare($sql);
+              $stmt -> bindvalue( ":concept",2,PDO::PARAM_STR );
+              $stmt->execute();
         }
 ?>
 
@@ -73,34 +73,32 @@
                 <th>Titel</th>
                 <th>Geschreven door</th>
                 <th>Publiceerdatum</th>
-                <th>#</th>
-                <th>status</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-<?php
-
-  while ($row = $stmt->fetch()) {
-    print(" <tr>
-            <form method=\"post\" action=\"phpqueriesmelissa.php\"><tr>
-              <td>" . $row['artikelnr'] . "</td>
-              <td><a href=\"#\">" . $row['titel'] . "</a></td>
-              <td>" . $row['voornaam'] . "</td>
-              <td>" . $row['datum'] . "
-                <input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\"></td>
-              <td>
-                <button type=\"submit\" class=\"btn btn-light\" name=\"terugzetten\" value=\"Terugzetten\" title=\"Verplaatsen naar concepten\">
-                  <i class=\"fa fa-undo\"></i>
-                </button>
-                <button type=\"submit\" class=\"btn btn-light\" name=\"def_verwijder\" value=\"Verwijder\" title=\"Definitief verwijderen\">
-                  <i class=\"fa fa-trash\"></i>
-                </button>
-              </td>
-              <td>" . $row["status"] . "</td>
-            </form>
-            </tr>");
-  }
-?>
+              <?php
+                while ($row = $stmt->fetch()) {
+                  print('
+                      <tr>
+                        <form method="post" action="phpqueriesmelissa.php"><tr>
+                          <td>'.$row['artikelnr'].'</td>
+                          <td><a href="#">'.$row['titel'].'</a></td>
+                          <td>'.$row['voornaam'].'</td>
+                          <td>'.$row['datum'].'
+                            <input type="hidden" name="nummer" value="'.$row['artikelnr'].'"></td>
+                          <td>
+                            <button type="submit" class="btn btn-light" name="terugzetten" value="Terugzetten" title="Verplaatsen naar concepten">
+                                <i class="fa fa-undo"></i>
+                            </button>
+                            <button type="submit" class="btn btn-light" name="def_verwijder" value="Verwijder" title="Definitief verwijderen">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </td>
+                        </form>
+                      </tr>');
+                }
+              ?>
             </tbody>
           </table>
         </div>

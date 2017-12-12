@@ -172,17 +172,17 @@ if(!isset($_GET["artikelnr"])){
                 <span class="required">*</span>
                 </td>
               </tr>
-              <tr>
               </table>
             <p>
               <textarea id="comment" name="reactie" cols="58" rows="8" maxlength="65525"></textarea>
             </p>
             <p>
-              <input type="submit" class="btn btn-secondary" name="submit" value="Reactie plaatsen">
+              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen">
             </p>
           </form>
         </div>
       </div>
     </div>
+  
     <hr>
 <?php include 'footer.php';?>

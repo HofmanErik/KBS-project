@@ -57,14 +57,12 @@
                 <a href="blogpost.php?artikelnr='.$row["artikelnr"].'">
                   <h2 class="post-title">
                   '.$row["titel"].'
-                  </h2>
+                  </h2></a>
                   <h5 class="post-subtitle">
                   '.$tekst.'
                   </h5>
-                  <p><h6>
-                  Meer lezen --->
-                  </h6></p>
-                </a>
+                  <a href="blogpost.php?artikelnr='.$row["artikelnr"].'">
+                  <p><h6>Meer lezen ---></a></h6></p>
                 <p class="post-meta">Posted by
                 <a href="#">'.$row["voornaam"].'</a>
                 '.$row["datum"].'</p>
@@ -78,11 +76,13 @@
           }
           ?>
           <!-- Pager -->
-          <!--<div class="clearfix">
-                <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-              </div> -->
+          <div class="clearfix">
+                <a class="btn btn-primary float-right" href="#">Oudere posts &rarr;</a>
+              </div> 
         </div>
       </div>
+      <?php include 'footer.php';?>
     </div>
-    <hr>
-<?php include 'footer.php';?>
+
+
+
