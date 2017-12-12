@@ -73,7 +73,7 @@ $rows = $database->resultset();
                         <td><?php echo $row['voornaam']." ".$row['tussenvoegsel']." ".$row['achternaam']; ?></td>
                         <td><?php echo $row['email']; ?></td>
                         <td><?php echo $row['datum'] ; ?></td>
-                        <td><?php echo '<button type="submit" class="btn btn-success" name="publiceren" value="Publiceer" title="Publiceren"><i class="fa fa-check" aria-hidden="true"></i></button>' ?>
+                        <td><?php echo '<button type="submit" class="btn btn-success" name="publiceer" value="Publiceer" title="Publiceren"><i class="fa fa-check" aria-hidden="true"></i></button>' ?>
                         </td>
                         <td><?php echo '<button type="submit" class="btn btn-danger" name="verwijder" value="Verwijder" title="Verwijderen">
                             <i class="fa fa-trash"></i></button>' ?></td>
