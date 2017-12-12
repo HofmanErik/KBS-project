@@ -66,17 +66,18 @@ $rows = $database->resultset();
                     <?php foreach($rows as $row) : ?>
                     <!-- echo elke rij in de tabel met de juiste gegevens in een html table per row -->
                     <tr>
-                        <form >
+                        <form method="post" action="functions.php">
                         <td><?php echo $row['reviewnr']; ?></td>
                         <td><?php echo $row['rating']; ?></td>
                         <td><?php echo $row['voornaam']." ".$row['tussenvoegsel']." ".$row['achternaam']; ?></td>
                         <td><?php echo $row['email']; ?></td>
                         <td><?php echo $row['datum'] ; ?></td>
-                        <td><?php echo '<button type="submit" class="btn btn-success" name="dupliceren" value="Dupliceer" title="Dupliceren"><i class="fa fa-check" aria-hidden="true"></i></button>' ?>
+                        <td><?php echo '<button type="submit" class="btn btn-success" name="publiceren" value="Publiceer" title="Publiceren"><i class="fa fa-check" aria-hidden="true"></i></button>' ?>
                         </td>
                         <td><?php echo '<button type="submit" class="btn btn-danger" name="verwijder" value="Verwijder" title="Verwijderen">
                             <i class="fa fa-trash"></i></button>' ?></td>
                         <td><?php echo $row['status'] ?></td>
+                        </form>
                     </tr>
                     </form>
                     <?php endforeach; ?>

@@ -41,21 +41,19 @@ class database {
 		return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	// public function publiceer {
-	// 	if (isset($_POST["publiceer"])) {
-	//     try {
-	//         $sql = "UPDATE rating
-	//             SET status=1
-	//             WHERE reviewnr = :reviewnr";
+	if (isset($_POST["publiceer"])) {
+	    try {
+	        $query = "UPDATE review
+	            SET status=1
+	            WHERE reviewnr = :reviewnr";
 
-	//         $stmt = $conn->prepare($sql);
-	//         $stmt->bindvalue(":", $_POST["status"], PDO::PARAM_STR);
-	//         $stmt->execute();
+	        $stmt = $conn->prepare($query);
+	        $stmt->bindvalue(":reviewnr", PDO::PARAM_STR);
+	        $stmt->execute();
 
-	//         header("location: reacties.php");
-	//     } catch (PDOException $e) {
-	//         echo "Connection failed: " . $e->getMessage();
-	//     	}
-	// 	}	
-	// }
+	        header("location: overzicht.php");
+	    } catch (PDOException $e) {
+	        echo "Connection failed: " . $e->getMessage();
+	    }
+	}
 }
