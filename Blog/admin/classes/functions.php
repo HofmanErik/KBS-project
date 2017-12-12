@@ -1,6 +1,6 @@
 <?php
 
-Class Function extends database {
+Class Function extends Database {
     public function __construct()
     {
         parent::__construct();
