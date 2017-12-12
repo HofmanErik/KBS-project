@@ -6,7 +6,9 @@ require 'classes/dbconnect.php';
 
 
 try {
-    $sql = "SELECT * FROM rating";
+    $sql = "SELECT * FROM rating r
+            JOIN artikel a on r.artikelnr = a.artikelnr
+            JOIN bezoeker b on r.bezoekernr = b.bezoekernr";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -55,12 +57,12 @@ try {
                         <tr>
                             <th>Reactienr</th>
                             <th>Rating</th>
-                            <!-- <th>Geschreven door</th> -->
-                            <!-- <th>Email</th> -->
+                            <th>Geschreven door</th>
+                            <th>Email</th>
                             <!-- <th>Publiceerdatum</th> -->
-                            <th>#</th>
-                            <th>#</th>
                             <th>Status</th>
+                            <th>#</th>
+                            <th>#</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,8 +72,8 @@ try {
                                 echo "<form method='post' action='classes/reactiebeheer.php'>";
                                     echo "<td>".$row['ratingnr']."</td>";
                                     echo "<td>".$row['rating']."</td>";
-                                    // echo "<td>".$row['voornaam']." ".$row['tussenvoegsel']." ".$row['achternaam']."</td>";
-                                    // echo "<td>".$row['email']."</td>";
+                                    echo "<td>".$row['voornaam']." ".$row['tussenvoegsel']." ".$row['achternaam']."</td>";
+                                    echo "<td>".$row['email']."</td>";
                                     // echo "<td>".$row['datum']."</td>";
                                     echo "<td>".$row['status']."</td>";
                                     echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">";    
