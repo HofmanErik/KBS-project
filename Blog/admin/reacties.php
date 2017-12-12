@@ -4,10 +4,12 @@
 include '../admin/header.php';
 require 'classes/dbconnect.php';
 
-$sql = "SELECT * FROM rating";
 
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
+try {
+    $sql = "SELECT * FROM rating";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
     } catch (PDOException $e) {
         echo -"Connection failed: " . $e->getMessage();
     }
