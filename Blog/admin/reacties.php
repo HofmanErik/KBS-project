@@ -74,7 +74,7 @@ try {
                                     // echo "<td>".$row['email']."</td>";
                                     // echo "<td>".$row['datum']."</td>";
                                     echo "<td>".$row['status']."</td>";
-                                    echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">"     
+                                    echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">";    
                                     echo "<td><button type='submit' class='btn btn-success' name='publiceer' value='Publiceer' title='Publiceren'><i class='fa fa-check' aria-hidden='true'></i></button></td>";
                                     echo "<td><button type='submit' class='btn btn-danger' name='verwijder' value='Verwijder' title='Verwijderen'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
                                 echo "</form>";  
