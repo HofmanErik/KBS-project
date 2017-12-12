@@ -1,5 +1,10 @@
 <?php
 
+require 'classes/dbconnect.php';
+// Aanroepen van de databaseclass als een variabele
+$database = new Database;
+
+
 if (isset($_POST["publiceer"])) {
     try {
         $query = "UPDATE rating

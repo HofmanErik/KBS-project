@@ -2,11 +2,9 @@
 <?php
 // Include bestanden
 include '../admin/header.php';
-require 'classes/dbconnect.php';
+
 require 'classes/queries.php';
 
-// Aanroepen van de databaseclass als een variabele
-$database = new Database;
 
 // query toevoegen aan de query functie zodat deze gereturned kan worden
 $database->query('SELECT * FROM rating');
