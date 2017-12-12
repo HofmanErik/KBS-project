@@ -10,7 +10,7 @@
   $database = new Database;
 
   // query toevoegen aan de query functie zodat deze gereturned kan worden
-  $database->query('SELECT * FROM rating r JOIN bezoeker b ON r.reviewnr = b.reviewnr');
+  $database->query('SELECT * FROM rating r JOIN bezoeker b ON r.bezoekernr = b.bezoekernr');
   // To do - aanpassen van query om niet medewerkers maar ratings te tonen. 'SELECT * FROM rating r JOIN bezoeker b ON r.reviewnr = b.reviewnr'
   $rows = $database->resultset();
 
@@ -70,7 +70,7 @@
               <?php foreach($rows as $row) : ?>
                 <!-- echo elke rij in de tabel met de juiste gegevens in een html table per row -->
                 <tr>
-                  <td><?php echo $row['reviewnr']; ?></td>
+                  <td><?php echo $row['ratingnr']; ?></td>
                   <td><?php echo $row['voornaam'], $row['achternaam']; ?></td>
                   <td><?php echo '07-12-2017' ; ?></td>
                   <td><?php echo $row['email']; ?></td>
