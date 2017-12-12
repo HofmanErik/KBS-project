@@ -10,7 +10,7 @@ if (isset($_POST["publiceer"])) {
         $stmt->bindvalue(":reviewnr", PDO::PARAM_STR);
         $stmt->execute();
 
-        header("location: overzicht.php");
+        header("location: ../reacties.php");
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }

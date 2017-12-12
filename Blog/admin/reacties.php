@@ -67,7 +67,7 @@ $rows = $database->resultset();
                     <?php foreach($rows as $row) : ?>
                     <!-- echo elke rij in de tabel met de juiste gegevens in een html table per row -->
                     <tr>
-                        <form method="post" action="functions.php">
+                        <form method="post" action="classes/queries.php">
                         <td><?php echo $row['reviewnr']; ?></td>
                         <td><?php echo $row['rating']; ?></td>
                         <td><?php echo $row['voornaam']." ".$row['tussenvoegsel']." ".$row['achternaam']; ?></td>
