@@ -2,15 +2,15 @@
 <?php
 // Include bestanden
 include '../admin/header.php';
-require 'classes/queries.php';
+require 'classes/dbconnect.php';
 
-// Aanroepen van de databaseclass als een variabele
-$database = new Database;
+$sql = "SELECT * FROM rating";
 
-// query toevoegen aan de query functie zodat deze gereturned kan worden
-$database->query('SELECT * FROM rating');
-// To do - aanpassen van query om niet medewerkers maar ratings te tonen. 'SELECT * FROM rating r JOIN bezoeker b ON r.reviewnr = b.reviewnr'
-$rows = $database->resultset();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    } catch (PDOException $e) {
+        echo -"Connection failed: " . $e->getMessage();
+    }
 ?>
 
 <!-- Content website -->
@@ -53,34 +53,32 @@ $rows = $database->resultset();
                         <tr>
                             <th>Reactienr</th>
                             <th>Rating</th>
-                            <th>Geschreven door</th>
-                            <th>Email</th>
-                            <th>Publiceerdatum</th>
+                            <!-- <th>Geschreven door</th> -->
+                            <!-- <th>Email</th> -->
+                            <!-- <th>Publiceerdatum</th> -->
                             <th>#</th>
                             <th>#</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <!-- Geef waardes mee in de tabel -->
-                    <?php foreach($rows as $row) : ?>
-                    <!-- echo elke rij in de tabel met de juiste gegevens in een html table per row -->
-                    <tr>
-                        <form method="post" action="classes/queries.php">
-                        <td><?php echo $row['reviewnr']; ?></td>
-                        <td><?php echo $row['rating']; ?></td>
-                        <td><?php echo $row['voornaam']." ".$row['tussenvoegsel']." ".$row['achternaam']; ?></td>
-                        <td><?php echo $row['email']; ?></td>
-                        <td><?php echo $row['datum'] ; ?></td>
-                        <td><?php echo '<button type="submit" class="btn btn-success" name="dupliceren" value="Dupliceer" title="Dupliceren"><i class="fa fa-check" aria-hidden="true"></i></button>' ?>
-                        </td>
-                        <td><?php echo '<button type="submit" class="btn btn-danger" name="verwijder" value="Verwijder" title="Verwijderen">
-                            <i class="fa fa-trash"></i></button>' ?></td>
-                        <td><?php echo $row['status'] ?></td>
-                    </tr>
-                    </form>
-                    <?php endforeach; ?>
-                    <!-- Footer -->
+                        <?php
+                        while ($row = $stmt->fetch()) {         
+                            echo "<tr>";
+                                echo "<form method='post' action='classes/queries.php'>";
+                                    echo "<td>".$row['ratingnr']."</td>";
+                                    echo "<td>".$row['rating']."</td>";
+                                    // echo "<td>".$row['voornaam']." ".$row['tussenvoegsel']." ".$row['achternaam']."</td>";
+                                    // echo "<td>".$row['email']."</td>";
+                                    // echo "<td>".$row['datum']."</td>";
+                                    echo "<td>".$row['status']."</td>";
+                                    echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">"     
+                                    echo "<td><button type='submit' class='btn btn-success' name='publiceer' value='Publiceer' title='Publiceren'><i class='fa fa-check' aria-hidden='true'></i></button></td>";
+                                    echo "<td><button type='submit' class='btn btn-danger' name='verwijder' value='Verwijder' title='Verwijderen'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
+                                echo "</form>";  
+                            echo "</tr>";    
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -90,3 +88,17 @@ $rows = $database->resultset();
 </div>
 
 <?php include 'footer.php'; ?>
+
+                    <tr>
+                        
+                        <td><?php echo $row['reviewnr']; ?></td>
+                        <td><?php echo $row['rating']; ?></td>
+                        <td><?php echo $row['voornaam']." ".$row['tussenvoegsel']." ".$row['achternaam']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                        <td><?php echo $row['datum'] ; ?></td>
+                        <td><?php echo '' ?>
+                        </td>
+                        <td><?php echo '<button type="submit" class="btn btn-danger" name="verwijder" value="Verwijder" title="Verwijderen">
+                            <i class="fa fa-trash"></i></button>' ?></td>
+                        <td><?php echo $row['status'] ?></td>
+                    </tr>
