@@ -29,6 +29,10 @@ font-size:75%;
 
 }
 
+.img-circle {
+  border-radius: 50%;
+}
+
 .starimg {
 	width: 100px;
 }
@@ -36,6 +40,10 @@ font-size:75%;
 
 
 /****** Style Star Rating Widget *****/
+
+.fa-star, .fa-star-half-o, .fa-star-o {
+color: #FFD700;
+}
 
 .rating {
   border: none;

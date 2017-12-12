@@ -13,10 +13,10 @@ if(!isset($_GET["artikelnr"])){
   $dbname = "db_vindbaarin";
 
   try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   } catch (PDOException $e) {
-      echo "Connection failed: " . $e->getMessage();
+          echo "Connection failed: " . $e->getMessage();
   }
 
   $sql = "SELECT * 
@@ -70,16 +70,18 @@ if(!isset($_GET["artikelnr"])){
     <hr>
     <div class="container text">
       <div class="row">
-        <div class="col-lg-8 col-md-12 mx-auto">
-          <span>Comments</span>
+        <div class="col-lg-6 col-md-12 mx-auto">
+          <span><h5>Comments</h5></span>
         </div>
-      </div>   
+      </div>  
+
 <?php
       $sql = "SELECT * 
               FROM rating r
               JOIN bezoeker b
               ON r.bezoekernr = b.bezoekernr
               WHERE artikelnr = :artikel1
+              AND status = 0
               ORDER BY datum DESC"
               ;
 
@@ -94,24 +96,48 @@ if(!isset($_GET["artikelnr"])){
               $achternaam = $row["achternaam"];
               $datum = $row["datum"];
               $tekst = $row["tekst"];
+              $rating = $row["rating"];
 
-              print('
+              echo('
                 <div class="row">
-                  <div class="col-lg-8 col-md-12 mx-auto">
-                    <p><b>'.$voornaam." ".$achternaam.'</b><br>
-                    <i>'.$datum.'</i>
-                    <img src="img/5-star-rating.png" class="img-responsive starimg"><br>
+                  <div class="col-lg-6 col-md-12 mx-auto">
+                    <p>
+                    <img alt="" src="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=80&amp;d=mm&amp;r=g 2x" class="img-circle" height="40" width="40"> <b>'.ucfirst($voornaam)." ".ucfirst($achternaam).'</b><br>
+                    <i>'.$datum.'</i>');
+// starrating vanuit database
+                      for($i=1;$i<=$rating;$i++) {
+                          echo ' <span class="fa fa-star"></span>';
+                      }
+                      if (strpos($rating,'.')) {
+                          echo ' <span class="fa fa-star-half-o"></span>';
+                          $i++;
+                      }
+                      while ($i<=5) {
+                          echo ' <span class="fa fa-star-o"></span>';
+                          $i++;
+                      }
+//
+                    echo('<br>
                     '.$tekst.'</p>
+                    <a href="#"><u>Antwoorden bekijken</u></a>
+                    <p class="text-right"><img alt="" src="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=80&amp;d=mm&amp;r=g 2x" class="img-circle" height="40" width="40"> <b>Vindbaar In</b> 
+                    <br>
+                    <i>'.$datum.'</i><br>
+                    Hoi '.ucfirst($voornaam)." ".ucfirst($achternaam).',
+                    Dankjewel voor je bericht!
+                    Fijne dag,
+                    Vindbaar in</p>
+                    <hr><hr>
                   </div>
                 </div>
-                <hr><hr>
+                
                   ');
       }
     }
 ?>
       <div class="row">
-        <div class="col-lg-8 col-md-12 mx-auto">
-          <span>Leave a comment</span>
+        <div class="col-lg-6 col-md-12 mx-auto">
+          <span><h5>Leave a comment</h5></span>
           <p>Het emailadres wordt niet gepubliceerd. Vereiste velden zijn gemarkeerd met *</p>
           <form method="POST" action="reactieverwerk.php">
             <input type=hidden name="artikelnr" value=<?='"'.$artikelnr.'"'; ?>>
