@@ -2,14 +2,27 @@
 <?php
 // Include bestanden
 include '../admin/header.php';
-
 require 'classes/queries.php';
 
 
 // query toevoegen aan de query functie zodat deze gereturned kan worden
-$database->query('SELECT * FROM rating');
+// $database->query('SELECT * FROM rating');
 // To do - aanpassen van query om niet medewerkers maar ratings te tonen. 'SELECT * FROM rating r JOIN bezoeker b ON r.reviewnr = b.reviewnr'
-$rows = $database->resultset();
+// $rows = $database->resultset();
+
+try {
+        $sql = "SELECT *
+            FROM rating";
+
+    $stmt = $conn->prepare($sql);
+    $stmt -> bindvalue( ":concept1",0,PDO::PARAM_STR );
+    $stmt -> bindvalue( ":concept2",1,PDO::PARAM_STR );
+    $stmt->execute();
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+}
+
 ?>
 
 <!-- Content website -->
@@ -62,7 +75,7 @@ $rows = $database->resultset();
                     </thead>
                     <tbody>
                     <!-- Geef waardes mee in de tabel -->
-                    <?php foreach($rows as $row) : ?>
+                    <?php foreach($rows as $row) ?>
                     <!-- echo elke rij in de tabel met de juiste gegevens in een html table per row -->
                     <tr>
                         <form method="post" action="classes/queries.php">
