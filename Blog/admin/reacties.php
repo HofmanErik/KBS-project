@@ -65,7 +65,7 @@ $sql = "SELECT * FROM rating";
                         <?php
                         while ($row = $stmt->fetch()) {         
                             echo "<tr>";
-                                echo "<form method='post' action='classes/queries.php'>";
+                                echo "<form method='post' action='classes/reactiebeheer.php'>";
                                     echo "<td>".$row['ratingnr']."</td>";
                                     echo "<td>".$row['rating']."</td>";
                                     // echo "<td>".$row['voornaam']." ".$row['tussenvoegsel']." ".$row['achternaam']."</td>";
