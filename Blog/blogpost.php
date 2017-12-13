@@ -75,7 +75,7 @@ if(!isset($_GET["artikelnr"])){
         </div>
       </div>
       <script>
-        function myFunction() {
+        function antwoordweergeven() {
     var x = document.getElementById("myDIV");
     if (x.style.display === "none") {
         x.style.display = "block";
@@ -131,7 +131,7 @@ if(!isset($_GET["artikelnr"])){
 //
                     echo('<br>
                     '.$tekst.'</p>
-                     <button onclick="myFunction()">Antwoorden bekijken</button>
+                     <button onclick="antwoordweergeven()">Antwoorden bekijken</button>
                     <div id="myDIV">
                     <p class="text-right"><img alt="" src="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=80&amp;d=mm&amp;r=g 2x" class="img-circle" height="40" width="40"> <b>Vindbaar In</b>
                     <br>
