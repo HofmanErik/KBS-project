@@ -11,8 +11,7 @@ try {
     $sql = "SELECT * FROM rating r
             JOIN artikel a on r.artikelnr = a.artikelnr
             JOIN bezoeker b on r.bezoekernr = b.bezoekernr
-            WHERE r.status = 0
-            ORDER BY r.datum DESC";
+            WHERE r.status = 0";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();

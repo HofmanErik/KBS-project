@@ -81,8 +81,7 @@ if(!isset($_GET["artikelnr"])){
               JOIN bezoeker b
               ON r.bezoekernr = b.bezoekernr
               WHERE artikelnr = :artikel1
-              AND status = 1
-              ORDER BY datum DESC"
+              AND status = 1"
               ;
 
               $stmt = $conn->prepare($sql);
