@@ -90,7 +90,7 @@ if(!isset($_GET["artikelnr"])){
 ?>
 
 <?php
-if($row["datum"] != ''){
+if($stmt->fetch() != ''){
       while ($row = $stmt->fetch()) {
               $antwoordweergeven = "antwoordweergeven".$row["ratingnr"];
               $voornaam = $row["voornaam"];
