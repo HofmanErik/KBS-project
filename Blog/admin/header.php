@@ -81,6 +81,32 @@ if(!isset($_SESSION['voornaam'])){
                 </a>
               </li>
             </ul>
+
+
+<!-- meldingen popup -->
+<?php
+  $servername = "localhost";
+  $username = "beheerder";
+  $password = "geheim";
+  $dbname = "db_vindbaarin";
+ try {
+          $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  } catch (PDOException $e) {
+          echo "Connection failed: " . $e->getMessage();
+  }
+
+      $sql = "SELECT * FROM rating r
+            JOIN artikel a on r.artikelnr = a.artikelnr
+            JOIN bezoeker b on r.bezoekernr = b.bezoekernr
+            WHERE r.status = 1
+            ORDER BY r.datum desc
+            LIMIT 3";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+?>
+
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown"
@@ -96,27 +122,26 @@ if(!isset($_SESSION['voornaam'])){
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
                   <h6 class="dropdown-header">Nieuwe meldingen:</h6>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">
-                    <strong>Melissa Landwerd</strong>
-                    <span class="small float-right text-muted">11:21 AM</span>
-                    <div class="dropdown-message small">Leuk geschreven, 4 sterren!</div>
+                  <?php
+                  while($row = $stmt->fetch()){
+                    $naam = $row["voornaam"]." ".$row["achternaam"];
+                    $datum = $row["datum"];
+                    $comment = $row["comment"];
+                    $rating = $row["rating"];
+                  print('
+                    <a class="dropdown-item" href="#">
+                    <strong>'.$naam.'</strong>
+                    <span class="small float-right text-muted">'.$datum.'</span>
+                    <div class="dropdown-message small">'.$rating.'</div>
                   </a>
-                  <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      <strong>Shanna van Grevengoed</strong>
-                      <span class="small float-right text-muted">21:21 AM</span>
-                      <div class="dropdown-message small">Ik vind dit niet leuk. Ik geef 1 ster.</div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      <strong>Wesley</strong>
-                      <span class="small float-right text-muted">11:59 AM</span>
-                      <div class="dropdown-message small">Wesley heeft een review gegeven.</div>
-                    </a>
+                  ');
+                }
+                  ?>
                     <div class="dropdown-divider"></div>
                   <a class="dropdown-item small" href="../admin/reacties.php">Alle meldingen weergeven</a>
                 </div>
               </li>
+
               <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                   <i class="fa fa-fw fa-sign-out"></i>Uitloggen

@@ -6,7 +6,6 @@
 include '../admin/header.php';
 require 'classes/dbconnect.php';
 
-try {
     $sql = "SELECT * FROM rating r
             JOIN artikel a on r.artikelnr = a.artikelnr
             JOIN bezoeker b on r.bezoekernr = b.bezoekernr
@@ -15,9 +14,6 @@ try {
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-    } catch (PDOException $e) {
-        echo -"Connection failed: " . $e->getMessage();
-    }
 ?>
 
 <!-- Content website -->
