@@ -63,6 +63,7 @@ try {
                             <th>Rating</th>
                             <th>Comment</th>
                             <th>Geschreven door</th>
+                            <th>Datum</th>
                             <th>Email</th>
                             <!-- <th>Publiceerdatum</th> -->
                             <th>#</th>
@@ -89,6 +90,7 @@ try {
 //
                                     echo "</td><td>".$row['comment']."</td>";
                                     echo "<td>".$row['voornaam']." ".$row['achternaam']."</td>";
+                                    echo "<td>".$row['datum']."</td>";
                                     echo "<td>".$row['email']."</td>";
                                     // echo "<td>".$row['datum']."</td>";
                                     echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">";
