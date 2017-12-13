@@ -1,6 +1,5 @@
 <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
+
 <?php
 
 // Include bestanden
@@ -11,7 +10,8 @@ try {
     $sql = "SELECT * FROM rating r
             JOIN artikel a on r.artikelnr = a.artikelnr
             JOIN bezoeker b on r.bezoekernr = b.bezoekernr
-            WHERE r.status = 0";
+            WHERE r.status = 1
+            ORDER BY r.datum desc";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -40,7 +40,7 @@ try {
         <div class="card mb-3">
           <div class="card-header">
             <a href="../admin/reacties.php">Nieuw</a> |
-            <a href="../admin/goedgekeurd.php"> Goedgekeurd</a> |
+            <a href="goedgekeurd.php"> Goedgekeurd</a> |
             <form class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
               <div class="input-group">
                 <input class="form-control" type="text" placeholder="Zoeken...">
@@ -89,11 +89,10 @@ try {
 //
                                     echo "</td><td>".$row['comment']."</td>";
                                     echo "<td>".$row['voornaam']." ".$row['achternaam']."</td>";
-                                    // echo "<td>".$row['datum']."</td>";
                                     echo "<td>".$row['email']."</td>";
+                                    // echo "<td>".$row['datum']."</td>";
                                     echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">";
-                                    echo "<td><button type='submit' class='btn btn-success' name='verwerk' value='Publiceer' title='Publiceren'><i class='fa fa-check' aria-hidden='true'></i></button> ";
-                                    echo "<button type='submit' class='btn btn-danger' name='verwijder' value='Verwijder' title='Verwijderen'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
+                                    echo "<td><button type='submit' class='btn btn-danger' name='verwijdergoedgekeurd' value='Verwijder' title='Verwijderen'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
                                 echo "</form>";  
                             echo "</tr>";    
                         }
