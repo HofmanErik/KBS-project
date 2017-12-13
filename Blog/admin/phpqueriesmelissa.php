@@ -128,11 +128,3 @@ if (isset($_POST["def_verwijder"])) {
         header("location: verwijderd.php");
 }
 
-<<<<<<< HEAD
-// Bewerken
-    
-
-?> 
-=======
-?>
->>>>>>> 989883148b7c2af59cf9c15a4fd1149e44b36a2e
