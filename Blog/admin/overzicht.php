@@ -98,9 +98,9 @@
                       print('
                         <td>
                           <label>
-                              <button type="submit" class="btn btn-light" name="publiceer" value="Publiceer" onclick="publiceer-popup()"> Publiceer </button>
+                              <button type="submit" class="btn btn-light" name="publiceer" value="Publiceer" onclick="myFunctionPubliceren()"> Publiceer </button>
                               <script>
-                                function publiceer-popup() {
+                                function myFunctionPubliceren() {
                                   alert("Weet u zeker dat u het artikel wilt publiceren?");
                                 }
                               </script>
@@ -110,9 +110,9 @@
                       print('
                           <td>
                             <label>
-                              <button type="submit" class="btn btn-light" name="depubliceer" value="Concept" onclick="concept-popup()"> Concept </button>
+                              <button type="submit" class="btn btn-light" name="depubliceer" value="Concept" onclick="myFunctionConcept()"> Concept </button>
                               <script>
-                                function concept-popup() {
+                                function myFunctionConcept() {
                                   alert("Weet u zeker dat u het artikel wilt verplaatsen naar concept?");
                                 }
                               </script>
@@ -121,14 +121,19 @@
                   };
                   print('
                         <td>
-                          <button type="submit" class="btn btn-light" name="bewerk" value="Bewerken" formaction="artikelbewerk.php" title="Bewerken">
+                          <button type="submit" class="btn btn-light" name="bewerk" value="Bewerken" formaction="artikelbewerk.php" title="Bewerken" onclick="myFunctionBewerken()">
                               <i class="fa fa-pencil"></i>
                             </button>
-                            <button type="submit" class="btn btn-light" name="verwijder" value="Verwijder" title="Verwijderen" onclick="verwijder-popup()">
+                            <script>
+                              function myFunctionBewerken() {
+                                alert("Weet u zeker dat u het artikel wilt bewerken?");
+                              }
+                            </script>
+                            <button type="submit" class="btn btn-light" name="verwijder" value="Verwijder" title="Verwijderen" onclick="myFunctionVerwijderen()">
                               <i class="fa fa-trash"></i>
                             </button>
                             <script>
-                              function verwijder-popup() {
+                              function myFunctionVerwijderen() {
                                 alert("Weet u zeker dat u het artikel wilt verwijderen?");
                               }
                             </script>
