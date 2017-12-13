@@ -95,17 +95,27 @@
                         <td>'.$row['voornaam'].'</td>
                         <td>'.$row['datum'].'</td>');
                     if($row['status']==0){
-                      print('         
+                      print('
                         <td>
                           <label>
-                              <button type="submit" class="btn btn-light" name="publiceer" value="Publiceer"> Publiceer </button>
+                              <button type="submit" class="btn btn-light" name="publiceer" value="Publiceer" onclick="myFunction()"> Publiceer </button>
+                              <script>
+                                function myFunction() {
+                                  alert("Weet u zeker dat u het artikel wilt publiceren?");
+                                }
+                              </script>
                           </label>
                         </td>');
                   } elseif($row['status']==1) {
                       print('
                           <td>
                             <label>
-                              <button type="submit" class="btn btn-light" name="depubliceer" value="Concept"> Concept </button>
+                              <button type="submit" class="btn btn-light" name="depubliceer" value="Concept" onclick="myFunction()"> Concept </button>
+                              <script>
+                                function myFunction() {
+                                  alert("Weet u zeker dat u het artikel wilt verplaatsen naar concept?");
+                                }
+                              </script>
                             </label>
                           </td>');
                   };
@@ -114,9 +124,14 @@
                           <button type="submit" class="btn btn-light" name="bewerk" value="Bewerken" formaction="artikelbewerk.php" title="Bewerken">
                               <i class="fa fa-pencil"></i>
                             </button>
-                            <button type="submit" class="btn btn-light" name="verwijder" value="Verwijder" title="Verwijderen">
+                            <button type="submit" class="btn btn-light" name="verwijder" value="Verwijder" title="Verwijderen" onclick="myFunction()">
                               <i class="fa fa-trash"></i>
                             </button>
+                            <script>
+                              function myFunction() {
+                                alert("Weet u zeker dat u het artikel wilt verwijderen?");
+                              }
+                            </script>
                         </td>
                           <input type="hidden" name="nummer" value="'.$row['artikelnr'].'">
                         </form>
