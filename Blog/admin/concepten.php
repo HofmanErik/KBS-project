@@ -87,12 +87,12 @@
                                                     <td><a href="#">'.$row['titel'].'</a></td>
                                                     <td>'.$row['voornaam'].'</td>
                                                     <td>'.$row['datum'].'</td>
-                                                    <td><input type="submit" class="btn btn-light" name="publiceer_concept" value="Publiceer"></td>
+                                                    <td><input type="submit" class="btn btn-secondary" name="publiceer_concept" value="Publiceer"></td>
                                                         <input type="hidden" name="nummer" value="'.$row['artikelnr'].'">
                                                     <td>
-                                                        <button type="submit" class="btn btn-light" name="bewerk" value="bewerken" formaction="artikelbewerk.php" title="Bewerken"><i class="fa fa-pencil"></i>
+                                                        <button type="submit" class="btn btn-secondary" name="bewerk" value="bewerken" formaction="artikelbewerk.php" title="Bewerken"><i class="fa fa-pencil"></i>
                                                         </button>
-                                                        <button type="submit" class="btn btn-light" name="verwijder_concept" value="Verwijder" title="Verwijderen"><i class="fa fa-trash"></i>
+                                                        <button type="submit" class="btn btn-secondary" name="verwijder_concept" value="Verwijder" title="Verwijderen"><i class="fa fa-trash"></i>
                                                         </button>
                                                     </td>
                                                     <td>'.$row["status"].'</td>

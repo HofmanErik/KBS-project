@@ -108,7 +108,7 @@
                                 }
                               }
                               </script>
-                              <button type="submit" class="btn btn-light" name="publiceer" value="Publiceer" onclick="return myFunctionPubliceren()"> Publiceer </button>
+                              <button type="submit" class="btn btn-secondary" name="publiceer" value="Publiceer" onclick="return myFunctionPubliceren()"> Publiceer </button>
                           </label>
                         </td>');
                   } elseif($row['status']==1) {
@@ -125,13 +125,13 @@
                               }
                             }
                             </script>
-                            <button type="submit" class="btn btn-light" name="depubliceer" value="Concept" onclick="return myFunctionConcept()"> Concept </button>
+                            <button type="submit" class="btn btn-secondary" name="depubliceer" value="Concept" onclick="return myFunctionConcept()"> Concept </button>
                             </label>
                           </td>');
                   };
                   print('
                         <td>
-                          <button type="submit" class="btn btn-light" name="bewerk" value="Bewerken" formaction="artikelbewerk.php" title="Bewerken" >
+                          <button type="submit" class="btn btn-secondary" name="bewerk" value="Bewerken" formaction="artikelbewerk.php" title="Bewerken" >
                               <i class="fa fa-pencil"></i>
                             </button>
 
@@ -146,7 +146,7 @@
                               }
                             }
                             </script>
-                            <button type="submit" class="btn btn-light" name="verwijder" value="Verwijder" title="Verwijderen" onclick=" return myFunctionVerwijderen()">
+                            <button type="submit" class="btn btn-secondary" name="verwijder" value="Verwijder" title="Verwijderen" onclick=" return myFunctionVerwijderen()">
                               <i class="fa fa-trash"></i>
                             </button>
                         </td>

@@ -97,8 +97,8 @@
     <br>
 
   <div class="col-md-12">
-    <input type="submit" name="publiceren" value="Posten">
-    <input type="submit" name="concept" value="Draft">
+    <button class="btn btn-secondary" type="submit" name="publiceren" value="Posten">Opslaan</button>
+    <button class="btn btn-secondary" type="submit" name="concept" value="Draft">Concept</button>
     <!-- DOET HET NOG NIET!-->
     <!--<input type="submit" name="Opslaan" value="Opslaan"><br><br>-->
   </div>

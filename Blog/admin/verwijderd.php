@@ -88,10 +88,10 @@
                           <td>'.$row['datum'].'
                             <input type="hidden" name="nummer" value="'.$row['artikelnr'].'"></td>
                           <td>
-                            <button type="submit" class="btn btn-light" name="terugzetten" value="Terugzetten" title="Verplaatsen naar concepten">
+                            <button type="submit" class="btn btn-secondary" name="terugzetten" value="Terugzetten" title="Verplaatsen naar concepten">
                                 <i class="fa fa-undo"></i>
                             </button>
-                            <button type="submit" class="btn btn-light" name="def_verwijder" value="Verwijder" title="Definitief verwijderen">
+                            <button type="submit" class="btn btn-secondary" name="def_verwijder" value="Verwijder" title="Definitief verwijderen">
                               <i class="fa fa-trash"></i>
                             </button>
                           </td>
