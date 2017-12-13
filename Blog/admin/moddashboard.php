@@ -1,6 +1,6 @@
 
 
-<?php include '../admin/moderatorheader.php'; ?>
+<?php include '../admin/modheader.php'; ?>
 
 <div class="content-wrapper">
   <div class="container-fluid">

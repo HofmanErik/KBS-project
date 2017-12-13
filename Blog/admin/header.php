@@ -105,7 +105,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
             LIMIT 3";
 
         $stmt = $conn->prepare($sql);
-        $stmt->execute(); 
+        $stmt->execute();
         $row = $stmt->fetch();
 */
 ?>
@@ -115,7 +115,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                 <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown"
                    href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <i class="fa fa-fw fa-bell-o"></i>
-                   <?php 
+                   <?php
                    /*
                    if($row["ratingnr"] != ''){
                    echo '<span class="d-lg-none">Meldingen
@@ -131,7 +131,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                   <h6 class="dropdown-header">Nieuwe meldingen:</h6>
                   <div class="dropdown-divider"></div>
 <!-- meldingen dropdown -->
-                  <?php 
+                  <?php
                   /*
                   while($row = $stmt->fetch()){
                     if($row["ratingnr"] != ''){
@@ -164,7 +164,3 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
           </div>
 
       </nav>
-<<<<<<< HEAD
-=======
-
->>>>>>> 237e8ee4acd8b56bae1a1a2196ff00cdb122c0d6

@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
 					exit();
 				}
 				if($_SESSION['functie'] == 1) {
-				header("Location: ../admin/moderatordashboard.php?login=succes");
+				header("Location: ../admin/moddashboard.php?login=succes");
 				exit();
 			}
 				}
