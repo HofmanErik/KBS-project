@@ -74,16 +74,6 @@ if(!isset($_GET["artikelnr"])){
           <span><h5>Comments</h5></span>
         </div>
       </div>
-      <script>
-        function antwoordweergeven() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
 
 <?php
       $sql = "SELECT *
@@ -102,6 +92,7 @@ if(!isset($_GET["artikelnr"])){
 
 <?php
       while ($row = $stmt->fetch()) {
+              $antwoordweergeven = "antwoordweergeven".$row["ratingnr"];
               $voornaam = $row["voornaam"];
               $achternaam = $row["achternaam"];
               $datum = $row["datum"];
@@ -128,11 +119,25 @@ if(!isset($_GET["artikelnr"])){
                           echo ' <span class="fa fa-star-o"></span>';
                           $i++;
                       }
-//
+                    //?>
+<script>
+    function antwoordweergeven(id) {
+        if($("#shwmb" + id).css('display') == 'none') {
+            $("#shwmb" + id).show();
+        }else {
+            $("#shwmb" + id).hide();
+        }
+    }
+</script>
+                    <?php
                     echo('<br>
-                    '.$tekst.'</p>
-                     <button onclick="antwoordweergeven()">Antwoorden bekijken</button>
-                    <div id="myDIV">
+                    '.$tekst.'');?>
+                  </p>
+<?php if ($row['mobile1'] != '') { ?> 
+            <a id="showmobile<?php echo $row["rating"]; ?>" onclick="return showmobile(<?php echo $row1["rating"]; ?>)">Antwoorden weergeven</a> 
+                <span id="shwmb<?php echo $row1["rating"]; ?>" style="display:none">
+                    <?php echo 
+                    '                    <div id="myDIV">
                     <p class="text-right"><img alt="" src="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=80&amp;d=mm&amp;r=g 2x" class="img-circle" height="40" width="40"> <b>Vindbaar In</b>
                     <br>
                     <i>'.$datum.'</i><br>
@@ -141,7 +146,14 @@ if(!isset($_GET["artikelnr"])){
                     Fijne dag,
                     Vindbaar in</p>
                     <hr><hr>
-                    </div>
+                    </div>'; ?>
+                </span>
+            <?php
+            } else {
+                echo 'Not Available';
+            }
+            ?>
+
                   </div>
                 </div>
 
