@@ -82,7 +82,7 @@ if(!isset($_GET["artikelnr"])){
               ON r.bezoekernr = b.bezoekernr
               WHERE artikelnr = :artikel1
               AND status = 1
-              ORDER BY datum DESC"
+              "
               ;
 
               $stmt = $conn->prepare($sql);
