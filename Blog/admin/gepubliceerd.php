@@ -10,12 +10,12 @@
               FROM artikel a
               JOIN medewerker m ON a.auteur=m.mnr
               WHERE (status=:concept2)
-              AND titel LIKE ('%'.$zoektext.'%')
+              AND titel LIKE ('%".$zoektext."%')
               ORDER BY datum DESC";
 
-    $stmt = $conn->prepare($sql);
-    $stmt -> bindvalue( ":concept2",1,PDO::PARAM_STR );
-    $stmt -> execute();
+              $stmt = $conn->prepare($sql);
+              $stmt -> bindvalue( ":concept2",1,PDO::PARAM_STR );
+              $stmt -> execute();
   }else{
     $sql = "SELECT *
             FROM artikel a
@@ -73,36 +73,32 @@
               <th>Titel</th>
               <th>Geschreven door</th>
               <th>Publiceerdatum</th>
-              <th>#</th>
-              <th>#</th>
-              <th>Status</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-<?php
-  while ($row = $stmt->fetch()) {
-    print(" <tr>
-                <form method=\"post\" action=\"phpqueriesmelissa.php\">
-                    <td>" . $row['artikelnr'] . "</td>
-                    <td><a href=\"#\">" . $row['titel'] . "</a></td>
-                    <td>" . $row['voornaam'] . "</td>
-                    <td>" . $row['datum'] . "</td>
-                    <td>
-                        <input type=\"submit\" class=\"btn btn-light\" name=\"concept\" value=\"Concept\"></input></td>
-                        <input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\"<input>
-                    <td>
-                        <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"bewerken\" formaction=\"artikelbewerk.php\" title=\"Bewerken\">
-                            <i class=\"fa fa-pencil\"></i>
-                        </button>
-                        <button type=\"submit\" class=\"btn btn-light\" name=\"verwijder_gepubliceerd\" value=\"Verwijder\" title=\"Verwijderen\">
-                            <i class=\"fa fa-trash\"></i>
-                        </button>
-                    </td>
-                    <td>" . $row["status"] . "</td>
-            </tr></form>");
-          }
-?>
-
+            <?php
+              while ($row = $stmt->fetch()) {
+                print('
+                      <tr>
+                        <form method="post" action="phpqueriesmelissa.php">
+                                <td>'.$row['artikelnr'].'</td>
+                                <td><a href="#">'.$row['titel'].'</a></td>
+                                <td>'.$row['voornaam'].'</td>
+                                <td>'.$row['datum'].'</td>
+                                <td><input type="submit" class="btn btn-light" name="concept" value="Concept"></input></td>
+                                  <input type="hidden" name="nummer" value="'.$row['artikelnr'].'"<input>
+                                <td>
+                                  <button type="submit" class="btn btn-light" name="bewerk" value="bewerken" formaction="artikelbewerk.php" title="Bewerken"><i class="fa fa-pencil"></i>
+                                  </button>
+                                  <button type="submit" class="btn btn-light" name="verwijder_gepubliceerd" value="Verwijder" title="Verwijderen"><i class="fa fa-trash"></i>
+                                  </button>
+                                </td>
+                        </form>
+                      </tr>');
+              }
+            ?>
           </tbody>
         </table>
       </div>

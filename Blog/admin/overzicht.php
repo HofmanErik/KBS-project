@@ -12,7 +12,7 @@
               JOIN medewerker m ON a.auteur = m.mnr
               WHERE (status=:concept1
               OR status=:concept2)
-              AND titel LIKE ('%'.$zoektext.'%')
+              AND titel LIKE ('%".$zoektext."%')
               ORDER BY datum DESC";
 
               $stmt = $conn->prepare($sql);
@@ -77,48 +77,82 @@
                   <th>Titel</th>
                   <th>Geschreven door</th>
                   <th>Publiceerdatum</th>
-                  <th>#</th>
-                  <th>#</th>
-                  <th>Status</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 <!-- Tabel -->
                 <?php
                 while ($row = $stmt->fetch()) {
-                  print(" <tr>
-                  <form method=\"post\" action=\"phpqueriesmelissa.php\">
-                    <td>" . $row['artikelnr'] . "</td>
-                    <td><a href=\"#\">" . $row['titel'] . "</a></td>
-                    <td>" . $row['voornaam'] . "</td>
-                    <td>" . $row['datum'] . "</td>");
-                    if($row['status']==0){
-                      print("         <td>
-                        <label>
-                            <button type=\"submit\" class=\"btn btn-light\" name=\"publiceer\" value=\"Publiceer\"> Publiceer </button>
-                        </label>
-                    </td>");
-
-                  }elseif($row['status']==1) {
-                    print("<td>
-                        <label>
-                            <button type=\"submit\" class=\"btn btn-light\" name=\"depubliceer\" value=\"Concept\"> Concept </button>
-                        </label>
-
-                    </td>");
-    };
-    print("         <td>
-                        <button type=\"submit\" class=\"btn btn-light\" name=\"bewerk\" value=\"Bewerken\" formaction=\"artikelbewerk.php\" title=\"Bewerken\">
-                            <i class=\"fa fa-pencil\"></i>
-                          </button>
-                          <button type=\"submit\" class=\"btn btn-light\" name=\"verwijder\" value=\"Verwijder\" title=\"Verwijderen\">
-                            <i class=\"fa fa-trash\"></i>
-                          </button>
+                  print('
+                    <tr>
+                      <form method="post" action="phpqueriesmelissa.php">
+                        <td>'.$row['artikelnr'].'</td>
+                        <td>
+                          <a href="../blogpost.php?artikelnr='.$row["artikelnr"].'" target="blank">'.$row['titel'].'</a>
                         </td>
-                        <td>" . $row["status"] . "</td>
-                        <input type=\"hidden\" name=\"nummer\" value=\"".$row['artikelnr']."\">
-                  </form>
-                  </tr>");
+                        <td>'.$row['voornaam'].'</td>
+                        <td>'.$row['datum'].'</td>');
+                    if($row['status']==0){
+                      print('
+                        <td>
+                          <label>
+                            <script>
+                              function myFunctionPubliceren(){
+                                var r=confirm("Weet u zeker dat u het artikel wilt publiceren?");
+                                if(r == true){
+                                  return true;
+                                }else{
+                                  return false;
+                                }
+                              }
+                              </script>
+                              <button type="submit" class="btn btn-light" name="publiceer" value="Publiceer" onclick="return myFunctionPubliceren()"> Publiceer </button>
+                          </label>
+                        </td>');
+                  } elseif($row['status']==1) {
+                      print('
+                          <td>
+                            <label>
+                            <script>
+                            function myFunctionConcept(){
+                              var r=confirm("Weet u zeker dat u het artikel wilt verplaatsen naar concept? ");
+                              if(r == true){
+                                return true;
+                              }else{
+                                return false;
+                              }
+                            }
+                            </script>
+                            <button type="submit" class="btn btn-light" name="depubliceer" value="Concept" onclick="return myFunctionConcept()"> Concept </button>
+                            </label>
+                          </td>');
+                  };
+                  print('
+                        <td>
+                          <button type="submit" class="btn btn-light" name="bewerk" value="Bewerken" formaction="artikelbewerk.php" title="Bewerken" >
+                              <i class="fa fa-pencil"></i>
+                            </button>
+
+                            <script>
+                            function myFunctionVerwijderen()
+                            {
+                              var r=confirm("Weet je zeker dat je dit artikel wilt verwijderen?");
+                              if(r == true){
+                                return true;
+                              }else{
+                                return false;
+                              }
+                            }
+                            </script>
+                            <button type="submit" class="btn btn-light" name="verwijder" value="Verwijder" title="Verwijderen" onclick=" return myFunctionVerwijderen()">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                          <input type="hidden" name="nummer" value="'.$row['artikelnr'].'">
+                        </form>
+                      </tr>');
                 }
 ?>
 <!-- Footer -->

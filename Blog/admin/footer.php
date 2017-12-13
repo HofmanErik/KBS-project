@@ -39,10 +39,13 @@
     <!-- Core plugin JavaScript-->
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
+<<<<<<< HEAD
     <!-- Custom scripts for all pages-->
     <script src="../js/sb-admin.min.js"></script>
 
 
+=======
+>>>>>>> 237e8ee4acd8b56bae1a1a2196ff00cdb122c0d6
 
       <!-- Custom scripts for all pages-->
       <script src="../js/sb-admin.min.js"></script>

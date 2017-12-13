@@ -21,12 +21,12 @@
     </div>
       <div class="card text-black bg-secundairy o-hidden h-100">
         <div class="col-md-12">
-          <form action="verwerktoevoegen.php" method="POST" enctype="multipart/form-data">
+          <form action="verwerktoevoegen.php" method="POST" enctype="multipart/form-data" onsubmit="myFunctionOpslaan" onsubmit="myFunctionPubliceren">
             <!-- Titel -->
             <strong>Titel:</strong> <br>
-            <input type="text" name="titel" value="" size="138px"><br><br>
+            <input type="text" name="titel" value="" size="138px" aria-required="true" required="required"><br><br>
             <!--Thumbnail-->
-            <input type="file" name="thumbnail">
+            <input type="file" name="thumbnail" aria-required="true" required="required">
         </div>
 
         <!--Hier staat de tekst editor tinyMCE-->
@@ -56,27 +56,37 @@
         <br>
 
           <div class="col-md-12">
-            <input type="submit" name="Publiceren" value="Publiceren">
-            <!-- DOET HET NOG NIET!-->
-            <!--<input type="submit" name="Opslaan" value="Opslaan"><br><br>-->
+            <!--Pop-up voor publiceren -->
+            <script>
+            function myFunctionPubliceren(){
+              var r=confirm("Weet u zeker dat u het artikel wilt publiceren");
+              if(r == true){
+                return true;
+              }else{
+                return false;
+              }
+            }
+</script>
+            <input type="submit" name="Publiceren" value="Publiceren" onclick="return myFunctionPubliceren()">
+            <!--Pop-up voor opslaan -->
+            <script>
+            function myFunctionOpslaan()
+            {
+            var r=confirm("Weet u zeker dat u het artikel wilt opslaan? ");
+            if(r == true){
+            return true;
+            }else{
+            return false;
+            }
+            }
+            </script>
+            <input type="submit" name="Opslaan" value="Opslaan" onclick="return myFunctionOpslaan()"><br><br>
+
           </div>
           </form>
     </div>
   </div>
 </div>
 
- <!---<br/>
- <div class="row-buttons">
-  <div class="col-md-4">
-    <form method="$_GET" action="overzicht.php">
-      <input type="submit" name="Annuleren" value="Annuleren">
-      <input type="submit" name="Opslaan" value="Opslaan">
-      <input type="submit" name="Publiceren" value="Publiceren">
-    </form>
-  </div>
-</div>
-</form>
-</div>
-</div>-->
 
 <?php include "../admin/footer.php" ?>
