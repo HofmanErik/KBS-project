@@ -74,16 +74,6 @@ if(!isset($_GET["artikelnr"])){
           <span><h5>Comments</h5></span>
         </div>
       </div>
-      <script>
-        function antwoordweergeven() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
 
 <?php
       $sql = "SELECT *
@@ -102,6 +92,7 @@ if(!isset($_GET["artikelnr"])){
 
 <?php
       while ($row = $stmt->fetch()) {
+              $antwoordweergeven = "antwoordweergeven".$row["ratingnr"];
               $voornaam = $row["voornaam"];
               $achternaam = $row["achternaam"];
               $datum = $row["datum"];
@@ -128,7 +119,18 @@ if(!isset($_GET["artikelnr"])){
                           echo ' <span class="fa fa-star-o"></span>';
                           $i++;
                       }
-//
+                    //?>
+                          <script>
+                            function antwoordweergeven() {
+                            var x = document.getElementById("myDIV");
+                            if (x.style.display === "none") {
+                            x.style.display = "block";
+                        } else {
+                            x.style.display = "none";
+                        }
+                    }
+                          </script>
+                    <?php
                     echo('<br>
                     '.$tekst.'</p>
                      <button onclick="antwoordweergeven()">Antwoorden bekijken</button>
