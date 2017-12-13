@@ -116,6 +116,7 @@ if(!isset($_SESSION['voornaam'])){
                    href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <i class="fa fa-fw fa-bell-o"></i>
                    <?php 
+                   /*
                    if($row["ratingnr"] != ''){
                    echo '<span class="d-lg-none">Meldingen
                      <span class="badge badge-pill badge-primary">12 Nieuw</span>
@@ -123,7 +124,7 @@ if(!isset($_SESSION['voornaam'])){
                    <span class="indicator text-primary d-none d-lg-block">
                      <i class="fa fa-fw fa-circle"></i>
                    </span>';
-                   }
+                   }*/
                    ?>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
