@@ -127,9 +127,9 @@ if (isset($_POST["opslaan2"])) {
                                         <div class="card">
                                             <div class="card-block">
                                                 <h4 class="card-title">Wachtwoord wijzigen</h4>
-                                                <p>Oud wachtwoord: <input type=text name="oudWachtwoord"></p>
-                                                <p>Nieuw wachtwoord: <input type=text name="nieuwWachtwoord1"></p>
-                                                <p>Herhaal wachtwoord: <input type=text name="nieuwWachtwoord2"></p>
+                                                <p>Oud wachtwoord: <input type=password name="oudWachtwoord"></p>
+                                                <p>Nieuw wachtwoord: <input type=password name="nieuwWachtwoord1"></p>
+                                                <p>Herhaal wachtwoord: <input type=password name="nieuwWachtwoord2"></p>
                                                 <p><?php echo$wwHerstelResponse1; ?></p>
                                                 <p><?php echo$wwHerstelResponse2; ?></p>
                                                 <p class="card-text"></p>
