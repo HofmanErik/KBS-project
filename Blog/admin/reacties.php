@@ -2,18 +2,20 @@
 
 <?php
 
-  // Include bestanden
-  include '../admin/header.php';
-  require 'classes/functions.php';
+// Include bestanden
+include '../admin/header.php';
+require 'classes/dbconnect.php';
 
-  // Aanroepen van de databaseclass als een variabele
-  $database = new Database;
+try {
+    $sql = "SELECT * FROM rating r
+            JOIN artikel a on r.artikelnr = a.artikelnr
+            JOIN bezoeker b on r.bezoekernr = b.bezoekernr";
 
-  // query toevoegen aan de query functie zodat deze gereturned kan worden
-  $database->query('SELECT * FROM rating r JOIN bezoeker b ON r.bezoekernr = b.bezoekernr');
-  // To do - aanpassen van query om niet medewerkers maar ratings te tonen. 'SELECT * FROM rating r JOIN bezoeker b ON r.reviewnr = b.reviewnr'
-  $rows = $database->resultset();
-
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo -"Connection failed: " . $e->getMessage();
+    }
 ?>
 
 <!-- Content website -->
@@ -51,38 +53,41 @@
         </div>
 
         <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>Reactienr</th>
-                  <th>Rating</th>
-                  <th>Geschreven door</th>
-                  <th>Publiceerdatum</th>
-                  <th>#</th>
-                  <th>#</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-
-              <!-- Geef waardes mee in de tabel -->
-              <?php foreach($rows as $row) : ?>
-                <!-- echo elke rij in de tabel met de juiste gegevens in een html table per row -->
-                <tr>
-                  <td><?php echo $row['ratingnr']; ?></td>
-                  <td><?php echo $row['voornaam'], $row['achternaam']; ?></td>
-                  <td><?php echo '07-12-2017' ; ?></td>
-                  <td><?php echo $row['email']; ?></td>
-                  <td><?php echo '<button type="button" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i></button>' ?></td>
-                  <td><?php echo '<button type="button" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>' ?></td>
-                  <td><?php echo 'Gepubliceerd' ?></td>
-                </tr>
-                <?php endforeach; ?>
-                  <!-- Footer -->
-              </tbody>
-            </table>
-          </div>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Reactienr</th>
+                            <th>Rating</th>
+                            <th>Geschreven door</th>
+                            <th>Email</th>
+                            <!-- <th>Publiceerdatum</th> -->
+                            <th>Status</th>
+                            <th>#</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($row = $stmt->fetch()) {         
+                            echo "<tr>";
+                                echo "<form method='post' action='classes/reactiebeheer.php'>";
+                                    echo "<td>".$row['ratingnr']."</td>";
+                                    echo "<td>".$row['rating']."</td>";
+                                    echo "<td>".$row['voornaam']." ".$row['tussenvoegsel']." ".$row['achternaam']."</td>";
+                                    echo "<td>".$row['email']."</td>";
+                                    // echo "<td>".$row['datum']."</td>";
+                                    echo "<td>".$row['status']."</td>";
+                                    echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">";    
+                                    echo "<td><button type='submit' class='btn btn-success' name='publiceer' value='Publiceer' title='Publiceren'><i class='fa fa-check' aria-hidden='true'></i></button></td>";
+                                    echo "<td><button type='submit' class='btn btn-danger' name='verwijder' value='Verwijder' title='Verwijderen'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
+                                echo "</form>";  
+                            echo "</tr>";    
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
   </div>
