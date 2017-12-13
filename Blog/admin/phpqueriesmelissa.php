@@ -128,4 +128,3 @@ if (isset($_POST["def_verwijder"])) {
         header("location: verwijderd.php");
 }
 
-?>

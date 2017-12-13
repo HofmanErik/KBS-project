@@ -21,25 +21,25 @@ if(isset($_POST["submit"])){
 		$reactie = $_POST["reactie"];
 		$rating = $_POST["rating"];
 
-$sql = "INSERT INTO bezoeker (voornaam,achternaam,email) 
+$sql = "INSERT INTO bezoeker (voornaam,achternaam,email)
 		VALUES ('$voornaam','$achternaam','$email')";
-        $stmt = $conn->prepare($sql);  
+        $stmt = $conn->prepare($sql);
         $stmt->execute();
 
-$sql = "SELECT * 
-		FROM bezoeker 
+$sql = "SELECT *
+		FROM bezoeker
 		WHERE voornaam = '$voornaam'
 		AND achternaam = '$achternaam'
 		AND email = '$email'";
 
        	$stmt = $conn->prepare($sql);
-        $stmt->execute(); 
-        $row = $stmt->fetch();      
+        $stmt->execute();
+        $row = $stmt->fetch();
         $bezoekernr = $row['bezoekernr'];
 
 $sql = "INSERT INTO rating (artikelnr,bezoekernr,comment,rating) 
 		VALUES ($artikelnr,'$bezoekernr','$reactie', $rating)";
-        $stmt = $conn->prepare($sql);  
+        $stmt = $conn->prepare($sql);
         $stmt->execute();
 
         $message = "Na goedkeuring wordt je reactie geplaatst.";

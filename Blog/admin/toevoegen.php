@@ -66,8 +66,8 @@
                 return false;
               }
             }
-</script>
-            <input type="submit" name="Publiceren" value="Publiceren" onclick="return myFunctionPubliceren()">
+</script><br>
+            <button class="btn btn-secondary" type="submit" name="Publiceren" value="Publiceren" onclick="return myFunctionPubliceren()">Publiceren</button>
             <!--Pop-up voor opslaan -->
             <script>
             function myFunctionOpslaan()
@@ -80,7 +80,7 @@
             }
             }
             </script>
-            <input type="submit" name="Opslaan" value="Opslaan" onclick="return myFunctionOpslaan()"><br><br>
+            <button class="btn btn-secondary" name="Opslaan" value="Opslaan" onclick="return myFunctionOpslaan()">Opslaan</button><br><br>
 
           </div>
           </form>
