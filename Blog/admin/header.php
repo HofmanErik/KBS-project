@@ -85,6 +85,7 @@ if(!isset($_SESSION['voornaam'])){
 
 <!-- meldingen popup -->
 <?php
+/*
   $servername = "localhost";
   $username = "beheerder";
   $password = "geheim";
@@ -104,7 +105,7 @@ if(!isset($_SESSION['voornaam'])){
             LIMIT 3";
 
         $stmt = $conn->prepare($sql);
-        $stmt->execute();
+        $stmt->execute(); */
 ?>
 
             <ul class="navbar-nav ml-auto">
