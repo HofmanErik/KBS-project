@@ -86,8 +86,27 @@ try {
                                     // echo "<td>".$row['datum']."</td>";
                                     echo "<td>".$row['email']."</td>";
                                     echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">";
-                                    echo "<td><button type='submit' class='btn btn-success' name='Publiceer' value='Publiceer' title='Publiceren' onclick='return myFunctionPubliceerR()'><i class='fa fa-check' aria-hidden='true'></i></button></td> ";
-                                    echo "<td><button type='submit' class='btn btn-danger' name='verwijder' value='Verwijder' title='Verwijderen' onclick='return myFunctionVerwijderR()'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
+                                    echo "<td>
+                                    <script>
+                                      function myFunctionPubliceerR(){
+                                        var r=confirm('Weet u zeker dat u de reactie wilt publiceren?');
+                                        if(r == true){
+                                          return true;
+                                        }else{
+                                          return false;
+                                        }
+                                      }
+                                      </script><button type='submit' class='btn btn-success' name='Publiceer' value='Publiceer' title='Publiceren' onclick='return myFunctionPubliceerR()'><i class='fa fa-check' aria-hidden='true'></i></button></td> ";
+                                    echo "<td><script>
+                                      function myFunctionVerwijderR(){
+                                        var r=confirm('Weet u zeker dat u de reactie wilt verwijderen?');
+                                        if(r == true){
+                                          return true;
+                                        }else{
+                                          return false;
+                                        }
+                                      }
+                                      </script><button type='submit' class='btn btn-danger' name='verwijder' value='Verwijder' title='Verwijderen' onclick='return myFunctionVerwijderR()'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
                                 echo "</form>";
                             echo "</tr>";
                         }
