@@ -56,9 +56,19 @@
         <br>
 
           <div class="col-md-12">
-            <input type="submit" name="Publiceren" value="Publiceren">
-            <!-- DOET HET NOG NIET!-->
-            <input type="submit" name="Opslaan" value="Opslaan"><br><br>
+            <input type="submit" name="Publiceren" value="Publiceren" onclick="myFunction()">
+            <script>
+              function myFunction() {
+                alert("Weet je zeker dat je het artikel wilt publiceren?");
+              }
+            </script>
+
+            <input type="submit" name="Opslaan" value="Opslaan" onclick="myFunction()"><br><br>
+            <script>
+              function myFunction() {
+                alert("Weet je zeker dat je het artikel wilt opslaan?");
+              }
+            </script>
           </div>
           </form>
     </div>
