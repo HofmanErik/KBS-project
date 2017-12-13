@@ -81,16 +81,16 @@ if(!isset($_GET["artikelnr"])){
               JOIN bezoeker b
               ON r.bezoekernr = b.bezoekernr
               WHERE artikelnr = :artikel1
-              AND status = 1";
+              AND status = 1
+              ORDER BY datum DESC"
+              ;
 
               $stmt = $conn->prepare($sql);
               $stmt -> bindValue(':artikel1', $artikelnr, PDO::PARAM_INT);
               $stmt->execute();
-              $row = $stmt->fetch()
 ?>
 
 <?php
-if($stmt->fetch() != ''){
       while ($row = $stmt->fetch()) {
               $antwoordweergeven = "antwoordweergeven".$row["ratingnr"];
               $voornaam = $row["voornaam"];
@@ -150,7 +150,6 @@ if($stmt->fetch() != ''){
                   ');
       }
     }
-  }
 ?>
       <div class="row">
         <div class="col-lg-6 col-md-12 mx-auto">

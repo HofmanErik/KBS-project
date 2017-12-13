@@ -9,7 +9,8 @@ require 'classes/dbconnect.php';
     $sql = "SELECT * FROM rating r
             JOIN artikel a on r.artikelnr = a.artikelnr
             JOIN bezoeker b on r.bezoekernr = b.bezoekernr
-            WHERE r.status = 1";
+            WHERE r.status = 1
+            ORDER BY r.datum desc";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
