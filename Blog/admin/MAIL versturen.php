@@ -9,5 +9,5 @@ $headers = "From: $from";
 // Send email
 mail($to, $subject, $message, $headers);
 
-// Inform the user;
-echo"blabla"
+// Inform the user
+echo "Thanks for registering! We have just sent you an email with your password.";

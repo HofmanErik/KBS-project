@@ -2,6 +2,12 @@
 //header wordt opgehaald
 include '../admin/header.php';
 
+
+if (isset($_POST['opslaan'])) {
+
+    print ($_POST['achternaam']);
+}
+
 $servername = "localhost";
 $username = "beheerder";
 $password = "geheim";
@@ -89,7 +95,7 @@ if (isset($_POST["opslaan2"])) {
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-8">
+                                <div class="col-sm-6">
                                     <div class="card">
                                         <div class="card-block">
                                             <h4 class="card-title">Naam wijzigen</h4>
@@ -116,7 +122,7 @@ if (isset($_POST["opslaan2"])) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-6">
                                     <form action="account.php" method ="POST">
                                         <div class="card">
                                             <div class="card-block">
@@ -134,7 +140,7 @@ if (isset($_POST["opslaan2"])) {
                                 </div>
                             </div>
                             <div class="row">
-                                <div class = "col-sm-8">
+                                <div class = "col-sm-6">
                                     <div class = "card">
                                         <div class = "card-block">
                                             <h4 class = "card-title">Voorkeuren wijzigen</h4>

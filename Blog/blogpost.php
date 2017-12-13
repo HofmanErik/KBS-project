@@ -88,9 +88,11 @@ if(!isset($_GET["artikelnr"])){
               $stmt = $conn->prepare($sql);
               $stmt -> bindValue(':artikel1', $artikelnr, PDO::PARAM_INT);
               $stmt->execute();
+              $row = $stmt->fetch()
 ?>
 
 <?php
+if($row["datum"] != ''){
       while ($row = $stmt->fetch()) {
               $antwoordweergeven = "antwoordweergeven".$row["ratingnr"];
               $voornaam = $row["voornaam"];
@@ -150,6 +152,7 @@ if(!isset($_GET["artikelnr"])){
                   ');
       }
     }
+  }
 ?>
       <div class="row">
         <div class="col-lg-6 col-md-12 mx-auto">
