@@ -86,74 +86,79 @@ if (isset($_POST["opslaan2"])) {
             </li>
             <li class="breadcrumb-item active">Accountinstellingen</li>
         </ol>
-        <div class="row">
-            <div class="col-12">
-                <h1><i class="fa fa-cog"></i>
-                    <span class="">Instellingen</span><h1>
-                        </div>
-                        </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="card">
-                                    <div class="card-block">
-                                        <h4 class="card-title">Naam wijzigen</h4>
-                                        <form action="account.php" method ="POST">
-                                            <p class="card-text"></p>
-                                            <p>Voornaam: <input type=text name="voornaam" value="<?php
-                                                if (isset($_POST['voornaam'])) {
-                                                    echo $_POST['voornaam'];
-                                                } else {
-                                                    echo $voornaam;
-                                                }
-                                                ?>"></p>
-                                            <p>Achternaam: <input type=text name="achternaam" value="<?php
-                                                if (isset($_POST['achternaam'])) {
-                                                    echo $_POST['achternaam'];
-                                                } else {
-                                                    echo $achternaam;
-                                                }
-                                                ?>"></p>
-                                            <p><?php echo$naamVeranderingResponse; ?></p>
-                                            <p class="card-text"></p>
-                                            <input type="submit" name="opslaan1" value="Opslaan" class="btn btn-primary">
-                                        </form>
-                                    </div>
-                                </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1><i class="fa fa-cog"></i>
+                        <span class="">Instellingen</span><h1>
                             </div>
-                            <div class="col-sm-4">
-                                <form action="account.php" method ="POST">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
                                     <div class="card">
                                         <div class="card-block">
-                                            <h4 class="card-title">Wachtwoord wijzigen</h4>
-                                            <p>Oud wachtwoord: <input type=text name="oudWachtwoord"></p>
-                                            <p>Nieuw wachtwoord: <input type=text name="nieuwWachtwoord1"></p>
-                                            <p>Herhaal wachtwoord: <input type=text name="nieuwWachtwoord2"></p>
-                                            <p><?php echo$wwHerstelResponse1; ?></p>
-                                            <p><?php echo$wwHerstelResponse2; ?></p>
-                                            <p class="card-text"></p>
-                                            <input type="submit" name="opslaan2" value="Opslaan" class="btn btn-primary">
+                                            <h4 class="card-title">Naam wijzigen</h4>
+                                            <form action="account.php" method ="POST">
+                                                <p class="card-text"></p>
+                                                <p>Voornaam: <input type=text name="voornaam" value="<?php
+                                                    if (isset($_POST['voornaam'])) {
+                                                        echo $_POST['voornaam'];
+                                                    } else {
+                                                        echo $voornaam;
+                                                    }
+                                                    ?>"></p>
+                                                <p>Achternaam: <input type=text name="achternaam" value="<?php
+                                                    if (isset($_POST['achternaam'])) {
+                                                        echo $_POST['achternaam'];
+                                                    } else {
+                                                        echo $achternaam;
+                                                    }
+                                                    ?>"></p>
+                                                <p><?php echo$naamVeranderingResponse; ?></p>
+                                                <p class="card-text"></p>
+                                                <input type="submit" name="opslaan1" value="Opslaan" class="btn btn-primary">
                                             </form>
                                         </div>
                                     </div>
-                                    <div class = "col-sm-6">
-                                        <div class = "card">
-                                            <div class = "card-block">
-                                                <h4 class = "card-title">Voorkeuren wijzigen</h4>
-                                                <p>Wil je een email melding ontvangen bij een nieuwe reactie?</p>
-                                                <select>
-                                                    <option value = "" name="ja">Ja</option>
-                                                    <option value = "" name="nee">Nee</option>
-                                                </select>
-                                                <p class = "card-text"></p>
-                                                <a href = "#" class = "btn btn-primary">Opslaan</a>
+                                </div>
+                                <div class="col-sm-6">
+                                    <form action="account.php" method ="POST">
+                                        <div class="card">
+                                            <div class="card-block">
+                                                <h4 class="card-title">Wachtwoord wijzigen</h4>
+                                                <p>Oud wachtwoord: <input type=text name="oudWachtwoord"></p>
+                                                <p>Nieuw wachtwoord: <input type=text name="nieuwWachtwoord1"></p>
+                                                <p>Herhaal wachtwoord: <input type=text name="nieuwWachtwoord2"></p>
+                                                <p><?php echo$wwHerstelResponse1; ?></p>
+                                                <p><?php echo$wwHerstelResponse2; ?></p>
+                                                <p class="card-text"></p>
+                                                <input type="submit" name="opslaan2" value="Opslaan" class="btn btn-primary">
+                                                </form>
                                             </div>
                                         </div>
-                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        </div>
-                        </div>
+                            <div class="row">
+                                <div class = "col-sm-6">
+                                    <div class = "card">
+                                        <div class = "card-block">
+                                            <h4 class = "card-title">Voorkeuren wijzigen</h4>
+                                            <p>Wil je een email melding ontvangen bij een nieuwe reactie?</p>
+                                            <select>
+                                                <option value = "" name="ja">Ja</option>
+                                                <option value = "" name="nee">Nee</option>
+                                            </select>
+                                            <p class = "card-text"></p>
+                                            <a href = "#" class = "btn btn-primary">Opslaan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
 
 
-                        <?php include '../admin/footer.php'; ?>
+                            <?php include '../admin/footer.php'; ?>
