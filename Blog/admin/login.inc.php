@@ -38,8 +38,14 @@ if (isset($_POST['submit'])) {
 					$_SESSION['email'] = $row['email'];
 					$_SESSION['functie'] = $row['functie'];
 					$_SESSION['wwhash'] = $row['wwhash'];
+					if($_SESSION['functie'] == 2) {
 					header("Location: ../admin/dashboard.php?login=succes");
 					exit();
+				}
+				if($_SESSION['functie'] == 1) {
+				header("Location: ../admin/moderatordashboard.php?login=succes");
+				exit();
+			}
 				}
 			}
 		}

@@ -13,42 +13,67 @@
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">Account aanmaken</div>
       <div class="card-body">
-        <form>
-          <div class="form-group">
+        <form action="register.inc.php" method="POST">
+
             <div class="form-row">
               <div class="col-md-6">
+                <label for="exampleInputName">Medewerker</label>
+                <input class="form-control" name="mnr" type="number" aria-describedby="nameHelp"
+                       placeholder="Voer medewerkernummer in">
+              </div>
+            </div>
+              <div class="form-row">
+              <div class="col-md-6">
                 <label for="exampleInputName">Voornaam</label>
-                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp"
+                <input class="form-control" name="voornaam" type="text" aria-describedby="nameHelp"
                        placeholder="Voer voornaam in">
               </div>
+            </div>
+            <div class="form-row">
               <div class="col-md-6">
                 <label for="exampleInputLastName">Achternaam</label>
-                <input class="form-control" id="exampleInputLastName" type="text"
+                <input class="form-control" name="achternaam" type="text"
                        aria-describedby="nameHelp" placeholder="Voer achternaam in">
               </div>
             </div>
-          </div>
-          <div class="form-group">
+
+          <div class="form-row">
+          <div class="col-md-6">
             <label for="exampleInputEmail1">Emailadres</label>
-            <input class="form-control" id="exampleInputEmail1" type="email"
+            <input class="form-control" name="email" type="email"
                    aria-describedby="emailHelp" placeholder="Voer emailadres in">
           </div>
+        </div>
+
+        <div class="form-row">
+        <div class="col-md-6">
+          <label for="exampleInputLastName">functie</label>
+          <input class="form-control" name="functie" type="number"
+                 aria-describedby="nameHelp" placeholder="Voer functie in">
+        </div>
+      </div>
+
+
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <label for="exampleInputPassword1">Wachtwoord</label>
-                <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Wachtwoord">
+                <input class="form-control" name="wwhash" type="password" placeholder="Wachtwoord">
               </div>
               <div class="col-md-6">
                 <label for="exampleConfirmPassword">Bevestig wachtwoord</label>
-                <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Bevestig wachtwoord">
+                <input class="form-control" name="wwhash" type="password" placeholder="Bevestig wachtwoord">
               </div>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="register.php">Opslaan</a>
+          <input type="submit" name="opslaan" value="opslaan">
+        <!--  <a href="register.inc.php">Opslaan</a>-->
         </form>
       </div>
     </div>
+  </div>
+  </div>
+  </div>
   </div>
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>

@@ -1,4 +1,6 @@
-<?php session_start(); include '../admin/header.php';
+<?php
+
+ include '../admin/header.php';
 
   if (isset($_POST['opslaan'])){
 

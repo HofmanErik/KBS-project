@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
+if(!isset($_SESSION['voornaam'])){
    header("Location:  ../admin/login.php");
 }
 ?>
@@ -41,21 +41,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                   <span class="nav-link-text">Dashboard</span>
                 </a>
               </li>
-              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Artikelen">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapse-artikelen"
-                   data-parent="#exampleAccordion">
-                   <i class="fa fa-pencil"></i>
-                   <span class="nav-link-text">Artikelen</span>
-                </a>
-                 <ul class="sidenav-second-level collapse" id="collapse-artikelen">
-                   <li>
-                     <a href="../admin/overzicht.php">Overzicht</a>
-                   </li>
-                   <li>
-                     <a href="../admin/toevoegen.php">Toevoegen</a>
-                   </li>
-                 </ul>
-              </li>
+
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reacties">
                 <a class="nav-link" href="../admin/reacties.php">
                   <i class="fa fa-commenting"></i>
@@ -68,12 +54,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                   <span class="nav-link-text">Instellingen</span>
                 </a>
               </li>
-              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gebruiker toevoegen">
-                <a class="nav-link" href="../admin/register.php">
-                  <i class="fa fa-user-plus"></i>
-                  <span class="nav-link-text">Gebruiker toevoegen</span>
-                </a>
-              </li>
+              
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Voorbeeld">
                 <a class="nav-link" href="../index.php" target="_blank">
                   <i class="fa fa-external-link"></i>
