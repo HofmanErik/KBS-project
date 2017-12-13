@@ -41,16 +41,6 @@ try {
           <div class="card-header">
             <a href="../admin/reacties.php">Nieuw</a> |
             <a href="goedgekeurd.php"> Goedgekeurd</a> |
-            <form class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
-              <div class="input-group">
-                <input class="form-control" type="text" placeholder="Zoeken...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button">
-                      <i class="fa fa-search"></i>
-                    </button>
-                  </span>
-              </div>
-            </form>
           </div>
         </div>
 
