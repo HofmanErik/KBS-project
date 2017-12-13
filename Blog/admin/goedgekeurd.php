@@ -57,10 +57,11 @@ require 'classes/dbconnect.php';
                     </thead>
                     <tbody>
                         <?php
-                        while ($row = $stmt->fetch()) {         
-                            echo "<tr>";
-                                echo "<form method='post' action='classes/reactiebeheer.php'>";
-                                    echo "<td>".$row['titel']."</td><td>";
+                        while ($row = $stmt->fetch()) {
+                            echo '<tr>
+                                    <form method="post" action="classes/reactiebeheer.php">
+                                      <td>'.$row['titel'].'</td>
+                                      <td>';
 // starrating vanuit database
                       for($i=1;$i<=$row["rating"];$i++) {
                           echo ' <span class="fa fa-star"></span>';
@@ -73,15 +74,24 @@ require 'classes/dbconnect.php';
                           echo ' <span class="fa fa-star-o"></span>';
                           $i++;
                       }
-//
-                                    echo "</td><td>".$row['comment']."</td>";
-                                    echo "<td>".$row['voornaam']." ".$row['achternaam']."</td>";
-                                    echo "<td>".$row['datum']."</td>";
-                                    echo "<td>".$row['email']."</td>";
-                                    echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">";
-                                    echo "<td><button type='submit' class='btn btn-danger' name='verwijdergoedgekeurd' value='Verwijder' title='Verwijderen'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
-                                echo "</form>";  
-                            echo "</tr>";    
+                                    echo '
+                                      </td>
+                                      <td>'.$row['comment'].'</td>
+                                      <td>'.$row['voornaam'].' '.$row['achternaam'].'</td>
+                                      <td>'.$row['datum'].'</td>
+                                      <td>'.$row['datum'].'</td>
+                                      <td>'.$row['email'].'</td>
+                                      <input type="hidden" name="nummer" value="'.$row['ratingnr'].'">
+                                      <td>
+                                        <button type="submit" class="btn btn-primary" name="beantwoord" title="Beantwoorden"> <i class="fa fa-reply" aria-hidden="true"></i>
+                                        </button>
+                                      </td>
+                                      <td>
+                                        <button type="submit" class="btn btn-danger" name="verwijdergoedgekeurd" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijderR()"><i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                      </td>
+                                    </form>
+                                  </tr>';
                         }
                         ?>
                     </tbody>

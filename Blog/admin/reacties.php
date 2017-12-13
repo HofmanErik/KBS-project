@@ -47,6 +47,16 @@ try {
 
         <div class="card-body">
             <div class="table-responsive">
+              <script>
+                function myFunctionVerwijderR(){
+                  var r=confirm('Weet u zeker dat u de reactie wilt verwijderen?');
+                  if(r == true){
+                    return true;
+                  }else{
+                    return false;
+                  }
+                }
+              </script>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -57,16 +67,16 @@ try {
                             <th>Datum</th>
                             <th>Email</th>
                             <!-- <th>Publiceerdatum</th> -->
-                            <th>#</th>
-                            <th>#</th>
+
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         while ($row = $stmt->fetch()) {
-                            echo "<tr>";
-                                echo "<form method='post' action='classes/reactiebeheer.php'>";
-                                    echo "<td>".$row['titel']."</td><td>";
+                            echo '<tr>
+                                    <form method="post" action="classes/reactiebeheer.php">
+                                      <td>'.$row['titel'].'</td>
+                                      <td>';
 // starrating vanuit database
                       for($i=1;$i<=$row["rating"];$i++) {
                           echo ' <span class="fa fa-star"></span>';
@@ -79,38 +89,31 @@ try {
                           echo ' <span class="fa fa-star-o"></span>';
                           $i++;
                       }
-//
-                                    echo "</td><td>".$row['comment']."</td>";
-                                    echo "<td>".$row['voornaam']." ".$row['achternaam']."</td>";
-                                    echo "<td>".$row['datum']."</td>";
-                                    // echo "<td>".$row['datum']."</td>";
-                                    echo "<td>".$row['email']."</td>";
-                                    echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">";
-                                    echo "<td>
-                                    <script>
-                                      function myFunctionPubliceerR(){
-                                        var r=confirm('Weet u zeker dat u de reactie wilt publiceren?');
-                                        if(r == true){
-                                          return true;
-                                        }else{
-                                          return false;
-                                        }
-                                      }
-                                      </script><button type='submit' class='btn btn-success' name='verwerk' value='Publiceer' title='Publiceren' onclick='return myFunctionPubliceerR()'><i class='fa fa-check' aria-hidden='true'></i></button></td> ";
-                                    echo "<td><script>
-                                      function myFunctionVerwijderR(){
-                                        var r=confirm('Weet u zeker dat u de reactie wilt verwijderen?');
-                                        if(r == true){
-                                          return true;
-                                        }else{
-                                          return false;
-                                        }
-                                      }
-                                      </script><button type='submit' class='btn btn-danger' name='verwijder' value='Verwijder' title='Verwijderen' onclick='return myFunctionVerwijderR()'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
-                                echo "</form>";
-                            echo "</tr>";
+                                    echo '
+                                      </td>
+                                      <td>'.$row['comment'].'</td>
+                                      <td>'.$row['voornaam'].''.$row['achternaam'].'</td>
+                                      <td>'.$row['datum'].'</td>
+                                      <td>'.$row['email'].'</td>
+                                      <input type="hidden" name="nummer" value="'.$row['ratingnr'].'">
+                                      <td>
+                                        <button type="submit" class="btn btn-success" name="verwerk" value="Publiceer" title="Goedkeuren" onclick="return myFunctionPubliceerR()">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                        </button>
+                                      </td>
+                                      <td>
+                                        <button type="submit" class="btn btn-primary" name="beantwoord" title="Beantwoorden"><i class="fa fa-reply" aria-hidden="true"></i>
+                                        </button>
+                                      </td>
+                                      <td>
+                                        <button type="submit" class="btn btn-danger" name="verwijder" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijderR()"><i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                      </td>
+                                    </form>
+                                  </tr>';
                         }
                         ?>
+
                     </tbody>
                 </table>
             </div>
