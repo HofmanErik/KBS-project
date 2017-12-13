@@ -74,6 +74,16 @@ if(!isset($_GET["artikelnr"])){
           <span><h5>Comments</h5></span>
         </div>
       </div>  
+      <script>
+        function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+} 
+</script>
 
 <?php
       $sql = "SELECT * 
@@ -81,7 +91,7 @@ if(!isset($_GET["artikelnr"])){
               JOIN bezoeker b
               ON r.bezoekernr = b.bezoekernr
               WHERE artikelnr = :artikel1
-              AND status = 0
+              AND status = 1
               ORDER BY datum DESC"
               ;
 
@@ -95,8 +105,10 @@ if(!isset($_GET["artikelnr"])){
               $voornaam = $row["voornaam"];
               $achternaam = $row["achternaam"];
               $datum = $row["datum"];
-              $tekst = $row["tekst"];
+              $tekst = $row["comment"];
               $rating = $row["rating"];
+
+
 
               echo('
                 <div class="row">
@@ -119,7 +131,8 @@ if(!isset($_GET["artikelnr"])){
 //
                     echo('<br>
                     '.$tekst.'</p>
-                    <a href="#"><u>Antwoorden bekijken</u></a>
+                     <button onclick="myFunction()">Antwoorden bekijken</button>
+                    <div id="myDIV">
                     <p class="text-right"><img alt="" src="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=80&amp;d=mm&amp;r=g 2x" class="img-circle" height="40" width="40"> <b>Vindbaar In</b> 
                     <br>
                     <i>'.$datum.'</i><br>
@@ -128,6 +141,7 @@ if(!isset($_GET["artikelnr"])){
                     Fijne dag,
                     Vindbaar in</p>
                     <hr><hr>
+                    </div>
                   </div>
                 </div>
                 
