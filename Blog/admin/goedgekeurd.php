@@ -78,7 +78,6 @@ require 'classes/dbconnect.php';
                                     echo "<td>".$row['voornaam']." ".$row['achternaam']."</td>";
                                     echo "<td>".$row['datum']."</td>";
                                     echo "<td>".$row['email']."</td>";
-                                    // echo "<td>".$row['datum']."</td>";
                                     echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">";
                                     echo "<td><button type='submit' class='btn btn-danger' name='verwijdergoedgekeurd' value='Verwijder' title='Verwijderen'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
                                 echo "</form>";  
