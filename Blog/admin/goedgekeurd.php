@@ -6,18 +6,13 @@
 include '../admin/header.php';
 require 'classes/dbconnect.php';
 
-try {
     $sql = "SELECT * FROM rating r
             JOIN artikel a on r.artikelnr = a.artikelnr
             JOIN bezoeker b on r.bezoekernr = b.bezoekernr
-            WHERE r.status = 1
-            ORDER BY r.datum desc";
+            WHERE r.status = 1";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-    } catch (PDOException $e) {
-        echo -"Connection failed: " . $e->getMessage();
-    }
 ?>
 
 <!-- Content website -->
@@ -82,7 +77,6 @@ try {
                                     echo "<td>".$row['voornaam']." ".$row['achternaam']."</td>";
                                     echo "<td>".$row['datum']."</td>";
                                     echo "<td>".$row['email']."</td>";
-                                    // echo "<td>".$row['datum']."</td>";
                                     echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">";
                                     echo "<td><button type='submit' class='btn btn-danger' name='verwijdergoedgekeurd' value='Verwijder' title='Verwijderen'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
                                 echo "</form>";  

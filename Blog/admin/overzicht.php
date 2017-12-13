@@ -98,45 +98,57 @@
                       print('
                         <td>
                           <label>
-                              <button type="submit" class="btn btn-light" name="publiceer" value="Publiceer" onclick="myFunctionPubliceren()"> Publiceer </button>
-                              <script>
-                                function myFunctionPubliceren() {
-                                  alert("Weet u zeker dat u het artikel wilt publiceren?");
+                            <script>
+                              function myFunctionPubliceren(){
+                                var r=confirm("Weet u zeker dat u het artikel wilt publiceren?");
+                                if(r == true){
+                                  return true;
+                                }else{
+                                  return false;
                                 }
+                              }
                               </script>
+                              <button type="submit" class="btn btn-light" name="publiceer" value="Publiceer" onclick="return myFunctionPubliceren()"> Publiceer </button>
                           </label>
                         </td>');
                   } elseif($row['status']==1) {
                       print('
                           <td>
                             <label>
-                              <button type="submit" class="btn btn-light" name="depubliceer" value="Concept" onclick="myFunctionConcept()"> Concept </button>
-                              <script>
-                                function myFunctionConcept() {
-                                  alert("Weet u zeker dat u het artikel wilt verplaatsen naar concept?");
-                                }
-                              </script>
+                            <script>
+                            function myFunctionConcept(){
+                              var r=confirm("Weet u zeker dat u het artikel wilt verplaatsen naar concept? ");
+                              if(r == true){
+                                return true;
+                              }else{
+                                return false;
+                              }
+                            }
+                            </script>
+                            <button type="submit" class="btn btn-light" name="depubliceer" value="Concept" onclick="return myFunctionConcept()"> Concept </button>
                             </label>
                           </td>');
                   };
                   print('
                         <td>
-                          <button type="submit" class="btn btn-light" name="bewerk" value="Bewerken" formaction="artikelbewerk.php" title="Bewerken" onclick="myFunctionBewerken()">
+                          <button type="submit" class="btn btn-light" name="bewerk" value="Bewerken" formaction="artikelbewerk.php" title="Bewerken" >
                               <i class="fa fa-pencil"></i>
                             </button>
+
                             <script>
-                              function myFunctionBewerken() {
-                                alert("Weet u zeker dat u het artikel wilt bewerken?");
+                            function myFunctionVerwijderen()
+                            {
+                              var r=confirm("Weet je zeker dat je dit artikel wilt verwijderen?");
+                              if(r == true){
+                                return true;
+                              }else{
+                                return false;
                               }
+                            }
                             </script>
-                            <button type="submit" class="btn btn-light" name="verwijder" value="Verwijder" title="Verwijderen" onclick="myFunctionVerwijderen()">
+                            <button type="submit" class="btn btn-light" name="verwijder" value="Verwijder" title="Verwijderen" onclick=" return myFunctionVerwijderen()">
                               <i class="fa fa-trash"></i>
                             </button>
-                            <script>
-                              function myFunctionVerwijderen() {
-                                alert("Weet u zeker dat u het artikel wilt verwijderen?");
-                              }
-                            </script>
                         </td>
                           <input type="hidden" name="nummer" value="'.$row['artikelnr'].'">
                         </form>

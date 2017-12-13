@@ -74,16 +74,6 @@ if(!isset($_GET["artikelnr"])){
           <span><h5>Comments</h5></span>
         </div>
       </div>
-      <script>
-        function antwoordweergeven() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
 
 <?php
       $sql = "SELECT *
@@ -91,17 +81,18 @@ if(!isset($_GET["artikelnr"])){
               JOIN bezoeker b
               ON r.bezoekernr = b.bezoekernr
               WHERE artikelnr = :artikel1
-              AND status = 1
-              ORDER BY datum DESC"
-              ;
+              AND status = 1";
 
               $stmt = $conn->prepare($sql);
               $stmt -> bindValue(':artikel1', $artikelnr, PDO::PARAM_INT);
               $stmt->execute();
+              $row = $stmt->fetch()
 ?>
 
 <?php
+if($row["datum"] != ''){
       while ($row = $stmt->fetch()) {
+              $antwoordweergeven = "antwoordweergeven".$row["ratingnr"];
               $voornaam = $row["voornaam"];
               $achternaam = $row["achternaam"];
               $datum = $row["datum"];
@@ -128,7 +119,18 @@ if(!isset($_GET["artikelnr"])){
                           echo ' <span class="fa fa-star-o"></span>';
                           $i++;
                       }
-//
+                    //?>
+                          <script>
+                            function antwoordweergeven() {
+                            var x = document.getElementById("myDIV");
+                            if (x.style.display === "none") {
+                            x.style.display = "block";
+                        } else {
+                            x.style.display = "none";
+                        }
+                    }
+                          </script>
+                    <?php
                     echo('<br>
                     '.$tekst.'</p>
                      <button onclick="antwoordweergeven()">Antwoorden bekijken</button>
@@ -148,6 +150,7 @@ if(!isset($_GET["artikelnr"])){
                   ');
       }
     }
+  }
 ?>
       <div class="row">
         <div class="col-lg-6 col-md-12 mx-auto">
