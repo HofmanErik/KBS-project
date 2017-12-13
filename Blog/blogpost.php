@@ -19,9 +19,9 @@ if(!isset($_GET["artikelnr"])){
           echo "Connection failed: " . $e->getMessage();
   }
 
-  $sql = "SELECT * 
+  $sql = "SELECT *
           FROM artikel a
-          JOIN medewerker m ON a.auteur = m.mnr 
+          JOIN medewerker m ON a.auteur = m.mnr
           WHERE artikelnr = :artikel1";
           $stmt = $conn->prepare($sql);
           $stmt -> bindValue(':artikel1', $artikelnr, PDO::PARAM_INT);
@@ -73,7 +73,7 @@ if(!isset($_GET["artikelnr"])){
         <div class="col-lg-6 col-md-12 mx-auto">
           <span><h5>Comments</h5></span>
         </div>
-      </div>  
+      </div>
       <script>
         function myFunction() {
     var x = document.getElementById("myDIV");
@@ -82,11 +82,11 @@ if(!isset($_GET["artikelnr"])){
     } else {
         x.style.display = "none";
     }
-} 
+}
 </script>
 
 <?php
-      $sql = "SELECT * 
+      $sql = "SELECT *
               FROM rating r
               JOIN bezoeker b
               ON r.bezoekernr = b.bezoekernr
@@ -133,7 +133,7 @@ if(!isset($_GET["artikelnr"])){
                     '.$tekst.'</p>
                      <button onclick="myFunction()">Antwoorden bekijken</button>
                     <div id="myDIV">
-                    <p class="text-right"><img alt="" src="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=80&amp;d=mm&amp;r=g 2x" class="img-circle" height="40" width="40"> <b>Vindbaar In</b> 
+                    <p class="text-right"><img alt="" src="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=80&amp;d=mm&amp;r=g 2x" class="img-circle" height="40" width="40"> <b>Vindbaar In</b>
                     <br>
                     <i>'.$datum.'</i><br>
                     Hoi '.ucfirst($voornaam)." ".ucfirst($achternaam).',
@@ -144,7 +144,7 @@ if(!isset($_GET["artikelnr"])){
                     </div>
                   </div>
                 </div>
-                
+
                   ');
       }
     }
@@ -217,12 +217,17 @@ if(!isset($_GET["artikelnr"])){
               <textarea id="comment" name="reactie" cols="58" rows="8" maxlength="65525"></textarea>
             </p>
             <p>
-              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen">
+              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen" onclick="myFunction()">
+              <script>
+                function myFunction() {
+                  alert("Uw reactie wordt verzonden!");
+                }
+              </script>
             </p>
           </form>
         </div>
       </div>
     </div>
-  
+
     <hr>
 <?php include 'footer.php';?>
