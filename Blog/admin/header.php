@@ -122,7 +122,8 @@ if(!isset($_SESSION['voornaam'])){
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
                   <h6 class="dropdown-header">Nieuwe meldingen:</h6>
                   <div class="dropdown-divider"></div>
-                  <?php
+
+                  <?php /*
                   while($row = $stmt->fetch()){
                     $naam = $row["voornaam"]." ".$row["achternaam"];
                     $datum = $row["datum"];
@@ -135,7 +136,7 @@ if(!isset($_SESSION['voornaam'])){
                     <div class="dropdown-message small">'.$rating.'</div>
                   </a>
                   ');
-                }
+                } */
                   ?>
                     <div class="dropdown-divider"></div>
                   <a class="dropdown-item small" href="../admin/reacties.php">Alle meldingen weergeven</a>
