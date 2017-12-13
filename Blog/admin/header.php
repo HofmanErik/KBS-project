@@ -85,7 +85,7 @@ if(!isset($_SESSION['voornaam'])){
 
 <!-- meldingen popup -->
 <?php
-
+/*
   $servername = "localhost";
   $username = "beheerder";
   $password = "geheim";
@@ -107,6 +107,7 @@ if(!isset($_SESSION['voornaam'])){
         $stmt = $conn->prepare($sql);
         $stmt->execute(); 
         $row = $stmt->fetch();
+*/
 ?>
 
             <ul class="navbar-nav ml-auto">
@@ -130,6 +131,7 @@ if(!isset($_SESSION['voornaam'])){
                   <div class="dropdown-divider"></div>
 <!-- meldingen dropdown -->
                   <?php 
+                  /*
                   while($row = $stmt->fetch()){
                     if($row["ratingnr"] != ''){
                     $naam = $row["voornaam"]." ".$row["achternaam"];
@@ -145,6 +147,7 @@ if(!isset($_SESSION['voornaam'])){
                   ');
                 }
               }
+              */
                   ?>
                     <div class="dropdown-divider"></div>
                   <a class="dropdown-item small" href="../admin/reacties.php">Alle meldingen weergeven</a>
