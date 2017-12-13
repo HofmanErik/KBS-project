@@ -95,7 +95,7 @@ try {
                                           return false;
                                         }
                                       }
-                                      </script><button type='submit' class='btn btn-success' name='Publiceer' value='Publiceer' title='Publiceren' onclick='return myFunctionPubliceerR()'><i class='fa fa-check' aria-hidden='true'></i></button></td> ";
+                                      </script><button type='submit' class='btn btn-success' name='verwerk' value='Publiceer' title='Publiceren' onclick='return myFunctionPubliceerR()'><i class='fa fa-check' aria-hidden='true'></i></button></td> ";
                                     echo "<td><script>
                                       function myFunctionVerwijderR(){
                                         var r=confirm('Weet u zeker dat u de reactie wilt verwijderen?');
