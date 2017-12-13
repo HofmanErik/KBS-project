@@ -160,31 +160,10 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
+        <div class="card-footer small text-muted"><?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?></div>
       </div>
     </div>
   </div>
 
-
-  <!-- Verwijder popup -->
-    <!--  data-toggle=\"modal\"data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\" -->
-    	<div class="modal fade" id="verwijder-popup" tabindex="-1" role="dialog"
-           aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Weet je het zeker?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Klik op verwijderen om dit artikel te verwijderen</div>
-              <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
-                <a name = "verwijder" class="btn btn-primary" href="../admin/overzicht.php">Verwijderen</a>
-              </div>
-          </div>
-        </div>
-      </div>
 
 <?php include '../admin/footer.php'; ?>
