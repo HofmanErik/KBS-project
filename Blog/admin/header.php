@@ -85,7 +85,7 @@ if(!isset($_SESSION['voornaam'])){
 
 <!-- meldingen popup -->
 <?php
-/*
+
   $servername = "localhost";
   $username = "beheerder";
   $password = "geheim";
@@ -100,12 +100,13 @@ if(!isset($_SESSION['voornaam'])){
       $sql = "SELECT * FROM rating r
             JOIN artikel a on r.artikelnr = a.artikelnr
             JOIN bezoeker b on r.bezoekernr = b.bezoekernr
-            WHERE r.status = 1
+            WHERE r.status = 0
             ORDER BY r.datum desc
             LIMIT 3";
 
         $stmt = $conn->prepare($sql);
-        $stmt->execute(); */
+        $stmt->execute(); 
+        $row = $stmt->fetch();
 ?>
 
             <ul class="navbar-nav ml-auto">
@@ -113,19 +114,24 @@ if(!isset($_SESSION['voornaam'])){
                 <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown"
                    href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <i class="fa fa-fw fa-bell-o"></i>
-                   <span class="d-lg-none">Meldingen
+                   <?php 
+                   if($row["ratingnr"] != ''){
+                   echo '<span class="d-lg-none">Meldingen
                      <span class="badge badge-pill badge-primary">12 Nieuw</span>
                    </span>
                    <span class="indicator text-primary d-none d-lg-block">
                      <i class="fa fa-fw fa-circle"></i>
-                   </span>
+                   </span>';
+                   }
+                   ?>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
                   <h6 class="dropdown-header">Nieuwe meldingen:</h6>
                   <div class="dropdown-divider"></div>
-
-                  <?php /*
+<!-- meldingen dropdown -->
+                  <?php 
                   while($row = $stmt->fetch()){
+                    if($row["ratingnr"] != ''){
                     $naam = $row["voornaam"]." ".$row["achternaam"];
                     $datum = $row["datum"];
                     $comment = $row["comment"];
@@ -137,7 +143,8 @@ if(!isset($_SESSION['voornaam'])){
                     <div class="dropdown-message small">'.$rating.'</div>
                   </a>
                   ');
-                } */
+                }
+              }
                   ?>
                     <div class="dropdown-divider"></div>
                   <a class="dropdown-item small" href="../admin/reacties.php">Alle meldingen weergeven</a>

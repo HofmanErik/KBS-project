@@ -120,24 +120,21 @@ if(!isset($_GET["artikelnr"])){
                           $i++;
                       }
                     //?>
-<script>
-    function antwoordweergeven(id) {
-        if($("#shwmb" + id).css('display') == 'none') {
-            $("#shwmb" + id).show();
-        }else {
-            $("#shwmb" + id).hide();
-        }
-    }
-</script>
+                          <script>
+                            function antwoordweergeven() {
+                            var x = document.getElementById("myDIV");
+                            if (x.style.display === "none") {
+                            x.style.display = "block";
+                        } else {
+                            x.style.display = "none";
+                        }
+                    }
+                          </script>
                     <?php
                     echo('<br>
-                    '.$tekst.'');?>
-                  </p>
-<?php if ($row['mobile1'] != '') { ?> 
-            <a id="showmobile<?php echo $row["rating"]; ?>" onclick="return showmobile(<?php echo $row1["rating"]; ?>)">Antwoorden weergeven</a> 
-                <span id="shwmb<?php echo $row1["rating"]; ?>" style="display:none">
-                    <?php echo 
-                    '                    <div id="myDIV">
+                    '.$tekst.'</p>
+                     <button onclick="antwoordweergeven()">Antwoorden bekijken</button>
+                    <div id="myDIV">
                     <p class="text-right"><img alt="" src="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=80&amp;d=mm&amp;r=g 2x" class="img-circle" height="40" width="40"> <b>Vindbaar In</b>
                     <br>
                     <i>'.$datum.'</i><br>
@@ -146,14 +143,7 @@ if(!isset($_GET["artikelnr"])){
                     Fijne dag,
                     Vindbaar in</p>
                     <hr><hr>
-                    </div>'; ?>
-                </span>
-            <?php
-            } else {
-                echo 'Not Available';
-            }
-            ?>
-
+                    </div>
                   </div>
                 </div>
 
@@ -229,9 +219,9 @@ if(!isset($_GET["artikelnr"])){
               <textarea id="comment" name="reactie" cols="58" rows="8" maxlength="65525"></textarea>
             </p>
             <p>
-              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen" onclick="myFunctionReactie()">
+              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen" onclick="myFunction()">
               <script>
-                function myFunctionReactie() {
+                function myFunction() {
                   alert("Uw reactie wordt verzonden!");
                 }
               </script>
