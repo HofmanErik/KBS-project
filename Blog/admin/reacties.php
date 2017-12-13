@@ -11,7 +11,8 @@ try {
     $sql = "SELECT * FROM rating r
             JOIN artikel a on r.artikelnr = a.artikelnr
             JOIN bezoeker b on r.bezoekernr = b.bezoekernr
-            WHERE r.status = 0";
+            WHERE r.status = 0
+            ORDER BY r.datum DESC";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -63,8 +64,10 @@ try {
                             <th>Rating</th>
                             <th>Comment</th>
                             <th>Geschreven door</th>
+                            <th>Datum</th>
                             <th>Email</th>
                             <!-- <th>Publiceerdatum</th> -->
+                            <th>#</th>
                             <th>#</th>
                         </tr>
                     </thead>
@@ -89,11 +92,12 @@ try {
 //
                                     echo "</td><td>".$row['comment']."</td>";
                                     echo "<td>".$row['voornaam']." ".$row['achternaam']."</td>";
+                                    echo "<td>".$row['datum']."</td>";
                                     // echo "<td>".$row['datum']."</td>";
                                     echo "<td>".$row['email']."</td>";
                                     echo "<input type=\"hidden\" name=\"nummer\" value=\"".$row['ratingnr']."\">";
-                                    echo "<td><button type='submit' class='btn btn-success' name='verwerk' value='Publiceer' title='Publiceren'><i class='fa fa-check' aria-hidden='true'></i></button> ";
-                                    echo "<button type='submit' class='btn btn-danger' name='verwijder' value='Verwijder' title='Verwijderen'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
+                                    echo "<td><button type='submit' class='btn btn-success' name='verwerk' value='Publiceer' title='Publiceren'><i class='fa fa-check' aria-hidden='true'></i></button></td> ";
+                                    echo "<td><button type='submit' class='btn btn-danger' name='verwijder' value='Verwijder' title='Verwijderen'><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
                                 echo "</form>";  
                             echo "</tr>";    
                         }
