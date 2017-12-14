@@ -60,5 +60,6 @@ if (isset($_POST['statussubmit'])){
 		$stmt = $conn->prepare("update medewerker SET emailstatus = 0 WHERE mnr = '$mnr'");
 		$stmt->execute();		
 	}
+	header("Location: ../admin/account.php?succes");
 }	
 ?>
