@@ -14,14 +14,6 @@
       <div class="card-header">Account aanmaken</div>
       <div class="card-body">
         <form action="register.inc.php" method="POST">
-
-            <div class="form-row">
-              <div class="col-md-6">
-                <label for="exampleInputName">Medewerker</label>
-                <input class="form-control" name="mnr" type="number" aria-describedby="nameHelp"
-                       placeholder="Voer medewerkernummer in">
-              </div>
-            </div>
               <div class="form-row">
               <div class="col-md-6">
                 <label for="exampleInputName">Voornaam</label>
@@ -44,16 +36,15 @@
                    aria-describedby="emailHelp" placeholder="Voer emailadres in">
           </div>
         </div>
-
         <div class="form-row">
         <div class="col-md-6">
-          <label for="exampleInputLastName">functie</label>
-          <input class="form-control" name="functie" type="number"
-                 aria-describedby="nameHelp" placeholder="Voer functie in">
+          <label>Functie</label>
+          <select name="functie" method="POST">
+            <option value="1">Moderator</option>
+            <option value="2">Beheerder</option>
+          </select>
         </div>
       </div>
-
-
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
