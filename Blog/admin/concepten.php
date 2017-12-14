@@ -87,12 +87,34 @@
                                                     <td><a href="#">'.$row['titel'].'</a></td>
                                                     <td>'.$row['voornaam'].'</td>
                                                     <td>'.$row['datum'].'</td>
-                                                    <td><input type="submit" class="btn btn-secondary" name="publiceer_concept" value="Publiceer"></td>
+                                                    <td>
+                                                    <script>
+                                                      function myFunctionPubliceer_concept(){
+                                                        var r=confirm("Weet u zeker dat u het artikel wilt publiceren?");
+                                                        if(r == true){
+                                                          return true;
+                                                        }else{
+                                                          return false;
+                                                        }
+                                                      }
+                                                    </script>
+                                                    <input type="submit" class="btn btn-secondary" name="publiceer_concept" value="Publiceer" onclick="return myFunctionPubliceer_concept()"></td>
                                                         <input type="hidden" name="nummer" value="'.$row['artikelnr'].'">
                                                     <td>
                                                         <button type="submit" class="btn btn-secondary" name="bewerk" value="bewerken" formaction="artikelbewerk.php" title="Bewerken"><i class="fa fa-pencil"></i>
                                                         </button>
-                                                        <button type="submit" class="btn btn-secondary" name="verwijder_concept" value="Verwijder" title="Verwijderen"><i class="fa fa-trash"></i>
+
+                                                        <script>
+                                                          function myFunctionVerwijder_concept(){
+                                                            var r=confirm("Weet u zeker dat u het artikel wilt verwijderen?");
+                                                            if(r == true){
+                                                              return true;
+                                                            }else{
+                                                              return false;
+                                                            }
+                                                          }
+                                                        </script>
+                                                        <button type="submit" class="btn btn-secondary" name="verwijder_concept" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijder_concept()"><i class="fa fa-trash"></i>
                                                         </button>
                                                     </td>
                                                     <td>'.$row["status"].'</td>
@@ -104,29 +126,8 @@
                         </table>
                     </div>
                 </div>
-                <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
+                <div class="card-footer small text-muted"><?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?></div>
             </div>
             </div>
-            <!-- Verwijder popup -->
-            <div class="modal fade" id="verwijder-popup" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Weet je het zeker?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Klik op verwijderen om dit artikel te verwijderen</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
-                            <a class="btn btn-primary" href="../admin/overzicht.php">Verwijderen</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
 
 <?php include 'footer.php'; ?>

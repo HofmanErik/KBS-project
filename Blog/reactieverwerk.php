@@ -37,12 +37,10 @@ $sql = "SELECT *
         $row = $stmt->fetch();
         $bezoekernr = $row['bezoekernr'];
 
-$sql = "INSERT INTO rating (artikelnr,bezoekernr,comment,rating) 
+$sql = "INSERT INTO rating (artikelnr,bezoekernr,comment,rating)
 		VALUES ($artikelnr,'$bezoekernr','$reactie', $rating)";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-
-        $message = "Na goedkeuring wordt je reactie geplaatst.";
 
         header('location: blogpost.php?artikelnr='.$artikelnr.'');
 }
