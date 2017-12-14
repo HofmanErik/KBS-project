@@ -177,15 +177,15 @@ if (isset($_POST['statussubmit'])) {
                                             <form action="account.php" method ="POST">
                                                 <p class="card-text"></p>
                                                 <p>Voornaam: <br><input type=text name="voornaam" value="<?php
-                                                    if (isset($_SESSION['voornaam'])) {
-                                                        echo $_SESSION['voornaam'];
+                                                    if (isset($_POST['voornaam'])) {
+                                                        echo $_POST['voornaam'];
                                                     } else {
                                                         echo $voornaam;
                                                     }
                                                     ?>"></p>
                                                 <p>Achternaam: <br><input type=text name="achternaam" value="<?php
-                                                    if (isset($_SESSION['achternaam'])) {
-                                                        echo $_SESSION['achternaam'];
+                                                    if (isset($_POST['achternaam'])) {
+                                                        echo $_POST['achternaam'];
                                                     } else {
                                                         echo $achternaam;
                                                     }
