@@ -1,9 +1,40 @@
 <?php
-
 //header wordt opgehaald
 include '../admin/header.php';
 
+$mailResetResponse1 = " ";
+$mailResetResponse2 = " ";
 
+if (isset($_POST['emailsubmit'])) {
+    $mailResetResponse1 = " ";
+    $mailResetResponse2 = " ";
+    $mail1 = $_POST['mail1'];
+    $mail2 = $_POST['mail2'];
+
+    if ($mail1 == $mail2) {
+        $newmail = $_POST['mail1'];
+
+        $servername = "localhost";
+        $username = "beheerder";
+        $password = "geheim";
+
+        try {
+            //Creating connection for mysql
+            $conn = new PDO("mysql:host=$servername;dbname=db_vindbaarin", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
+        $mnr = $_SESSION['mnr'];
+        //sql query naam opslaan in database
+        $prep = $conn->prepare("update medewerker SET email = '$newmail' WHERE mnr = '$mnr'");
+        $prep->execute();
+        $mailResetResponse1 = "<font color='green'>* Uw e-mail adres is gewijzigd.</font>";
+    } else {
+        $mailResetResponse2 = "<font color='red'>* De adressen komen niet overeen.</font>";
+    }
+}
 
 if (isset($_POST['opslaan'])) {
 
@@ -47,6 +78,7 @@ if (isset($_POST["opslaan1"])) {
         $voornaam = $row['voornaam'];
     }
 }
+
 $wwHerstelResponse1 = " ";
 $wwHerstelResponse2 = " ";
 if (isset($_POST["opslaan2"])) {
@@ -97,20 +129,20 @@ if (isset($_POST["opslaan2"])) {
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <div class="card">
                                         <div class="card-block">
                                             <h4 class="card-title">Naam wijzigen</h4>
                                             <form action="account.php" method ="POST">
                                                 <p class="card-text"></p>
-                                                <p>Voornaam: <input type=text name="voornaam" value="<?php
+                                                <p>Voornaam: <br><input type=text name="voornaam" value="<?php
                                                     if (isset($_POST['voornaam'])) {
                                                         echo $_POST['voornaam'];
                                                     } else {
                                                         echo $voornaam;
                                                     }
                                                     ?>"></p>
-                                                <p>Achternaam: <input type=text name="achternaam" value="<?php
+                                                <p>Achternaam: <br><input type=text name="achternaam" value="<?php
                                                     if (isset($_POST['achternaam'])) {
                                                         echo $_POST['achternaam'];
                                                     } else {
@@ -124,14 +156,14 @@ if (isset($_POST["opslaan2"])) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <form action="account.php" method ="POST">
                                         <div class="card">
                                             <div class="card-block">
                                                 <h4 class="card-title">Wachtwoord wijzigen</h4>
-                                                <p>Oud wachtwoord: <input type=password name="oudWachtwoord"></p>
-                                                <p>Nieuw wachtwoord: <input type=password name="nieuwWachtwoord1"></p>
-                                                <p>Herhaal wachtwoord: <input type=password name="nieuwWachtwoord2"></p>
+                                                <p>Oud wachtwoord: <br><input type=password name="oudWachtwoord"></p>
+                                                <p>Nieuw wachtwoord: <br><input type=password name="nieuwWachtwoord1"></p>
+                                                <p>Herhaal wachtwoord: <br><input type=password name="nieuwWachtwoord2"></p>
                                                 <p><?php echo$wwHerstelResponse1; ?></p>
                                                 <p><?php echo$wwHerstelResponse2; ?></p>
                                                 <p class="card-text"></p>
@@ -142,37 +174,39 @@ if (isset($_POST["opslaan2"])) {
                                 </div>
                             </div>
                             <div class="row">
-                              <div class="col-sm-4">
-                                <div class="card">
-                                  <div class="card-block">
-                                    <h4 class="card-title">Emailadres wijzigen</h4>
-                                      <form action="emailupdate.php" method="POST">
-                                        <p>Emailadres: <input type="email" name="mail1"></p>
-                                        <p>Emailadres: <input type="email" name="mail2"></p>
-                                        <input class="btn btn-primary" type="submit" name="emailsubmit" value="Opslaan">
-                                      </form>
-                                  </div>
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-block">
+                                            <h4 class="card-title">Emailadres wijzigen</h4>
+                                            <form action="account.php" method="POST">
+                                                <p>Emailadres: <br><input type="email" name="mail1"></p>
+                                                <p>Emailadres: <br><input type="email" name="mail2"></p>
+                                                <p><?php echo$mailResetResponse1; ?></p>
+                                                <p><?php echo$mailResetResponse2; ?></p>
+                                                <input class="btn btn-primary" type="submit" name="emailsubmit" value="Opslaan">
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
-                                    <div class="col-sm-5">
-                                <div class="card">
-                                  <div class="card-block">
-                                    <h4 class="card-title">Voorkeuren wijzigen</h4>
-                                    <p>Wil je updates ontvangen over nieuwe reacties?</p>
-                                    <form action="emailupdate.php" method="POST">
-                                        <input type="radio" name="janee" value="ja" >Ja<br>
-                                        <input type="radio" name="janee" value="nee">Nee<br>
-                                    <p class="card-text"></p>
-                                    <input class="btn btn-primary" type="submit" name="statussubmit" value="Opslaan">
-                                  </form>
-                                  </div>
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-block">
+                                            <h4 class="card-title">Voorkeuren wijzigen</h4>
+                                            <p>Wil je updates ontvangen over nieuwe reacties?</p>
+                                            <form action="emailupdate.php" method="POST">
+                                                <input type="radio" name="janee" value="ja" >Ja<br>
+                                                <input type="radio" name="janee" value="nee">Nee<br>
+                                                <p class="card-text"></p>
+                                                <input class="btn btn-primary" type="submit" name="statussubmit" value="Opslaan">
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
-                              </div>
-                              </div>
+                            </div>
+                            </div>
                             </div>
 
-                            
+
                             </div>
                             </div>
                             </div>
