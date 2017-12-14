@@ -54,9 +54,11 @@
 
     $tekst= htmlentities(trim($_POST['tinymce'], ENT_QUOTES));
 
+    $auteurId = $_SESSION["mnr"];
+
     if($valid == true && $filevalid ==true){
       $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur, datum, afbeelding, status)
-                             VALUES ('?', '$titel','$tekst','$fileNameNew', '1', NOW(), '?', 1 )");
+                             VALUES ('?', '$titel','$tekst','$fileNameNew', '$auteurId', NOW(), '?', 1 )");
       $stmt->execute();
       //Hier worden de thumbnails opgeslagen
       $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
@@ -102,7 +104,7 @@
 
       if($valid == true && $filevalid ==true){
         $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, titel, tekst, thumbnail, auteur, datum, afbeelding, status)
-                               VALUES ('?', '$titel','$tekst','$fileNameNew', '1', NOW(), '?', 0)");
+                               VALUES ('?', '$titel','$tekst','$fileNameNew', '$auteurId', NOW(), '?', 0)");
         $stmt->execute();
         //Hier worden de thumbnails opgeslagen
         $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
