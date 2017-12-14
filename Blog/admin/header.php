@@ -35,6 +35,38 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
           <!-- Hier begint de linker navbar -->
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+              <?php
+              //checken voor moderator zo ja dan alleen reacties en instellingen tonen
+              if($_SESSION['functie'] == '1') {
+
+              ?>
+              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link"  href="../admin/dashboard.php">
+                  <i class="fa fa-dashboard"></i>
+                  <span class="nav-link-text">Dashboard</span>
+                </a>
+              </li>
+
+              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reacties">
+                <a class="nav-link" href="../admin/reacties.php">
+                  <i class="fa fa-commenting"></i>
+                  <span class="nav-link-text">Reacties</span>
+                </a>
+              </li>
+
+              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Instellingen">
+                <a class="nav-link" href="../admin/account.php">
+                  <i class="fa fa-cog"></i>
+                  <span class="nav-link-text">Instellingen</span>
+                </a>
+              </li>
+
+              
+            <?php }
+              //checken voor moderator zo ja dan alleen reacties en instellingen tonen
+              if($_SESSION['functie'] == '2') {
+
+              ?>
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                 <a class="nav-link"  href="../admin/dashboard.php">
                   <i class="fa fa-dashboard"></i>
@@ -81,6 +113,14 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                 </a>
               </li>
             </ul>
+            <?php
+            }
+
+             ?>
+
+
+
+
 
 
 <!-- meldingen popup -->
@@ -155,12 +195,17 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                 </div>
               </li>
 
+
               <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                   <i class="fa fa-fw fa-sign-out"></i>Uitloggen
                 </a>
               </li>
             </ul>
+
+
           </div>
+
+
 
       </nav>
