@@ -237,7 +237,7 @@ if (isset($_POST['statussubmit'])) {
                                         <div class="card-block">
                                             <h4 class="card-title">Voorkeuren wijzigen</h4>
                                             <p>Wil je updates ontvangen over nieuwe reacties?</p>
-                                            <form action="emailupdate.php" method="POST">
+                                            <form action="account.php" method="POST">
                                                 <input type="radio" name="janee" value="ja" >Ja<br>
                                                 <input type="radio" name="janee" value="nee">Nee<br>
                                                 <p class="card-text"></p>
