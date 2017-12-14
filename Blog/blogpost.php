@@ -225,7 +225,9 @@ if(!isset($_GET["artikelnr"])){
               alert('Uw reactie wordt verzonden!');
               }
               </script>
-              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen" onclick="return myFunctionReageren()">
+              <!-- <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen" onclick="return myFunctionReageren()"> -->
+
+              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen">
             </p>
           </form>
         </div>
