@@ -108,7 +108,7 @@
                                 }
                               }
                               </script>
-                              <button type="submit" class="btn btn-light" name="publiceer" value="Publiceer" onclick="return myFunctionPubliceren()"> Publiceer </button>
+                              <button type="submit" class="btn btn-secondary" name="publiceer" value="Publiceer" onclick="return myFunctionPubliceren()"> Publiceer </button>
                           </label>
                         </td>');
                   } elseif($row['status']==1) {
@@ -125,13 +125,13 @@
                               }
                             }
                             </script>
-                            <button type="submit" class="btn btn-light" name="depubliceer" value="Concept" onclick="return myFunctionConcept()"> Concept </button>
+                            <button type="submit" class="btn btn-secondary" name="depubliceer" value="Concept" onclick="return myFunctionConcept()"> Concept </button>
                             </label>
                           </td>');
                   };
                   print('
                         <td>
-                          <button type="submit" class="btn btn-light" name="bewerk" value="Bewerken" formaction="artikelbewerk.php" title="Bewerken" >
+                          <button type="submit" class="btn btn-secondary" name="bewerk" value="Bewerken" formaction="artikelbewerk.php" title="Bewerken" >
                               <i class="fa fa-pencil"></i>
                             </button>
 
@@ -146,7 +146,7 @@
                               }
                             }
                             </script>
-                            <button type="submit" class="btn btn-light" name="verwijder" value="Verwijder" title="Verwijderen" onclick=" return myFunctionVerwijderen()">
+                            <button type="submit" class="btn btn-secondary" name="verwijder" value="Verwijder" title="Verwijderen" onclick=" return myFunctionVerwijderen()">
                               <i class="fa fa-trash"></i>
                             </button>
                         </td>
@@ -160,31 +160,10 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
+        <div class="card-footer small text-muted"><?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?></div>
       </div>
     </div>
   </div>
 
-
-  <!-- Verwijder popup -->
-    <!--  data-toggle=\"modal\"data-toggle=\"tooltip\" \"modaltooltip\" data-target=\"#verwijder-popup\" -->
-    	<div class="modal fade" id="verwijder-popup" tabindex="-1" role="dialog"
-           aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Weet je het zeker?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Klik op verwijderen om dit artikel te verwijderen</div>
-              <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
-                <a name = "verwijder" class="btn btn-primary" href="../admin/overzicht.php">Verwijderen</a>
-              </div>
-          </div>
-        </div>
-      </div>
 
 <?php include '../admin/footer.php'; ?>

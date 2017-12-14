@@ -1,6 +1,8 @@
 <?php
+
 //header wordt opgehaald
 include '../admin/header.php';
+
 
 
 if (isset($_POST['opslaan'])) {

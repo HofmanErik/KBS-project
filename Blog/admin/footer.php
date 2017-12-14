@@ -24,8 +24,7 @@
           </div>
           <div class="modal-body">Klik op uitloggen om deze sessie te beëindigen.</div>
           <div class="modal-footer">
-          <form action="logout.php" method="POST">
-            <!--<button class="btn btn-primary" type="submit" name="submit" data-dismiss="modal">Uitloggen</button>-->
+          <form>
             <a href="logout.php">Uitloggen</a>
           </form>
           </div>
@@ -41,8 +40,9 @@
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
 
-      <!-- Custom scripts for all pages-->
-      <script src="../js/sb-admin.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin.min.js"></script>
+
 
         <!-- Deze div sluit niks af in de footer-->
       </div>

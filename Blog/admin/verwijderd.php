@@ -88,10 +88,31 @@
                           <td>'.$row['datum'].'
                             <input type="hidden" name="nummer" value="'.$row['artikelnr'].'"></td>
                           <td>
-                            <button type="submit" class="btn btn-light" name="terugzetten" value="Terugzetten" title="Verplaatsen naar concepten">
+                          <script>
+                            function myFunctionTerugzetten_concept(){
+                              var r=confirm("Weet u zeker dat u het artikel wilt terugzetten naar concept?");
+                              if(r == true){
+                                return true;
+                              }else{
+                                return false;
+                              }
+                            }
+                          </script>
+                            <button type="submit" class="btn btn-secondary" name="terugzetten" value="Terugzetten" title="Verplaatsen naar concepten" onclick="return myFunctionTerugzetten_concept()">
                                 <i class="fa fa-undo"></i>
                             </button>
-                            <button type="submit" class="btn btn-light" name="def_verwijder" value="Verwijder" title="Definitief verwijderen">
+
+                            <script>
+                              function myFunctionDef_verwijder(){
+                                var r=confirm("PAS OP! Weet u zeker dat u het artikel DEFINITIEF wilt verwijderen?");
+                                if(r == true){
+                                  return true;
+                                }else{
+                                  return false;
+                                }
+                              }
+                            </script>
+                            <button type="submit" class="btn btn-secondary" name="def_verwijder" value="Verwijder" title="Definitief verwijderen" onclick="return myFunctionDef_verwijder()">
                               <i class="fa fa-trash"></i>
                             </button>
                           </td>
@@ -103,45 +124,7 @@
           </table>
         </div>
       </div>
-      <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
-    </div>
-  </div>
-  <!-- Verwijder popup -->
-  <div class="modal fade" id="defverwijder-popup" tabindex="-1" role="dialog"
-       aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Weet je het zeker?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body">Klik op verwijderen om dit artikel definitief te verwijderen</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
-              <a class="btn btn-primary" href="../admin/verwijderd.php">Verwijderen</a>
-          </div>
-      </div>
-    </div>
-  </div>
-  <!-- Terug zetten popup -->
-  <div class="modal fade" id="terugzetten-popup" tabindex="-1" role="dialog"
-       aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Weet je het zeker?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body">Klik op opslaan om dit artikel te verplaatsen naar concepten</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
-          <a class="btn btn-primary" href="../admin/verwijderd.php">Opslaan</a>
-        </div>
-      </div>
+      <div class="card-footer small text-muted"><?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?></div>
     </div>
   </div>
 

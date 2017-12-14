@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
+if(!isset($_SESSION['voornaam'])){
    header("Location:  ../admin/login.php");
 }
 ?>
@@ -41,21 +41,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                   <span class="nav-link-text">Dashboard</span>
                 </a>
               </li>
-              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Artikelen">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapse-artikelen"
-                   data-parent="#exampleAccordion">
-                   <i class="fa fa-pencil"></i>
-                   <span class="nav-link-text">Artikelen</span>
-                </a>
-                 <ul class="sidenav-second-level collapse" id="collapse-artikelen">
-                   <li>
-                     <a href="../admin/overzicht.php">Overzicht</a>
-                   </li>
-                   <li>
-                     <a href="../admin/toevoegen.php">Toevoegen</a>
-                   </li>
-                 </ul>
-              </li>
+
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reacties">
                 <a class="nav-link" href="../admin/reacties.php">
                   <i class="fa fa-commenting"></i>
@@ -68,12 +54,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                   <span class="nav-link-text">Instellingen</span>
                 </a>
               </li>
-              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gebruiker toevoegen">
-                <a class="nav-link" href="../admin/register.php">
-                  <i class="fa fa-user-plus"></i>
-                  <span class="nav-link-text">Gebruiker toevoegen</span>
-                </a>
-              </li>
+              
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Voorbeeld">
                 <a class="nav-link" href="../index.php" target="_blank">
                   <i class="fa fa-external-link"></i>
@@ -81,80 +62,42 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                 </a>
               </li>
             </ul>
-
-
-<!-- meldingen popup -->
-<?php
-/*
-  $servername = "localhost";
-  $username = "beheerder";
-  $password = "geheim";
-  $dbname = "db_vindbaarin";
- try {
-          $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  } catch (PDOException $e) {
-          echo "Connection failed: " . $e->getMessage();
-  }
-
-      $sql = "SELECT * FROM rating r
-            JOIN artikel a on r.artikelnr = a.artikelnr
-            JOIN bezoeker b on r.bezoekernr = b.bezoekernr
-            WHERE r.status = 0
-            ORDER BY r.datum desc
-            LIMIT 3";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $row = $stmt->fetch();
-*/
-?>
-
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown"
                    href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <i class="fa fa-fw fa-bell-o"></i>
-                   <?php
-                   /*
-                   if($row["ratingnr"] != ''){
-                   echo '<span class="d-lg-none">Meldingen
+                   <span class="d-lg-none">Meldingen
                      <span class="badge badge-pill badge-primary">12 Nieuw</span>
                    </span>
                    <span class="indicator text-primary d-none d-lg-block">
                      <i class="fa fa-fw fa-circle"></i>
-                   </span>';
-                   }*/
-                   ?>
+                   </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
                   <h6 class="dropdown-header">Nieuwe meldingen:</h6>
                   <div class="dropdown-divider"></div>
-<!-- meldingen dropdown -->
-                  <?php
-                  /*
-                  while($row = $stmt->fetch()){
-                    if($row["ratingnr"] != ''){
-                    $naam = $row["voornaam"]." ".$row["achternaam"];
-                    $datum = $row["datum"];
-                    $comment = $row["comment"];
-                    $rating = $row["rating"];
-                  print('
-                    <a class="dropdown-item" href="#">
-                    <strong>'.$naam.'</strong>
-                    <span class="small float-right text-muted">'.$datum.'</span>
-                    <div class="dropdown-message small">'.$rating.'</div>
+                  <a class="dropdown-item" href="#">
+                    <strong>Melissa Landwerd</strong>
+                    <span class="small float-right text-muted">11:21 AM</span>
+                    <div class="dropdown-message small">Leuk geschreven, 4 sterren!</div>
                   </a>
-                  ');
-                }
-              }
-              */
-                  ?>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                      <strong>Shanna van Grevengoed</strong>
+                      <span class="small float-right text-muted">21:21 AM</span>
+                      <div class="dropdown-message small">Ik vind dit niet leuk. Ik geef 1 ster.</div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                      <strong>Wesley</strong>
+                      <span class="small float-right text-muted">11:59 AM</span>
+                      <div class="dropdown-message small">Wesley heeft een review gegeven.</div>
+                    </a>
                     <div class="dropdown-divider"></div>
                   <a class="dropdown-item small" href="../admin/reacties.php">Alle meldingen weergeven</a>
                 </div>
               </li>
-
               <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                   <i class="fa fa-fw fa-sign-out"></i>Uitloggen

@@ -128,11 +128,15 @@ if (isset($_POST["def_verwijder"])) {
         header("location: verwijderd.php");
 }
 
-<<<<<<< HEAD
-// Bewerken
-    
+if(isset($_POST["beantwoord"])){
+    $ratingnr = $_POST["nummer"];
+    $tekst = $_POST["antwoord"];
 
-?> 
-=======
-?>
->>>>>>> 989883148b7c2af59cf9c15a4fd1149e44b36a2e
+    $sql = "INSERT INTO comment (ratingnr,tekst,auteur)
+        VALUES ($ratingnr,'$tekst',1)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        header('location: ../goedgekeurd.php');
+}
+

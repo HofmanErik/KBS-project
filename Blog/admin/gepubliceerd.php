@@ -87,12 +87,34 @@
                                 <td><a href="#">'.$row['titel'].'</a></td>
                                 <td>'.$row['voornaam'].'</td>
                                 <td>'.$row['datum'].'</td>
-                                <td><input type="submit" class="btn btn-light" name="concept" value="Concept"></input></td>
+                                <td>
+                                <script>
+                                  function myFunctionConcept(){
+                                    var r=confirm("Weet u zeker dat u het artikel wilt verplaatsen naar concept?");
+                                    if(r == true){
+                                      return true;
+                                    }else{
+                                      return false;
+                                    }
+                                  }
+                                </script>
+                                <input type="submit" class="btn btn-secondary" name="concept" value="Concept" onclick="return myFunctionConcept()"></input></td>
                                   <input type="hidden" name="nummer" value="'.$row['artikelnr'].'"<input>
                                 <td>
-                                  <button type="submit" class="btn btn-light" name="bewerk" value="bewerken" formaction="artikelbewerk.php" title="Bewerken"><i class="fa fa-pencil"></i>
+                                  <button type="submit" class="btn btn-secondary" name="bewerk" value="bewerken" formaction="artikelbewerk.php" title="Bewerken"><i class="fa fa-pencil"></i>
                                   </button>
-                                  <button type="submit" class="btn btn-light" name="verwijder_gepubliceerd" value="Verwijder" title="Verwijderen"><i class="fa fa-trash"></i>
+
+                                  <script>
+                                    function myFunctionVerwijder_gepubliceerd(){
+                                      var r=confirm("Weet u zeker dat u het artikel wilt verwijderen?");
+                                      if(r == true){
+                                        return true;
+                                      }else{
+                                        return false;
+                                      }
+                                    }
+                                  </script>
+                                  <button type="submit" class="btn btn-secondary" name="verwijder_gepubliceerd" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijder_gepubliceerd()"><i class="fa fa-trash"></i>
                                   </button>
                                 </td>
                         </form>
@@ -103,27 +125,7 @@
         </table>
       </div>
     </div>
-    <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
-  </div>
-</div>
-
-<!-- Verwijder popup -->
-<div class="modal fade" id="verwijder-popup" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Weet je het zeker?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-      </div>
-      <div class="modal-body">Klik op verwijderen om dit artikel te verwijderen</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleren</button>
-            <a class="btn btn-primary" href="../admin/overzicht.php">Verwijderen</a>
-        </div>
-    </div>
+    <div class="card-footer small text-muted"><?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?></div>
   </div>
 </div>
 

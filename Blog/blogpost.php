@@ -81,16 +81,16 @@ if(!isset($_GET["artikelnr"])){
               JOIN bezoeker b
               ON r.bezoekernr = b.bezoekernr
               WHERE artikelnr = :artikel1
-              AND status = 1";
+              AND status = 1
+              ORDER BY datum DESC"
+              ;
 
               $stmt = $conn->prepare($sql);
               $stmt -> bindValue(':artikel1', $artikelnr, PDO::PARAM_INT);
               $stmt->execute();
-              $row = $stmt->fetch()
 ?>
 
 <?php
-if($stmt->fetch() != ''){
       while ($row = $stmt->fetch()) {
               $antwoordweergeven = "antwoordweergeven".$row["ratingnr"];
               $voornaam = $row["voornaam"];
@@ -150,7 +150,6 @@ if($stmt->fetch() != ''){
                   ');
       }
     }
-  }
 ?>
       <div class="row">
         <div class="col-lg-6 col-md-12 mx-auto">
@@ -186,7 +185,7 @@ if($stmt->fetch() != ''){
                   </label>
                 </td>
                 <td>
-                  <input id="author" name="email" placeholder="" value="" size="30" aria-required="true" required="required" type="text">
+                  <input id="author" name="email" placeholder="" value="" size="30" aria-required="true" required="required" type="email">
                 </td>
               </tr>
               <tr>
@@ -220,12 +219,13 @@ if($stmt->fetch() != ''){
               <textarea id="comment" name="reactie" cols="58" rows="8" maxlength="65525"></textarea>
             </p>
             <p>
-              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen" onclick="myFunction()">
               <script>
-                function myFunction() {
-                  alert("Uw reactie wordt verzonden!");
-                }
+              function myFunctionReageren()
+              {
+              alert('Uw reactie wordt verzonden!');
+              }
               </script>
+              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen" onclick="return myFunctionReageren()">
             </p>
           </form>
         </div>
