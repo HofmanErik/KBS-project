@@ -140,21 +140,37 @@ if (isset($_POST["opslaan2"])) {
                                 </div>
                             </div>
                             <div class="row">
-                                <div class = "col-sm-6">
-                                    <div class = "card">
-                                        <div class = "card-block">
-                                            <h4 class = "card-title">Voorkeuren wijzigen</h4>
-                                            <p>Wil je een email melding ontvangen bij een nieuwe reactie?</p>
-                                            <select>
-                                                <option value = "" name="ja">Ja</option>
-                                                <option value = "" name="nee">Nee</option>
-                                            </select>
-                                            <p class = "card-text"></p>
-                                            <a href = "#" class = "btn btn-primary">Opslaan</a>
-                                        </div>
-                                    </div>
+                              <div class="col-sm-4">
+                                <div class="card">
+                                  <div class="card-block">
+                                    <h4 class="card-title">Emailadres wijzigen</h4>
+                                      <form action="emailupdate.php" method="POST">
+                                        <p>Emailadres: <input type="email" name="mail1"></p>
+                                        <p>Emailadres: <input type="email" name="mail2"></p>
+                                        <input class="btn btn-primary" type="submit" name="emailsubmit" value="Opslaan">
+                                      </form>
+                                  </div>
                                 </div>
+                              </div>
+                                    <div class="col-sm-5">
+                                <div class="card">
+                                  <div class="card-block">
+                                    <h4 class="card-title">Voorkeuren wijzigen</h4>
+                                    <p>Wil je updates ontvangen over nieuwe reacties?</p>
+                                    <form action="emailupdate.php" method="POST">
+                                        <input type="radio" name="janee" value="ja" >Ja<br>
+                                        <input type="radio" name="janee" value="nee">Nee<br>
+                                    <p class="card-text"></p>
+                                    <input class="btn btn-primary" type="submit" name="statussubmit" value="Opslaan">
+                                  </form>
+                                  </div>
+                                </div>
+                              </div>
+                              </div>
+                              </div>
                             </div>
+
+                            
                             </div>
                             </div>
                             </div>
