@@ -1,13 +1,14 @@
 <?php
 
-$to = "homer@example.com";
+$to = 'hofman.erik@outlook.com';
+$from = "vindbaarin2212@gmail.com";
 $subject = "Your password";
 $message = "Hello Homer, thanks for registering. Your password is: springfield";
-$from = "ian@example.com";
 $headers = "From: $from";
 
 // Send email
-mail($to, $subject, $message, $headers);
+mail("hofman.erik@outlook.com", "subject", "message", $headers);
 
 // Inform the user
 echo "Thanks for registering! We have just sent you an email with your password.";
+?>

@@ -219,7 +219,13 @@ if(!isset($_GET["artikelnr"])){
               <textarea id="comment" name="reactie" cols="58" rows="8" maxlength="65525"></textarea>
             </p>
             <p>
-              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen">
+              <script>
+              function myFunctionReageren()
+              {
+              alert('Uw reactie wordt verzonden!');
+              }
+              </script>
+              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen" onclick="return myFunctionReageren()">
             </p>
           </form>
         </div>
