@@ -30,14 +30,21 @@ $naamVeranderingResponse = " ";
 if (isset($_POST["opslaan1"])) {
     $postvoornaam = $_POST['voornaam'];
     $postachternaam = $_POST["achternaam"];
+    $verifyForm = $_POST["naamVerifyForm"];
+    $wwhashOld = $_SESSION['wwhash'];
+    $passwrdVerify = password_verify($verifyForm, $wwhashOld);
     $mnr = $_SESSION['mnr'];
 
-    $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = '$mnr'";
-    $naamVeranderingResponse = "<font color='green'>* Bedankt uw naam is gewijzigd</font>";
+    if ($passwrdVerify == TRUE) {
 
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
+        $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = '$mnr'";
+        $naamVeranderingResponse = "<font color='green'>* Bedankt uw naam is gewijzigd</font>";
 
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+    } else {
+        $naamVeranderingResponse = "<font color='red'>* Het wachtwoord klopt niet.</font>";
+    }
     $sql = 'SELECT achternaam, voornaam FROM medewerker';
     foreach ($conn->query($sql) as $row) {
         $achternaam = $row['achternaam'];
@@ -81,7 +88,7 @@ $mailResetResponse2 = " ";
 $mailResetResponse3 = " ";
 
 if (isset($_POST['emailsubmit'])) {
-    $verifyForm = $_POST["verifyForm"];
+    $verifyForm = $_POST["mailVerifyForm"];
     $wwhashOld = $_SESSION['wwhash'];
     $passwrdVerify = password_verify($verifyForm, $wwhashOld);
     $mail1 = $_POST['mail1'];
@@ -183,6 +190,7 @@ if (isset($_POST['statussubmit'])) {
                                                         echo $achternaam;
                                                     }
                                                     ?>"></p>
+                                                <p>Wachtwoord verificatie: <br><input type="password" name="naamVerifyForm">
                                                 <p><?php echo$naamVeranderingResponse; ?></p>
                                                 <p class="card-text"></p>
                                                 <input type="submit" name="opslaan1" value="Opslaan" class="btn btn-primary">
@@ -195,9 +203,10 @@ if (isset($_POST['statussubmit'])) {
                                         <div class="card">
                                             <div class="card-block">
                                                 <h4 class="card-title">Wachtwoord wijzigen</h4>
+                                                <p style="font-size:11px; color:green">Veiligheidstip: gebruik minimaal 6 karakters en 1 symbool (!@#$%^&*()_+)</p>
                                                 <p>Oud wachtwoord: <br><input type=password name="oudWachtwoord"></p>
-                                                <p>Nieuw wachtwoord: <br><input type=password name="nieuwWachtwoord1"></p>
-                                                <p>Herhaal wachtwoord: <br><input type=password name="nieuwWachtwoord2"></p>
+                                                <p>Nieuw wachtwoord:<br><input type=password name="nieuwWachtwoord1"></p>
+                                                <p>Herhaal nieuw wachtwoord: <br><input type=password name="nieuwWachtwoord2"></p>
                                                 <p><?php echo$wwHerstelResponse1; ?></p>
                                                 <p><?php echo$wwHerstelResponse2; ?></p>
                                                 <p class="card-text"></p>
@@ -213,9 +222,9 @@ if (isset($_POST['statussubmit'])) {
                                         <div class="card-block">
                                             <h4 class="card-title">Emailadres wijzigen</h4>
                                             <form action="account.php" method="POST">
-                                                <p>Emailadres: <br><input type="email" name="mail1" value="Uw nieuwe adres"></p>
-                                                <p>Emailadres: <br><input type="email" name="mail2" value="herhaal"></p>
-                                                <p>Wachtwoord verificatie: <br><input type="password" name="verifyForm">
+                                                <p>Nieuw emailadres: <br><input type="email" name="mail1" value=""></p>
+                                                <p>Herhaal nieuw emailadres: <br><input type="email" name="mail2"></p>
+                                                <p>Wachtwoord verificatie: <br><input type="password" name="mailVerifyForm">
                                                 <p><?php echo$mailResetResponse1; ?></p>
                                                 <p><?php echo$mailResetResponse2; ?></p>
                                                 <input class="btn btn-primary" type="submit" name="emailsubmit" value="Opslaan">
