@@ -2,40 +2,6 @@
 //header wordt opgehaald
 include '../admin/header.php';
 
-$mailResetResponse1 = " ";
-$mailResetResponse2 = " ";
-
-if (isset($_POST['emailsubmit'])) {
-    $mailResetResponse1 = " ";
-    $mailResetResponse2 = " ";
-    $mail1 = $_POST['mail1'];
-    $mail2 = $_POST['mail2'];
-
-    if ($mail1 == $mail2) {
-        $newmail = $_POST['mail1'];
-
-        $servername = "localhost";
-        $username = "beheerder";
-        $password = "geheim";
-
-        try {
-            //Creating connection for mysql
-            $conn = new PDO("mysql:host=$servername;dbname=db_vindbaarin", $username, $password);
-            // set the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
-        }
-        $mnr = $_SESSION['mnr'];
-        //sql query naam opslaan in database
-        $prep = $conn->prepare("update medewerker SET email = '$newmail' WHERE mnr = '$mnr'");
-        $prep->execute();
-        $mailResetResponse1 = "<font color='green'>* Uw e-mail adres is gewijzigd.</font>";
-    } else {
-        $mailResetResponse2 = "<font color='red'>* De adressen komen niet overeen.</font>";
-    }
-}
-
 if (isset($_POST['opslaan'])) {
 
     print ($_POST['achternaam']);
@@ -109,6 +75,74 @@ if (isset($_POST["opslaan2"])) {
         $_SESSION['wwhash'] = $hashedpwd;
     }
 }
+
+$mailResetResponse1 = " ";
+$mailResetResponse2 = " ";
+$mailResetResponse3 = " ";
+
+if (isset($_POST['emailsubmit'])) {
+    $verifyForm = $_POST["verifyForm"];
+    $wwhashOld = $_SESSION['wwhash'];
+    $passwrdVerify = password_verify($verifyForm, $wwhashOld);
+    $mail1 = $_POST['mail1'];
+    $mail2 = $_POST['mail2'];
+
+    if ($passwrdVerify == FALSE) {
+        $mailResetResponse1 = "<font color='red'>* Het wachtwoord klopt niet.</font>";
+    }
+
+    if ($mail1 == $mail2 && $passwrdVerify == TRUE) {
+        $newmail = $_POST['mail1'];
+
+        $servername = "localhost";
+        $username = "beheerder";
+        $password = "geheim";
+
+        try {
+            //Creating connection for mysql
+            $conn = new PDO("mysql:host=$servername;dbname=db_vindbaarin", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
+        $mnr = $_SESSION['mnr'];
+        //sql query naam opslaan in database
+        $prep = $conn->prepare("update medewerker SET email = '$newmail' WHERE mnr = '$mnr'");
+        $prep->execute();
+        $mailResetResponse1 = "<font color='green'>* Uw e-mail adres is gewijzigd.</font>";
+    } else {
+        $mailResetResponse2 = "<font color='red'>* De adressen komen niet overeen.</font>";
+    }
+}
+
+if (isset($_POST['statussubmit'])) {
+    $servername = "localhost";
+    $username = "beheerder";
+    $password = "geheim";
+
+    try {
+        //Creating connection for mysql
+        $conn = new PDO("mysql:host=$servername;dbname=db_vindbaarin", $username, $password);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "Connected successfully";
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+    $mnr = $_SESSION['mnr'];
+
+    if ($_POST['janee'] == 'ja') {
+        print("ja");
+        $stmt = $conn->prepare("update medewerker SET emailstatus = 1 WHERE mnr = '$mnr'");
+        $stmt->execute();
+    }
+    if ($_POST['janee'] == 'nee') {
+        print("nee");
+        $stmt = $conn->prepare("update medewerker SET emailstatus = 0 WHERE mnr = '$mnr'");
+        $stmt->execute();
+    }
+}
 ?>
 
 <div class="content-wrapper">
@@ -136,15 +170,15 @@ if (isset($_POST["opslaan2"])) {
                                             <form action="account.php" method ="POST">
                                                 <p class="card-text"></p>
                                                 <p>Voornaam: <br><input type=text name="voornaam" value="<?php
-                                                    if (isset($_POST['voornaam'])) {
-                                                        echo $_POST['voornaam'];
+                                                    if (isset($_SESSION['voornaam'])) {
+                                                        echo $_SESSION['voornaam'];
                                                     } else {
                                                         echo $voornaam;
                                                     }
                                                     ?>"></p>
                                                 <p>Achternaam: <br><input type=text name="achternaam" value="<?php
-                                                    if (isset($_POST['achternaam'])) {
-                                                        echo $_POST['achternaam'];
+                                                    if (isset($_SESSION['achternaam'])) {
+                                                        echo $_SESSION['achternaam'];
                                                     } else {
                                                         echo $achternaam;
                                                     }
@@ -179,8 +213,9 @@ if (isset($_POST["opslaan2"])) {
                                         <div class="card-block">
                                             <h4 class="card-title">Emailadres wijzigen</h4>
                                             <form action="account.php" method="POST">
-                                                <p>Emailadres: <br><input type="email" name="mail1"></p>
-                                                <p>Emailadres: <br><input type="email" name="mail2"></p>
+                                                <p>Emailadres: <br><input type="email" name="mail1" value="Uw nieuwe adres"></p>
+                                                <p>Emailadres: <br><input type="email" name="mail2" value="herhaal"></p>
+                                                <p>Wachtwoord verificatie: <br><input type="password" name="verifyForm">
                                                 <p><?php echo$mailResetResponse1; ?></p>
                                                 <p><?php echo$mailResetResponse2; ?></p>
                                                 <input class="btn btn-primary" type="submit" name="emailsubmit" value="Opslaan">
