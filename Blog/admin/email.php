@@ -22,8 +22,8 @@
       <div class="card-block">
         <h4 class="card-title">Emailadres wijzigen</h4>
           <form action="emailupdate.php" method="POST">
-            <p>Emailadres: <input type="email" name="mail"></p>
-            
+            <p>Emailadres: <input type="email" name="mail1"></p>
+            <p>Emailadres: <input type="email" name="mail2"></p>
             <input class="btn btn-primary" type="submit" name="emailsubmit" value="Opslaan">
           </form>
       </div>
@@ -33,15 +33,13 @@
     <div class="card">
       <div class="card-block">
         <h4 class="card-title">Voorkeuren wijzigen</h4>
-        <p>Hoe vaak wil je updates ontvangen over nieuwe reacties?</p>
-         <select>
-          <option value="">Direct na plaatsing</option>
-          <option value="">1 keer per dag</option>
-          <option value="">1 keer per week</option>
-          <option value="">1 keer per maand</option>
-        </select>
+        <p>Wil je updates ontvangen over nieuwe reacties?</p>
+        <form action="emailupdate.php" method="POST">
+            <input type="radio" name="janee" value="ja" >Ja<br>
+            <input type="radio" name="janee" value="nee">Nee<br>
         <p class="card-text"></p>
-        <a href="#" class="btn btn-primary">Opslaan</a>
+        <input class="btn btn-primary" type="submit" name="statussubmit" value="Opslaan">
+      </form>
       </div>
     </div>
   </div>

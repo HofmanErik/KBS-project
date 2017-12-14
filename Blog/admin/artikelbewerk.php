@@ -1,5 +1,51 @@
 <?php include "../admin/header.php";
-      include "../admin/artikelbewerkconn.php"; 
+
+
+  if(isset($_POST['bewerk'])){
+
+      $servername = "localhost";
+      $username = "beheerder";  
+      $password = "geheim";
+      $dbname = "db_vindbaarin";
+
+      $artikelnr = $_POST['nummer'];
+
+      try {
+      //Creating connection for mysql
+      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      // set the PDO error mode to exception
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      echo "Connected successfully";
+      }
+      catch(PDOException $e)
+      {
+      echo "Connection failed: " . $e->getMessage();
+      }
+      //sql query naam opslaan in database
+      $sql = ("SELECT * FROM artikel WHERE artikelnr = '$artikelnr'");
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(); 
+
+        $row = $stmt->fetch();
+
+          $titel    = $row['titel'];
+          $tekst    = $row['tekst'];
+          $thumbnail  = $row['thumbnail'];
+          $auteur   = $row['auteur'];
+          $datum    = $row['datum'];
+          $afbeelding = $row['afbeelding'];
+          $status   = $row['status'];
+           
+
+
+        
+    //    header("location: artikelbewerk.php");
+
+
+}
+
+
+
 ?>
 <div class="content-wrapper">
   <div class="container-fluid">
@@ -13,10 +59,15 @@
   </div>
   <div class="card-body">
     <div class="col-md-12">
-      <form action="verwerktoevoegen.php" method="POST">
+      <form action="artikelbewerkopslaan.php" method="POST" enctype="multipart/form-data">
     <strong>Titel:</strong> <br>
     <input type="text" name="titel" value="<?php echo $titel; ?>" size="138px"><br><br>
+<!--thumbnail-->
+    <input type="file" name="thumbnail" >
+
+    <input type="hidden" name="artikelnr" value="<?php echo $artikelnr; ?>">
 </div>
+
     <!--Hier staat de tekst editor tinyMCE-->
     <div class="container">
       <div class="row editor">
@@ -38,40 +89,19 @@
       });
       </script>
 
-      <textarea id="myTextarea" name="tinymce"></textarea>
+      <textarea id="myTextarea" name="tinymce"><?php echo $tekst; ?></textarea>
 
         </div>
       </div>
     </div>
     <br>
-    <div class="col-md-12">
-    <input type="submit" name="Publiceren" value="Publiceren"><br>
+
+  <div class="col-md-12">
+    <button class="btn btn-secondary" type="submit" name="publiceren" value="Posten">Opslaan</button>
+    <button class="btn btn-secondary" type="submit" name="concept" value="Draft">Concept</button>
+    <!-- DOET HET NOG NIET!-->
+    <!--<input type="submit" name="Opslaan" value="Opslaan"><br><br>-->
   </div>
   </form>
-
-    <!--</div>
-    <div class="tinymce">
-      <br/>
-         <?php
-         //include "../admin/editor/tinymce/index.php"
-         ?>
- </div>-->
- <!---
-<br/>
-<div class="row-buttons">
-  <div class="col-md-4">
-    <form method="$_GET" action="overzicht.php">
-      <input type="submit" name="Annuleren" value="Annuleren">
-      <input type="submit" name="Opslaan" value="Opslaan">
-      <input type="submit" name="Publiceren" value="Publiceren">
-    </form>
-  </div>
 </div>
-</form>
-</div>
-</div>-->
-
-
-
-
 <?php include "../admin/footer.php" ?>

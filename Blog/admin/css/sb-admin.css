@@ -3,6 +3,10 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
  */
+
+  .fa-star, .fa-star-half-o, .fa-star-o {
+color: #FFD700;
+}
 html {
   position: relative;
   min-height: 100%; }

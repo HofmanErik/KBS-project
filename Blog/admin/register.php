@@ -1,66 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Registreren</title>
-  <!-- Bootstrap core CSS-->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template-->
-  <link href="../scss/sb-admin.scss" rel="stylesheet">
-</head>
-
+  <?php include '../admin/header.php'; ?>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="../admin/dashboard.php">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
 <body class="bg-dark">
   <div class="container">
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">Account aanmaken</div>
       <div class="card-body">
-        <form>
-          <div class="form-group">
+        <form action="register.inc.php" method="POST">
+
             <div class="form-row">
               <div class="col-md-6">
+                <label for="exampleInputName">Medewerker</label>
+                <input class="form-control" name="mnr" type="number" aria-describedby="nameHelp"
+                       placeholder="Voer medewerkernummer in">
+              </div>
+            </div>
+              <div class="form-row">
+              <div class="col-md-6">
                 <label for="exampleInputName">Voornaam</label>
-                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp"
+                <input class="form-control" name="voornaam" type="text" aria-describedby="nameHelp"
                        placeholder="Voer voornaam in">
               </div>
+            </div>
+            <div class="form-row">
               <div class="col-md-6">
                 <label for="exampleInputLastName">Achternaam</label>
-                <input class="form-control" id="exampleInputLastName" type="text"
+                <input class="form-control" name="achternaam" type="text"
                        aria-describedby="nameHelp" placeholder="Voer achternaam in">
               </div>
             </div>
-          </div>
-          <div class="form-group">
+
+          <div class="form-row">
+          <div class="col-md-6">
             <label for="exampleInputEmail1">Emailadres</label>
-            <input class="form-control" id="exampleInputEmail1" type="email"
+            <input class="form-control" name="email" type="email"
                    aria-describedby="emailHelp" placeholder="Voer emailadres in">
           </div>
+        </div>
+
+        <div class="form-row">
+        <div class="col-md-6">
+          <label for="exampleInputLastName">functie</label>
+          <input class="form-control" name="functie" type="number"
+                 aria-describedby="nameHelp" placeholder="Voer functie in">
+        </div>
+      </div>
+
+
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <label for="exampleInputPassword1">Wachtwoord</label>
-                <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Wachtwoord">
+                <input class="form-control" name="wwhash" type="password" placeholder="Wachtwoord">
               </div>
               <div class="col-md-6">
                 <label for="exampleConfirmPassword">Bevestig wachtwoord</label>
-                <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Bevestig wachtwoord">
+                <input class="form-control" name="wwhash" type="password" placeholder="Bevestig wachtwoord">
               </div>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="../index.php">Terug naar het blog</a>
+          <input type="submit" name="opslaan" value="opslaan">
+        <!--  <a href="register.inc.php">Opslaan</a>-->
         </form>
-        <div class="text-center">
-          <a class="d-block small mt-3" href="../admin/login.php">Inloggen</a>
-          <a class="d-block small" href="../admin/forgot-password.php">Wachtwoord vergeten?</a>
-        </div>
       </div>
     </div>
+  </div>
+  </div>
+  </div>
   </div>
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -68,5 +81,8 @@
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 </body>
+</div>
+</div>
+<?php include '../admin/footer.php'; ?>
 
 </html>
