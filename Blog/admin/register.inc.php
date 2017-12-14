@@ -15,7 +15,6 @@ if ($conn->connect_error) {
 if (isset($_POST['opslaan'])) {
 
   //ingevulde gegevens ophalen met POST
-	$mnr = mysqli_real_escape_string($conn, $_POST['mnr']);
 	$voornaam = mysqli_real_escape_string($conn, $_POST['voornaam']);
 	$achternaam = mysqli_real_escape_string($conn, $_POST['achternaam']);
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -24,7 +23,7 @@ if (isset($_POST['opslaan'])) {
 
 	//Error handlers
 	//Checken voor lege velden
-	if (empty($mnr) || empty($voornaam)  || empty($achternaam) || empty($email) ||
+	if (empty($voornaam)  || empty($achternaam) || empty($email) ||
 	 empty($functie) || empty($wwhash)) {
 		header("Location: ../admin/register.php?signup=empty");
 		exit();
@@ -51,8 +50,8 @@ if (isset($_POST['opslaan'])) {
 					$options = ['cost' => 12];
 					$hashedPwd = password_hash($wwhash, PASSWORD_BCRYPT, $options);
 					//Gebruiker in de database invoeren
-					$sql = "INSERT INTO medewerker (mnr, voornaam, achternaam, email, functie, wwhash)
-					VALUES ('$mnr', '$voornaam', '$achternaam', '$email', '$functie', '$hashedPwd');";
+					$sql = "INSERT INTO medewerker (voornaam, achternaam, email, functie, wwhash)
+					VALUES ('$voornaam', '$achternaam', '$email', '$functie', '$hashedPwd');";
 					mysqli_query($conn, $sql);
 					header("Location: ../admin/dashboard.php?signup=succes");
 					exit();
