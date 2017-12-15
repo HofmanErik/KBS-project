@@ -98,7 +98,7 @@ require 'classes/dbconnect.php';
                 </table>
             </div>
         </div>
-        <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
+<div class="card-footer small text-muted"><?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?></div>
   </div>
 </div>
 

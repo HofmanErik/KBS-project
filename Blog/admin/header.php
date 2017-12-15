@@ -125,7 +125,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
 
 <!-- meldingen popup -->
 <?php
-/*
+
   $servername = "localhost";
   $username = "beheerder";
   $password = "geheim";
@@ -147,7 +147,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $row = $stmt->fetch();
-*/
+
 ?>
 
             <ul class="navbar-nav ml-auto">
@@ -156,15 +156,15 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                    href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <i class="fa fa-fw fa-bell-o"></i>
                    <?php
-                   /*
+                   
                    if($row["ratingnr"] != ''){
                    echo '<span class="d-lg-none">Meldingen
-                     <span class="badge badge-pill badge-primary">12 Nieuw</span>
+                     <span class="badge badge-pill badge-primary">3 Nieuw</span>
                    </span>
                    <span class="indicator text-primary d-none d-lg-block">
                      <i class="fa fa-fw fa-circle"></i>
                    </span>';
-                   }*/
+                   }
                    ?>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
@@ -172,7 +172,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                   <div class="dropdown-divider"></div>
 <!-- meldingen dropdown -->
                   <?php
-                  /*
+                  
                   while($row = $stmt->fetch()){
                     if($row["ratingnr"] != ''){
                     $naam = $row["voornaam"]." ".$row["achternaam"];
@@ -188,7 +188,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                   ');
                 }
               }
-              */
+              
                   ?>
                     <div class="dropdown-divider"></div>
                   <a class="dropdown-item small" href="../admin/reacties.php">Alle meldingen weergeven</a>
