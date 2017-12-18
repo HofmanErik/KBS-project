@@ -28,7 +28,7 @@ if(!isset($_SESSION['voornaam']
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
       <!-- Navigation-->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="#">Vindbaar in</a>
+        <a class="navbar-brand" href="https://www.vindbaar-in.nl">Vindbaar in</a>
           <!-- Hamburgermenu -->
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -129,13 +129,7 @@ if(!isset($_SESSION['voornaam']
             }
 
              ?>
-
-
-
-
-
-
-<!-- meldingen popup -->
+<!-- meldingen bel -->
 <?php
 
   $servername = "localhost";
@@ -150,10 +144,7 @@ if(!isset($_SESSION['voornaam']
   }
 
 $sql = "SELECT * FROM rating r
-        JOIN artikel a on r.artikelnr = a.artikelnr
-        JOIN bezoeker b on r.bezoekernr = b.bezoekernr
-        WHERE r.status = 0
-        ORDER BY r.datum desc";
+        WHERE r.status = 0";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -184,10 +175,5 @@ $sql = "SELECT * FROM rating r
                 </a>
               </li>
             </ul>
-
-
           </div>
-
-
-
       </nav>
