@@ -133,6 +133,7 @@
               </a>
           </div>
         </div>
+        <?php if($_SESSION['functie'] == 0){ ?>
         <div class="col-xl-4 col-sm-6 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">
@@ -149,6 +150,27 @@
               </a>
           </div>
         </div>
+        <?php } ?>
+
+<?php if($_SESSION['functie'] == 1){ ?>
+        <div class="col-xl-4 col-sm-6 mb-3">
+          <div class="card text-black bg-secundairy o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-user-plus"></i>
+              </div>
+              <div class="mr-5">Gebruiker toevoegen</div>
+            </div>
+              <a class="card-footer text-black clearfix small z-1" href="../admin/register.php">
+                <span class="float-left">Klik hier</span>
+                <span class="float-right">
+                  <i class="fa fa-angle-right"></i>
+                </span>
+              </a>
+          </div>
+        </div>
+      <?php } ?>
+
         <div class="col-xl-4 col-sm-6 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">

@@ -1,15 +1,7 @@
-<?php include "../admin/header.php"; ?>
-<div class="content-wrapper">
-  <div class="container-fluid">
-    <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="../admin/dashboard.php">Dashboard</a>
-      </li>
-      <li class="breadcrumb-item active">Toevoegen</li>
-    </ol>
-  </div>
+
 <?php
+session_start();
+
   $servername = "localhost";
   $username = "beheerder";
   $password = "geheim";
@@ -30,7 +22,7 @@
     $fileSize = $_FILES['thumbnail']['size'];
     $fileError = $_FILES['thumbnail']['error'];
     $fileExt = explode('.', $fileName);
-    $filename2 = $fileName;  
+    $filename2 = $fileName;
     $fileActualExt = strtolower(end($fileExt));
     $allow = array('jpg','jpeg','png');
     if(in_array($fileActualExt, $allow)){
@@ -59,18 +51,15 @@
 
     if($valid == true && $filevalid ==true){
         $stmt = $conn->prepare("INSERT INTO thumbnail (thumbnaillocatie,thumbnailnaam) VALUES('$fileNameNew','$filename2')");
-      $stmt->execute();        
-        
+      $stmt->execute();
+
       $stmt = $conn ->prepare("INSERT INTO artikel (titel, tekst, thumbnaillocatie, mnr, datum, status)
                              VALUES ('$titel','$tekst','$fileNameNew', '$auteurId', NOW(), 1 )");
       $stmt->execute();
       //Hier worden de thumbnails opgeslagen
       $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
       move_uploaded_file($fileTmp, $fileDestination);
-      echo'
-      <div class="container-fluid">
-        Artikel is gepubliceerd!
-      </div>';
+      header("Location: ../admin/toevoegen.php?artikel=Gepubliceerd");
     }
   }else{
     if(isset($_POST["Opslaan"])){
@@ -106,28 +95,23 @@
       $titel = htmlentities(trim($_POST['titel'], ENT_QUOTES));
 
       $tekst= htmlentities(trim($_POST['tinymce'], ENT_QUOTES));
-        
+
         $auteurId = $_SESSION['mnr'];
 
       if($valid == true && $filevalid ==true){
         $stmt = $conn->prepare("INSERT INTO thumbnail (thumbnaillocatie,thumbnailnaam) VALUES('$fileNameNew','$filename2')");
-      $stmt->execute();        
-        
+      $stmt->execute();
+
       $stmt = $conn ->prepare("INSERT INTO artikel (titel, tekst, thumbnaillocatie, mnr, datum, status)
                              VALUES ('$titel','$tekst','$fileNameNew', '$auteurId', NOW(), 0 )");
       $stmt->execute();
         //Hier worden de thumbnails opgeslagen
         $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
         move_uploaded_file($fileTmp, $fileDestination);
-        echo'
-        <div class="container-fluid">
-          Artikel is opgeslagen!
-        </div>';
+        header("Location: ../admin/toevoegen.php?artikel=Opgeslagen");
     }
   }
 }
 
   $conn->close();
 ?>
-
-<?php include "../admin/footer.php"; ?>

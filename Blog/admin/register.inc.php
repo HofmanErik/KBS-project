@@ -53,7 +53,8 @@ if (isset($_POST['opslaan'])) {
 					$sql = "INSERT INTO medewerker (voornaam, achternaam, email, functie, wachtwoord)
 					VALUES ('$voornaam', '$achternaam', '$email', '$functie', '$hashedPwd');";
 					mysqli_query($conn, $sql);
-					header("Location: ../admin/dashboard.php?signup=succes");
+					header("Location: ../admin/register.php?signup=succes");
+
 					exit();
 				}
 			}

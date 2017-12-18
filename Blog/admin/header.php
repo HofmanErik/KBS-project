@@ -1,7 +1,7 @@
 <?php
 session_start();
 //kijken of er een sessie is gezet, anders word je terug gestuurd naar login.php
-if(!isset($_SESSION['voornaam'] 
+if(!isset($_SESSION['voornaam']
           //&& $_SESSION['functie'] == 0 || $_SESSION['functie'] == 1
          )){
    header("Location:  ../admin/login.php");
@@ -64,7 +64,7 @@ if(!isset($_SESSION['voornaam']
                 </a>
               </li>
 
-              
+
             <?php }
               //checken voor beheerder zo ja dan alleen reacties en instellingen tonen
               if($_SESSION['functie'] == '0' || $_SESSION['functie'] == '1') {
@@ -110,14 +110,18 @@ if(!isset($_SESSION['voornaam']
                    <span class="nav-link-text">Gebruikers</span>
                 </a>
                  <ul class="sidenav-second-level collapse" id="collapse-gebruikers">
+                   <?php if($_SESSION['functie'] == 0){
+
+                   ?>
                    <li>
                      <a href="../admin/gebruikeroverzicht.php">Overzicht</a>
                    </li>
+                 <?php } ?>
                    <li>
                      <a href="../admin/register.php">Toevoegen</a>
                    </li>
                  </ul>
-              </li>              
+              </li>
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Voorbeeld">
                 <a class="nav-link" href="../index.php" target="_blank">
                   <i class="fa fa-external-link"></i>

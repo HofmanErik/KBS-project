@@ -3,6 +3,12 @@
 <?php include '../admin/header.php'; ?>
 
 <?php
+  if($_SESSION['functie'] == 2) {
+    header("location: ../admin/dashboard.php");
+}
+?>
+
+<?php
   // Tabel oproepen
   if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
     $zoektext = $_POST["zoektext"];
@@ -102,19 +108,6 @@
                                 <i class="fa fa-undo"></i>
                             </button>
 
-                            <script>
-                              function myFunctionDef_verwijder(){
-                                var r=confirm("PAS OP! Weet u zeker dat u het artikel DEFINITIEF wilt verwijderen?");
-                                if(r == true){
-                                  return true;
-                                }else{
-                                  return false;
-                                }
-                              }
-                            </script>
-                            <button type="submit" class="btn btn-secondary" name="def_verwijder" value="Verwijder" title="Definitief verwijderen" onclick="return myFunctionDef_verwijder()">
-                              <i class="fa fa-trash"></i>
-                            </button>
                           </td>
                         </form>
                       </tr>');

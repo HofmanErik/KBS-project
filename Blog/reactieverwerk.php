@@ -14,12 +14,17 @@ try {
 }
 
 if(isset($_POST["submit"])){
+  if(!isset($_POST['rating'])){
+    $rating = 5;
+  }elseif (isset($_POST['rating'])) {
+    $rating = $_POST["rating"];
+  }
+
 		$artikelnr = $_POST["artikelnr"];
-		$voornaam = $_POST["naam"];
-		$achternaam = $_POST["achternaam"];
+    $voornaam = preg_replace("/[^A-Za-z0-9]/", "", $_POST["naam"]);
+		$achternaam = preg_replace("/[^A-Za-z0-9]/", "", $_POST["achternaam"]);
 		$email = $_POST["email"];
-		$reactie = $_POST["reactie"];
-		$rating = $_POST["rating"];
+		$reactie = preg_replace("/[^A-Za-z0-9]/", "", $_POST["reactie"]);
 
 $sql = "INSERT INTO bezoeker (voornaam,achternaam,email)
 		VALUES ('$voornaam','$achternaam','$email')";
@@ -42,7 +47,7 @@ $sql = "INSERT INTO rating (artikelnr,bezoekernr,reactie,sterwaarde,datum)
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
-        header('location: blogpost.php?artikelnr='.$artikelnr.'');
+        header('location: blogpost.php?plaatsen=succes&artikelnr='.$artikelnr.'');
 }
 
 ?>

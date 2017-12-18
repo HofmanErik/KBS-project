@@ -2,10 +2,10 @@
   <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <?php include '../admin/header.php';?>
 <?php
-  if($_SESSION['functie'] != 0 || $_SESSION['functie'] != 1) {
+  if($_SESSION['functie'] == 2) {
     header("location: ../admin/dashboard.php");
-}  
-?> 
+}
+?>
 
 
 <?php

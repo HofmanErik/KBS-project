@@ -35,7 +35,7 @@ include 'phpqueriesmelissa.php' ?>
       <div class="card mb-3">
         <div class="card-header">
           <a href="../admin/gebruikeroverzicht.php"> Actief</a> |
-          <a href="gbinactief.php"> Inactief</a> | 
+          <a href="gbinactief.php"> Inactief</a> |
           <a href="register.php"> Toevoegen</a>
         </div>
         <div class="card-body">
@@ -47,7 +47,7 @@ include 'phpqueriesmelissa.php' ?>
                   <th>Achternaam</th>
                   <th>Email</th>
                   <th>Functie</th>
-                  <th>Laatst ingelogd</th>                  
+                  <th>Laatst ingelogd</th>
                   <th></th>
                 </tr>
               </thead>
@@ -57,7 +57,7 @@ include 'phpqueriesmelissa.php' ?>
                 while ($row = $stmt->fetch()) {
                   print('
                       <form method="post" action="phpqueriesmelissa.php">
-                    <tr>                      
+                    <tr>
                         <td>'.$row['voornaam'].'</td>
                         <td>'.$row["achternaam"].'</a>
                         </td>
@@ -71,7 +71,7 @@ include 'phpqueriesmelissa.php' ?>
                   } elseif($row['functie']==0) {
                       print('
                           <td>Superadmin</td>');
-                    } 
+                    }
                       print('
                         <td></td>
                         <td>
@@ -85,11 +85,12 @@ include 'phpqueriesmelissa.php' ?>
                                   return false;
                                 }
                               }
-                              </script>
-                              <button type="submit" class="btn btn-secondary" name="inactief" onclick="return myFunctionPubliceren()">Inactief</button>
+                              </script>');
+                            if($row['functie'] != 0){
+                              echo'<button type="submit" class="btn btn-secondary" name="inactief" onclick="return myFunctionPubliceren()">Inactief</button>
                           </label>
                           <input type="hidden" name="mnr" value="'.$row['mnr'].'">
-                        </td><tr></form>');
+                        </td><tr></form>'; }
                   }
 ?>
 <!-- Footer -->

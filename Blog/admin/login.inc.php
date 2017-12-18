@@ -31,6 +31,10 @@ if (isset($_POST['submit'])) {
 					header("Location: ../index.php?login=error");
 					exit();
 				} elseif ($hashedPwdCheck == true) {
+					if($row['actief']) {
+
+
+
 					//Gebruiker inloggen
 					$_SESSION['mnr'] = $row['mnr'];
 					$_SESSION['voornaam'] = $row['voornaam'];
@@ -38,8 +42,13 @@ if (isset($_POST['submit'])) {
 					$_SESSION['email'] = $row['email'];
 					$_SESSION['functie'] = $row['functie'];
 					$_SESSION['wachtwoord'] = $row['wachtwoord'];
-					
+
+
+
 					header("Location: ../admin/dashboard.php?login=succes");
+					exit();
+				}
+					header("Location: ../admin/login.php?login=error");
 					exit();
 				//}
 				//if($_SESSION['functie'] == 1) {

@@ -214,17 +214,17 @@ if(!isset($_GET["artikelnr"])){
                 </td>
               </tr>
               </table>
+              <?php
+              if(isset($_GET['plaatsen'])){
+              if($_GET['plaatsen'] == "succes"){
+              print("<font color='green'>* Reactie is verzonden! </font>");
+            }} ?>
             <p>
               <textarea id="comment" name="reactie" cols="58" rows="8" maxlength="65525"></textarea>
             </p>
             <p>
-              <script>
-              function myFunctionReageren()
-              {
-              alert('Uw reactie wordt verzonden!');
-              }
-              </script>
-              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen" onclick="return myFunctionReageren()">
+              
+              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen">
             </p>
           </form>
         </div>

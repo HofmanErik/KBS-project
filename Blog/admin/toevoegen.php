@@ -1,9 +1,9 @@
 <?php include "../admin/header.php" ?>
 <?php
-  if($_SESSION['functie'] != 0 || $_SESSION['functie'] != 1) {
+  if($_SESSION['functie'] ==2) {
     header("location: ../admin/dashboard.php");
-}  
-?>    
+}
+?>
 
 <div class="content-wrapper">
   <div class="container-fluid">
@@ -26,6 +26,18 @@
       <div class="card text-black bg-secundairy o-hidden h-100">
         <div class="col-md-12">
           <form action="verwerktoevoegen.php" method="POST" enctype="multipart/form-data" onsubmit="myFunctionOpslaan" onsubmit="myFunctionPubliceren">
+            <?php
+            if(isset($_GET['artikel'])){
+            if($_GET['artikel'] == "Gepubliceerd"){
+            print("<font color='green'>* Artikel is toegevoegd! </font>");
+            }}
+
+            if(isset($_GET['artikel'])){
+            if($_GET['artikel'] == "Opgeslagen"){
+            print("<font color='green'>* Artikel is opgeslagen! </font>");
+            }}
+            ?>
+            <br>
             <!-- Titel -->
             <strong>Titel:</strong> <br>
             <input type="text" name="titel" value="" size="138px" aria-required="true" required="required"><br><br>
@@ -60,31 +72,10 @@
         <br>
 
           <div class="col-md-12">
-            <!--Pop-up voor publiceren -->
-            <script>
-            function myFunctionPubliceren(){
-              var r=confirm("Weet u zeker dat u het artikel wilt publiceren");
-              if(r == true){
-                return true;
-              }else{
-                return false;
-              }
-            }
-</script><br>
-            <button class="btn btn-secondary" type="submit" name="Publiceren" value="Publiceren" onclick="return myFunctionPubliceren()">Publiceren</button>
-            <!--Pop-up voor opslaan -->
-            <script>
-            function myFunctionOpslaan()
-            {
-            var r=confirm("Weet u zeker dat u het artikel wilt opslaan? ");
-            if(r == true){
-            return true;
-            }else{
-            return false;
-            }
-            }
-            </script>
-            <button class="btn btn-secondary" name="Opslaan" value="Opslaan" onclick="return myFunctionOpslaan()">Opslaan</button><br><br>
+          <br>
+            <button class="btn btn-secondary" type="submit" name="Publiceren" value="Publiceren">Publiceren</button>
+
+            <button class="btn btn-secondary" name="Opslaan" value="Opslaan" >Opslaan</button><br><br>
 
           </div>
           </form>

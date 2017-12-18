@@ -1,9 +1,9 @@
   <?php include '../admin/header.php'; ?>
-<?php
-  if($_SESSION['functie'] != 0 || $_SESSION['functie'] != 1) {
-    header("location: ../admin/dashboard.php");
-}  
-?> 
+  <?php
+    if($_SESSION['functie'] == 2) {
+      header("location: ../admin/dashboard.php");
+  }
+  ?>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -64,6 +64,12 @@
             </div>
           </div>
           <input type="submit" name="opslaan" value="opslaan">
+          <?php
+          if(isset($_GET['signup'])){
+          if($_GET['signup'] == "succes"){
+          print("<font color='green'>* Gebruiker is aangemaakt! </font>");
+        }}
+          ?>
         <!--  <a href="register.inc.php">Opslaan</a>-->
         </form>
       </div>

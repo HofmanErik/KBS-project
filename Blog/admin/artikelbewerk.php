@@ -1,12 +1,12 @@
 <?php include "../admin/header.php";
-  if($_SESSION['functie'] != 0 || $_SESSION['functie'] != 1) {
-    header("location: ../admin/dashboard.php");
-}  
+if($_SESSION['functie'] == 2) {
+  header("location: ../admin/dashboard.php");
+}
 
   if(isset($_POST['bewerk'])){
 
       $servername = "localhost";
-      $username = "beheerder";  
+      $username = "beheerder";
       $password = "geheim";
       $dbname = "db_vindbaarin";
 
@@ -26,7 +26,7 @@
       //sql query naam opslaan in database
       $sql = ("SELECT * FROM artikel WHERE artikelnr = '$artikelnr'");
         $stmt = $conn->prepare($sql);
-        $stmt->execute(); 
+        $stmt->execute();
 
         $row = $stmt->fetch();
 
@@ -36,10 +36,10 @@
           $auteur   = $row['mnr'];
           $datum    = $row['datum'];
           $status   = $row['status'];
-           
 
 
-        
+
+
     //    header("location: artikelbewerk.php");
 
 
