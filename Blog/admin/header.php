@@ -100,12 +100,21 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                   <span class="nav-link-text">Instellingen</span>
                 </a>
               </li>
-              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gebruiker toevoegen">
-                <a class="nav-link" href="../admin/register.php">
-                  <i class="fa fa-user-plus"></i>
-                  <span class="nav-link-text">Gebruiker toevoegen</span>
+              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gebruikers">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapse-gebruikers"
+                   data-parent="#exampleAccordion">
+                   <i class="fa fa-user"></i>
+                   <span class="nav-link-text">Gebruikers</span>
                 </a>
-              </li>
+                 <ul class="sidenav-second-level collapse" id="collapse-gebruikers">
+                   <li>
+                     <a href="../admin/gebruikeroverzicht.php">Overzicht</a>
+                   </li>
+                   <li>
+                     <a href="../admin/register.php">Toevoegen</a>
+                   </li>
+                 </ul>
+              </li>              
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Voorbeeld">
                 <a class="nav-link" href="../index.php" target="_blank">
                   <i class="fa fa-external-link"></i>
