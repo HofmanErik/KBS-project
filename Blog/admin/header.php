@@ -151,8 +151,8 @@ $sql = "SELECT * FROM rating r
 
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown"
-                   href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link mr-lg-2" id="messagesDropdown"
+                   href="reacties.php">
                    <i class="fa fa-fw fa-bell-o"></i>
 <!--   De notificatie bell krijgt een blauw balletje als er nieuwe reacties zijn -->
                    <?php
@@ -166,29 +166,6 @@ $sql = "SELECT * FROM rating r
                    }
                    ?>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-                  <h6 class="dropdown-header">Nieuwe meldingen:</h6>
-                  <div class="dropdown-divider"></div>
-<!-- meldingen dropdown -->
-                  <?php  
-                  while($row = $stmt->fetch()){
-                    $naam = $row["voornaam"]." ".$row["achternaam"];
-                    $datum = $row["datum"];
-                    $comment = $row["comment"];
-                    $rating = $row["rating"];
-                  print('
-                    <a class="dropdown-item" href="#">
-                    <strong>'.$naam.'</strong>
-                    <span class="small float-right text-muted">'.$datum.'</span>
-                    <div class="dropdown-message small">'.$rating.'</div>
-                  </a>
-                  ');
-                }
-                  ?>
-                    <div class="dropdown-divider"></div>
-                  <a class="dropdown-item small" href="../admin/reacties.php">Alle meldingen weergeven</a>
-                </div>
-              </li>
               <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                   <i class="fa fa-fw fa-sign-out"></i>Uitloggen
