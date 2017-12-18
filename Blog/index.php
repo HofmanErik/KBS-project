@@ -48,7 +48,6 @@
                   list($a,$b,$c,$rest) = explode(".",$row["tekst"]);
                   if($b == ''){
                     $text = $a;
-                  }
                 } else {
                   $tekst = ($a.$b.$c);
                   $tekst = htmlspecialchars_decode(stripslashes($tekst));
