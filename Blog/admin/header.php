@@ -1,6 +1,9 @@
 <?php
 session_start();
-if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
+//kijken of er een sessie is gezet, anders word je terug gestuurd naar login.php
+if(!isset($_SESSION['voornaam'] 
+          //&& $_SESSION['functie'] == 0 || $_SESSION['functie'] == 1
+         )){
    header("Location:  ../admin/login.php");
 }
 ?>
@@ -25,7 +28,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
       <!-- Navigation-->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="#">Vindbaar in</a>
+        <a class="navbar-brand" href="https://www.vindbaar-in.nl">Vindbaar in</a>
           <!-- Hamburgermenu -->
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -35,6 +38,38 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
           <!-- Hier begint de linker navbar -->
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+              <?php
+              //checken voor moderator zo ja dan alleen reacties en instellingen tonen
+              if($_SESSION['functie'] == '2') {
+
+              ?>
+              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link"  href="../admin/dashboard.php">
+                  <i class="fa fa-dashboard"></i>
+                  <span class="nav-link-text">Dashboard</span>
+                </a>
+              </li>
+
+              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reacties">
+                <a class="nav-link" href="../admin/reacties.php">
+                  <i class="fa fa-commenting"></i>
+                  <span class="nav-link-text">Reacties</span>
+                </a>
+              </li>
+
+              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Instellingen">
+                <a class="nav-link" href="../admin/account.php">
+                  <i class="fa fa-cog"></i>
+                  <span class="nav-link-text">Instellingen</span>
+                </a>
+              </li>
+
+              
+            <?php }
+              //checken voor beheerder zo ja dan alleen reacties en instellingen tonen
+              if($_SESSION['functie'] == '0' || $_SESSION['functie'] == '1') {
+
+              ?>
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                 <a class="nav-link"  href="../admin/dashboard.php">
                   <i class="fa fa-dashboard"></i>
@@ -68,12 +103,21 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                   <span class="nav-link-text">Instellingen</span>
                 </a>
               </li>
-              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gebruiker toevoegen">
-                <a class="nav-link" href="../admin/register.php">
-                  <i class="fa fa-user-plus"></i>
-                  <span class="nav-link-text">Gebruiker toevoegen</span>
+              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gebruikers">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapse-gebruikers"
+                   data-parent="#exampleAccordion">
+                   <i class="fa fa-user"></i>
+                   <span class="nav-link-text">Gebruikers</span>
                 </a>
-              </li>
+                 <ul class="sidenav-second-level collapse" id="collapse-gebruikers">
+                   <li>
+                     <a href="../admin/gebruikeroverzicht.php">Overzicht</a>
+                   </li>
+                   <li>
+                     <a href="../admin/register.php">Toevoegen</a>
+                   </li>
+                 </ul>
+              </li>              
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Voorbeeld">
                 <a class="nav-link" href="../index.php" target="_blank">
                   <i class="fa fa-external-link"></i>
@@ -81,80 +125,50 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                 </a>
               </li>
             </ul>
+            <?php
+            }
 
-
-<!-- meldingen popup -->
+             ?>
+<!-- meldingen bel -->
 <?php
-/*
+
   $servername = "localhost";
   $username = "beheerder";
   $password = "geheim";
   $dbname = "db_vindbaarin";
  try {
-          $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   } catch (PDOException $e) {
-          echo "Connection failed: " . $e->getMessage();
+        echo "Connection failed: " . $e->getMessage();
   }
 
-      $sql = "SELECT * FROM rating r
-            JOIN artikel a on r.artikelnr = a.artikelnr
-            JOIN bezoeker b on r.bezoekernr = b.bezoekernr
-            WHERE r.status = 0
-            ORDER BY r.datum desc
-            LIMIT 3";
+$sql = "SELECT * FROM rating r
+        WHERE r.status = 0";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $row = $stmt->fetch();
-*/
+
 ?>
 
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown"
-                   href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link mr-lg-2" id="messagesDropdown"
+                   href="reacties.php">
                    <i class="fa fa-fw fa-bell-o"></i>
+<!--   De notificatie bell krijgt een blauw balletje als er nieuwe reacties zijn -->
                    <?php
-                   /*
                    if($row["ratingnr"] != ''){
-                   echo '<span class="d-lg-none">Meldingen
-                     <span class="badge badge-pill badge-primary">12 Nieuw</span>
-                   </span>
-                   <span class="indicator text-primary d-none d-lg-block">
-                     <i class="fa fa-fw fa-circle"></i>
-                   </span>';
-                   }*/
+                       echo '<span class="d-lg-none">Meldingen
+                         <span class="badge badge-pill badge-primary">3 Nieuw</span>
+                       </span>
+                       <span class="indicator text-primary d-none d-lg-block">
+                         <i class="fa fa-fw fa-circle"></i>
+                       </span>';
+                   }
                    ?>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-                  <h6 class="dropdown-header">Nieuwe meldingen:</h6>
-                  <div class="dropdown-divider"></div>
-<!-- meldingen dropdown -->
-                  <?php
-                  /*
-                  while($row = $stmt->fetch()){
-                    if($row["ratingnr"] != ''){
-                    $naam = $row["voornaam"]." ".$row["achternaam"];
-                    $datum = $row["datum"];
-                    $comment = $row["comment"];
-                    $rating = $row["rating"];
-                  print('
-                    <a class="dropdown-item" href="#">
-                    <strong>'.$naam.'</strong>
-                    <span class="small float-right text-muted">'.$datum.'</span>
-                    <div class="dropdown-message small">'.$rating.'</div>
-                  </a>
-                  ');
-                }
-              }
-              */
-                  ?>
-                    <div class="dropdown-divider"></div>
-                  <a class="dropdown-item small" href="../admin/reacties.php">Alle meldingen weergeven</a>
-                </div>
-              </li>
-
               <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                   <i class="fa fa-fw fa-sign-out"></i>Uitloggen
@@ -162,5 +176,4 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
               </li>
             </ul>
           </div>
-
       </nav>

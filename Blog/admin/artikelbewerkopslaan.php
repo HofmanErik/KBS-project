@@ -31,6 +31,7 @@
 			  $fileSize = $_FILES['thumbnail']['size'];
 			  $fileError = $_FILES['thumbnail']['error'];
 
+                $filename2 = $fileName;
 			  $fileExt = explode('.', $fileName);
 			  $fileActualExt = strtolower(end($fileExt));
 
@@ -43,6 +44,9 @@
 			      if($fileSize < 500000){
 			        //kijken of het bestand niet te groot is
 			        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                    $stmt = $conn->prepare("INSERT INTO thumbnail (thumbnaillocatie,thumbnailnaam) VALUES('$fileNameNew','$filename2')");
+                    $stmt->execute();        
+                      
 			        $sql = ("UPDATE artikel SET titel = '$titel', thumbnail = '$fileNameNew', tekst = '$tinymce', status = '1' WHERE artikelnr = '$artikelnr'");
 			        	print (" image");
 			            $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
@@ -100,6 +104,7 @@
 			  $fileSize = $_FILES['thumbnail']['size'];
 			  $fileError = $_FILES['thumbnail']['error'];
 
+                $filename2 = $fileName;
 			  $fileExt = explode('.', $fileName);
 			  $fileActualExt = strtolower(end($fileExt));
 
@@ -112,6 +117,10 @@
 			      if($fileSize < 500000){
 			        //kijken of het bestand niet te groot is
 			        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                      
+                      $stmt = $conn->prepare("INSERT INTO thumbnail (thumbnaillocatie,thumbnailnaam) VALUES('$fileNameNew','$filename2')");
+                      $stmt->execute();        
+                      
 			        $sql = ("UPDATE artikel SET titel = '$titel', thumbnail = '$fileNameNew', tekst = '$tinymce', status = '0' WHERE artikelnr = '$artikelnr'");
 			        	print (" image");
 			            $fileDestination = 'afbeeldingopslag/' . $fileNameNew;

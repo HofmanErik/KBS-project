@@ -1,5 +1,7 @@
 <?php include "../admin/header.php";
-
+  if($_SESSION['functie'] != 0 || $_SESSION['functie'] != 1) {
+    header("location: ../admin/dashboard.php");
+}  
 
   if(isset($_POST['bewerk'])){
 
@@ -30,10 +32,9 @@
 
           $titel    = $row['titel'];
           $tekst    = $row['tekst'];
-          $thumbnail  = $row['thumbnail'];
-          $auteur   = $row['auteur'];
+          $thumbnail  = $row['thumbnaillocatie'];
+          $auteur   = $row['mnr'];
           $datum    = $row['datum'];
-          $afbeelding = $row['afbeelding'];
           $status   = $row['status'];
            
 

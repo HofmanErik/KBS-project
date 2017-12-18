@@ -128,4 +128,45 @@ if (isset($_POST["def_verwijder"])) {
         header("location: verwijderd.php");
 }
 
-?>
+
+
+
+// Beantwoorden van een reactie
+if(isset($_POST["beantwoord"])){
+    $ratingnr = $_POST["nummer"];
+    $tekst = $_POST["antwoord"];
+
+    $sql = "INSERT INTO comment (ratingnr,tekst,auteur)
+            VALUES ($ratingnr,'$tekst',1)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        header('location: ../goedgekeurd.php');
+}
+// Medewerker inactief maken
+if (isset($_POST["inactief"])) {
+        $sql = "UPDATE medewerker
+                SET actief=0
+                WHERE mnr = :mnr";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindvalue(":mnr", $_POST["mnr"], PDO::PARAM_STR);
+        $stmt->execute();
+
+        header("location: gebruikeroverzicht.php");
+}
+
+// Medewerker actief maken
+if (isset($_POST["actief"])) {
+        $sql = "UPDATE medewerker
+                SET actief=1
+                WHERE mnr = :mnr";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindvalue(":mnr", $_POST["mnr"], PDO::PARAM_STR);
+        $stmt->execute();
+
+        header("location: gbinactief.php");
+}
+
+

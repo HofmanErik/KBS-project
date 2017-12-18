@@ -66,6 +66,7 @@ try {
                             <th>Geschreven door</th>
                             <th>Datum</th>
                             <th>Email</th>
+                            <th>Opties</th>
                             <!-- <th>Publiceerdatum</th> -->
 
                         </tr>
@@ -74,14 +75,13 @@ try {
                         <?php
                         while ($row = $stmt->fetch()) {
                             echo '<tr>
-                                    <form method="post" action="classes/reactiebeheer.php">
                                       <td>'.$row['titel'].'</td>
                                       <td>';
 // starrating vanuit database
-                      for($i=1;$i<=$row["rating"];$i++) {
+                      for($i=1;$i<=$row["sterwaarde"];$i++) {
                           echo ' <span class="fa fa-star"></span>';
                       }
-                      if (strpos($row["rating"],'.')) {
+                      if (strpos($row["sterwaarde"],'.')) {
                           echo ' <span class="fa fa-star-half-o"></span>';
                           $i++;
                       }
@@ -91,21 +91,17 @@ try {
                       }
                                     echo '
                                       </td>
-                                      <td>'.$row['comment'].'</td>
-                                      <td>'.$row['voornaam'].''.$row['achternaam'].'</td>
+                                      <td>'.$row['reactie'].'</td>
+                                      <td>'.$row['voornaam'].' '.$row['achternaam'].'</td>
                                       <td>'.$row['datum'].'</td>
                                       <td>'.$row['email'].'</td>
+                                      <form method="post" action="classes/reactiebeheer.php">
                                       <input type="hidden" name="nummer" value="'.$row['ratingnr'].'">
                                       <td>
                                         <button type="submit" class="btn btn-success" name="verwerk" value="Publiceer" title="Goedkeuren" onclick="return myFunctionPubliceerR()">
                                         <i class="fa fa-check" aria-hidden="true"></i>
                                         </button>
-                                      </td>
-                                      <td>
-                                        <button type="submit" class="btn btn-primary" name="beantwoord" title="Beantwoorden"><i class="fa fa-reply" aria-hidden="true"></i>
-                                        </button>
-                                      </td>
-                                      <td>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-reply" aria-hidden="true"></i></button>
                                         <button type="submit" class="btn btn-danger" name="verwijder" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijderR()"><i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                       </td>
@@ -118,8 +114,35 @@ try {
                 </table>
             </div>
         </div>
-        <div class="card-footer small text-muted"><?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?></div>
+  </div>
+  <div class="card-footer small text-muted"><?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?></div>
+  </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nieuw bericht</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="classes/reactiebeheer.php">
+          <div class="form-group">
+            <label for="message-text" class="form-control-label">Bericht:</label>
+            <textarea class="form-control" id="message-text" name="bericht"></textarea>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
+        <button type="submit" class="btn btn-primary" name="submit">Verstuur</button>
+      </div>
+      </form>
+    </div>
   </div>
 </div>
+
 
 <?php include 'footer.php'; ?>

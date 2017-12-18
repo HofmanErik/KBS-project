@@ -1,4 +1,9 @@
   <?php include '../admin/header.php'; ?>
+<?php
+  if($_SESSION['functie'] != 0 || $_SESSION['functie'] != 1) {
+    header("location: ../admin/dashboard.php");
+}  
+?> 
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -40,8 +45,9 @@
         <div class="col-md-6">
           <label>Functie</label>
           <select name="functie" method="POST">
-            <option value="1">Moderator</option>
-            <option value="2">Beheerder</option>
+            <option>--Maak een keuze--</option>
+            <option value="2">Moderator</option>
+            <option value="1">Beheerder</option>
           </select>
         </div>
       </div>

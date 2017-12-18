@@ -6,11 +6,11 @@
 include '../admin/header.php';
 require 'classes/dbconnect.php';
 
-    $sql = "SELECT * FROM rating r
-            JOIN artikel a on r.artikelnr = a.artikelnr
-            JOIN bezoeker b on r.bezoekernr = b.bezoekernr
-            WHERE r.status = 1
-            ORDER BY r.datum desc";
+$sql = "SELECT * FROM rating r
+        JOIN artikel a on r.artikelnr = a.artikelnr
+        JOIN bezoeker b on r.bezoekernr = b.bezoekernr
+        WHERE r.status = 1
+        ORDER BY r.datum desc";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -39,7 +39,6 @@ require 'classes/dbconnect.php';
             <a href="goedgekeurd.php"> Goedgekeurd</a> |
           </div>
         </div>
-
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -51,8 +50,7 @@ require 'classes/dbconnect.php';
                             <th>Geschreven door</th>
                             <th>Datum</th>
                             <th>Email</th>
-                            <!-- <th>Publiceerdatum</th> -->
-                            <th>#</th>
+                            <th>Opties</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,10 +61,10 @@ require 'classes/dbconnect.php';
                                       <td>'.$row['titel'].'</td>
                                       <td>';
 // starrating vanuit database
-                      for($i=1;$i<=$row["rating"];$i++) {
+                      for($i=1;$i<=$row["sterwaarde"];$i++) {
                           echo ' <span class="fa fa-star"></span>';
                       }
-                      if (strpos($row["rating"],'.')) {
+                      if (strpos($row["sterwaarde"],'.')) {
                           echo ' <span class="fa fa-star-half-o"></span>';
                           $i++;
                       }
@@ -76,17 +74,14 @@ require 'classes/dbconnect.php';
                       }
                                     echo '
                                       </td>
-                                      <td>'.$row['comment'].'</td>
+                                      <td>'.$row['reactie'].'</td>
                                       <td>'.$row['voornaam'].' '.$row['achternaam'].'</td>
-                                      <td>'.$row['datum'].'</td>
                                       <td>'.$row['datum'].'</td>
                                       <td>'.$row['email'].'</td>
                                       <input type="hidden" name="nummer" value="'.$row['ratingnr'].'">
                                       <td>
                                         <button type="submit" class="btn btn-primary" name="beantwoord" title="Beantwoorden"> <i class="fa fa-reply" aria-hidden="true"></i>
                                         </button>
-                                      </td>
-                                      <td>
                                         <button type="submit" class="btn btn-danger" name="verwijdergoedgekeurd" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijderR()"><i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                       </td>
@@ -98,7 +93,7 @@ require 'classes/dbconnect.php';
                 </table>
             </div>
         </div>
-        <div class="card-footer small text-muted">Laatst bijgewerkt 11:59 PM</div>
+<div class="card-footer small text-muted"><?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?></div>
   </div>
 </div>
 

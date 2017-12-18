@@ -1,14 +1,18 @@
 <?php include 'phpqueriesmelissa.php' ?>
   <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <?php include '../admin/header.php'; ?>
-
+<?php
+  if($_SESSION['functie'] != 0 || $_SESSION['functie'] != 1) {
+    header("location: ../admin/dashboard.php");
+}  
+?> 
 <?php
   // Tabel oproepen
   if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
     $zoektext = $_POST["zoektext"];
       $sql = "SELECT *
               FROM artikel a
-              JOIN medewerker m ON a.auteur=m.mnr
+              JOIN medewerker m ON a.mnr=m.mnr
               WHERE (status=:concept2)
               AND titel LIKE ('%".$zoektext."%')
               ORDER BY datum DESC";
@@ -19,7 +23,7 @@
   }else{
     $sql = "SELECT *
             FROM artikel a
-            JOIN medewerker m ON a.auteur=m.mnr
+            JOIN medewerker m ON a.mnr=m.mnr
             WHERE status = :concept;
             ORDER BY datum DESC";
 

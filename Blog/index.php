@@ -33,14 +33,14 @@
           $sql = "SELECT * 
                   FROM artikel a 
                   JOIN medewerker m 
-                  ON a.auteur = m.mnr 
+                  ON a.mnr = m.mnr 
                   WHERE status =1 
                   ORDER BY datum DESC";
                   $stmt = $conn->prepare($sql);
                   $stmt->execute();
 
           while ($row = $stmt->fetch()) {
-                  $thumbnail = $row["thumbnail"];
+                  $thumbnail = $row['thumbnaillocatie'];
                   $thumbsource = "admin/afbeeldingopslag/" . $thumbnail;
                   // preview
                   list($a,$b,$c,$rest) = explode(".",$row["tekst"]);
@@ -81,8 +81,9 @@
               </div> 
         </div>
       </div>
-      </div>
       <?php include 'footer.php';?>
+      </div>
+
     
 
 

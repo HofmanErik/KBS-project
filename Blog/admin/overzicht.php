@@ -1,6 +1,11 @@
 <?php include 'phpqueriesmelissa.php' ?>
   <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <?php include '../admin/header.php';?>
+<?php
+  if($_SESSION['functie'] != 0 || $_SESSION['functie'] != 1) {
+    header("location: ../admin/dashboard.php");
+}  
+?> 
 
 
 <?php
@@ -9,7 +14,7 @@
     $zoektext = $_POST["zoektext"];
       $sql = "SELECT *
               FROM artikel a
-              JOIN medewerker m ON a.auteur = m.mnr
+              JOIN medewerker m ON a.mnr = m.mnr
               WHERE (status=:concept1
               OR status=:concept2)
               AND titel LIKE ('%".$zoektext."%')
@@ -22,7 +27,7 @@
   }else {
       $sql = "SELECT *
               FROM artikel a
-              JOIN medewerker m ON m.mnr=a.auteur
+              JOIN medewerker m ON m.mnr=a.mnr
               WHERE status=:concept1
               OR status=:concept2
               ORDER BY datum DESC";

@@ -24,8 +24,8 @@
         <form method="POST" action="login.inc.php">
           <div class="form-group">
             <label for="exampleInputEmail1">Emailadres/Naam</label>
-            <input class="form-control" id="exampleInputEmail1" name="voornaam" type="text"
-                    aria-describedby="emailHelp" placeholder="Voer emailadres/naam in">
+            <input class="form-control" id="exampleInputEmail1" name="email" type="text"
+                    aria-describedby="emailHelp" placeholder="Voer emailadres">
           </div>
 
           <div class="form-group">

@@ -21,7 +21,7 @@ if(!isset($_GET["artikelnr"])){
 
   $sql = "SELECT *
           FROM artikel a
-          JOIN medewerker m ON a.auteur = m.mnr
+          JOIN medewerker m ON a.mnr = m.mnr
           WHERE artikelnr = :artikel1";
           $stmt = $conn->prepare($sql);
           $stmt -> bindValue(':artikel1', $artikelnr, PDO::PARAM_INT);
@@ -30,10 +30,9 @@ if(!isset($_GET["artikelnr"])){
   while ($row = $stmt->fetch()) {
           $titel = $row['titel'];
           $tekst = $row['tekst'];
-          $thumbnail = $row['thumbnail'];
+          $thumbnail = $row['thumbnaillocatie'];
           $datum = $row['datum'];
           $voornaam = $row['voornaam'];
-          $thumbnail = $row["thumbnail"];
           $artikelnr = $row["artikelnr"];
           $thumbsource = "admin/afbeeldingopslag/" . $thumbnail;
   }
@@ -96,8 +95,8 @@ if(!isset($_GET["artikelnr"])){
               $voornaam = $row["voornaam"];
               $achternaam = $row["achternaam"];
               $datum = $row["datum"];
-              $tekst = $row["comment"];
-              $rating = $row["rating"];
+              $tekst = $row["reactie"];
+              $rating = $row["sterwaarde"];
 
 
 
@@ -231,6 +230,5 @@ if(!isset($_GET["artikelnr"])){
         </div>
       </div>
     </div>
-
     <hr>
 <?php include 'footer.php';?>
