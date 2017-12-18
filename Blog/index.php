@@ -46,7 +46,7 @@
 
                   // preview
                   list($a,$b,$c,$rest) = explode(".",$row["tekst"]);
-                  if($b == ''){
+                  if($b == ""){
                     $text = $a;
                 } else {
                   $tekst = ($a.$b.$c);
