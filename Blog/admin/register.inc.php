@@ -38,7 +38,7 @@ if (isset($_POST['opslaan'])) {
 				header("Location: ../admin/register.php?signup=invalidemail");
 				exit();
 			} else {
-				$sql = "SELECT * FROM medewerker WHERE mnr='$mnr'";
+				$sql = "SELECT * FROM medewerker WHERE email='$email'";
 				$result = mysqli_query($conn, $sql);
 				$resultCheck = mysqli_num_rows($result);
 

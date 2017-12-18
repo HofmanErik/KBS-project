@@ -6,18 +6,18 @@ if (isset($_POST['submit'])) {
 
 	include "../admin/databaseconnectie.php";
 
-	$voornaam = $_POST['voornaam'];
+	$email = $_POST['email'];
 	$wwhash = $_POST['wwhash'];
 
 	//Error handlers
 	//Checken voor lege input
-	if (empty($voornaam) || empty($wwhash)) {
+	if (empty($email) || empty($wwhash)) {
 		header("Location: ../index.php?login=empty");
 		exit();
 	} else {
-		$sql = "SELECT * FROM medewerker WHERE voornaam=:voornaam OR email=:voornaam";
+		$sql = "SELECT * FROM medewerker WHERE email=:email";
 		$stmt=$conn->prepare($sql);
-		$stmt->bindValue(":voornaam", $voornaam);
+		$stmt->bindValue(":email", $email);
 		$stmt->execute();
 		$resultCheck = $stmt->rowcount();
 		if ($resultCheck < 1) {
@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
 					$_SESSION['email'] = $row['email'];
 					$_SESSION['functie'] = $row['functie'];
 					$_SESSION['wwhash'] = $row['wwhash'];
-
+					
 					header("Location: ../admin/dashboard.php?login=succes");
 					exit();
 				//}
