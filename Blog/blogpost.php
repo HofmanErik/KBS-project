@@ -1,6 +1,5 @@
-<?php include 'header.php';?>
-
- <?php
+<?php include 'header.php';
+include 'js/javacript.js';
 
 if(!isset($_GET["artikelnr"])){
   header("location: index.php");
@@ -220,14 +219,11 @@ if(!isset($_GET["artikelnr"])){
             </p>
             <p>
               <script>
-              function myFunctionReageren()
-              {
-              alert('Uw reactie wordt verzonden!');
-              }
+              
               </script>
               <!-- <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen" onclick="return myFunctionReageren()"> -->
 
-              <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen">
+              <input type="submit" class="btn btn-primary reactiesubmit" name="submit" value="Reactie plaatsen">
             </p>
           </form>
         </div>
