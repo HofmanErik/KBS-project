@@ -123,6 +123,7 @@ if (isset($_POST['emailsubmit'])) {
     }
 }
 
+$changesResponse = " ";
 if (isset($_POST['statussubmit'])) {
     $servername = "localhost";
     $username = "beheerder";
@@ -143,11 +144,13 @@ if (isset($_POST['statussubmit'])) {
         print("ja");
         $stmt = $conn->prepare("update medewerker SET notificatie = 1 WHERE mnr = '$mnr'");
         $stmt->execute();
+        $changesResponse = "<font color='green'>* Uw voorkeur gewijzigd.</font>";
     }
     if ($_POST['janee'] == 'nee') {
         print("nee");
         $stmt = $conn->prepare("update medewerker SET notificatie = 0 WHERE mnr = '$mnr'");
         $stmt->execute();
+        $changesResponse = "<font color='green'>* Uw voorkeur is gewijzigd.</font>";
     }
 }
 ?>
@@ -241,6 +244,7 @@ if (isset($_POST['statussubmit'])) {
                                                 <input type="radio" name="janee" value="ja" >Ja<br>
                                                 <input type="radio" name="janee" value="nee">Nee<br>
                                                 <p class="card-text"></p>
+                                                <p><?php echo$changesResponse; ?></p>
                                                 <input class="btn btn-primary" type="submit" name="statussubmit" value="Opslaan">
                                             </form>
                                         </div>

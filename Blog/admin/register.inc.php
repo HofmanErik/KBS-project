@@ -50,7 +50,7 @@ if (isset($_POST['opslaan'])) {
 					$options = ['cost' => 12];
 					$hashedPwd = password_hash($wwhash, PASSWORD_BCRYPT, $options);
 					//Gebruiker in de database invoeren
-					$sql = "INSERT INTO medewerker (voornaam, achternaam, email, functie, wwhash)
+					$sql = "INSERT INTO medewerker (voornaam, achternaam, email, functie, wachtwoord)
 					VALUES ('$voornaam', '$achternaam', '$email', '$functie', '$hashedPwd');";
 					mysqli_query($conn, $sql);
 					header("Location: ../admin/dashboard.php?signup=succes");

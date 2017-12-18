@@ -7,7 +7,7 @@
   // Tabel oproepen
       $sql = "SELECT *
               FROM medewerker
-              WHERE status = 0";
+              WHERE actief = FALSE";
               $stmt = $conn->prepare($sql);
               $stmt->execute();
 ?>
@@ -52,16 +52,16 @@
                 <?php
                 while ($row = $stmt->fetch()) {
                   print('
-                    <tr>
                       <form method="post" action="phpqueriesmelissa.php">
+                      <tr>
                         <td>'.$row['voornaam'].'</td>
                         <td>'.$row["achternaam"].'</a>
                         </td>
                         <td>'.$row['email'].'</td>');
-                    if($row['functie']==2){
+                    if($row['functie']==1){
                       print('
                         <td>Beheerder</td>');
-                  } elseif($row['functie']==1) {
+                  } elseif($row['functie']==2) {
                       print('
                           <td>Moderator</td>');
                   } elseif($row['functie']==0) {
@@ -85,7 +85,7 @@
                               <button type="submit" class="btn btn-secondary" name="actief" onclick="return myFunctionPubliceren()">Actief</button>
                           </label>
                           <input type="hidden" name="mnr" value="'.$row['mnr'].'">
-                        </td>');
+                        </td></tr></form>');
                   }
 ?>
 <!-- Footer -->
