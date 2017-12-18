@@ -1,4 +1,9 @@
   <?php include '../admin/header.php'; ?>
+<?php
+  if($_SESSION['functie'] != 0 || $_SESSION['functie'] != 1) {
+    header("location: ../admin/dashboard.php");
+}  
+?> 
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->

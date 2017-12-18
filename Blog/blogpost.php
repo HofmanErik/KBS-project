@@ -95,7 +95,7 @@ if(!isset($_GET["artikelnr"])){
               $voornaam = $row["voornaam"];
               $achternaam = $row["achternaam"];
               $datum = $row["datum"];
-              $tekst = $row["tekst"];
+              $tekst = $row["reactie"];
               $rating = $row["sterwaarde"];
 
 

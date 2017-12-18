@@ -66,7 +66,7 @@ if(!isset($_SESSION['voornaam']
 
               
             <?php }
-              //checken voor moderator zo ja dan alleen reacties en instellingen tonen
+              //checken voor beheerder zo ja dan alleen reacties en instellingen tonen
               if($_SESSION['functie'] == '0' || $_SESSION['functie'] == '1') {
 
               ?>

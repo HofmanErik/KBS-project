@@ -37,7 +37,7 @@ $sql = "SELECT *
         $row = $stmt->fetch();
         $bezoekernr = $row['bezoekernr'];
 
-$sql = "INSERT INTO rating (artikelnr,bezoekernr,tekst,sterwaarde,datum)
+$sql = "INSERT INTO rating (artikelnr,bezoekernr,reactie,sterwaarde,datum)
 		VALUES ($artikelnr,'$bezoekernr','$reactie', $rating, NOW())";
         $stmt = $conn->prepare($sql);
         $stmt->execute();

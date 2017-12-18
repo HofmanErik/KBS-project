@@ -1,6 +1,10 @@
-<?php include 'phpqueriesmelissa.php' ?>
-  <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <?php include '../admin/header.php';?>
+<?php if($_SESSION['functie'] != 0) {
+    header("location: ../admin/dashboard.php");
+}
+include 'phpqueriesmelissa.php' ?>
+  <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
 
 
 <?php

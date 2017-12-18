@@ -50,7 +50,7 @@ $sql = "SELECT * FROM rating r
                             <th>Geschreven door</th>
                             <th>Datum</th>
                             <th>Email</th>
-                            <th></th>
+                            <th>Opties</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,10 +61,10 @@ $sql = "SELECT * FROM rating r
                                       <td>'.$row['titel'].'</td>
                                       <td>';
 // starrating vanuit database
-                      for($i=1;$i<=$row["rating"];$i++) {
+                      for($i=1;$i<=$row["sterwaarde"];$i++) {
                           echo ' <span class="fa fa-star"></span>';
                       }
-                      if (strpos($row["rating"],'.')) {
+                      if (strpos($row["sterwaarde"],'.')) {
                           echo ' <span class="fa fa-star-half-o"></span>';
                           $i++;
                       }
@@ -74,7 +74,7 @@ $sql = "SELECT * FROM rating r
                       }
                                     echo '
                                       </td>
-                                      <td>'.$row['comment'].'</td>
+                                      <td>'.$row['reactie'].'</td>
                                       <td>'.$row['voornaam'].' '.$row['achternaam'].'</td>
                                       <td>'.$row['datum'].'</td>
                                       <td>'.$row['email'].'</td>
@@ -82,8 +82,6 @@ $sql = "SELECT * FROM rating r
                                       <td>
                                         <button type="submit" class="btn btn-primary" name="beantwoord" title="Beantwoorden"> <i class="fa fa-reply" aria-hidden="true"></i>
                                         </button>
-                                      </td>
-                                      <td>
                                         <button type="submit" class="btn btn-danger" name="verwijdergoedgekeurd" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijderR()"><i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                       </td>

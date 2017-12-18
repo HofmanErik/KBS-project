@@ -1,7 +1,11 @@
 <?php include 'phpqueriesmelissa.php' ?>
   <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 <?php include '../admin/header.php'; ?>
-
+<?php
+  if($_SESSION['functie'] != 0 || $_SESSION['functie'] != 1) {
+    header("location: ../admin/dashboard.php");
+}  
+?> 
 <?php
   // Tabel oproepen
   if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){

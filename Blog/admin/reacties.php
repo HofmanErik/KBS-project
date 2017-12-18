@@ -66,6 +66,7 @@ try {
                             <th>Geschreven door</th>
                             <th>Datum</th>
                             <th>Email</th>
+                            <th>Opties</th>
                             <!-- <th>Publiceerdatum</th> -->
 
                         </tr>
@@ -90,7 +91,7 @@ try {
                       }
                                     echo '
                                       </td>
-                                      <td>'.$row['tekst'].'</td>
+                                      <td>'.$row['reactie'].'</td>
                                       <td>'.$row['voornaam'].' '.$row['achternaam'].'</td>
                                       <td>'.$row['datum'].'</td>
                                       <td>'.$row['email'].'</td>
@@ -100,11 +101,7 @@ try {
                                         <button type="submit" class="btn btn-success" name="verwerk" value="Publiceer" title="Goedkeuren" onclick="return myFunctionPubliceerR()">
                                         <i class="fa fa-check" aria-hidden="true"></i>
                                         </button>
-                                      </td>
-                                      <td>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-reply" aria-hidden="true"></i></button>
-                                      </td>
-                                      <td>
                                         <button type="submit" class="btn btn-danger" name="verwijder" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijderR()"><i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                       </td>
