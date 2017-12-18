@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
 		} else {
 			if ($row = $stmt->fetch()) {
 				//De-hashing wachtwoord
-				$hashedPwdCheck = password_verify($wwhash, $row['wwhash']);
+				$hashedPwdCheck = password_verify($wwhash, $row['wachtwoord']);
 				if ($hashedPwdCheck == false) {
 					header("Location: ../index.php?login=error");
 					exit();
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 					$_SESSION['achternaam'] = $row['achternaam'];
 					$_SESSION['email'] = $row['email'];
 					$_SESSION['functie'] = $row['functie'];
-					$_SESSION['wwhash'] = $row['wwhash'];
+					$_SESSION['wachtwoord'] = $row['wachtwoord'];
 					
 					header("Location: ../admin/dashboard.php?login=succes");
 					exit();

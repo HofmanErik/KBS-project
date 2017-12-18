@@ -77,10 +77,10 @@ try {
                                       <td>'.$row['titel'].'</td>
                                       <td>';
 // starrating vanuit database
-                      for($i=1;$i<=$row["rating"];$i++) {
+                      for($i=1;$i<=$row["sterwaarde"];$i++) {
                           echo ' <span class="fa fa-star"></span>';
                       }
-                      if (strpos($row["rating"],'.')) {
+                      if (strpos($row["sterwaarde"],'.')) {
                           echo ' <span class="fa fa-star-half-o"></span>';
                           $i++;
                       }
@@ -90,7 +90,7 @@ try {
                       }
                                     echo '
                                       </td>
-                                      <td>'.$row['comment'].'</td>
+                                      <td>'.$row['tekst'].'</td>
                                       <td>'.$row['voornaam'].' '.$row['achternaam'].'</td>
                                       <td>'.$row['datum'].'</td>
                                       <td>'.$row['email'].'</td>

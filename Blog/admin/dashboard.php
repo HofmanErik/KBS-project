@@ -24,7 +24,7 @@
 
         <?php
         //checken voor moderator, toont moderator dashboard
-        if($_SESSION['functie'] == '1') {
+        if($_SESSION['functie'] == '2') {
 
         ?>
         <div class="row">
@@ -65,7 +65,7 @@
         <?php
         }
         //checken voor beheerder, toont beheerder dashboard
-        if($_SESSION['functie'] == '2') {
+        if($_SESSION['functie'] == '0' || $_SESSION['functie'] == '1') {
 
         ?>
         <div class="row">

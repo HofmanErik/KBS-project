@@ -31,7 +31,7 @@ if (isset($_POST["opslaan1"])) {
     $postvoornaam = $_POST['voornaam'];
     $postachternaam = $_POST["achternaam"];
     $verifyForm = $_POST["naamVerifyForm"];
-    $wwhashOld = $_SESSION['wwhash'];
+    $wwhashOld = $_SESSION['wachtwoord'];
     $passwrdVerify = password_verify($verifyForm, $wwhashOld);
     $mnr = $_SESSION['mnr'];
 
@@ -74,12 +74,12 @@ if (isset($_POST["opslaan2"])) {
         $wwHerstelResponse2 = "<font color='red'>* Nieuwe wachtwoorden komen niet overeen</font>";
     } elseif ($passwrdVerify == TRUE && ($nieuwWachtwoord1 == $nieuwWachtwoord2)) {
 
-        $sql = "UPDATE medewerker SET wwhash = '$hashedpwd' WHERE mnr = '$mnr'";
+        $sql = "UPDATE medewerker SET wachtwoord = '$hashedpwd' WHERE mnr = '$mnr'";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $wwHerstelResponse1 = "<font color='green'>* Bedankt uw wachtwoord is gewijzigd</font>";
-        $_SESSION['wwhash'] = $hashedpwd;
+        $_SESSION['wachtwoord'] = $hashedpwd;
     }
 }
 
@@ -89,7 +89,7 @@ $mailResetResponse3 = " ";
 
 if (isset($_POST['emailsubmit'])) {
     $verifyForm = $_POST["mailVerifyForm"];
-    $wwhashOld = $_SESSION['wwhash'];
+    $wwhashOld = $_SESSION['wachtwoord'];
     $passwrdVerify = password_verify($verifyForm, $wwhashOld);
     $mail1 = $_POST['mail1'];
     $mail2 = $_POST['mail2'];
@@ -141,12 +141,12 @@ if (isset($_POST['statussubmit'])) {
 
     if ($_POST['janee'] == 'ja') {
         print("ja");
-        $stmt = $conn->prepare("update medewerker SET emailstatus = 1 WHERE mnr = '$mnr'");
+        $stmt = $conn->prepare("update medewerker SET notificatie = 1 WHERE mnr = '$mnr'");
         $stmt->execute();
     }
     if ($_POST['janee'] == 'nee') {
         print("nee");
-        $stmt = $conn->prepare("update medewerker SET emailstatus = 0 WHERE mnr = '$mnr'");
+        $stmt = $conn->prepare("update medewerker SET notificatie = 0 WHERE mnr = '$mnr'");
         $stmt->execute();
     }
 }

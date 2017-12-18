@@ -40,7 +40,7 @@ if(isset($_POST['Opslaan'])){
 
   if($valid ==true){
 
-    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, Titel, tekst, thumbnail, auteur,datum, afbeelding, concept) VALUES ('?', '$titel','$tekst','963', '1', '2017-12-05', 'hfhfh', 0 )");
+    $stmt = $conn ->prepare("INSERT INTO artikel (artikelnr, Titel, tekst, thumbnail, mnr,datum, afbeelding, concept) VALUES ('?', '$titel','$tekst','963', '1', '2017-12-05', 'hfhfh', 0 )");
     $stmt->execute();
     echo "Artikel is opgeslagen!";
   }

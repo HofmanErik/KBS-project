@@ -1,6 +1,9 @@
 <?php
 session_start();
-if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
+//kijken of er een sessie is gezet, anders word je terug gestuurd naar login.php
+if(!isset($_SESSION['voornaam'] 
+          //&& $_SESSION['functie'] == 0 || $_SESSION['functie'] == 1
+         )){
    header("Location:  ../admin/login.php");
 }
 ?>
@@ -37,7 +40,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
               <?php
               //checken voor moderator zo ja dan alleen reacties en instellingen tonen
-              if($_SESSION['functie'] == '1') {
+              if($_SESSION['functie'] == '2') {
 
               ?>
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
@@ -64,7 +67,7 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
               
             <?php }
               //checken voor moderator zo ja dan alleen reacties en instellingen tonen
-              if($_SESSION['functie'] == '2') {
+              if($_SESSION['functie'] == '0' || $_SESSION['functie'] == '1') {
 
               ?>
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">

@@ -30,10 +30,9 @@
 
           $titel    = $row['titel'];
           $tekst    = $row['tekst'];
-          $thumbnail  = $row['thumbnail'];
-          $auteur   = $row['auteur'];
+          $thumbnail  = $row['thumbnaillocatie'];
+          $auteur   = $row['mnr'];
           $datum    = $row['datum'];
-          $afbeelding = $row['afbeelding'];
           $status   = $row['status'];
            
 

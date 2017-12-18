@@ -8,7 +8,7 @@
     $zoektext = $_POST["zoektext"];
       $sql = "SELECT *
               FROM artikel a
-              JOIN medewerker m ON a.auteur=m.mnr
+              JOIN medewerker m ON a.mnr=m.mnr
               WHERE (status=:concept2)
               AND titel LIKE ('%".$zoektext."%')
               ORDER BY datum DESC";
@@ -19,7 +19,7 @@
   }else{
     $sql = "SELECT *
             FROM artikel a
-            JOIN medewerker m ON a.auteur=m.mnr
+            JOIN medewerker m ON a.mnr=m.mnr
             WHERE status = :concept;
             ORDER BY datum DESC";
 
