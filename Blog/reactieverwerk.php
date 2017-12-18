@@ -21,10 +21,10 @@ if(isset($_POST["submit"])){
   }
 
 		$artikelnr = $_POST["artikelnr"];
-    $voornaam = preg_replace("/[^A-Za-z0-9]/", "", $_POST["naam"]);
-		$achternaam = preg_replace("/[^A-Za-z0-9]/", "", $_POST["achternaam"]);
+    $voornaam = $_POST["naam"];
+		$achternaam = ["achternaam"];
 		$email = $_POST["email"];
-		$reactie = preg_replace("/[^A-Za-z0-9]/", "", $_POST["reactie"]);
+		$reactie = ["reactie"];
 
 $sql = "INSERT INTO bezoeker (voornaam,achternaam,email)
 		VALUES ('$voornaam','$achternaam','$email')";
