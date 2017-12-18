@@ -42,10 +42,16 @@
           while ($row = $stmt->fetch()) {
                   $thumbnail = $row['thumbnaillocatie'];
                   $thumbsource = "admin/afbeeldingopslag/" . $thumbnail;
+
+
                   // preview
                   list($a,$b,$c,$rest) = explode(".",$row["tekst"]);
+                  if($b == '')
+                    $text = $a;
+                } else {
                   $tekst = ($a.$b.$c);
                   $tekst = htmlspecialchars_decode(stripslashes($tekst));
+                }
                 
           print('
             <div class="post-preview">
