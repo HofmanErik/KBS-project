@@ -125,29 +125,28 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
 
 <!-- meldingen popup -->
 <?php
-/*
+
   $servername = "localhost";
   $username = "beheerder";
   $password = "geheim";
   $dbname = "db_vindbaarin";
  try {
-          $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   } catch (PDOException $e) {
-          echo "Connection failed: " . $e->getMessage();
+        echo "Connection failed: " . $e->getMessage();
   }
 
-      $sql = "SELECT * FROM rating r
-            JOIN artikel a on r.artikelnr = a.artikelnr
-            JOIN bezoeker b on r.bezoekernr = b.bezoekernr
-            WHERE r.status = 0
-            ORDER BY r.datum desc
-            LIMIT 3";
+$sql = "SELECT * FROM rating r
+        JOIN artikel a on r.artikelnr = a.artikelnr
+        JOIN bezoeker b on r.bezoekernr = b.bezoekernr
+        WHERE r.status = 0
+        ORDER BY r.datum desc";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $row = $stmt->fetch();
-*/
+
 ?>
 
             <ul class="navbar-nav ml-auto">
@@ -155,26 +154,24 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                 <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown"
                    href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <i class="fa fa-fw fa-bell-o"></i>
+<!--   De notificatie bell krijgt een blauw balletje als er nieuwe reacties zijn -->
                    <?php
-                   /*
                    if($row["ratingnr"] != ''){
-                   echo '<span class="d-lg-none">Meldingen
-                     <span class="badge badge-pill badge-primary">12 Nieuw</span>
-                   </span>
-                   <span class="indicator text-primary d-none d-lg-block">
-                     <i class="fa fa-fw fa-circle"></i>
-                   </span>';
-                   }*/
+                       echo '<span class="d-lg-none">Meldingen
+                         <span class="badge badge-pill badge-primary">3 Nieuw</span>
+                       </span>
+                       <span class="indicator text-primary d-none d-lg-block">
+                         <i class="fa fa-fw fa-circle"></i>
+                       </span>';
+                   }
                    ?>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
                   <h6 class="dropdown-header">Nieuwe meldingen:</h6>
                   <div class="dropdown-divider"></div>
 <!-- meldingen dropdown -->
-                  <?php
-                  /*
+                  <?php  
                   while($row = $stmt->fetch()){
-                    if($row["ratingnr"] != ''){
                     $naam = $row["voornaam"]." ".$row["achternaam"];
                     $datum = $row["datum"];
                     $comment = $row["comment"];
@@ -187,15 +184,11 @@ if(!isset($_SESSION['voornaam']) && ($_SESSION['functie']) == 2){
                   </a>
                   ');
                 }
-              }
-              */
                   ?>
                     <div class="dropdown-divider"></div>
                   <a class="dropdown-item small" href="../admin/reacties.php">Alle meldingen weergeven</a>
                 </div>
               </li>
-
-
               <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                   <i class="fa fa-fw fa-sign-out"></i>Uitloggen
