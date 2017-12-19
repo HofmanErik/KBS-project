@@ -1,11 +1,10 @@
-<link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-
 <?php
 
 // Include bestanden
 include '../admin/header.php';
 require 'classes/dbconnect.php';
 
+//Goedgekeurde reacties ophalen
 $sql = "SELECT * FROM rating r
         JOIN artikel a on r.artikelnr = a.artikelnr
         JOIN bezoeker b on r.bezoekernr = b.bezoekernr
@@ -60,14 +59,18 @@ $sql = "SELECT * FROM rating r
                                     <form method="post" action="classes/reactiebeheer.php">
                                       <td>'.$row['titel'].'</td>
                                       <td>';
-// starrating vanuit database
+
+                      // starrating vanuit database
+                      //hele sterren
                       for($i=1;$i<=$row["sterwaarde"];$i++) {
                           echo ' <span class="fa fa-star"></span>';
                       }
+                      //halve sterren
                       if (strpos($row["sterwaarde"],'.')) {
                           echo ' <span class="fa fa-star-half-o"></span>';
                           $i++;
                       }
+                      //legen sterren
                       while ($i<=5) {
                           echo ' <span class="fa fa-star-o"></span>';
                           $i++;

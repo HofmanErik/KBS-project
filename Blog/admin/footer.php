@@ -43,8 +43,6 @@
     <!-- Custom scripts for all pages-->
     <script src="../js/sb-admin.min.js"></script>
 
-
-        <!-- Deze div sluit niks af in de footer-->
       </div>
     <!-- Einde body en html van header.php -->
   </body>

@@ -1,5 +1,6 @@
 <?php
 
+//Database connectie, inlog.php en reacties.php en goedgekeurd.php
   $servername = "localhost";
   $username = "beheerder";
   $password = "geheim";

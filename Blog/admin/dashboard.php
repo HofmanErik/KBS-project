@@ -1,7 +1,4 @@
-
-
 <?php include '../admin/header.php'; ?>
-
 
 
 <div class="content-wrapper">
@@ -133,7 +130,9 @@
               </a>
           </div>
         </div>
-        <?php if($_SESSION['functie'] == 0){ ?>
+        <?php
+        //Checken op Super-Admin, voor weergave gebruikeroverzicht
+        if($_SESSION['functie'] == 0){ ?>
         <div class="col-xl-4 col-sm-6 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">
@@ -152,7 +151,9 @@
         </div>
         <?php } ?>
 
-<?php if($_SESSION['functie'] == 1){ ?>
+<?php
+//Checken op functie beheerder
+if($_SESSION['functie'] == 1){ ?>
         <div class="col-xl-4 col-sm-6 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">
@@ -195,7 +196,6 @@
 }
 
 ?>
-
 
 
 <?php include '../admin/footer.php'; ?>

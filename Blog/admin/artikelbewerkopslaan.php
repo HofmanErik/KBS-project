@@ -6,8 +6,9 @@
 		$tinymce = $_POST['tinymce'];
 		$artikelnr = $_POST['artikelnr'];
 
+//database connectie
 			$servername = "localhost";
-			$username = "beheerder";	
+			$username = "beheerder";
 			$password = "geheim";
 
 			try {
@@ -21,9 +22,9 @@
 			{
 			echo "Connection failed: " . $e->getMessage();
 			}
-			//checken of er een file is door de filesize te checken kan skechy zijn maar het werkt
+			//checken of er een file is door de filesize te checken
 			if(($_FILES['thumbnail']['size']) != 0){
-			  
+
 			  $file = $_FILES['thumbnail'];
 
 			  $fileName = $_FILES['thumbnail']['name'];
@@ -31,22 +32,23 @@
 			  $fileSize = $_FILES['thumbnail']['size'];
 			  $fileError = $_FILES['thumbnail']['error'];
 
-                $filename2 = $fileName;
+        $filename2 = $fileName;
 			  $fileExt = explode('.', $fileName);
 			  $fileActualExt = strtolower(end($fileExt));
 
 			  $allow = array('jpg','jpeg','png');
 
+				//kijken of het filetype klopt
 			  if(in_array($fileActualExt, $allow)){
-			    //kijken of het filetype klopt
+			    //kijken of er een error is tijdens uploaden
 			    if($fileError === 0){
-			      //kijken of er een error is tijdens uploaden
-			      if($fileSize < 500000){
-			        //kijken of het bestand niet te groot is
+			      //kijken of het bestand niet te groot is
+			      if($fileSize < 5000000){
+							//file krijgt unieke naam
 			        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
                     $stmt = $conn->prepare("INSERT INTO thumbnail (thumbnaillocatie,thumbnailnaam) VALUES('$fileNameNew','$filename2')");
-                    $stmt->execute();        
-                      
+                    $stmt->execute();
+
 			        $sql = ("UPDATE artikel SET titel = '$titel', thumbnail = '$fileNameNew', tekst = '$tinymce', status = '1' WHERE artikelnr = '$artikelnr'");
 			        	print (" image");
 			            $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
@@ -60,28 +62,28 @@
 			    }
 			  }else {
 			    header("location: overzicht.php?filetype");
-			  }					
-				
+			  }
+
 
 			}else{
 				$sql = ("UPDATE artikel SET titel = '$titel', tekst = '$tinymce', status = '1' WHERE artikelnr = '$artikelnr'");
 				print ("geen image");
 
 			}
-						//sql query naam opslaan in database
-    		$prep = $conn->prepare($sql); 	
+				//sql query, opslaan in database
+    		$prep = $conn->prepare($sql);
     		$prep->execute();
-    		header("location: overzicht.php?Postsucces");	
+    		header("location: overzicht.php?Postsucces");
 	    }
 
-//concept			
+//Concept
 	if(isset($_POST['concept'])){
 		$titel = $_POST['titel'];
 		$tinymce = $_POST['tinymce'];
 		$artikelnr = $_POST['artikelnr'];
 
 			$servername = "localhost";
-			$username = "beheerder";	
+			$username = "beheerder";
 			$password = "geheim";
 
 			try {
@@ -96,7 +98,7 @@
 			echo "Connection failed: " . $e->getMessage();
 			}
 			if(($_FILES['thumbnail']['size']) != 0){
-			  
+
 			  $file = $_FILES['thumbnail'];
 
 			  $fileName = $_FILES['thumbnail']['name'];
@@ -114,13 +116,13 @@
 			    //kijken of het filetype klopt
 			    if($fileError === 0){
 			      //kijken of er een error is tijdens uploaden
-			      if($fileSize < 500000){
+			      if($fileSize < 5000000){
 			        //kijken of het bestand niet te groot is
 			        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
-                      
+
                       $stmt = $conn->prepare("INSERT INTO thumbnail (thumbnaillocatie,thumbnailnaam) VALUES('$fileNameNew','$filename2')");
-                      $stmt->execute();        
-                      
+                      $stmt->execute();
+
 			        $sql = ("UPDATE artikel SET titel = '$titel', thumbnail = '$fileNameNew', tekst = '$tinymce', status = '0' WHERE artikelnr = '$artikelnr'");
 			        	print (" image");
 			            $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
@@ -134,8 +136,8 @@
 			    }
 			  }else {
 			    header("location: overzicht.php?filetype");
-			  }					
-				
+			  }
+
 
 			}else{
 				$sql = ("UPDATE artikel SET titel = '$titel', tekst = '$tinymce', status = '0' WHERE artikelnr = '$artikelnr'");
@@ -143,9 +145,9 @@
 
 			}
 
-			//sql query naam opslaan in database
-    		$prep = $conn->prepare($sql); 	
-    		$prep->execute();	
+			//sql query, opslaan in database
+    		$prep = $conn->prepare($sql);
+    		$prep->execute();
     		header("location: overzicht.php?Draftsucces");
 
 	}

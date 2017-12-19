@@ -47,6 +47,7 @@ try {
 
         <div class="card-body">
             <div class="table-responsive">
+
               <script>
                 function myFunctionVerwijderR(){
                   var r=confirm('Weet u zeker dat u de reactie wilt verwijderen?');
@@ -57,6 +58,7 @@ try {
                   }
                 }
               </script>
+
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -67,7 +69,6 @@ try {
                             <th>Datum</th>
                             <th>Email</th>
                             <th>Opties</th>
-                            <!-- <th>Publiceerdatum</th> -->
 
                         </tr>
                     </thead>

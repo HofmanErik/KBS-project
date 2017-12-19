@@ -9,7 +9,7 @@
 
 
 <?php
-  // Tabel oproepen
+  // Tabel oproepen zoekfunctie
   if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
     $zoektext = $_POST["zoektext"];
       $sql = "SELECT *
@@ -25,6 +25,7 @@
               $stmt -> bindvalue( ":concept2",1,PDO::PARAM_STR );
               $stmt -> execute();
   }else {
+    //tabel oproepen ALLE Artikelen
       $sql = "SELECT *
               FROM artikel a
               JOIN medewerker m ON m.mnr=a.mnr
@@ -82,8 +83,8 @@
                   <th>Titel</th>
                   <th>Geschreven door</th>
                   <th>Publiceerdatum</th>
-                  <th></th>
-                  <th></th>
+                  <th>Actie</th>
+                  <th>Opties</th>
                 </tr>
               </thead>
               <tbody>
@@ -103,6 +104,7 @@
                       print('
                         <td>
                           <label>
+
                             <script>
                               function myFunctionPubliceren(){
                                 var r=confirm("Weet u zeker dat u het artikel wilt publiceren?");
@@ -113,6 +115,7 @@
                                 }
                               }
                               </script>
+
                               <button type="submit" class="btn btn-secondary" name="publiceer" value="Publiceer" onclick="return myFunctionPubliceren()"> Publiceer </button>
                           </label>
                         </td>');
@@ -120,6 +123,7 @@
                       print('
                           <td>
                             <label>
+
                             <script>
                             function myFunctionConcept(){
                               var r=confirm("Weet u zeker dat u het artikel wilt verplaatsen naar concept? ");
@@ -130,6 +134,7 @@
                               }
                             }
                             </script>
+
                             <button type="submit" class="btn btn-secondary" name="depubliceer" value="Concept" onclick="return myFunctionConcept()"> Concept </button>
                             </label>
                           </td>');

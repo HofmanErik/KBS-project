@@ -28,6 +28,12 @@ if(!isset($_GET["artikelnr"])){
           $stmt->execute();
 
   while ($row = $stmt->fetch()) {
+
+          if($row["status"] != 1){
+            header('location: index.php');
+          }
+
+
           $titel = $row['titel'];
           $tekst = $row['tekst'];
           $thumbnail = $row['thumbnaillocatie'];
@@ -223,7 +229,7 @@ if(!isset($_GET["artikelnr"])){
               <textarea id="comment" name="reactie" cols="58" rows="8" maxlength="65525"></textarea>
             </p>
             <p>
-              
+
               <input type="submit" class="btn btn-primary" name="submit" value="Reactie plaatsen">
             </p>
           </form>

@@ -1,10 +1,15 @@
-<?php include 'phpqueriesmelissa.php' ?>
-  <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-<?php include '../admin/header.php';?>
+<?php include 'phpqueriesmelissa.php';
+      include '../admin/header.php';
+
+//checken of je bevoegd bent om de pagina te bezoeken
+if($_SESSION['functie'] != 0) {
+    header("location: ../admin/dashboard.php");
+}
+?>
 
 
 <?php
-  // Tabel oproepen
+  // Tabel oproepen van Inactieve Gebruikers
       $sql = "SELECT *
               FROM medewerker
               WHERE actief = FALSE";
@@ -31,7 +36,7 @@
       <div class="card mb-3">
         <div class="card-header">
           <a href="../admin/gebruikeroverzicht.php"> Actief</a> |
-          <a href="gbinactief.php"> Inactief</a> | 
+          <a href="gbinactief.php"> Inactief</a> |
           <a href="register.php"> Toevoegen</a>
         </div>
         <div class="card-body">
@@ -44,7 +49,7 @@
                   <th>Email</th>
                   <th>Functie</th>
                   <th>Laatst ingelogd</th>
-                  <th></th>
+                  <th>Opties</th>
                 </tr>
               </thead>
               <tbody>
@@ -67,11 +72,12 @@
                   } elseif($row['functie']==0) {
                       print('
                           <td>Superadmin</td>');
-                    } 
+                    }
                       print('
-                        <td></td>                        
+                        <td></td>
                         <td>
                           <label>
+
                             <script>
                               function myFunctionPubliceren(){
                                 var r=confirm("Weet u zeker dat u deze medewerker actief wilt maken?");
@@ -82,6 +88,7 @@
                                 }
                               }
                               </script>
+
                               <button type="submit" class="btn btn-secondary" name="actief" onclick="return myFunctionPubliceren()">Actief</button>
                           </label>
                           <input type="hidden" name="mnr" value="'.$row['mnr'].'">
@@ -93,7 +100,11 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted"><?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?></div>
+        <div class="card-footer small text-muted">
+          <?php
+          //laatst bijgewerkt (code)
+          echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?>
+        </div>
       </div>
     </div>
   </div>

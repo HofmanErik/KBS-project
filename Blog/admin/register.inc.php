@@ -1,5 +1,6 @@
 <?php
 
+//Database connectie
 $servername = "localhost";
 $username = "beheerder";
 $password = "geheim";
@@ -12,6 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+//opslaan
 if (isset($_POST['opslaan'])) {
 
   //ingevulde gegevens ophalen met POST
@@ -38,12 +40,14 @@ if (isset($_POST['opslaan'])) {
 				header("Location: ../admin/register.php?signup=invalidemail");
 				exit();
 			} else {
+        //Als alles klopt
 				$sql = "SELECT * FROM medewerker WHERE email='$email'";
 				$result = mysqli_query($conn, $sql);
 				$resultCheck = mysqli_num_rows($result);
 
+        //Checken of emailadres al bestaat
 				if ($resultCheck > 0) {
-					header("Location: ../admin/register.php?signup=usertaken");
+					header("Location: ../admin/register.php?signup=emailtaken");
 					exit();
 				} else {
 					//Hashing wachtwoord

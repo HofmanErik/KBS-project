@@ -2,11 +2,7 @@
 //header wordt opgehaald
 include '../admin/header.php';
 
-if (isset($_POST['opslaan'])) {
-
-    print ($_POST['achternaam']);
-}
-
+//database conncectie
 $servername = "localhost";
 $username = "beheerder";
 $password = "geheim";
@@ -15,17 +11,22 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=db_vindbaarin", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "conected succesfull <br><br>";
+
 } catch (PDOException $e) {
     echo "" . $e->getMessage();
 }
-$mnr = $mnr = $_SESSION['mnr'];
+
+//gegevens worden opgehaald uit database, horende bij de sessie
+$mnr = $_SESSION['mnr'];
 $sql = "SELECT achternaam, voornaam FROM medewerker WHERE mnr = '$mnr'";
+
+//variabelen worden gedefinieerd
 foreach ($conn->query($sql) as $row) {
     $achternaam = $row['achternaam'];
     $voornaam = $row['voornaam'];
 }
 
+//Wachtwoord verificatie voor naam wijzigen
 $naamVeranderingResponse = " ";
 if (isset($_POST["opslaan1"])) {
     $postvoornaam = $_POST['voornaam'];
@@ -35,6 +36,8 @@ if (isset($_POST["opslaan1"])) {
     $passwrdVerify = password_verify($verifyForm, $wwhashOld);
     $mnr = $_SESSION['mnr'];
 
+
+//Query voor wijziging naam
     if ($passwrdVerify == TRUE) {
 
         $sql = "UPDATE medewerker SET voornaam = '$postvoornaam', achternaam = '$postachternaam' WHERE mnr = '$mnr'";
@@ -52,6 +55,8 @@ if (isset($_POST["opslaan1"])) {
     }
 }
 
+
+//Wijigen wachtwoord inclusief verificatie
 $wwHerstelResponse1 = " ";
 $wwHerstelResponse2 = " ";
 if (isset($_POST["opslaan2"])) {
@@ -61,6 +66,7 @@ if (isset($_POST["opslaan2"])) {
     $mnr = $mnr = $_SESSION['mnr'];
     $wwhashOld = $_SESSION['wachtwoord'];
 
+    //Hash maken van nieuwe wachtwoord, BCRYPT
     $options = ['cost' => 12];
     $hashedpwd = password_hash($nieuwWachtwoord2, PASSWORD_BCRYPT, $options);
     $passwrdVerify = password_verify($oudWachtwoord, $wwhashOld);
@@ -83,10 +89,13 @@ if (isset($_POST["opslaan2"])) {
     }
 }
 
+
+//meldingen
 $mailResetResponse1 = " ";
 $mailResetResponse2 = " ";
 $mailResetResponse3 = " ";
 
+//email wijzigen met wachtwoord verificatie
 if (isset($_POST['emailsubmit'])) {
     $verifyForm = $_POST["mailVerifyForm"];
     $wwhashOld = $_SESSION['wachtwoord'];
@@ -101,21 +110,9 @@ if (isset($_POST['emailsubmit'])) {
     if ($mail1 == $mail2 && $passwrdVerify == TRUE) {
         $newmail = $_POST['mail1'];
 
-        $servername = "localhost";
-        $username = "beheerder";
-        $password = "geheim";
-
-        try {
-            //Creating connection for mysql
-            $conn = new PDO("mysql:host=$servername;dbname=db_vindbaarin", $username, $password);
-            // set the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
-        }
         $mnr = $_SESSION['mnr'];
         //sql query naam opslaan in database
-        $prep = $conn->prepare("update medewerker SET email = '$newmail' WHERE mnr = '$mnr'");
+        $prep = $conn->prepare("UPDATE medewerker SET email = '$newmail' WHERE mnr = '$mnr'");
         $prep->execute();
         $mailResetResponse1 = "<font color='green'>* Uw e-mail adres is gewijzigd.</font>";
     } else {
@@ -123,38 +120,29 @@ if (isset($_POST['emailsubmit'])) {
     }
 }
 
+//notificatie voorkeur wijzigen
 $changesResponse = " ";
 if (isset($_POST['statussubmit'])) {
-    $servername = "localhost";
-    $username = "beheerder";
-    $password = "geheim";
 
-    try {
-        //Creating connection for mysql
-        $conn = new PDO("mysql:host=$servername;dbname=db_vindbaarin", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
     $mnr = $_SESSION['mnr'];
 
     if ($_POST['janee'] == 'ja') {
-        print("ja");
-        $stmt = $conn->prepare("update medewerker SET notificatie = 1 WHERE mnr = '$mnr'");
+
+        $stmt = $conn->prepare("UPDATE medewerker SET notificatie = 1 WHERE mnr = '$mnr'");
         $stmt->execute();
         $changesResponse = "<font color='green'>* Uw voorkeur gewijzigd.</font>";
     }
     if ($_POST['janee'] == 'nee') {
-        print("nee");
-        $stmt = $conn->prepare("update medewerker SET notificatie = 0 WHERE mnr = '$mnr'");
+
+        $stmt = $conn->prepare("UPDATE medewerker SET notificatie = 0 WHERE mnr = '$mnr'");
         $stmt->execute();
         $changesResponse = "<font color='green'>* Uw voorkeur is gewijzigd.</font>";
     }
 }
 ?>
 
+
+<!--HTML -->
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->
@@ -164,6 +152,7 @@ if (isset($_POST['statussubmit'])) {
             </li>
             <li class="breadcrumb-item active">Accountinstellingen</li>
         </ol>
+        <!-- Pagina content html -->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -176,6 +165,8 @@ if (isset($_POST['statussubmit'])) {
                                 <div class="col-sm-12">
                                     <div class="card">
                                         <div class="card-block">
+
+                                          <!-- Formulier naam wijzigen-->
                                             <h4 class="card-title">Naam wijzigen</h4>
                                             <form action="account.php" method ="POST">
                                                 <p class="card-text"></p>
@@ -201,6 +192,8 @@ if (isset($_POST['statussubmit'])) {
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Formulier wachtwoord wijzigen-->
                                 <div class="col-sm-12">
                                     <form action="account.php" method ="POST">
                                         <div class="card">
@@ -219,6 +212,8 @@ if (isset($_POST['statussubmit'])) {
                                         </div>
                                 </div>
                             </div>
+
+                            <!--Formulier email wijzigen -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="card">
@@ -235,6 +230,8 @@ if (isset($_POST['statussubmit'])) {
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Formulier voorkeur wijzigen-->
                                 <div class="col-sm-12">
                                     <div class="card">
                                         <div class="card-block">

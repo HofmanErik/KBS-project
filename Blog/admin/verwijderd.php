@@ -1,8 +1,8 @@
-<?php include 'phpqueriesmelissa.php' ?>
-  <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-<?php include '../admin/header.php'; ?>
+<?php include 'phpqueriesmelissa.php';
+      include '../admin/header.php'; ?>
 
 <?php
+//Checken of je bevoegd bent de pagina te bezoeken
   if($_SESSION['functie'] == 2) {
     header("location: ../admin/dashboard.php");
 }
@@ -46,7 +46,7 @@
       </ol>
       <div class="row">
         <div class="col-12">
-          <h1><i class="fa fa-pencil"></i>
+          <h1><i class="fa fa-trash"></i>
             <span class="">Verwijderd</span>
           </h1>
         </div>
@@ -79,7 +79,7 @@
                 <th>Titel</th>
                 <th>Geschreven door</th>
                 <th>Publiceerdatum</th>
-                <th></th>
+                <th>Opties</th>
               </tr>
             </thead>
             <tbody>
@@ -89,11 +89,12 @@
                       <tr>
                         <form method="post" action="phpqueriesmelissa.php"><tr>
                           <td>'.$row['artikelnr'].'</td>
-                          <td><a href="#">'.$row['titel'].'</a></td>
+                          <td>'.$row['titel'].'</td>
                           <td>'.$row['voornaam'].'</td>
                           <td>'.$row['datum'].'
                             <input type="hidden" name="nummer" value="'.$row['artikelnr'].'"></td>
                           <td>
+
                           <script>
                             function myFunctionTerugzetten_concept(){
                               var r=confirm("Weet u zeker dat u het artikel wilt terugzetten naar concept?");
@@ -104,6 +105,7 @@
                               }
                             }
                           </script>
+
                             <button type="submit" class="btn btn-secondary" name="terugzetten" value="Terugzetten" title="Verplaatsen naar concepten" onclick="return myFunctionTerugzetten_concept()">
                                 <i class="fa fa-undo"></i>
                             </button>
