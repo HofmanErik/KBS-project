@@ -1,13 +1,13 @@
-<?php include 'phpqueriesmelissa.php' ?>
-  <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-<?php include '../admin/header.php'; ?>
+<?php include 'phpqueriesmelissa.php';
+      include '../admin/header.php'; ?>
 <?php
+  //checken of je bevoegd bent de pagina te bezoeken
   if($_SESSION['functie'] == 2) {
     header("location: ../admin/dashboard.php");
 }
 ?>
 <?php
-  // Tabel oproepen
+  // Tabel oproepen zoekfunctie
   if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
     $zoektext = $_POST["zoektext"];
       $sql = "SELECT *
@@ -21,6 +21,8 @@
               $stmt -> bindvalue( ":concept2",1,PDO::PARAM_STR );
               $stmt -> execute();
   }else{
+
+    //alle gepubliceerde artikelen ophalen
     $sql = "SELECT *
             FROM artikel a
             JOIN medewerker m ON a.mnr=m.mnr
@@ -77,8 +79,8 @@
               <th>Titel</th>
               <th>Geschreven door</th>
               <th>Publiceerdatum</th>
-              <th></th>
-              <th></th>
+              <th>Actie</th>
+              <th>Opties</th>
             </tr>
           </thead>
           <tbody>
@@ -88,10 +90,11 @@
                       <tr>
                         <form method="post" action="phpqueriesmelissa.php">
                                 <td>'.$row['artikelnr'].'</td>
-                                <td><a href="#">'.$row['titel'].'</a></td>
+                                <td><a href="../blogpost.php?artikelnr='.$row["artikelnr"].'" target="blank">'.$row['titel'].'</a></td>
                                 <td>'.$row['voornaam'].'</td>
                                 <td>'.$row['datum'].'</td>
                                 <td>
+
                                 <script>
                                   function myFunctionConcept(){
                                     var r=confirm("Weet u zeker dat u het artikel wilt verplaatsen naar concept?");
@@ -102,6 +105,7 @@
                                     }
                                   }
                                 </script>
+
                                 <input type="submit" class="btn btn-secondary" name="concept" value="Concept" onclick="return myFunctionConcept()"></input></td>
                                   <input type="hidden" name="nummer" value="'.$row['artikelnr'].'"<input>
                                 <td>
@@ -118,6 +122,7 @@
                                       }
                                     }
                                   </script>
+
                                   <button type="submit" class="btn btn-secondary" name="verwijder_gepubliceerd" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijder_gepubliceerd()"><i class="fa fa-trash"></i>
                                   </button>
                                 </td>

@@ -1,13 +1,14 @@
-<?php include 'phpqueriesmelissa.php' ?>
-  <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-<?php include '../admin/header.php'; ?>
+<?php include 'phpqueriesmelissa.php';
+      include '../admin/header.php'; ?>
 <?php
+
+//Checkt of je bevoegd bent de pagina te bezoeken
   if($_SESSION['functie'] == 2) {
     header("location: ../admin/dashboard.php");
 }
 ?>
 <?php
-  // Tabel oproepen
+  // Tabel oproepen, zoekfunctie op titel
   if(isset($_POST["zoektext"]) && isset($_POST["zoeken"])){
     $zoektext = $_POST["zoektext"];
         $sql = "SELECT *
@@ -21,6 +22,7 @@
                 $stmt -> bindvalue( ":concept2",0,PDO::PARAM_STR );
                 $stmt -> execute();
   }else{
+    //alle artikelen ophalen
         $sql = "SELECT *
                 FROM artikel a
                 join medewerker m on m.mnr=a.mnr
@@ -44,7 +46,7 @@
         </ol>
         <div class="row">
             <div class="col-12">
-                <h1><i class="fa fa-pencil"></i>
+                <h1><i class="fa fa-file-o"></i>
                     <span class="">Concepten</span><h1>
             </div>
         </div>
@@ -56,6 +58,7 @@
                 <a href="../admin/concepten.php"> Concepten</a> |
                 <a href="../admin/verwijderd.php"> Verwijderd</a> |
                 <a href="../admin/toevoegen.php"> Toevoegen</a>
+                <!--Formulier zoekfunctie-->
                 <form method="POST" action="concepten.php" class="form-inline my-2 my-lg-0 mr-lg-2 float-right">
                     <div class="input-group">
                         <input class="form-control" type="text" name="zoektext" placeholder="Zoeken...">
@@ -67,6 +70,7 @@
                     </div>
                 </form>
             </div>
+            <!--Tabelgegevens artikel-->
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -76,22 +80,23 @@
                                     <th>Titel</th>
                                     <th>Geschreven door</th>
                                     <th>Publiceerdatum</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Actie</th>
+                                    <th>Opties</th>
                                 </tr>
                             </thead>
                             <tbody>
-<!-- Tabel weergeven -->
+                              <!-- Tabel, buttons, pop-up weergeven -->
                                 <?php
                                     while ($row = $stmt->fetch()) {
                                         print('
                                             <tr>
                                                 <form method="post" action="phpqueriesmelissa.php">
                                                     <td>'.$row['artikelnr'].'</td>
-                                                    <td><a href="#">'.$row['titel'].'</a></td>
+                                                    <td>'.$row['titel'].'</td>
                                                     <td>'.$row['voornaam'].'</td>
                                                     <td>'.$row['datum'].'</td>
                                                     <td>
+
                                                     <script>
                                                       function myFunctionPubliceer_concept(){
                                                         var r=confirm("Weet u zeker dat u het artikel wilt publiceren?");
@@ -102,6 +107,7 @@
                                                         }
                                                       }
                                                     </script>
+
                                                     <input type="submit" class="btn btn-secondary" name="publiceer_concept" value="Publiceer" onclick="return myFunctionPubliceer_concept()"></td>
                                                         <input type="hidden" name="nummer" value="'.$row['artikelnr'].'">
                                                     <td>
@@ -118,6 +124,7 @@
                                                             }
                                                           }
                                                         </script>
+
                                                         <button type="submit" class="btn btn-secondary" name="verwijder_concept" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijder_concept()"><i class="fa fa-trash"></i>
                                                         </button>
                                                     </td>
@@ -130,7 +137,11 @@
                         </table>
                     </div>
                 </div>
-                <div class="card-footer small text-muted"><?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?></div>
+                <div class="card-footer small text-muted">
+                  <?php
+                  //laatst bijgewerkt (code)
+                  echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?>
+                </div>
             </div>
             </div>
 

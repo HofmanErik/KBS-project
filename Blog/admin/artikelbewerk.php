@@ -1,15 +1,19 @@
 <?php include "../admin/header.php";
+
+//Checkt of je bevoegd bent de pagina te bezoeken
 if($_SESSION['functie'] == 2) {
   header("location: ../admin/dashboard.php");
 }
 
   if(isset($_POST['bewerk'])){
 
+//database connectie
       $servername = "localhost";
       $username = "beheerder";
       $password = "geheim";
       $dbname = "db_vindbaarin";
 
+//goede artikel wordt opgehaald
       $artikelnr = $_POST['nummer'];
 
       try {
@@ -23,7 +27,7 @@ if($_SESSION['functie'] == 2) {
       {
       echo "Connection failed: " . $e->getMessage();
       }
-      //sql query naam opslaan in database
+      //SQL query artikel ophalen uit database
       $sql = ("SELECT * FROM artikel WHERE artikelnr = '$artikelnr'");
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -37,17 +41,11 @@ if($_SESSION['functie'] == 2) {
           $datum    = $row['datum'];
           $status   = $row['status'];
 
-
-
-
-    //    header("location: artikelbewerk.php");
-
-
 }
 
-
-
 ?>
+
+<!-- HTML-->
 <div class="content-wrapper">
   <div class="container-fluid">
     <!-- Breadcrumbs-->
@@ -58,12 +56,13 @@ if($_SESSION['functie'] == 2) {
       <li class="breadcrumb-item active">Toevoegen</li>
     </ol>
   </div>
+  <!--Formulier om wijzigingen op te slaan in db-->
   <div class="card-body">
     <div class="col-md-12">
       <form action="artikelbewerkopslaan.php" method="POST" enctype="multipart/form-data">
     <strong>Titel:</strong> <br>
     <input type="text" name="titel" value="<?php echo $titel; ?>" size="138px"><br><br>
-<!--thumbnail-->
+    <!--thumbnail-->
     <input type="file" name="thumbnail" >
 
     <input type="hidden" name="artikelnr" value="<?php echo $artikelnr; ?>">
@@ -89,7 +88,7 @@ if($_SESSION['functie'] == 2) {
         toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | print preview media fullpage | forecolor backcolor emoticons'
       });
       </script>
-
+      <!--Tekst wordt in editor geplaatst-->
       <textarea id="myTextarea" name="tinymce"><?php echo $tekst; ?></textarea>
 
         </div>
@@ -100,8 +99,6 @@ if($_SESSION['functie'] == 2) {
   <div class="col-md-12">
     <button class="btn btn-secondary" type="submit" name="publiceren" value="Posten">Opslaan</button>
     <button class="btn btn-secondary" type="submit" name="concept" value="Draft">Concept</button>
-    <!-- DOET HET NOG NIET!-->
-    <!--<input type="submit" name="Opslaan" value="Opslaan"><br><br>-->
   </div>
   </form>
 </div>

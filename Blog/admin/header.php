@@ -1,9 +1,7 @@
 <?php
 session_start();
 //kijken of er een sessie is gezet, anders word je terug gestuurd naar login.php
-if(!isset($_SESSION['voornaam']
-          //&& $_SESSION['functie'] == 0 || $_SESSION['functie'] == 1
-         )){
+if(!isset($_SESSION['voornaam'])){
    header("Location:  ../admin/login.php");
 }
 ?>
@@ -133,7 +131,7 @@ if(!isset($_SESSION['voornaam']
             }
 
              ?>
-<!-- meldingen bel -->
+<!-- notificatie bel -->
 <?php
 
   $servername = "localhost";
@@ -173,6 +171,7 @@ $sql = "SELECT * FROM rating r
                    }
                    ?>
                 </a>
+                <!--Uitlog knop-->
               <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                   <i class="fa fa-fw fa-sign-out"></i>Uitloggen

@@ -1,5 +1,6 @@
   <?php include '../admin/header.php'; ?>
   <?php
+  //Checken of je bevoegd bent de pagina te bezoeken
     if($_SESSION['functie'] == 2) {
       header("location: ../admin/dashboard.php");
   }
@@ -65,12 +66,12 @@
           </div>
           <input type="submit" name="opslaan" value="opslaan">
           <?php
+          //melding account aangemaakt
           if(isset($_GET['signup'])){
           if($_GET['signup'] == "succes"){
           print("<font color='green'>* Gebruiker is aangemaakt! </font>");
         }}
           ?>
-        <!--  <a href="register.inc.php">Opslaan</a>-->
         </form>
       </div>
     </div>

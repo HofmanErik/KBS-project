@@ -1,5 +1,6 @@
 <?php include "../admin/header.php" ?>
 <?php
+  //checken of je bevoegd bent de pagina te bezoeken
   if($_SESSION['functie'] ==2) {
     header("location: ../admin/dashboard.php");
 }
@@ -27,11 +28,13 @@
         <div class="col-md-12">
           <form action="verwerktoevoegen.php" method="POST" enctype="multipart/form-data" onsubmit="myFunctionOpslaan" onsubmit="myFunctionPubliceren">
             <?php
+            //Melding bij publiceren artikel
             if(isset($_GET['artikel'])){
             if($_GET['artikel'] == "Gepubliceerd"){
-            print("<font color='green'>* Artikel is toegevoegd! </font>");
+            print("<font color='green'>* Artikel is gepubliceerd! </font>");
             }}
 
+            //melding bij toevoegen artikel
             if(isset($_GET['artikel'])){
             if($_GET['artikel'] == "Opgeslagen"){
             print("<font color='green'>* Artikel is opgeslagen! </font>");

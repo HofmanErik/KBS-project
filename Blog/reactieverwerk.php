@@ -13,7 +13,9 @@ try {
     	echo "Connection failed: " . $e->getMessage();
 }
 
+//Als reactie wordt verzonden:
 if(isset($_POST["submit"])){
+  //Als rating leeg is, automatisch 5 sterren
   if(!isset($_POST['rating'])){
     $rating = 5;
   }elseif (isset($_POST['rating'])) {
@@ -26,11 +28,13 @@ if(isset($_POST["submit"])){
 		$email = $_POST["email"];
 		$reactie = $_POST["reactie"];
 
+//Query bezoeker INSERT
 $sql = "INSERT INTO bezoeker (voornaam,achternaam,email)
 		VALUES ('$voornaam','$achternaam','$email')";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
+//Query bezoeker ophalen
 $sql = "SELECT *
 		FROM bezoeker
 		WHERE voornaam = '$voornaam'
@@ -42,6 +46,7 @@ $sql = "SELECT *
         $row = $stmt->fetch();
         $bezoekernr = $row['bezoekernr'];
 
+//Query bezoeker + rating INSERT rating tabel
 $sql = "INSERT INTO rating (artikelnr,bezoekernr,reactie,sterwaarde,datum)
 		VALUES ($artikelnr,'$bezoekernr','$reactie', $rating, NOW())";
         $stmt = $conn->prepare($sql);

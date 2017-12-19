@@ -18,35 +18,38 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
 <?php
+          //Database Connection
           $servername = "localhost";
           $username = "beheerder";
           $password = "geheim";
           $dbname = "db_vindbaarin";
-          
+
           try {
               $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
               $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           } catch (PDOException $e) {
               echo "Connection failed: " . $e->getMessage();
           }
-
-          $sql = "SELECT * 
-                  FROM artikel a 
-                  JOIN medewerker m 
-                  ON a.mnr = m.mnr 
-                  WHERE status =1 
+          //Query ophalen gepubliceerde artikelen
+          $sql = "SELECT *
+                  FROM artikel a
+                  JOIN medewerker m
+                  ON a.mnr = m.mnr
+                  WHERE status =1
                   ORDER BY datum DESC";
                   $stmt = $conn->prepare($sql);
                   $stmt->execute();
 
+          //Ophalen thumbnail
           while ($row = $stmt->fetch()) {
                   $thumbnail = $row['thumbnaillocatie'];
                   $thumbsource = "admin/afbeeldingopslag/" . $thumbnail;
-                  // preview
+
+                  // preview tekst
                   list($a,$b,$c,$rest) = explode(".",$row["tekst"]);
                   $tekst = ($a.$b.$c);
                   $tekst = htmlspecialchars_decode(stripslashes($tekst));
-                
+
           print('
             <div class="post-preview">
              <div class="row">
@@ -75,17 +78,12 @@
             <hr>');
           }
           ?>
-          <!-- Pager -->
+
+          <!-- Pager
           <div class="clearfix">
                 <a class="btn btn-primary float-right" href="#">Oudere posts &rarr;</a>
-              </div> 
+          </div> -->
         </div>
       </div>
       <?php include 'footer.php';?>
       </div>
-
-    
-
-
-
-

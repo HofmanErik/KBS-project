@@ -1,14 +1,14 @@
 <?php include '../admin/header.php';?>
+
+<!--checken of je bevoegd bent om de pagina te bezoeken-->
 <?php if($_SESSION['functie'] != 0) {
     header("location: ../admin/dashboard.php");
 }
 include 'phpqueriesmelissa.php' ?>
-  <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-
 
 
 <?php
-  // Tabel oproepen
+  // Tabel oproepen, Actieve medewerkers
       $sql = "SELECT *
               FROM medewerker
               WHERE actief = TRUE";
@@ -76,6 +76,7 @@ include 'phpqueriesmelissa.php' ?>
                         <td></td>
                         <td>
                           <label>
+
                             <script>
                               function myFunctionPubliceren(){
                                 var r=confirm("Weet u zeker dat u deze medewerker op inactief wilt zetten?");
@@ -86,6 +87,7 @@ include 'phpqueriesmelissa.php' ?>
                                 }
                               }
                               </script>');
+
                             if($row['functie'] != 0){
                               echo'<button type="submit" class="btn btn-secondary" name="inactief" onclick="return myFunctionPubliceren()">Inactief</button>
                           </label>
