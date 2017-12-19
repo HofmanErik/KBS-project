@@ -1,6 +1,6 @@
 <?php
 include("dbconnect.php");
-
+session_start();
 if (isset($_POST["verwerk"])) {
     try {
         $sql = "UPDATE rating
@@ -62,19 +62,32 @@ if (isset($_POST["verwijdergoedgekeurd"])) {
     }
 }
 
-/* sql voor toevoegen comment
-if (isset($_POST["submit"])) {
+// sql voor toevoegen comment
+if (isset($_POST['submit'])) {
+
+    if (isset($_POST['nummer'])){
+     print("llll");   
+     print($_POST['nummer']);
+     print("llll");    
+    }else{
+        print("wtf");
+    }
     try {
-        $sql = 'INSERT INTO comment(ratingnr,tekst,auteur)
-                VALUES ('$_POST["nummer"]','$_POST["bericht"]',1)';
 
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
+        $mnr = $_SESSION['mnr'];
+        $nummer = $_POST["nummer"];
+        $bericht = $_POST["bericht"];
+                       
+        $sql = "INSERT INTO comment(ratingnr,tekst,mnr,datum)
+                VALUES ('$nummer','$bericht','$mnr',NOW())";
 
-        header("location: ../reacties.php");
+        //$stmt = $conn->prepare($sql);
+        //$stmt->execute();
+
+        //header("location: ../reacties.php");
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
 }
-*/
+
 ?>

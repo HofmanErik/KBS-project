@@ -136,6 +136,7 @@ try {
           </div>
       </div>
       <div class="modal-footer">
+        <input type="hidden" name="nummer" value="<?php echo $row['ratingnr']; ?>">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
         <button type="submit" class="btn btn-primary" name="submit">Verstuur</button>
       </div>

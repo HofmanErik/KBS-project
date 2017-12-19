@@ -22,9 +22,9 @@ if(isset($_POST["submit"])){
 
 		$artikelnr = $_POST["artikelnr"];
     $voornaam = $_POST["naam"];
-		$achternaam = ["achternaam"];
+		$achternaam = $_POST["achternaam"];
 		$email = $_POST["email"];
-		$reactie = ["reactie"];
+		$reactie = $_POST["reactie"];
 
 $sql = "INSERT INTO bezoeker (voornaam,achternaam,email)
 		VALUES ('$voornaam','$achternaam','$email')";

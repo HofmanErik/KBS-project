@@ -59,7 +59,7 @@ if (isset($_POST["opslaan2"])) {
     $nieuwWachtwoord1 = $_POST["nieuwWachtwoord1"];
     $nieuwWachtwoord2 = $_POST["nieuwWachtwoord2"];
     $mnr = $mnr = $_SESSION['mnr'];
-    $wwhashOld = $_SESSION['wachtwoord'];
+    $wwhashOld = $_SESSION['wwhash'];
 
     $options = ['cost' => 12];
     $hashedpwd = password_hash($nieuwWachtwoord2, PASSWORD_BCRYPT, $options);
