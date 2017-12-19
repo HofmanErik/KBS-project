@@ -64,14 +64,6 @@ if (isset($_POST["verwijdergoedgekeurd"])) {
 
 // sql voor toevoegen comment
 if (isset($_POST['submit'])) {
-
-    if (isset($_POST['nummer'])){
-     print("llll");   
-     print($_POST['nummer']);
-     print("llll");    
-    }else{
-        print("wtf");
-    }
     try {
 
         $mnr = $_SESSION['mnr'];
@@ -81,10 +73,10 @@ if (isset($_POST['submit'])) {
         $sql = "INSERT INTO comment(ratingnr,tekst,mnr,datum)
                 VALUES ('$nummer','$bericht','$mnr',NOW())";
 
-        //$stmt = $conn->prepare($sql);
-        //$stmt->execute();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
 
-        //header("location: ../reacties.php");
+        header("location: ../reacties.php");
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }

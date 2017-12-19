@@ -40,6 +40,10 @@ if (isset($_POST['submit'])) {
 					//Checken of de gebruiker actief is
 					if($row['actief']) {
 
+					$mnr = $row['mnr'];
+					$prep = $conn->prepare("INSERT INTO logboek (mnr,datum) VALUES ('$mnr',NOW())");
+					$prep->execute();
+
 					//Gebruiker inloggen
 					$_SESSION['mnr'] = $row['mnr'];
 					$_SESSION['voornaam'] = $row['voornaam'];

@@ -30,6 +30,8 @@
           } catch (PDOException $e) {
               echo "Connection failed: " . $e->getMessage();
           }
+            $prep = $conn->prepare("UPDATE tel SET tel = tel + 1 WHERE id = 1");  
+            $prep->execute();
           //Query ophalen gepubliceerde artikelen
           $sql = "SELECT *
                   FROM artikel a
