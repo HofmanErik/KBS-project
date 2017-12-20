@@ -83,7 +83,7 @@ $sql = "SELECT * FROM rating r
                                       <td>'.$row['email'].'</td>
                                       <input type="hidden" name="nummer" value="'.$row['ratingnr'].'">
                                       <td>
-                                        <button type="submit" class="btn btn-primary" name="beantwoord" title="Beantwoorden"> <i class="fa fa-reply" aria-hidden="true"></i>
+                                        <button type="submit" class="btn btn-primary" name="submitantwoord" formaction="beantwoord.php" title="Beantwoorden"> <i class="fa fa-reply" aria-hidden="true"></i>
                                         </button>
                                         <button type="submit" class="btn btn-danger" name="verwijdergoedgekeurd" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijderR()"><i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>

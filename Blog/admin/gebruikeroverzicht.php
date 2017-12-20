@@ -9,9 +9,17 @@ include 'phpqueriesmelissa.php' ?>
 
 <?php
   // Tabel oproepen, Actieve medewerkers
-      $sql = "SELECT *
-              FROM medewerker
-              WHERE actief = TRUE";
+      $sql = "SELECT m.mnr, m.voornaam, m.achternaam, m.email, f.functieid,
+                      f.functienaam, f.beschrijving, MAX(datum) AS maxdatum
+              FROM medewerker m
+              JOIN logboek l
+              ON m.mnr = l.mnr
+              JOIN functie f
+              ON f.functieid = m.functie 
+              WHERE m.actief = TRUE
+              GROUP BY m.mnr
+              HAVING MAX(datum)
+              ";
               $stmt = $conn->prepare($sql);
               $stmt->execute();
 ?>
@@ -48,35 +56,23 @@ include 'phpqueriesmelissa.php' ?>
                   <th>Email</th>
                   <th>Functie</th>
                   <th>Laatst ingelogd</th>
-                  <th></th>
+                  <th>Opties</th>
                 </tr>
               </thead>
               <tbody>
                 <!-- Tabel -->
-                <?php
+<?php
                 while ($row = $stmt->fetch()) {
-                  print('
+                  echo'
                       <form method="post" action="phpqueriesmelissa.php">
                     <tr>
                         <td>'.$row['voornaam'].'</td>
                         <td>'.$row["achternaam"].'</a>
                         </td>
-                        <td>'.$row['email'].'</td>');
-                    if($row['functie']==1){
-                      print('
-                        <td>Beheerder</td>');
-                  } elseif($row['functie']==2) {
-                      print('
-                          <td>Moderator</td>');
-                  } elseif($row['functie']==0) {
-                      print('
-                          <td>Superadmin</td>');
-                    }
-                      print('
-                        <td></td>
-                        <td>
+                        <td>'.$row['email'].'</td>
+                        <td>'.$row['functienaam'].'</td>
+                        <td>'.$row['maxdatum'].'</td>
                           <label>
-
                             <script>
                               function myFunctionPubliceren(){
                                 var r=confirm("Weet u zeker dat u deze medewerker op inactief wilt zetten?");
@@ -86,13 +82,14 @@ include 'phpqueriesmelissa.php' ?>
                                   return false;
                                 }
                               }
-                              </script>');
+                              </script>';
 
-                            if($row['functie'] != 0){
-                              echo'<button type="submit" class="btn btn-secondary" name="inactief" onclick="return myFunctionPubliceren()">Inactief</button>
+                            if($row['functieid'] != 0){
+                              echo'<td><button type="submit" class="btn btn-secondary" name="inactief" onclick="return myFunctionPubliceren()">Inactief</button></td>
                           </label>
                           <input type="hidden" name="mnr" value="'.$row['mnr'].'">
-                        </td><tr></form>'; }
+                        </td><tr></form>'; 
+                      }
                   }
 ?>
 <!-- Footer -->

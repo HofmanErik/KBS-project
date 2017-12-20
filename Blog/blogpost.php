@@ -124,38 +124,40 @@ if(!isset($_GET["artikelnr"])){
                           echo ' <span class="fa fa-star-o"></span>';
                           $i++;
                       }
-                    //?>
-                          <script>
-                            function antwoordweergeven() {
-                            var x = document.getElementById("myDIV");
-                            if (x.style.display === "none") {
-                            x.style.display = "block";
-                        } else {
-                            x.style.display = "none";
-                        }
-                    }
-                          </script>
-                    <?php
-                    echo('<br>
-                    '.$tekst.'</p>
-                     <button onclick="antwoordweergeven()">Antwoorden bekijken</button>
-                    <div id="myDIV">
-                    <p class="text-right"><img alt="" src="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=80&amp;d=mm&amp;r=g 2x" class="img-circle" height="40" width="40"> <b>Vindbaar In</b>
-                    <br>
-                    <i>'.$datum.'</i><br>
-                    Hoi '.ucfirst($voornaam)." ".ucfirst($achternaam).',
-                    Dankjewel voor je bericht!
-                    Fijne dag,
-                    Vindbaar in</p>
-                    <hr><hr>
-                    </div>
-                  </div>
-                </div>
+                      echo '<br>
+                    '.$tekst.'</p>';
 
-                  ');
-      }
-    }
+          $sql2 = "SELECT *
+              FROM comment c
+              JOIN medewerker m
+              ON c.mnr = m.mnr
+              WHERE c.ratingnr = :ratingnr";
+
+              $stmt2 = $conn->prepare($sql2);
+              $stmt2 -> bindValue(':ratingnr', $row['ratingnr'], PDO::PARAM_INT);
+              $stmt2->execute();
+
+              while($row2=$stmt2->fetch()){
+
+              $datum2 = $row2['datum'];
+              $voornaam2 = $row2['voornaam'];
+              $achternaam2 = $row2['achternaam'];
+              $tekst2 = $row2["tekst"];
+
+                    echo('
+                    <p class="text-right"><img alt="" src="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=40&amp;d=mm&amp;r=g" srcset="http://2.gravatar.com/avatar/5b010e428ae638107d31537cecf25744?s=80&amp;d=mm&amp;r=g 2x" class="img-circle" height="40" width="40"> <b>'.$voornaam2. " ".$achternaam2.'</b>
+                    <br>
+                    <i>'.$datum2.'</i><br>
+                    '.$tekst2.'</p>
+                    ');
+                  }
+                  echo '<hr><hr></div>
+                </div>';
+                }}
+
+
 ?>
+
       <div class="row">
         <div class="col-lg-6 col-md-12 mx-auto">
           <span><h5>Leave a comment</h5></span>

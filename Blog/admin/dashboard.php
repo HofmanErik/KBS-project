@@ -25,7 +25,7 @@
 
         ?>
         <div class="row">
-        <div class="col-xl-4 col-sm-6 mb-3">
+        <div class="col-lg-4 col-sm-4 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
@@ -42,7 +42,7 @@
           </div>
         </div>
 
-        <div class="col-xl-4 col-sm-6 mb-3">
+        <div class="col-lg-4 col-sm-4 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
@@ -66,7 +66,7 @@
 
         ?>
         <div class="row">
-        <div class="col-xl-4 col-sm-6 mb-3">
+        <div class="col-lg-4 col-sm-4 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
@@ -82,7 +82,7 @@
               </a>
           </div>
         </div>
-        <div class="col-xl-4 col-sm-6 mb-3">
+        <div class="col-lg-4 col-sm-4 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
@@ -98,7 +98,7 @@
               </a>
           </div>
         </div>
-        <div class="col-xl-4 col-sm-6 mb-3">
+        <div class="col-lg-4 col-sm-4 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
@@ -114,7 +114,7 @@
               </a>
           </div>
         </div>
-        <div class="col-xl-4 col-sm-6 mb-3">
+        <div class="col-lg-4 col-sm-4 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
@@ -133,7 +133,7 @@
         <?php
         //Checken op Super-Admin, voor weergave gebruikeroverzicht
         if($_SESSION['functie'] == 0){ ?>
-        <div class="col-xl-4 col-sm-6 mb-3">
+        <div class="col-lg-4 col-sm-4 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
@@ -149,45 +149,66 @@
               </a>
           </div>
         </div>
-        <?php } ?>
-
+        <div class="col-lg-4 col-sm-4 mb-3">
+          <div class="card text-black bg-secundairy o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa fa-cogs"></i>
+              </div>
+              <div class="mr-5">Instellingen</div>
+            </div>
+              <a class="card-footer text-black clearfix small z-1" href="../admin/account.php">
+                <span class="float-left">Klik hier</span>
+                <span class="float-right">
+                  <i class="fa fa-angle-right"></i>
+                </span>
+              </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-3">
+          <div class="card text-black bg-secundairy o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-address-book-o"></i>
+              </div>
+              <div class="mr-5">Logboek</div>
+            </div>
+              <a class="card-footer text-black clearfix small z-1" href="../admin/logboek.php">
+                <span class="float-left">Klik hier</span>
+                <span class="float-right">
+                  <i class="fa fa-angle-right"></i>
+                </span>
+              </a>
+          </div>
+        </div>
+<?php } ?>
 <?php
-//Checken op functie beheerder
-if($_SESSION['functie'] == 1){ ?>
-        <div class="col-xl-4 col-sm-6 mb-3">
-          <div class="card text-black bg-secundairy o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-user-plus"></i>
-              </div>
-              <div class="mr-5">Gebruiker toevoegen</div>
-            </div>
-              <a class="card-footer text-black clearfix small z-1" href="../admin/register.php">
-                <span class="float-left">Klik hier</span>
-                <span class="float-right">
-                  <i class="fa fa-angle-right"></i>
-                </span>
-              </a>
-          </div>
-        </div>
-      <?php } ?>
 
-        <div class="col-xl-4 col-sm-6 mb-3">
+$sql= 'SELECT *
+       FROM tel';
+
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+      $row=$stmt->fetch();
+      $tel=$row['tel'];
+?>
+
+        <div class="col-lg-4 col-sm-6 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-fw fa fa-globe "></i>
+                <i class="fa fa-pie-chart"></i>
               </div>
-              <div class="mr-5">Blog</div>
+              <div class="mr-5">Bezoekersteller</div>
             </div>
-              <a class="card-footer text-black clearfix small z-1" href="../index.php">
-                <span class="float-left">Klik hier</span>
-                <span class="float-right">
-                  <i class="fa fa-angle-right"></i>
-                </span>
-              </a>
+              <span class="card-footer text-black clearfix small z-1" href="../index.php">
+                <span class="float-left">Totaal aantal bezoekers:</span>
+                <span class="float-right"><?= $tel ?></span>
+              </span>
           </div>
         </div>
+        
+
 
       </div>
   </div>

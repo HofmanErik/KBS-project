@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Database connectie
 $servername = "localhost";
 $username = "beheerder";
@@ -55,4 +55,32 @@ $sql = "INSERT INTO rating (artikelnr,bezoekernr,reactie,sterwaarde,datum)
         header('location: blogpost.php?plaatsen=succes&artikelnr='.$artikelnr.'');
 }
 
+//Query comment insert
+if(isset($_POST["submitantwoord"])){
+    $reactie = $_POST["reactie"];
+    $ratingnr = $_POST['ratingnr'];
+    $mnr = $_SESSION['mnr'];
+
+$sql = "INSERT INTO comment (ratingnr,tekst,mnr,datum)
+    VALUES ('$ratingnr','$reactie','$mnr',NOW())";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        header('location: admin/beantwoord.php?plaatsen=succes&nr='.$ratingnr.'');
+
+}
+
+// Comment van beheerder verwijderen
+if(isset($_POST["verwijdercomment"])){
+    $commentnr = $_POST['commentnr'];
+    $ratingnr = $_POST['ratingnr'];
+    
+    $sql = 'DELETE FROM comment
+            WHERE commentnr = :commentnr';
+    $stmt = $conn->prepare($sql);
+    $stmt -> bindvalue( ":commentnr",$commentnr,PDO::PARAM_STR );    
+    $stmt->execute();
+
+header('location: admin/beantwoord.php?plaatsen=succes&nr='.$ratingnr.'');
+}
 ?>

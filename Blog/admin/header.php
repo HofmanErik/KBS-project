@@ -109,7 +109,6 @@ if(!isset($_SESSION['voornaam'])){
                 </a>
                  <ul class="sidenav-second-level collapse" id="collapse-gebruikers">
                    <?php if($_SESSION['functie'] == 0){
-
                    ?>
                    <li>
                      <a href="../admin/gebruikeroverzicht.php">Overzicht</a>
@@ -120,6 +119,14 @@ if(!isset($_SESSION['voornaam'])){
                    </li>
                  </ul>
               </li>
+              <?php if($_SESSION['functie'] == 0){ ?>
+              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Instellingen">
+                <a class="nav-link" href="../admin/logboek.php">
+                  <i class="fa fa-address-book-o"></i>
+                  <span class="nav-link-text">Logboek</span>
+                </a>
+              </li>
+              <?php } ?>              
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Voorbeeld">
                 <a class="nav-link" href="../index.php" target="_blank">
                   <i class="fa fa-external-link"></i>
@@ -129,8 +136,7 @@ if(!isset($_SESSION['voornaam'])){
             </ul>
             <?php
             }
-
-             ?>
+             ?>        
 <!-- notificatie bel -->
 <?php
 

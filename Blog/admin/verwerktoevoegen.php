@@ -1,5 +1,6 @@
 
 <?php
+require 'classes/dbconnect.php';
 session_start();
 
 //Database Connection
@@ -7,13 +8,6 @@ session_start();
   $username = "beheerder";
   $password = "geheim";
   $dbname = "db_vindbaarin";
-
-  // Create connection
-  $conn = new mysqli($servername, $username, $password, $dbname);
-  // Check connection
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  }
 
   //Als er op de button Publiceren geklikt wordt dan:
   if(isset($_POST['Publiceren'])){

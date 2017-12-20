@@ -97,12 +97,12 @@ try {
                                       <td>'.$row['datum'].'</td>
                                       <td>'.$row['email'].'</td>
                                       <form method="post" action="classes/reactiebeheer.php">
-                                      <input type="hidden" name="nummer" value="'.$row['ratingnr'].'">
+                                      <input type="hidden" name="nummer" value="'.$row['ratingnr'].'" formaction="beantwoord.php">
                                       <td>
                                         <button type="submit" class="btn btn-success" name="verwerk" value="Publiceer" title="Goedkeuren" onclick="return myFunctionPubliceerR()">
                                         <i class="fa fa-check" aria-hidden="true"></i>
                                         </button>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-reply" aria-hidden="true"></i></button>
+                                        <button type="submit" class="btn btn-primary" formaction="beantwoord.php"><i class="fa fa-reply" aria-hidden="true"></i></button>
                                         <button type="submit" class="btn btn-danger" name="verwijder" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijderR()"><i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                       </td>
@@ -118,32 +118,6 @@ try {
   </div>
   <div class="card-footer small text-muted"><?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod()); ?></div>
   </div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nieuw bericht</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="POST" action="classes/reactiebeheer.php">
-          <div class="form-group">
-            <label for="message-text" class="form-control-label">Bericht:</label>
-            <textarea class="form-control" id="message-text" name="bericht"></textarea>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
-        <button type="submit" class="btn btn-primary" name="submit">Verstuur</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
 
 
 <?php include 'footer.php'; ?>

@@ -128,21 +128,6 @@ if (isset($_POST["def_verwijder"])) {
         header("location: verwijderd.php");
 }
 
-
-
-
-// Beantwoorden van een reactie
-if(isset($_POST["beantwoord"])){
-    $ratingnr = $_POST["nummer"];
-    $tekst = $_POST["antwoord"];
-
-    $sql = "INSERT INTO comment (ratingnr,tekst,auteur)
-            VALUES ($ratingnr,'$tekst',1)";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        header('location: ../goedgekeurd.php');
-}
 // Medewerker inactief maken
 if (isset($_POST["inactief"])) {
         $sql = "UPDATE medewerker
