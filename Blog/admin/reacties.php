@@ -90,9 +90,6 @@ try {
                           echo ' <span class="fa fa-star-o"></span>';
                           $i++;
                       }
-                                  $exampleModal = '#exampleModal'.$row['ratingnr'];
-                                  $exampleModalid = 'exampleModal'.$row['ratingnr'];
-
                                     echo '
                                       </td>
                                       <td>'.$row['reactie'].'</td>
@@ -105,12 +102,14 @@ try {
                                         <button type="submit" class="btn btn-success" name="verwerk" value="Publiceer" title="Goedkeuren" onclick="return myFunctionPubliceerR()">
                                         <i class="fa fa-check" aria-hidden="true"></i>
                                         </button>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="'.$exampleModal.'"><i class="fa fa-reply" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-reply" aria-hidden="true"></i></button>
                                         <button type="submit" class="btn btn-danger" name="verwijder" value="Verwijder" title="Verwijderen" onclick="return myFunctionVerwijderR()"><i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                       </td>
                                     </form>
-                                  </tr>'; }?>
+                                  </tr>';
+                        }
+                        ?>
 
                     </tbody>
                 </table>
@@ -121,7 +120,7 @@ try {
   </div>
 
 <!-- Modal -->
-<div class="modal fade" id="'.$exampleModalid.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -134,19 +133,19 @@ try {
         <form method="POST" action="classes/reactiebeheer.php">
           <div class="form-group">
             <label for="message-text" class="form-control-label">Bericht:</label>
-            <textarea class="form-control" id="message-text" name="bericht">
-        </div>
-        <div class="modal-footer">
-          <input type="hidden" name="nummer" value="'.$row_['ratingnr'].'">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
-          <button type="submit" class="btn btn-primary" name="submit">Verstuur</button>
-        </div>
+
+            <textarea class="form-control" id="message-text" name="bericht"></textarea>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
+        <button type="submit" class="btn btn-primary" name="submit">Verstuur</button>
+      </div>
+>>>>>>> b9a6815157be934e9e451902ec0c47b71ad46360
       </form>
     </div>
   </div>
 </div>
-                        
-                        
 
 
 <?php include 'footer.php'; ?>
