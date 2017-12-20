@@ -137,7 +137,7 @@ try {
             <textarea class="form-control" id="message-text" name="bericht">
         </div>
         <div class="modal-footer">
-          <input type="hidden" name="nummer" value="'.$row['ratingnr'].'">
+          <input type="hidden" name="nummer" value="'.$row_['ratingnr'].'">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
           <button type="submit" class="btn btn-primary" name="submit">Verstuur</button>
         </div>
