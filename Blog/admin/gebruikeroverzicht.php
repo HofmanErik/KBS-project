@@ -1,10 +1,12 @@
-<?php include '../admin/header.php';?>
-
+<?php include '../admin/header.php';
+include 'phpqueriesmelissa.php'; ?>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--checken of je bevoegd bent om de pagina te bezoeken-->
 <?php if($_SESSION['functie'] != 0) {
     header("location: ../admin/dashboard.php");
 }
-include 'phpqueriesmelissa.php' ?>
+?>
 
 
 <?php
@@ -60,6 +62,11 @@ include 'phpqueriesmelissa.php' ?>
                 </tr>
               </thead>
               <tbody>
+              <script>
+                    $(document).ready(function(){
+                    $('[data-toggle="tooltiph"]').tooltip();   
+                    });
+              </script>  
                 <!-- Tabel -->
 <?php
                 while ($row = $stmt->fetch()) {
@@ -70,7 +77,8 @@ include 'phpqueriesmelissa.php' ?>
                         <td>'.$row["achternaam"].'</a>
                         </td>
                         <td>'.$row['email'].'</td>
-                        <td>'.$row['functienaam'].'</td>
+                      
+                        <td><span data-toggle="tooltiph" title="'.$row['beschrijving'].'">'.$row['functienaam'].'</span></td>
                         <td>'.$row['maxdatum'].'</td>
                           <label>
                             <script>
@@ -82,8 +90,8 @@ include 'phpqueriesmelissa.php' ?>
                                   return false;
                                 }
                               }
-                              </script>';
-
+                              </script>
+                              ';
                             if($row['functieid'] != 0){
                               echo'<td><button type="submit" class="btn btn-secondary" name="inactief" onclick="return myFunctionPubliceren()">Inactief</button></td>
                           </label>

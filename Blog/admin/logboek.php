@@ -10,7 +10,7 @@ $sql = 'SELECT *
         FROM logboek l
         JOIN medewerker m
         ON l.mnr=m.mnr
-        ORDER BY l.datum';
+        ORDER BY l.datum DESC';
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();

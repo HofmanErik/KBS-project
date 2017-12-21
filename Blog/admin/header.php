@@ -54,7 +54,6 @@ if(!isset($_SESSION['voornaam'])){
                   <span class="nav-link-text">Reacties</span>
                 </a>
               </li>
-
               <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Instellingen">
                 <a class="nav-link" href="../admin/account.php">
                   <i class="fa fa-cog"></i>

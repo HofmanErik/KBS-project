@@ -6,7 +6,8 @@ if($_SESSION['functie'] != 0) {
     header("location: ../admin/dashboard.php");
 }
 ?>
-
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <?php
   // Tabel oproepen van Inactieve Gebruikers
@@ -60,6 +61,11 @@ if($_SESSION['functie'] != 0) {
                   <th>Opties</th>
                 </tr>
               </thead>
+              <script>
+                    $(document).ready(function(){
+                    $('[data-toggle="hover"]').tooltip();   
+                    });
+              </script> 
               <tbody>
                 <!-- Tabel -->
                 <?php
@@ -71,7 +77,7 @@ if($_SESSION['functie'] != 0) {
                         <td>'.$row["achternaam"].'</a>
                         </td>
                         <td>'.$row['email'].'</td>
-                        <td>'.$row['functienaam'].'</td>
+                        <td><span data-toggle="hover" title="'.$row['beschrijving'].'">'.$row['functienaam'].'</span></td>
                         <td>'.$row['maxdatum'].'</td>
                           <label>
                             <script>
