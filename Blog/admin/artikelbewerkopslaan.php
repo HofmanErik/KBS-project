@@ -49,7 +49,7 @@
                     $stmt = $conn->prepare("INSERT INTO thumbnail (thumbnaillocatie,thumbnailnaam) VALUES('$fileNameNew','$filename2')");
                     $stmt->execute();
 
-			        $sql = ("UPDATE artikel SET titel = '$titel', thumbnail = '$fileNameNew', tekst = '$tinymce', status = '1' WHERE artikelnr = '$artikelnr'");
+			        $sql = ("UPDATE artikel SET titel = '$titel', thumbnaillocatie = '$fileNameNew', tekst = '$tinymce', status = '1' WHERE artikelnr = '$artikelnr'");
 			        	print (" image");
 			            $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
    						move_uploaded_file($fileTmp, $fileDestination);
@@ -123,7 +123,7 @@
                       $stmt = $conn->prepare("INSERT INTO thumbnail (thumbnaillocatie,thumbnailnaam) VALUES('$fileNameNew','$filename2')");
                       $stmt->execute();
 
-			        $sql = ("UPDATE artikel SET titel = '$titel', thumbnail = '$fileNameNew', tekst = '$tinymce', status = '0' WHERE artikelnr = '$artikelnr'");
+			        $sql = ("UPDATE artikel SET titel = '$titel', thumbnaillocatie = '$fileNameNew', tekst = '$tinymce', status = '0' WHERE artikelnr = '$artikelnr'");
 			        	print (" image");
 			            $fileDestination = 'afbeeldingopslag/' . $fileNameNew;
    						move_uploaded_file($fileTmp, $fileDestination);
@@ -135,9 +135,9 @@
 			      header("location: overzicht.php?upload");
 			    }
 			  }else {
-			    header("location: overzicht.php?filetype");
-			  }
-
+			    header('location: artikelbewerk.php?filetype=error');
+				}
+				//&titel='.$titel.'&tinymce='.$tinymce.'$nr='.$artikelnr.'
 
 			}else{
 				$sql = ("UPDATE artikel SET titel = '$titel', tekst = '$tinymce', status = '0' WHERE artikelnr = '$artikelnr'");
