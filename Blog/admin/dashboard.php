@@ -149,22 +149,6 @@
               </a>
           </div>
         </div>
-        <div class="col-lg-4 col-sm-4 mb-3">
-          <div class="card text-black bg-secundairy o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa fa-cogs"></i>
-              </div>
-              <div class="mr-5">Instellingen</div>
-            </div>
-              <a class="card-footer text-black clearfix small z-1" href="../admin/account.php">
-                <span class="float-left">Klik hier</span>
-                <span class="float-right">
-                  <i class="fa fa-angle-right"></i>
-                </span>
-              </a>
-          </div>
-        </div>
         <div class="col-lg-4 col-sm-6 mb-3">
           <div class="card text-black bg-secundairy o-hidden h-100">
             <div class="card-body">
