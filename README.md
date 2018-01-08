@@ -24,7 +24,7 @@ Het is mogelijk om als medewerker in te loggen op de website door rechtsbovenin 
 
 Deze testgevens zijn alleen mogelijk te gebruiken bij aanlevering van een juiste databaseversie.
 
-Als er ingelogt bent is het mogelijk om via de sidebar te navigeren naar de volgende paginas:
+Als je ingelogt bent is het mogelijk om via de sidebar te navigeren naar de volgende paginas:
 #### Artikelen:
 Bij artikelen is het mogelijk om artikelen aan te maken, te bewerken, verwijderen en conceptueren, dit wordt gedaan door acties door te geven aan de server met de bijbehorende knoppen.
 Het is ook mogelijk om per status de artikelen in te zien om overicht op het cms te behouden.
