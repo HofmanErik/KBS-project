@@ -42,6 +42,15 @@ if($_SESSION['functie'] == 2) {
           $status   = $row['status'];
 
 }
+//if(isset($_GET['filetype'])){
+//  $titel = $_GET['titel'];
+//  $tinymce = $_GET['tinymce'];
+//  $artikelnr = $_GET['nr'];
+
+
+
+
+//}
 
 ?>
 
