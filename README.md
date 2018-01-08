@@ -22,7 +22,7 @@ Het is mogelijk om als beheerder in te loggen op de website door rechtsbovenin o
 - email: moderator@mail.nl
 - wachtwoord: test
 
-(Testgevevens en database onder voorbehoud)
+Deze testgevens zijn alleen mogelijk te gebruiken bij aanlevering van een juiste databaseversie.
 
 Als er ingelogt wordt is het mogelijk om via de sidebar te navigeren naar de volgende paginas:
 #### Artikelen: 
