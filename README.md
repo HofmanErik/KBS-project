@@ -32,9 +32,9 @@ Het is ook mogelijk om per status de artikelen in te zien om overicht op het cms
 Bij reacties is het mogelijk om geschreven reacties goed te keuren, af te keuren en om op goedgekeurde reacties te reageren met de beantwoord knop.
 Op het klikken hiervan wordt de gebruiker doorgewezen naar de reactie op het blog om hier een reactie op te kunnen geven.
 #### Instellingen:
-Bij instellingen is het mogelijk je gebruikersintellingen en voorkeuren aan te passen.
+Bij het kopje instellingen is het mogelijk je gebruikersintellingen en voorkeuren aan te passen.
 #### Gebruikers:
-(Alleen voor Superadmin) Bij gebruikers is het mogelijk om nieuwe gebruikers aan te maken of om deze op inactief te zetten.
+Bij het kopje gebruikers is het mogelijk om nieuwe gebruikers aan te maken of om deze op inactief te zetten.
 Om de databaseintegriteit te behouden kunnen gebruikers niet definitief verwijderd worden.
 #### Logboek:
 Bij logboek is het mogelijk om in te zien welke medewerkers wanneer ingelog hebben, hier zijn geen acties mogelijk.
